@@ -1,15 +1,10 @@
 const express = require('express');
-const morgan = require('morgan');
-const { v4: uuidv4 } = require('uuid');
-const { generateCursorBody, chunkToUtf8String, generateHashed64Hex, generateUUIDHash, generateCursorChecksum } = require('./utils.js');
-const app = express();
+const router = express.Router();
 
-app.use(express.json({ limit: '50mb' }));
-app.use(express.urlencoded({ extended: true, limit: '50mb' }));
+const { v4: uuidv4, v5: uuidv5 } = require('uuid');
+const { generateCursorBody, chunkToUtf8String, generateHashed64Hex, generateCursorChecksum, getMacAddresses } = require('../utils/utils.js');
 
-app.use(morgan(process.env.MORGAN_FORMAT ?? 'tiny'));
-
-app.post('/v1/chat/completions', async (req, res) => {
+router.post('/chat/completions', async (req, res) => {
   // o1开头的模型，不支持流式输出
   if (req.body.model.startsWith('o1-') && req.body.stream) {
     return res.status(400).json({
@@ -42,8 +37,11 @@ app.post('/v1/chat/completions', async (req, res) => {
       ?? process.env['x-cursor-checksum'] 
       ?? generateCursorChecksum(authToken.trim());
 
-    const sessionid = generateUUIDHash(authToken)
-    const clientKey = generateHashed64Hex(authToken)
+    const DNS_NAMESPACE_V5 = uuidv5.DNS;
+    const MacAddress = getMacAddresses()[0].mac
+
+    const sessionid = uuidv5(authToken, DNS_NAMESPACE_V5);
+    const clientKey = generateHashed64Hex(MacAddress)
     const cursorClientVersion = "0.45.11"
 
     // Request the AvailableModels before StreamChat.
@@ -192,7 +190,4 @@ app.post('/v1/chat/completions', async (req, res) => {
   }
 });
 
-const PORT = process.env.PORT || 3010;
-app.listen(PORT, () => {
-  console.log(`The server listens port: ${PORT}`);
-});
+module.exports = router;
