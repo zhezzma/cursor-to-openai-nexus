@@ -45,7 +45,7 @@ npm run start
 ```
 from openai import OpenAI
 
-client = OpenAI(api_key="{{{WorkosCursorSessionToken of your account, starts with user_...}}}}",
+client = OpenAI(api_key="{{{Replace by the WorkosCursorSessionToken value of your account. It starts with user_...}}}",
                 base_url="http://localhost:3010/v1")
 
 response = client.chat.completions.create(
