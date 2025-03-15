@@ -4,11 +4,162 @@ const router = express.Router();
 const $root = require('../proto/message.js');
 const { v4: uuidv4, v5: uuidv5 } = require('uuid');
 const { generateCursorBody, chunkToUtf8String, generateHashed64Hex, generateCursorChecksum } = require('../utils/utils.js');
+const keyManager = require('../utils/keyManager.js');
+
+// 添加API key管理路由
+router.post("/api-keys", async (req, res) => {
+  try {
+    const { apiKey, cookieValues } = req.body;
+    
+    if (!apiKey || !cookieValues) {
+      return res.status(400).json({
+        error: 'API key and cookie values are required',
+      });
+    }
+    
+    keyManager.addOrUpdateApiKey(apiKey, cookieValues);
+    
+    return res.json({
+      success: true,
+      message: 'API key added or updated successfully',
+    });
+  } catch (error) {
+    console.error(error);
+    return res.status(500).json({
+      error: 'Internal server error',
+    });
+  }
+});
+
+// 获取所有API Keys
+router.get("/api-keys", async (req, res) => {
+  try {
+    console.log('收到获取API Keys请求');
+    const apiKeys = keyManager.getAllApiKeys();
+    console.log('获取到的API Keys:', apiKeys);
+    
+    const result = {
+      success: true,
+      apiKeys: apiKeys.map(apiKey => ({
+        key: apiKey,
+        cookieCount: keyManager.getAllCookiesForApiKey(apiKey).length,
+      })),
+    };
+    console.log('返回结果:', result);
+    
+    return res.json(result);
+  } catch (error) {
+    console.error('获取API Keys失败:', error);
+    return res.status(500).json({
+      error: 'Internal server error',
+      message: error.message
+    });
+  }
+});
+
+// 删除API key
+router.delete("/api-keys/:apiKey", async (req, res) => {
+  try {
+    const { apiKey } = req.params;
+    
+    keyManager.removeApiKey(apiKey);
+    
+    return res.json({
+      success: true,
+      message: 'API key removed successfully',
+    });
+  } catch (error) {
+    console.error(error);
+    return res.status(500).json({
+      error: 'Internal server error',
+    });
+  }
+});
+
+// 获取特定API Key的Cookie值
+router.get("/api-keys/:apiKey/cookies", async (req, res) => {
+  try {
+    const { apiKey } = req.params;
+    console.log(`收到获取API Key ${apiKey}的Cookie值请求`);
+    
+    const cookies = keyManager.getAllCookiesForApiKey(apiKey);
+    console.log(`API Key ${apiKey}的Cookie值:`, cookies);
+    
+    return res.json({
+      success: true,
+      cookies: cookies
+    });
+  } catch (error) {
+    console.error(`获取API Key ${req.params.apiKey}的Cookie值失败:`, error);
+    return res.status(500).json({
+      error: 'Internal server error',
+      message: error.message
+    });
+  }
+});
+
+// 获取所有无效的cookie
+router.get("/invalid-cookies", async (req, res) => {
+  try {
+    const invalidCookies = keyManager.getInvalidCookies();
+    
+    return res.json({
+      success: true,
+      invalidCookies: Array.from(invalidCookies)
+    });
+  } catch (error) {
+    console.error('获取无效cookie失败:', error);
+    return res.status(500).json({
+      error: 'Internal server error',
+      message: error.message
+    });
+  }
+});
+
+// 清除特定的无效cookie
+router.delete("/invalid-cookies/:cookie", async (req, res) => {
+  try {
+    const { cookie } = req.params;
+    const success = keyManager.clearInvalidCookie(cookie);
+    
+    return res.json({
+      success: success,
+      message: success ? '无效cookie已清除' : '未找到指定的无效cookie'
+    });
+  } catch (error) {
+    console.error('清除无效cookie失败:', error);
+    return res.status(500).json({
+      error: 'Internal server error',
+      message: error.message
+    });
+  }
+});
+
+// 清除所有无效cookie
+router.delete("/invalid-cookies", async (req, res) => {
+  try {
+    keyManager.clearAllInvalidCookies();
+    
+    return res.json({
+      success: true,
+      message: '所有无效cookie已清除'
+    });
+  } catch (error) {
+    console.error('清除所有无效cookie失败:', error);
+    return res.status(500).json({
+      error: 'Internal server error',
+      message: error.message
+    });
+  }
+});
 
 router.get("/models", async (req, res) => {
   try{
     let bearerToken = req.headers.authorization?.replace('Bearer ', '');
-    let authToken = bearerToken.split(',').map((key) => key.trim())[0];
+    
+    // 使用keyManager获取实际的cookie
+    let authToken = keyManager.getCookieForApiKey(bearerToken);
+    
     if (authToken && authToken.includes('%3A%3A')) {
       authToken = authToken.split('%3A%3A')[1];
     }
@@ -74,10 +225,11 @@ router.post('/chat/completions', async (req, res) => {
   try {
     const { model, messages, stream = false } = req.body;
     let bearerToken = req.headers.authorization?.replace('Bearer ', '');
-    const keys = bearerToken.split(',').map((key) => key.trim());
-
-    // Randomly select one key to use
-    let authToken = keys[Math.floor(Math.random() * keys.length)]
+    
+    // 使用keyManager获取实际的cookie
+    let authToken = keyManager.getCookieForApiKey(bearerToken);
+    // 保存原始cookie，用于后续可能的错误处理
+    const originalAuthToken = authToken;
 
     if (authToken && authToken.includes('%3A%3A')) {
       authToken = authToken.split('%3A%3A')[1];
@@ -148,18 +300,55 @@ router.post('/chat/completions', async (req, res) => {
       }
     });
 
+    // 处理响应
     if (stream) {
       res.setHeader('Content-Type', 'text/event-stream');
       res.setHeader('Cache-Control', 'no-cache');
       res.setHeader('Connection', 'keep-alive');
 
       const responseId = `chatcmpl-${uuidv4()}`;
+      
 
       try {
+        let responseEnded = false; // 添加标志，标记响应是否已结束
+        
         for await (const chunk of response.body) {
+          // 如果响应已结束，不再处理后续数据
+          if (responseEnded) {
+            continue;
+          }
+          
           let text = chunkToUtf8String(chunk);
+          
+          // 检查是否返回了错误对象
+          if (text && typeof text === 'object' && text.error) {
+            console.error('检测到无效cookie:', originalAuthToken);
+            console.error('错误响应:', text.error);
+            
+            // 从API Key中移除无效cookie
+            const removed = keyManager.removeCookieFromApiKey(bearerToken, originalAuthToken);
+            console.log(`Cookie移除${removed ? '成功' : '失败'}`);
+            
+            // 尝试解析错误响应为JSON
+            let errorDetails;
+            try {
+              errorDetails = JSON.parse(text.error);
+            } catch (parseError) {
+              errorDetails = text.error;
+            }
+            
+            // 返回错误信息给客户端
+            res.write(`data: ${JSON.stringify({ 
+              error: 'Invalid cookie detected and removed. Please try again.',
+              details: errorDetails
+            })}\n\n`);
+            res.write('data: [DONE]\n\n');
+            res.end();
+            responseEnded = true; // 标记响应已结束
+            break; // 跳出循环，不再处理后续数据
+          }
 
-          if (text.length > 0) {
+          if (text && text.length > 0) {
             res.write(
               `data: ${JSON.stringify({
                 id: responseId,
@@ -178,55 +367,108 @@ router.post('/chat/completions', async (req, res) => {
             );
           }
         }
+        
+        // 只有在响应尚未结束的情况下，才发送结束标记
+        if (!responseEnded) {
+          res.write('data: [DONE]\n\n');
+          res.end();
+        }
       } catch (streamError) {
         console.error('Stream error:', streamError);
-        if (streamError.name === 'TimeoutError') {
-          res.write(`data: ${JSON.stringify({ error: 'Server response timeout' })}\n\n`);
-        } else {
-          res.write(`data: ${JSON.stringify({ error: 'Stream processing error' })}\n\n`);
+        // 确保在发送错误信息前检查响应是否已结束
+        if (!res.writableEnded) {
+          if (streamError.name === 'TimeoutError') {
+            res.write(`data: ${JSON.stringify({ error: 'Server response timeout' })}\n\n`);
+          } else {
+            res.write(`data: ${JSON.stringify({ error: 'Stream processing error' })}\n\n`);
+          }
+          res.write('data: [DONE]\n\n');
+          res.end();
         }
-      } finally {
-        res.write('data: [DONE]\n\n');
-        res.end();
       }
     } else {
       try {
         let text = '';
+        let responseEnded = false; // 添加标志，标记响应是否已结束
+        
         for await (const chunk of response.body) {
-          text += chunkToUtf8String(chunk);
+          // 如果响应已结束，不再处理后续数据
+          if (responseEnded) {
+            continue;
+          }
+          
+          const chunkText = chunkToUtf8String(chunk);
+          
+          // 检查是否返回了错误对象
+          if (chunkText && typeof chunkText === 'object' && chunkText.error) {
+            console.error('检测到无效cookie:', originalAuthToken);
+            console.error('错误响应:', chunkText.error);
+            
+            // 从API Key中移除无效cookie
+            const removed = keyManager.removeCookieFromApiKey(bearerToken, originalAuthToken);
+            console.log(`Cookie移除${removed ? '成功' : '失败'}`);
+            
+            // 尝试解析错误响应为JSON
+            let errorDetails;
+            try {
+              errorDetails = JSON.parse(chunkText.error);
+            } catch (parseError) {
+              errorDetails = chunkText.error;
+            }
+            
+            // 返回错误信息给客户端
+            res.status(400).json({
+              error: 'Invalid cookie detected and removed. Please try again.',
+              details: errorDetails
+            });
+            responseEnded = true; // 标记响应已结束
+            break; // 跳出循环，不再处理后续数据
+          }
+          
+          // 正常文本，添加到结果中
+          if (chunkText && typeof chunkText === 'string') {
+            text += chunkText;
+          }
         }
-        // 对解析后的字符串进行进一步处理
-        text = text.replace(/^.*<\|END_USER\|>/s, '');
-        text = text.replace(/^\n[a-zA-Z]?/, '').trim();
-        // console.log(text)
+        
+        // 只有在响应尚未结束的情况下，才处理和返回结果
+        if (!responseEnded) {
+          // 对解析后的字符串进行进一步处理
+          text = text.replace(/^.*<\|END_USER\|>/s, '');
+          text = text.replace(/^\n[a-zA-Z]?/, '').trim();
+          // console.log(text)
 
-        return res.json({
-          id: `chatcmpl-${uuidv4()}`,
-          object: 'chat.completion',
-          created: Math.floor(Date.now() / 1000),
-          model,
-          choices: [
-            {
-              index: 0,
-              message: {
-                role: 'assistant',
-                content: text,
+          res.json({
+            id: `chatcmpl-${uuidv4()}`,
+            object: 'chat.completion',
+            created: Math.floor(Date.now() / 1000),
+            model,
+            choices: [
+              {
+                index: 0,
+                message: {
+                  role: 'assistant',
+                  content: text,
+                },
+                finish_reason: 'stop',
               },
-              finish_reason: 'stop',
+            ],
+            usage: {
+              prompt_tokens: 0,
+              completion_tokens: 0,
+              total_tokens: 0,
             },
-          ],
-          usage: {
-            prompt_tokens: 0,
-            completion_tokens: 0,
-            total_tokens: 0,
-          },
-        });
+          });
+        }
       } catch (error) {
         console.error('Non-stream error:', error);
-        if (error.name === 'TimeoutError') {
-          return res.status(408).json({ error: 'Server response timeout' });
+        // 确保在发送错误信息前检查响应是否已结束
+        if (!res.headersSent) {
+          if (error.name === 'TimeoutError') {
+            return res.status(408).json({ error: 'Server response timeout' });
+          }
+          throw error;
         }
-        throw error;
       }
     }
   } catch (error) {
@@ -238,9 +480,10 @@ router.post('/chat/completions', async (req, res) => {
 
       if (req.body.stream) {
         res.write(`data: ${JSON.stringify(errorMessage)}\n\n`);
-        return res.end();
+        res.write('data: [DONE]\n\n');
+        res.end();
       } else {
-        return res.status(error.name === 'TimeoutError' ? 408 : 500).json(errorMessage);
+        res.status(error.name === 'TimeoutError' ? 408 : 500).json(errorMessage);
       }
     }
   }

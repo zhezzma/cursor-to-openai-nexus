@@ -57,55 +57,196 @@ function generateCursorBody(messages, modelName) {
 
 function chunkToUtf8String(chunk) {
   const results = []
-  const buffer = Buffer.from(chunk, 'hex');
-  //console.log("Chunk buffer:", buffer.toString('hex'))
-
+  const errorResults = { hasError: false, errorMessage: '' }
+  
   try {
+    // 确保 chunk 是有效的
+    if (!chunk || chunk.length === 0) {
+      console.error('收到空的chunk数据');
+      return '';
+    }
+    
+    const buffer = Buffer.from(chunk, 'hex');
+    //console.log("Chunk buffer:", buffer.toString('hex'))
+
     for(let i = 0; i < buffer.length; i++){
-      const magicNumber = parseInt(buffer.subarray(i, i + 1).toString('hex'), 16)
-      const dataLength = parseInt(buffer.subarray(i + 1, i + 5).toString('hex'), 16)
-      const data = buffer.subarray(i + 5, i + 5 + dataLength)
-      //console.log("Parsed buffer:", magicNumber, dataLength, data.toString('hex'))
+      try {
+        // 确保有足够的数据来读取魔数和长度
+        if (i + 5 >= buffer.length) {
+          console.error('数据不足以读取魔数和长度');
+          break;
+        }
+        
+        const magicNumber = parseInt(buffer.subarray(i, i + 1).toString('hex'), 16)
+        const dataLength = parseInt(buffer.subarray(i + 1, i + 5).toString('hex'), 16)
+        
+        // 检查数据长度是否合理
+        if (dataLength <= 0 || dataLength > 1000000) { // 设置一个合理的最大长度限制
+          console.error(`数据长度异常: ${dataLength}`);
+          break;
+        }
+        
+        // 确保有足够的数据来读取内容
+        if (i + 5 + dataLength > buffer.length) {
+          console.error('数据不足以读取内容');
+          break;
+        }
+        
+        const data = buffer.subarray(i + 5, i + 5 + dataLength)
+        //console.log("Parsed buffer:", magicNumber, dataLength, data.toString('hex'))
 
-      if (magicNumber == 0) {
-        // Text proto message
-        const resMessage = $root.ResMessage.decode(data);
-        const content = resMessage.content
-        if(content !== undefined)
-          results.push(content)
-        //console.log(content)
-      }
-      else if (magicNumber == 1) {
-        // Gzip proto message
-        const gunzipData = zlib.gunzipSync(data)
-        const resMessage = $root.ResMessage.decode(gunzipData);
-        const content = resMessage.content
-        if(content !== undefined)
-          results.push(content)
-        //console.log(content)
-        // The prompt is not empty, but skip to handle this here.
-        const prompt = resMessage.prompt
-      }
-      else if (magicNumber == 2) { 
-        // Json message
-        const utf8 = data.toString('utf-8')
-        const message = JSON.parse(utf8)
-        if (message != null && (typeof message !== 'object' || 
-          (Array.isArray(message) ? message.length > 0 : Object.keys(message).length > 0))){
-            console.error(utf8)
-        }      
-      }
-      else if (magicNumber == 3) {
-        // Gzip json message
-      }
-      else {
-        //console.log('Unknown magic number when parsing chunk response: ' + magicNumber)
-      }
+        if (magicNumber == 0) {
+          try {
+            // Text proto message
+            const resMessage = $root.ResMessage.decode(data);
+            const content = resMessage.content
+            if(content !== undefined) {
+              // 检查文本内容是否包含错误信息
+              if (content.includes('"error"') || 
+                  content.includes('resource_exhausted') || 
+                  content.includes('ERROR_GPT_4_VISION_PREVIEW_RATE_LIMIT') ||
+                  content.includes('You\'ve reached your trial request limit')) {
+                console.error('检测到文本错误:', content);
+                errorResults.hasError = true;
+                errorResults.errorMessage = content;
+              } else {
+                results.push(content)
+              }
+            }
+          } catch (protoError) {
+            console.error('解析Proto消息错误:', protoError);
+          }
+        }
+        else if (magicNumber == 1) {
+          try {
+            // Gzip proto message
+            const gunzipData = zlib.gunzipSync(data)
+            const resMessage = $root.ResMessage.decode(gunzipData);
+            const content = resMessage.content
+            if(content !== undefined) {
+              // 检查文本内容是否包含错误信息
+              if (content.includes('"error"') || 
+                  content.includes('resource_exhausted') || 
+                  content.includes('ERROR_GPT_4_VISION_PREVIEW_RATE_LIMIT') ||
+                  content.includes('You\'ve reached your trial request limit')) {
+                console.error('检测到Gzip文本错误:', content);
+                errorResults.hasError = true;
+                errorResults.errorMessage = content;
+              } else {
+                results.push(content)
+              }
+            }
+            // The prompt is not empty, but skip to handle this here.
+            const prompt = resMessage.prompt
+          } catch (gzipProtoError) {
+            console.error('解析Gzip Proto消息错误:', gzipProtoError);
+          }
+        }
+        else if (magicNumber == 2) { 
+          try {
+            // Json message
+            const utf8 = data.toString('utf-8')
+            try {
+              const message = JSON.parse(utf8)
+              
+              // 检查JSON对象是否包含错误信息
+              if (message && message.error) {
+                console.error('检测到JSON错误对象:', utf8);
+                errorResults.hasError = true;
+                errorResults.errorMessage = utf8;
+              }
+              // 检查JSON字符串是否包含错误关键词
+              else if (utf8.includes('"error"') || 
+                  utf8.includes('resource_exhausted') || 
+                  utf8.includes('ERROR_GPT_4_VISION_PREVIEW_RATE_LIMIT') ||
+                  utf8.includes('You\'ve reached your trial request limit')) {
+                console.error('检测到JSON错误关键词:', utf8);
+                errorResults.hasError = true;
+                errorResults.errorMessage = utf8;
+              }
+              // 其他非空对象也输出到控制台
+              else if (message != null && (typeof message !== 'object' || 
+                (Array.isArray(message) ? message.length > 0 : Object.keys(message).length > 0))){
+                console.error('其他JSON消息:', utf8);
+              }
+            } catch (jsonError) {
+              console.error('JSON解析错误:', jsonError, '原始数据:', utf8);
+              // 即使JSON解析失败，也检查原始字符串是否包含错误关键词
+              if (utf8.includes('"error"') || 
+                  utf8.includes('resource_exhausted') || 
+                  utf8.includes('ERROR_GPT_4_VISION_PREVIEW_RATE_LIMIT') ||
+                  utf8.includes('You\'ve reached your trial request limit')) {
+                console.error('JSON解析失败但检测到错误关键词:', utf8);
+                errorResults.hasError = true;
+                errorResults.errorMessage = utf8;
+              }
+            }
+          } catch (textError) {
+            console.error('转换为UTF-8文本错误:', textError);
+          }
+        }
+        else if (magicNumber == 3) {
+          try {
+            // Gzip json message
+            const gunzipData = zlib.gunzipSync(data);
+            const utf8 = gunzipData.toString('utf-8');
+            try {
+              const message = JSON.parse(utf8);
+              
+              // 检查JSON对象是否包含错误信息
+              if (message && message.error) {
+                console.error('检测到Gzip JSON错误对象:', utf8);
+                errorResults.hasError = true;
+                errorResults.errorMessage = utf8;
+              }
+              // 检查JSON字符串是否包含错误关键词
+              else if (utf8.includes('"error"') || 
+                  utf8.includes('resource_exhausted') || 
+                  utf8.includes('ERROR_GPT_4_VISION_PREVIEW_RATE_LIMIT') ||
+                  utf8.includes('You\'ve reached your trial request limit')) {
+                console.error('检测到Gzip JSON错误关键词:', utf8);
+                errorResults.hasError = true;
+                errorResults.errorMessage = utf8;
+              }
+              // 其他非空对象也输出到控制台
+              else if (message != null && (typeof message !== 'object' || 
+                (Array.isArray(message) ? message.length > 0 : Object.keys(message).length > 0))){
+                console.error('其他Gzip JSON消息:', utf8);
+              }
+            } catch (jsonError) {
+              console.error('Gzip JSON解析错误:', jsonError, '解压后数据:', utf8);
+              // 即使JSON解析失败，也检查原始字符串是否包含错误关键词
+              if (utf8.includes('"error"') || 
+                  utf8.includes('resource_exhausted') || 
+                  utf8.includes('ERROR_GPT_4_VISION_PREVIEW_RATE_LIMIT') ||
+                  utf8.includes('You\'ve reached your trial request limit')) {
+                console.error('Gzip JSON解析失败但检测到错误关键词:', utf8);
+                errorResults.hasError = true;
+                errorResults.errorMessage = utf8;
+              }
+            }
+          } catch (gzipError) {
+            console.error('Gzip解压错误:', gzipError);
+          }
+        }
+        else {
+          console.log('Unknown magic number when parsing chunk response: ' + magicNumber)
+        }
 
-      i += 5 + dataLength - 1
+        i += 5 + dataLength - 1
+      } catch (chunkParseError) {
+        console.error('解析单个chunk部分错误:', chunkParseError);
+        // 尝试跳过当前可能损坏的数据，继续解析
+        i += 1;
+      }
     }
   } catch (err) {
-    //
+    console.error('解析chunk整体错误:', err);
+  }
+
+  // 如果检测到错误，返回错误对象
+  if (errorResults.hasError) {
+    return { error: errorResults.errorMessage };
   }
 
   return results.join('')
