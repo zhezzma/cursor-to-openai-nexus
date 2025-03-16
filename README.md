@@ -221,7 +221,7 @@ docker-compose logs -f
 
 6. 停止服务：
 ```bash
-docker-compose down
+docker compose down
 ```
 
 ### Docker配置文件说明
