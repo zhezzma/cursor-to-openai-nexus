@@ -1,0 +1,16 @@
+version: '3.8'
+
+services:
+
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: cursor-to-openai
+    volumes:
+      - ./data/invalid_cookies.json:/app/data/invalid_cookies.json
+      - ./data/api_keys.json:/app/data/api_keys.json
+      - ./data/admin.json:/app/data/admin.json
+    ports:
+      - "3010:3010"
+    env_file:
+      - .env

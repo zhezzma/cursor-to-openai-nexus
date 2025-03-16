@@ -188,11 +188,6 @@ npm run refresh-cookies -- your_api_key --force
 
 ## How to Run
 
-### Run in docker
-```
-docker run -d --name cursor-to-openai -p 3010:3010 ghcr.io/jiuz-chn/cursor-to-openai:latest
-```
-
 ### 使用Docker Compose运行
 1. 创建必要的配置文件：
 ```bash
@@ -210,9 +205,9 @@ cp data/admin.example.json data/admin.json
    - 编辑`.env`文件，设置必要的环境变量
    - 使用`node scripts/create-admin.js`创建管理员账户，或手动编辑`data/admin.json`
 
-3. 启动服务：
+3. 构建并启动服务：
 ```bash
-docker-compose up -d
+docker-compose up -d --build
 ```
 
 4. 访问服务：
