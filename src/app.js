@@ -21,8 +21,13 @@ const authMiddleware = require('./middleware/auth');
 // 确保keyManager正确初始化
 console.log('初始化keyManager...');
 keyManager.initializeApiKeys();
-console.log('API Keys配置:', config.apiKeys);
+
+// 输出最终的API Keys配置（在移除无效cookie后）
 console.log('keyManager初始化完成');
+console.log('最终API Keys配置:', JSON.stringify(keyManager.getAllApiKeys().reduce((obj, key) => {
+  obj[key] = keyManager.getAllCookiesForApiKey(key);
+  return obj;
+}, {}), null, 2));
 
 // 添加CORS支持
 app.use((req, res, next) => {
