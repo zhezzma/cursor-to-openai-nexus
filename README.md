@@ -1,6 +1,71 @@
-# Cursor To OpenAI
+# Cursor-To-OpenAI
 
-Convert the Cursor Editor to an OpenAI API interface service.
+将Cursor的API请求转发到OpenAI，支持多个API Key轮询，自动刷新Cookie。
+
+## 功能特点
+
+- 支持多个API Key轮询
+- 自动刷新Cookie
+- Cookie持久化存储
+- 管理员界面，方便管理API Key和Cookie
+
+## 安装
+
+1. 克隆仓库
+```bash
+git clone https://github.com/your-username/cursor-to-openai.git
+cd cursor-to-openai
+```
+
+2. 安装依赖
+```bash
+npm install
+```
+
+3. 配置环境变量
+复制`.env.example`文件为`.env`，并根据需要修改配置：
+```bash
+cp .env.example .env
+```
+
+4. 配置管理员账户
+复制`data/admin.example.json`文件为`data/admin.json`：
+```bash
+cp data/admin.example.json data/admin.json
+```
+
+然后使用以下命令生成管理员账户：
+```bash
+node scripts/create-admin.js
+```
+
+按照提示输入管理员用户名和密码。
+
+## 使用说明
+
+1. 启动服务
+```bash
+npm start
+```
+
+2. 访问管理界面
+打开浏览器访问`http://localhost:3000`（或你配置的其他端口），使用管理员账户登录。
+
+3. 添加API Key
+在管理界面添加Cursor API Key，系统会自动获取和刷新Cookie。
+
+4. 使用API
+将你的OpenAI客户端的base URL改为`http://localhost:3000`，然后像使用OpenAI API一样使用即可。
+
+## 注意事项
+
+- 请妥善保管你的管理员账户信息
+- 不要将`data/admin.json`和`data/api_keys.json`文件提交到版本控制系统
+- 建议定期备份这些配置文件
+
+## License
+
+MIT
 
 ## Introduction
 
