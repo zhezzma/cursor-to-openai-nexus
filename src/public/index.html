@@ -847,7 +847,10 @@
         // 修改所有fetch请求，添加token
         const originalFetch = window.fetch;
         window.fetch = function(url, options = {}) {
-            if (!url.includes('/v1/admin/')) {
+            // 只对管理页面的API请求添加token
+            if (url.includes('/v1/api-keys') || 
+                url.includes('/v1/invalid-cookies') || 
+                url.includes('/v1/refresh-cookies')) {
                 options.headers = addAuthHeader(options.headers);
             }
             return originalFetch(url, options);
