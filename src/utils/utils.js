@@ -102,10 +102,8 @@ function chunkToUtf8String(chunk) {
             const content = resMessage.content
             if(content !== undefined) {
               // 检查文本内容是否包含错误信息
-              if (content.includes('"error"') || 
-                  content.includes('resource_exhausted') || 
-                  content.includes('ERROR_GPT_4_VISION_PREVIEW_RATE_LIMIT') ||
-                  content.includes('You\'ve reached your trial request limit')) {
+              if (content.includes('Not logged in') || 
+                  content.includes('resource_exhausted')) {
                 console.error('检测到文本错误:', content);
                 errorResults.hasError = true;
                 errorResults.errorMessage = content;
@@ -125,10 +123,8 @@ function chunkToUtf8String(chunk) {
             const content = resMessage.content
             if(content !== undefined) {
               // 检查文本内容是否包含错误信息
-              if (content.includes('"error"') || 
-                  content.includes('resource_exhausted') || 
-                  content.includes('ERROR_GPT_4_VISION_PREVIEW_RATE_LIMIT') ||
-                  content.includes('You\'ve reached your trial request limit')) {
+              if (content.includes('Not logged in') || 
+                  content.includes('resource_exhausted')) {
                 console.error('检测到Gzip文本错误:', content);
                 errorResults.hasError = true;
                 errorResults.errorMessage = content;
@@ -150,16 +146,15 @@ function chunkToUtf8String(chunk) {
               const message = JSON.parse(utf8)
               
               // 检查JSON对象是否包含错误信息
-              if (message && message.error) {
+              if (message && message.error && 
+                  (utf8.includes('Not logged in') || utf8.includes('resource_exhausted'))) {
                 console.error('检测到JSON错误对象:', utf8);
                 errorResults.hasError = true;
                 errorResults.errorMessage = utf8;
               }
               // 检查JSON字符串是否包含错误关键词
-              else if (utf8.includes('"error"') || 
-                  utf8.includes('resource_exhausted') || 
-                  utf8.includes('ERROR_GPT_4_VISION_PREVIEW_RATE_LIMIT') ||
-                  utf8.includes('You\'ve reached your trial request limit')) {
+              else if (utf8.includes('Not logged in') || 
+                       utf8.includes('resource_exhausted')) {
                 console.error('检测到JSON错误关键词:', utf8);
                 errorResults.hasError = true;
                 errorResults.errorMessage = utf8;
@@ -172,10 +167,8 @@ function chunkToUtf8String(chunk) {
             } catch (jsonError) {
               console.error('JSON解析错误:', jsonError, '原始数据:', utf8);
               // 即使JSON解析失败，也检查原始字符串是否包含错误关键词
-              if (utf8.includes('"error"') || 
-                  utf8.includes('resource_exhausted') || 
-                  utf8.includes('ERROR_GPT_4_VISION_PREVIEW_RATE_LIMIT') ||
-                  utf8.includes('You\'ve reached your trial request limit')) {
+              if (utf8.includes('Not logged in') || 
+                  utf8.includes('resource_exhausted')) {
                 console.error('JSON解析失败但检测到错误关键词:', utf8);
                 errorResults.hasError = true;
                 errorResults.errorMessage = utf8;
@@ -194,16 +187,15 @@ function chunkToUtf8String(chunk) {
               const message = JSON.parse(utf8);
               
               // 检查JSON对象是否包含错误信息
-              if (message && message.error) {
+              if (message && message.error && 
+                  (utf8.includes('Not logged in') || utf8.includes('resource_exhausted'))) {
                 console.error('检测到Gzip JSON错误对象:', utf8);
                 errorResults.hasError = true;
                 errorResults.errorMessage = utf8;
               }
               // 检查JSON字符串是否包含错误关键词
-              else if (utf8.includes('"error"') || 
-                  utf8.includes('resource_exhausted') || 
-                  utf8.includes('ERROR_GPT_4_VISION_PREVIEW_RATE_LIMIT') ||
-                  utf8.includes('You\'ve reached your trial request limit')) {
+              else if (utf8.includes('Not logged in') || 
+                       utf8.includes('resource_exhausted')) {
                 console.error('检测到Gzip JSON错误关键词:', utf8);
                 errorResults.hasError = true;
                 errorResults.errorMessage = utf8;
@@ -216,10 +208,8 @@ function chunkToUtf8String(chunk) {
             } catch (jsonError) {
               console.error('Gzip JSON解析错误:', jsonError, '解压后数据:', utf8);
               // 即使JSON解析失败，也检查原始字符串是否包含错误关键词
-              if (utf8.includes('"error"') || 
-                  utf8.includes('resource_exhausted') || 
-                  utf8.includes('ERROR_GPT_4_VISION_PREVIEW_RATE_LIMIT') ||
-                  utf8.includes('You\'ve reached your trial request limit')) {
+              if (utf8.includes('Not logged in') || 
+                  utf8.includes('resource_exhausted')) {
                 console.error('Gzip JSON解析失败但检测到错误关键词:', utf8);
                 errorResults.hasError = true;
                 errorResults.errorMessage = utf8;
