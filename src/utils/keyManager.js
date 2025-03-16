@@ -166,40 +166,64 @@ function saveApiKeysToFile() {
 function initializeApiKeys() {
     console.log('开始初始化API Keys...');
     
+    // 首先从文件加载现有的API Keys
+    const loadedFromFile = loadApiKeysFromFile();
+    
     // 检查环境变量中是否有API Keys配置
     const configApiKeys = config.apiKeys;
     const hasEnvApiKeys = Object.keys(configApiKeys).length > 0;
     
     if (hasEnvApiKeys) {
-        console.log('从环境变量检测到API Keys配置，将写入文件...');
+        console.log('从环境变量检测到API Keys配置，将合并到现有配置...');
         
-        // 清空现有映射
-        apiKeyMap.clear();
-        rotationIndexes.clear();
-        
-        // 将环境变量中的API Keys写入映射
-        for (const [apiKey, cookieValue] of Object.entries(configApiKeys)) {
-            if (typeof cookieValue === 'string') {
-                // 单个cookie值
-                apiKeyMap.set(apiKey, [cookieValue]);
-            } else if (Array.isArray(cookieValue)) {
-                // 多个cookie值数组
-                apiKeyMap.set(apiKey, cookieValue);
-            }
-            
-            // 初始化轮询索引
-            rotationIndexes.set(apiKey, 0);
+        // 记录合并前的Cookie数量
+        let beforeMergeCookies = 0;
+        for (const cookies of apiKeyMap.values()) {
+            beforeMergeCookies += cookies.length;
         }
         
-        // 保存到文件
+        // 合并环境变量中的API Keys到现有映射
+        for (const [apiKey, cookieValue] of Object.entries(configApiKeys)) {
+            // 获取现有的cookies（如果有）
+            const existingCookies = apiKeyMap.get(apiKey) || [];
+            
+            // 准备要添加的新cookies
+            let newCookies = [];
+            if (typeof cookieValue === 'string') {
+                newCookies = [cookieValue];
+            } else if (Array.isArray(cookieValue)) {
+                newCookies = cookieValue;
+            }
+            
+            // 合并cookies，确保不重复
+            const mergedCookies = [...existingCookies];
+            for (const cookie of newCookies) {
+                if (!mergedCookies.includes(cookie)) {
+                    mergedCookies.push(cookie);
+                }
+            }
+            
+            // 更新映射
+            apiKeyMap.set(apiKey, mergedCookies);
+            
+            // 确保轮询索引存在
+            if (!rotationIndexes.has(apiKey)) {
+                rotationIndexes.set(apiKey, 0);
+            }
+        }
+        
+        // 记录合并后的Cookie数量
+        let afterMergeCookies = 0;
+        for (const cookies of apiKeyMap.values()) {
+            afterMergeCookies += cookies.length;
+        }
+        
+        console.log(`合并前共有 ${beforeMergeCookies} 个Cookie，合并后共有 ${afterMergeCookies} 个Cookie`);
+        
+        // 保存合并后的结果到文件
         saveApiKeysToFile();
-        console.log('环境变量中的API Keys已写入文件');
-    }
-    
-    // 从文件加载API Keys（包括刚刚写入的）
-    const loadedFromFile = loadApiKeysFromFile();
-    
-    if (!loadedFromFile && !hasEnvApiKeys) {
+        console.log('合并后的API Keys已保存到文件');
+    } else if (!loadedFromFile) {
         console.log('警告: 未能从文件加载API Keys，且环境变量中也没有配置API Keys');
     }
     
