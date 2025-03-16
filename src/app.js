@@ -16,6 +16,7 @@ const config = require('./config/config');
 const routes = require('./routes');
 const keyManager = require('./utils/keyManager');
 const cookieRefresher = require('./utils/cookieRefresher');
+const authMiddleware = require('./middleware/auth');
 
 // 确保keyManager正确初始化
 console.log('初始化keyManager...');
@@ -44,10 +45,13 @@ app.use(morgan(process.env.MORGAN_FORMAT ?? 'tiny'));
 // 添加静态文件支持
 app.use(express.static(path.join(__dirname, 'public')));
 
-// 添加根路由，显示管理页面
+// 添加根路由，重定向到登录页面
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public', 'index.html'));
+    res.redirect('/login.html');
 });
+
+// 添加认证中间件
+app.use(authMiddleware);
 
 app.use("/", routes)
 
