@@ -339,6 +339,8 @@ router.post('/chat/completions', async (req, res) => {
     let authToken = keyManager.getCookieForApiKey(bearerToken);
     // 保存原始cookie，用于后续可能的错误处理
     const originalAuthToken = authToken;
+    // 记录是否使用了映射的cookie
+    const usedMappedCookie = authToken !== bearerToken;
 
     if (authToken && authToken.includes('%3A%3A')) {
       authToken = authToken.split('%3A%3A')[1];
@@ -439,15 +441,15 @@ router.post('/chat/completions', async (req, res) => {
               console.error('检测到无效cookie:', originalAuthToken);
               
               // 从API Key中移除无效cookie
-              if (originalAuthToken !== bearerToken) {
-                // 如果originalAuthToken是从apiKey映射获取的cookie，则移除这个cookie
+              if (usedMappedCookie) {
+                // 如果使用了映射的cookie，则从API Key中移除这个cookie
                 const removed = keyManager.removeCookieFromApiKey(bearerToken, originalAuthToken);
-                console.log(`Cookie移除${removed ? '成功' : '失败'}`);
+                console.log(`从API Key ${bearerToken} 中移除无效Cookie ${originalAuthToken} ${removed ? '成功' : '失败'}`);
               } else {
-                // 如果originalAuthToken就是apiKey本身（没有映射），则将其添加到无效cookie列表
+                // 如果直接使用cookie作为API Key，则将其添加到无效cookie列表
                 keyManager.getInvalidCookies().add(originalAuthToken);
                 keyManager.saveInvalidCookiesToFile();
-                console.log(`将API Key ${bearerToken} 添加到无效cookie列表`);
+                console.log(`将Cookie ${originalAuthToken} 添加到无效cookie列表`);
               }
               
               // 返回错误信息给客户端
@@ -529,15 +531,15 @@ router.post('/chat/completions', async (req, res) => {
               console.error('检测到无效cookie:', originalAuthToken);
               
               // 从API Key中移除无效cookie
-              if (originalAuthToken !== bearerToken) {
-                // 如果originalAuthToken是从apiKey映射获取的cookie，则移除这个cookie
+              if (usedMappedCookie) {
+                // 如果使用了映射的cookie，则从API Key中移除这个cookie
                 const removed = keyManager.removeCookieFromApiKey(bearerToken, originalAuthToken);
-                console.log(`Cookie移除${removed ? '成功' : '失败'}`);
+                console.log(`从API Key ${bearerToken} 中移除无效Cookie ${originalAuthToken} ${removed ? '成功' : '失败'}`);
               } else {
-                // 如果originalAuthToken就是apiKey本身（没有映射），则将其添加到无效cookie列表
+                // 如果直接使用cookie作为API Key，则将其添加到无效cookie列表
                 keyManager.getInvalidCookies().add(originalAuthToken);
                 keyManager.saveInvalidCookiesToFile();
-                console.log(`将API Key ${bearerToken} 添加到无效cookie列表`);
+                console.log(`将Cookie ${originalAuthToken} 添加到无效cookie列表`);
               }
               
               // 返回错误信息给客户端
