@@ -222,6 +222,28 @@ MIN_COOKIE_COUNT=2                    # 触发自动刷新的最小Cookie数量�
 npm run refresh-cookies
 ```
 
+系统会检查所有 API Key 的 Cookie 数量，并刷新那些数量低于阈值的 API Key。刷新时会优先处理 Cookie 数量最少的 API Key。
+
+#### 高级用法
+
+1. 刷新特定的 API Key：
+
+```
+npm run refresh-cookies:api your_api_key
+```
+
+2. 强制刷新（忽略 Cookie 数量检查）：
+
+```
+npm run refresh-cookies:force
+```
+
+3. 强制刷新特定的 API Key：
+
+```
+node auto-refresh-cookies.js your_api_key --force
+```
+
 ### 故障排除
 
 如果自动刷新过程中遇到问题，请检查：

@@ -10,6 +10,11 @@ const cookieRefresher = require('./src/utils/cookieRefresher');
 const keyManager = require('./src/utils/keyManager');
 const config = require('./src/config/config');
 
+// 解析命令行参数
+const args = process.argv.slice(2);
+const targetApiKey = args.length > 0 ? args[0] : null;
+const forceRefresh = args.includes('--force') || args.includes('-f');
+
 // 最小 Cookie 数量
 const MIN_COOKIE_COUNT = config.refresh.minCookieCount;
 
@@ -17,6 +22,14 @@ const MIN_COOKIE_COUNT = config.refresh.minCookieCount;
 async function main() {
   console.log('===== 自动刷新 Cookie 开始 =====');
   console.log(`最小 Cookie 数量: ${MIN_COOKIE_COUNT}`);
+  
+  if (targetApiKey) {
+    console.log(`指定刷新 API Key: ${targetApiKey}`);
+  }
+  
+  if (forceRefresh) {
+    console.log('强制刷新模式: 忽略 Cookie 数量检查');
+  }
   
   try {
     // 获取所有 API Key
@@ -55,17 +68,39 @@ async function main() {
     const updatedApiKeys = keyManager.getAllApiKeys();
     console.log(`系统中共有 ${updatedApiKeys.length} 个 API Key`);
     
+    // 如果指定了特定的 API Key，检查它是否存在
+    if (targetApiKey && !updatedApiKeys.includes(targetApiKey)) {
+      console.error(`错误: 指定的 API Key "${targetApiKey}" 不存在`);
+      console.log('===== 自动刷新 Cookie 异常结束 =====');
+      return;
+    }
+    
+    // 过滤需要处理的 API Keys
+    const keysToProcess = targetApiKey ? [targetApiKey] : updatedApiKeys;
+    
+    // 按 Cookie 数量排序，优先处理 Cookie 数量少的 API Key
+    const sortedKeys = keysToProcess.sort((a, b) => {
+      const aCount = keyManager.getAllCookiesForApiKey(a).length;
+      const bCount = keyManager.getAllCookiesForApiKey(b).length;
+      return aCount - bCount; // 升序排列，Cookie 数量少的排在前面
+    });
+    
     // 检查每个 API Key 是否需要刷新
     let refreshedCount = 0;
     let needRefreshCount = 0;
     
-    for (const apiKey of updatedApiKeys) {
+    for (const apiKey of sortedKeys) {
       const cookies = keyManager.getAllCookiesForApiKey(apiKey);
       console.log(`API Key: ${apiKey}, Cookie 数量: ${cookies.length}`);
       
-      if (cookies.length < MIN_COOKIE_COUNT) {
+      // 判断是否需要刷新：强制刷新模式或 Cookie 数量低于阈值
+      if (forceRefresh || cookies.length < MIN_COOKIE_COUNT) {
         needRefreshCount++;
-        console.log(`API Key ${apiKey} 的 Cookie 数量不足，需要刷新`);
+        if (forceRefresh) {
+          console.log(`强制刷新 API Key: ${apiKey}`);
+        } else {
+          console.log(`API Key ${apiKey} 的 Cookie 数量不足，需要刷新`);
+        }
         
         // 执行刷新
         console.log(`开始自动刷新 Cookie，目标 API Key: ${apiKey}，最小 Cookie 数量: ${MIN_COOKIE_COUNT}`);

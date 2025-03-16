@@ -99,11 +99,18 @@ if (config.refresh.enabled) {
             const updatedApiKeys = keyManager.getAllApiKeys();
             console.log(`系统中共有 ${updatedApiKeys.length} 个 API Key`);
             
+            // 按 Cookie 数量排序，优先处理 Cookie 数量少的 API Key
+            const sortedKeys = updatedApiKeys.sort((a, b) => {
+                const aCount = keyManager.getAllCookiesForApiKey(a).length;
+                const bCount = keyManager.getAllCookiesForApiKey(b).length;
+                return aCount - bCount; // 升序排列，Cookie 数量少的排在前面
+            });
+            
             // 检查每个 API Key 是否需要刷新
             let refreshedCount = 0;
             let needRefreshCount = 0;
             
-            for (const apiKey of updatedApiKeys) {
+            for (const apiKey of sortedKeys) {
                 const cookies = keyManager.getAllCookiesForApiKey(apiKey);
                 console.log(`API Key: ${apiKey}, Cookie 数量: ${cookies.length}`);
                 

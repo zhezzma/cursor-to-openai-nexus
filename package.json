@@ -24,6 +24,8 @@
     "proto": "npx pbjs -t static-module -w commonjs -o src/proto/message.js src/proto/message.proto",
     "start": "node src/app.js",
     "refresh-cookies": "node auto-refresh-cookies.js",
+    "refresh-cookies:force": "node auto-refresh-cookies.js --force",
+    "refresh-cookies:api": "node auto-refresh-cookies.js",
     "manage-cookies": "node manage-invalid-cookies.js"
   },
   "devDependencies": {
