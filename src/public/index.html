@@ -746,7 +746,7 @@
             // 禁用按钮，显示状态容器
             refreshBtn.disabled = true;
             statusContainer.style.display = 'block';
-            statusText.textContent = '正在启动刷新流程...';
+            statusText.textContent = '正在发送刷新请求...';
             progressBar.value = 10;
             
             try {
@@ -772,69 +772,29 @@
                     throw new Error(`HTTP错误: ${response.status} ${response.statusText}`);
                 }
                 
-                statusText.textContent = '刷新请求已发送，正在处理...';
-                progressBar.value = 40;
+                // 显示长时间等待提示
+                statusText.textContent = '刷新请求已发送，请耐心等待2-12分钟...';
+                progressBar.value = 50;
+                showMessage('refreshCookieMessage', '刷新请求已发送，由于需要访问Cursor官网获取新Cookie，整个过程可能需要2-12分钟，请耐心等待。您可以关闭此页面，稍后再来查看结果。', 'info');
                 
-                // 轮询刷新状态
-                let isCompleted = false;
-                let retryCount = 0;
-                const maxRetries = 30; // 最多轮询30次
-                
-                while (!isCompleted && retryCount < maxRetries) {
-                    await new Promise(resolve => setTimeout(resolve, 2000)); // 等待2秒
-                    
-                    statusText.textContent = `正在检查刷新状态...（${retryCount + 1}/${maxRetries}）`;
-                    progressBar.value = 40 + Math.min(50, Math.floor((retryCount / maxRetries) * 50));
-                    
-                    const statusResponse = await fetch('/v1/refresh-status', {
-                        method: 'GET',
-                        headers: {
-                            'Content-Type': 'application/json',
-                            'Cache-Control': 'no-cache'
-                        }
-                    });
-                    
-                    if (statusResponse.ok) {
-                        const statusData = await statusResponse.json();
-                        
-                        if (statusData.status === 'completed') {
-                            isCompleted = true;
-                            statusText.textContent = '刷新完成！';
-                            progressBar.value = 100;
-                            
-                            // 显示结果
-                            showMessage('refreshCookieMessage', `刷新成功！${statusData.message || ''}`, 'info');
-                            
-                            // 重新加载API Key列表
-                            loadApiKeys();
-                            populateRefreshApiKeySelect();
-                        } else if (statusData.status === 'failed') {
-                            throw new Error(statusData.message || '刷新失败');
-                        } else {
-                            // 更新进度信息
-                            statusText.textContent = statusData.message || '正在处理...';
-                        }
-                    }
-                    
-                    retryCount++;
-                }
-                
-                if (!isCompleted) {
-                    throw new Error('刷新超时，请稍后检查结果');
-                }
-            } catch (error) {
-                console.error('刷新Cookie失败:', error);
-                statusText.textContent = '刷新失败';
-                progressBar.value = 0;
-                showMessage('refreshCookieMessage', `刷新失败: ${error.message}`, 'error');
-            } finally {
-                // 恢复按钮状态
-                refreshBtn.disabled = false;
-                
-                // 5秒后隐藏状态容器
+                // 延迟5秒后恢复按钮状态
                 setTimeout(() => {
+                    refreshBtn.disabled = false;
                     statusContainer.style.display = 'none';
                 }, 5000);
+                
+                // 延迟一段时间后重新加载API Key列表
+                setTimeout(() => {
+                    loadApiKeys();
+                    populateRefreshApiKeySelect();
+                }, 720000); // 12分钟后刷新列表
+                
+            } catch (error) {
+                console.error('刷新Cookie失败:', error);
+                statusText.textContent = '刷新请求发送失败';
+                progressBar.value = 0;
+                showMessage('refreshCookieMessage', `刷新请求发送失败: ${error.message}`, 'error');
+                refreshBtn.disabled = false;
             }
         });
 
