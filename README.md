@@ -193,6 +193,63 @@ npm run refresh-cookies -- your_api_key --force
 docker run -d --name cursor-to-openai -p 3010:3010 ghcr.io/jiuz-chn/cursor-to-openai:latest
 ```
 
+### 使用Docker Compose运行
+1. 创建必要的配置文件：
+```bash
+# 创建环境配置文件
+cp .env.example .env
+
+# 创建数据目录
+mkdir -p data
+
+# 创建管理员账户配置
+cp data/admin.example.json data/admin.json
+```
+
+2. 编辑配置文件：
+   - 编辑`.env`文件，设置必要的环境变量
+   - 使用`node scripts/create-admin.js`创建管理员账户，或手动编辑`data/admin.json`
+
+3. 启动服务：
+```bash
+docker-compose up -d
+```
+
+4. 访问服务：
+   - 管理界面：`http://localhost:3010`
+   - API接口：`http://localhost:3010/v1/...`
+
+5. 查看日志：
+```bash
+docker-compose logs -f
+```
+
+6. 停止服务：
+```bash
+docker-compose down
+```
+
+### Docker配置文件说明
+
+项目包含以下Docker相关文件：
+
+1. `Dockerfile`：定义了应用的构建过程
+   - 基于`node:lts-alpine`镜像
+   - 安装依赖并复制应用代码
+   - 暴露3010端口
+   - 使用`npm run start`启动应用
+
+2. `docker-compose.yaml`：定义了服务的运行环境
+   - 使用本地Dockerfile构建镜像
+   - 将数据文件挂载到容器中，确保数据持久化：
+     - `./data/invalid_cookies.json:/app/data/invalid_cookies.json`
+     - `./data/api_keys.json:/app/data/api_keys.json`
+     - `./data/admin.json:/app/data/admin.json`
+   - 将3010端口映射到主机
+   - 使用`.env`文件加载环境变量
+
+通过这种配置，您的数据（API Keys、无效Cookie和管理员账户）将保存在主机的`data`目录中，即使容器重启或重建，数据也不会丢失。
+
 ### Run in npm
 ```
 npm install
