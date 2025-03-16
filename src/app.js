@@ -54,23 +54,51 @@ if (process.env.ENABLE_AUTO_REFRESH === 'true') {
     console.log(`启用自动刷新 Cookie，定时规则: ${cronSchedule}，最小 Cookie 数量: ${minCookieCount}`);
     
     cron.schedule(cronSchedule, async () => {
-        console.log('开始执行定时刷新 Cookie 任务...');
+        console.log('===== 自动刷新 Cookie 开始 =====');
+        console.log(`最小 Cookie 数量: ${minCookieCount}`);
         
         try {
             // 获取所有 API Key
             const apiKeys = keyManager.getAllApiKeys();
-            console.log(`系统中共有 ${apiKeys.length} 个 API Key`);
             
             if (apiKeys.length === 0) {
-                console.log('没有找到 API Key，请先添加 API Key');
-                return;
+                console.log('警告: 系统中没有找到任何 API Key');
+                
+                // 检查环境变量中是否有 API Keys
+                const envApiKeys = Object.keys(config.apiKeys);
+                if (envApiKeys.length > 0) {
+                    console.log(`检测到环境变量中有 ${envApiKeys.length} 个 API Key，但尚未加载到系统中`);
+                    console.log('正在重新初始化 API Keys...');
+                    
+                    // 重新初始化 API Keys
+                    keyManager.initializeApiKeys();
+                    
+                    // 重新获取 API Keys
+                    const refreshedApiKeys = keyManager.getAllApiKeys();
+                    if (refreshedApiKeys.length > 0) {
+                        console.log(`成功加载 ${refreshedApiKeys.length} 个 API Key，继续刷新流程`);
+                        // 继续执行后续刷新逻辑
+                    } else {
+                        console.log('初始化后仍未找到 API Key，请检查配置');
+                        console.log('===== 自动刷新 Cookie 结束 =====');
+                        return;
+                    }
+                } else {
+                    console.log('环境变量中也没有配置 API Key，请先添加 API Key');
+                    console.log('===== 自动刷新 Cookie 结束 =====');
+                    return;
+                }
             }
+            
+            // 重新获取最新的 API Keys（可能已经通过上面的初始化更新了）
+            const updatedApiKeys = keyManager.getAllApiKeys();
+            console.log(`系统中共有 ${updatedApiKeys.length} 个 API Key`);
             
             // 检查每个 API Key 是否需要刷新
             let refreshedCount = 0;
             let needRefreshCount = 0;
             
-            for (const apiKey of apiKeys) {
+            for (const apiKey of updatedApiKeys) {
                 const cookies = keyManager.getAllCookiesForApiKey(apiKey);
                 console.log(`API Key: ${apiKey}, Cookie 数量: ${cookies.length}`);
                 
@@ -78,21 +106,26 @@ if (process.env.ENABLE_AUTO_REFRESH === 'true') {
                     needRefreshCount++;
                     console.log(`API Key ${apiKey} 的 Cookie 数量不足，需要刷新`);
                     
-                    // 刷新 Cookie
-                    const result = await cookieRefresher.autoRefreshCookies(apiKey, minCookieCount);
-                    console.log(`刷新结果: ${result.message}`);
+                    // 执行刷新
+                    console.log(`开始自动刷新 Cookie，目标 API Key: ${apiKey}，最小 Cookie 数量: ${minCookieCount}`);
+                    const result = await cookieRefresher.autoRefreshCookies(apiKey);
                     
-                    if (result.success && result.refreshed > 0) {
+                    if (result.success) {
                         refreshedCount++;
+                        console.log(`刷新结果: ${result.message}`);
+                    } else {
+                        console.error(`刷新失败: ${result.message}`);
                     }
                 } else {
                     console.log(`API Key ${apiKey} 的 Cookie 数量足够，不需要刷新`);
                 }
             }
             
-            console.log(`定时刷新 Cookie 任务完成，共有 ${needRefreshCount} 个 API Key 需要刷新，成功刷新 ${refreshedCount} 个`);
+            console.log('===== 自动刷新 Cookie 完成 =====');
+            console.log(`共有 ${needRefreshCount} 个 API Key 需要刷新，成功刷新 ${refreshedCount} 个`);
         } catch (error) {
-            console.error('定时刷新 Cookie 任务失败:', error);
+            console.error('自动刷新 Cookie 任务执行失败:', error);
+            console.log('===== 自动刷新 Cookie 异常结束 =====');
         }
     });
 } else {

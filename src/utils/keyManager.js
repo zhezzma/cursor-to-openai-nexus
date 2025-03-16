@@ -74,44 +74,29 @@ function loadApiKeysFromFile() {
   try {
     if (fs.existsSync(API_KEYS_FILE)) {
       const data = fs.readFileSync(API_KEYS_FILE, 'utf8');
-      let apiKeysObj;
+      const apiKeysObj = JSON.parse(data);
       
-      try {
-        apiKeysObj = JSON.parse(data);
-      } catch (parseErr) {
-        console.error('解析API Keys文件失败:', parseErr);
-        
-        // 尝试修复可能的JSON格式问题
-        console.log('尝试修复JSON格式...');
-        const fixedData = data.replace(/,(\s*[\]}])/g, '$1'); // 移除尾随逗号
-        try {
-          apiKeysObj = JSON.parse(fixedData);
-          console.log('JSON修复成功');
-          
-          // 保存修复后的内容
-          fs.writeFileSync(API_KEYS_FILE, JSON.stringify(apiKeysObj, null, 2), 'utf8');
-        } catch (fixErr) {
-          console.error('修复JSON格式失败:', fixErr);
-          return false;
-        }
-      }
-      
-      // 清空当前映射
+      // 清空现有映射
       apiKeyMap.clear();
       rotationIndexes.clear();
+      
+      // 统计总cookie数量
+      let totalCookies = 0;
       
       // 添加从文件加载的API Keys
       for (const [apiKey, cookies] of Object.entries(apiKeysObj)) {
         if (Array.isArray(cookies)) {
           apiKeyMap.set(apiKey, cookies);
           rotationIndexes.set(apiKey, 0);
+          totalCookies += cookies.length;
         } else {
           console.error(`API Key ${apiKey} 的cookies不是数组，跳过`);
         }
       }
       
-      console.log(`从文件加载了 ${Object.keys(apiKeysObj).length} 个API Key`);
-      return true;
+      const apiKeyCount = Object.keys(apiKeysObj).length;
+      console.log(`从文件加载了 ${apiKeyCount} 个API Key，共 ${totalCookies} 个Cookie`);
+      return apiKeyCount > 0;
     } else {
       console.log('API Keys文件不存在，将使用配置中的API Keys');
       return false;
@@ -181,44 +166,50 @@ function saveApiKeysToFile() {
 function initializeApiKeys() {
     console.log('开始初始化API Keys...');
     
-    // 尝试从文件加载API Keys
+    // 检查环境变量中是否有API Keys配置
+    const configApiKeys = config.apiKeys;
+    const hasEnvApiKeys = Object.keys(configApiKeys).length > 0;
+    
+    if (hasEnvApiKeys) {
+        console.log('从环境变量检测到API Keys配置，将写入文件...');
+        
+        // 清空现有映射
+        apiKeyMap.clear();
+        rotationIndexes.clear();
+        
+        // 将环境变量中的API Keys写入映射
+        for (const [apiKey, cookieValue] of Object.entries(configApiKeys)) {
+            if (typeof cookieValue === 'string') {
+                // 单个cookie值
+                apiKeyMap.set(apiKey, [cookieValue]);
+            } else if (Array.isArray(cookieValue)) {
+                // 多个cookie值数组
+                apiKeyMap.set(apiKey, cookieValue);
+            }
+            
+            // 初始化轮询索引
+            rotationIndexes.set(apiKey, 0);
+        }
+        
+        // 保存到文件
+        saveApiKeysToFile();
+        console.log('环境变量中的API Keys已写入文件');
+    }
+    
+    // 从文件加载API Keys（包括刚刚写入的）
     const loadedFromFile = loadApiKeysFromFile();
     
-    // 如果从文件加载失败，则从配置中加载
-    if (!loadedFromFile) {
-      // 从配置中加载API key映射
-      const configApiKeys = config.apiKeys;
-      console.log('配置中的API Keys:', configApiKeys);
-      
-      // 清空现有映射
-      apiKeyMap.clear();
-      rotationIndexes.clear();
-      
-      for (const [apiKey, cookieValue] of Object.entries(configApiKeys)) {
-          console.log(`处理API Key: ${apiKey}, Cookie值:`, cookieValue);
-          
-          if (typeof cookieValue === 'string') {
-              // 单个cookie值
-              apiKeyMap.set(apiKey, [cookieValue]);
-              console.log(`设置单个Cookie: ${apiKey} -> [${cookieValue}]`);
-          } else if (Array.isArray(cookieValue)) {
-              // 多个cookie值数组
-              apiKeyMap.set(apiKey, cookieValue);
-              console.log(`设置多个Cookie: ${apiKey} -> [${cookieValue.join(', ')}]`);
-          }
-          
-          // 初始化轮询索引
-          rotationIndexes.set(apiKey, 0);
-      }
-      
-      // 保存初始API Keys到文件
-      saveApiKeysToFile();
+    if (!loadedFromFile && !hasEnvApiKeys) {
+        console.log('警告: 未能从文件加载API Keys，且环境变量中也没有配置API Keys');
     }
     
-    console.log('API Keys初始化完成，当前映射:');
-    for (const [key, value] of apiKeyMap.entries()) {
-        console.log(`${key} -> [${value.join(', ')}]`);
+    // 统计API Keys和Cookies数量
+    let totalCookies = 0;
+    for (const cookies of apiKeyMap.values()) {
+        totalCookies += cookies.length;
     }
+    
+    console.log(`API Keys初始化完成，共有 ${apiKeyMap.size} 个API Key，${totalCookies} 个Cookie`);
     
     // 加载无效cookie
     loadInvalidCookiesFromFile();
