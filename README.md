@@ -207,7 +207,7 @@ cp data/admin.example.json data/admin.json
 
 3. 构建并启动服务：
 ```bash
-docker-compose up -d --build
+docker compose up -d --build
 ```
 
 4. 访问服务：
@@ -216,7 +216,7 @@ docker-compose up -d --build
 
 5. 查看日志：
 ```bash
-docker-compose logs -f
+docker compose logs -f
 ```
 
 6. 停止服务：
