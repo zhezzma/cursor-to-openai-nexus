@@ -1,6 +1,11 @@
 // 加载环境变量
 require('dotenv').config();
 
+// 环境检查
+const envChecker = require('./utils/envChecker');
+console.log('启动前检查环境配置...');
+envChecker.enforceEnvCheck();
+
 const express = require('express');
 const morgan = require('morgan');
 const path = require('path');
@@ -47,9 +52,9 @@ app.get('/', (req, res) => {
 app.use("/", routes)
 
 // 设置定时任务，自动刷新 Cookie
-if (process.env.ENABLE_AUTO_REFRESH === 'true') {
-    const cronSchedule = process.env.REFRESH_CRON || '0 */6 * * *'; // 默认每6小时执行一次
-    const minCookieCount = parseInt(process.env.MIN_COOKIE_COUNT || '2', 10);
+if (config.refresh.enabled) {
+    const cronSchedule = config.refresh.cron;
+    const minCookieCount = config.refresh.minCookieCount;
     
     console.log(`启用自动刷新 Cookie，定时规则: ${cronSchedule}，最小 Cookie 数量: ${minCookieCount}`);
     

@@ -1,12 +1,17 @@
 // 加载环境变量
 require('dotenv').config();
 
+// 环境检查
+const envChecker = require('./src/utils/envChecker');
+console.log('启动前检查环境配置...');
+envChecker.enforceEnvCheck();
+
 const cookieRefresher = require('./src/utils/cookieRefresher');
 const keyManager = require('./src/utils/keyManager');
 const config = require('./src/config/config');
 
 // 最小 Cookie 数量
-const MIN_COOKIE_COUNT = parseInt(process.env.MIN_COOKIE_COUNT || '2', 10);
+const MIN_COOKIE_COUNT = config.refresh.minCookieCount;
 
 // 主函数
 async function main() {
