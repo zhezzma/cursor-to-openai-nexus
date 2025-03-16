@@ -23,6 +23,26 @@ This project provides a proxy service that converts the AI chat of the Cursor Ed
 2. Log in and open the developer tool in the browser (F12).
 3. Find the cookie value named `WorkosCursorSessionToken` in Application-Cookies and save it (The value starts with `user_`).
 
+## 环境配置
+
+本项目使用 `.env` 文件存储配置信息。在启动前，您需要创建并配置此文件：
+
+1. 复制示例配置文件：
+   ```
+   cp .env.example .env
+   ```
+
+2. 编辑 `.env` 文件，设置必要的环境变量：
+   - `API_KEYS`: 必须设置，格式为JSON字符串，包含API Key与Cookie的映射关系
+   - 如果启用自动刷新Cookie功能（`ENABLE_AUTO_REFRESH=true`），则还需设置以下变量：
+     - `GITHUB_TOKEN`: GitHub个人访问令牌
+     - `GITHUB_OWNER`: GitHub用户名
+     - `GITHUB_REPO`: 仓库名称
+     - `GITHUB_WORKFLOW_ID`: 工作流文件名
+     - `TRIGGER_WORKFLOW`: 是否允许触发工作流
+
+3. 系统在启动时会检查 `.env` 文件是否存在以及必要的环境变量是否已设置，如果不符合要求将拒绝启动并显示错误信息。
+
 ## How to Run
 
 ### Run in docker
