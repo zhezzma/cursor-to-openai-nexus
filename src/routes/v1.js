@@ -439,8 +439,16 @@ router.post('/chat/completions', async (req, res) => {
               console.error('检测到无效cookie:', originalAuthToken);
               
               // 从API Key中移除无效cookie
-              const removed = keyManager.removeCookieFromApiKey(bearerToken, originalAuthToken);
-              console.log(`Cookie移除${removed ? '成功' : '失败'}`);
+              if (originalAuthToken !== bearerToken) {
+                // 如果originalAuthToken是从apiKey映射获取的cookie，则移除这个cookie
+                const removed = keyManager.removeCookieFromApiKey(bearerToken, originalAuthToken);
+                console.log(`Cookie移除${removed ? '成功' : '失败'}`);
+              } else {
+                // 如果originalAuthToken就是apiKey本身（没有映射），则将其添加到无效cookie列表
+                keyManager.getInvalidCookies().add(originalAuthToken);
+                keyManager.saveInvalidCookiesToFile();
+                console.log(`将API Key ${bearerToken} 添加到无效cookie列表`);
+              }
               
               // 返回错误信息给客户端
               res.write(`data: ${JSON.stringify({ 
@@ -521,8 +529,16 @@ router.post('/chat/completions', async (req, res) => {
               console.error('检测到无效cookie:', originalAuthToken);
               
               // 从API Key中移除无效cookie
-              const removed = keyManager.removeCookieFromApiKey(bearerToken, originalAuthToken);
-              console.log(`Cookie移除${removed ? '成功' : '失败'}`);
+              if (originalAuthToken !== bearerToken) {
+                // 如果originalAuthToken是从apiKey映射获取的cookie，则移除这个cookie
+                const removed = keyManager.removeCookieFromApiKey(bearerToken, originalAuthToken);
+                console.log(`Cookie移除${removed ? '成功' : '失败'}`);
+              } else {
+                // 如果originalAuthToken就是apiKey本身（没有映射），则将其添加到无效cookie列表
+                keyManager.getInvalidCookies().add(originalAuthToken);
+                keyManager.saveInvalidCookiesToFile();
+                console.log(`将API Key ${bearerToken} 添加到无效cookie列表`);
+              }
               
               // 返回错误信息给客户端
               res.status(400).json({
