@@ -143,9 +143,15 @@
         <div class="card">
             <h1>Cursor To OpenAI - API Key 管理</h1>
             <p>在此页面上，您可以管理自定义 API Key 与 Cursor Cookie 的映射关系。</p>
-            <div style="margin-top: 10px;">
-                <button id="testApiBtn" style="margin-right: 10px;">测试API连接</button>
-                <button id="clearCacheBtn">清除缓存并刷新</button>
+            <div style="margin-top: 10px; display: flex; justify-content: space-between; align-items: center;">
+                <div>
+                    <button id="testApiBtn" style="margin-right: 10px;">测试API连接</button>
+                    <button id="clearCacheBtn">清除缓存并刷新</button>
+                </div>
+                <div>
+                    <span id="adminUsername" style="margin-right: 10px;"></span>
+                    <button id="logoutBtn" style="background: #e74c3c;">退出登录</button>
+                </div>
             </div>
             <div id="testApiResult" style="margin-top: 10px;"></div>
         </div>
@@ -228,6 +234,35 @@
                 </div>
             </div>
             <button id="clearAllInvalidCookies" style="background: #e74c3c;">清除所有无效Cookie</button>
+        </div>
+    </div>
+
+    <!-- 新增：Cookie刷新功能 -->
+    <div class="card">
+        <h2>Cookie自动刷新</h2>
+        <div class="form-group">
+            <div class="info">
+                系统支持自动刷新Cookie，确保API Key始终有足够的可用Cookie。您可以在此手动触发刷新操作。
+            </div>
+            <div id="refreshCookieMessage"></div>
+            <div style="margin-top: 15px;">
+                <div class="form-group">
+                    <label for="refreshApiKey">选择要刷新的API Key（不选则刷新所有）</label>
+                    <select id="refreshApiKey" style="width: 100%; padding: 8px; border: 1px solid #ddd; border-radius: 4px; font-size: 16px;">
+                        <option value="">所有API Key</option>
+                        <!-- 选项将通过JavaScript动态加载 -->
+                    </select>
+                </div>
+                <button id="refreshCookieBtn" style="background: #27ae60;">刷新Cookie</button>
+            </div>
+            <div id="refreshStatusContainer" style="margin-top: 15px; display: none;">
+                <div class="info">
+                    <div>刷新状态：<span id="refreshStatus">准备中...</span></div>
+                    <div style="margin-top: 10px;">
+                        <progress id="refreshProgress" value="0" max="100" style="width: 100%;"></progress>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -647,9 +682,216 @@
         
         // 页面加载时获取 API Key 列表和无效Cookie列表
         document.addEventListener('DOMContentLoaded', function() {
+            checkAuth();
             loadApiKeys();
             renderInvalidCookies();
+            populateRefreshApiKeySelect();
         });
+
+        // 显示消息的通用函数
+        function showMessage(containerId, message, type) {
+            const container = document.getElementById(containerId);
+            container.innerHTML = `<div class="${type}">${message}</div>`;
+        }
+
+        // 填充刷新API Key的下拉选择框
+        async function populateRefreshApiKeySelect() {
+            try {
+                const apiKeys = await getApiKeys();
+                const select = document.getElementById('refreshApiKey');
+                
+                // 清空现有选项（保留"所有API Key"选项）
+                while (select.options.length > 1) {
+                    select.remove(1);
+                }
+                
+                // 添加API Key选项
+                apiKeys.forEach(key => {
+                    const option = document.createElement('option');
+                    option.value = key.key;
+                    option.textContent = `${key.key} (${key.cookieCount} 个Cookie)`;
+                    select.appendChild(option);
+                });
+            } catch (error) {
+                console.error('加载API Key选项失败:', error);
+            }
+        }
+
+        // 获取API Keys的辅助函数
+        async function getApiKeys() {
+            const response = await fetch('/v1/api-keys', {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Cache-Control': 'no-cache'
+                }
+            });
+            
+            if (!response.ok) {
+                throw new Error(`HTTP错误: ${response.status} ${response.statusText}`);
+            }
+            
+            const data = await response.json();
+            return data.success ? data.apiKeys : [];
+        }
+
+        // 刷新Cookie按钮事件
+        document.getElementById('refreshCookieBtn').addEventListener('click', async function() {
+            const refreshBtn = this;
+            const apiKey = document.getElementById('refreshApiKey').value;
+            const statusContainer = document.getElementById('refreshStatusContainer');
+            const statusText = document.getElementById('refreshStatus');
+            const progressBar = document.getElementById('refreshProgress');
+            
+            // 禁用按钮，显示状态容器
+            refreshBtn.disabled = true;
+            statusContainer.style.display = 'block';
+            statusText.textContent = '正在启动刷新流程...';
+            progressBar.value = 10;
+            
+            try {
+                // 构建请求URL
+                let url = '/v1/refresh-cookies';
+                if (apiKey) {
+                    url += `?apiKey=${encodeURIComponent(apiKey)}`;
+                }
+                
+                // 发送刷新请求
+                statusText.textContent = '正在发送刷新请求...';
+                progressBar.value = 20;
+                
+                const response = await fetch(url, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Cache-Control': 'no-cache'
+                    }
+                });
+                
+                if (!response.ok) {
+                    throw new Error(`HTTP错误: ${response.status} ${response.statusText}`);
+                }
+                
+                statusText.textContent = '刷新请求已发送，正在处理...';
+                progressBar.value = 40;
+                
+                // 轮询刷新状态
+                let isCompleted = false;
+                let retryCount = 0;
+                const maxRetries = 30; // 最多轮询30次
+                
+                while (!isCompleted && retryCount < maxRetries) {
+                    await new Promise(resolve => setTimeout(resolve, 2000)); // 等待2秒
+                    
+                    statusText.textContent = `正在检查刷新状态...（${retryCount + 1}/${maxRetries}）`;
+                    progressBar.value = 40 + Math.min(50, Math.floor((retryCount / maxRetries) * 50));
+                    
+                    const statusResponse = await fetch('/v1/refresh-status', {
+                        method: 'GET',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'Cache-Control': 'no-cache'
+                        }
+                    });
+                    
+                    if (statusResponse.ok) {
+                        const statusData = await statusResponse.json();
+                        
+                        if (statusData.status === 'completed') {
+                            isCompleted = true;
+                            statusText.textContent = '刷新完成！';
+                            progressBar.value = 100;
+                            
+                            // 显示结果
+                            showMessage('refreshCookieMessage', `刷新成功！${statusData.message || ''}`, 'info');
+                            
+                            // 重新加载API Key列表
+                            loadApiKeys();
+                            populateRefreshApiKeySelect();
+                        } else if (statusData.status === 'failed') {
+                            throw new Error(statusData.message || '刷新失败');
+                        } else {
+                            // 更新进度信息
+                            statusText.textContent = statusData.message || '正在处理...';
+                        }
+                    }
+                    
+                    retryCount++;
+                }
+                
+                if (!isCompleted) {
+                    throw new Error('刷新超时，请稍后检查结果');
+                }
+            } catch (error) {
+                console.error('刷新Cookie失败:', error);
+                statusText.textContent = '刷新失败';
+                progressBar.value = 0;
+                showMessage('refreshCookieMessage', `刷新失败: ${error.message}`, 'error');
+            } finally {
+                // 恢复按钮状态
+                refreshBtn.disabled = false;
+                
+                // 5秒后隐藏状态容器
+                setTimeout(() => {
+                    statusContainer.style.display = 'none';
+                }, 5000);
+            }
+        });
+
+        // 检查登录状态
+        function checkAuth() {
+            const token = localStorage.getItem('adminToken');
+            if (!token) {
+                window.location.href = '/login.html';
+                return;
+            }
+            
+            // 验证token
+            fetch('/v1/admin/verify', {
+                headers: {
+                    'Authorization': `Bearer ${token}`
+                }
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (!data.success) {
+                    localStorage.removeItem('adminToken');
+                    window.location.href = '/login.html';
+                } else {
+                    // 显示管理员用户名
+                    document.getElementById('adminUsername').textContent = `管理员：${data.username}`;
+                }
+            })
+            .catch(error => {
+                console.error('验证失败:', error);
+                localStorage.removeItem('adminToken');
+                window.location.href = '/login.html';
+            });
+        }
+
+        // 退出登录
+        document.getElementById('logoutBtn').addEventListener('click', () => {
+            localStorage.removeItem('adminToken');
+            window.location.href = '/login.html';
+        });
+
+        // 添加token到所有API请求
+        function addAuthHeader(headers = {}) {
+            const token = localStorage.getItem('adminToken');
+            return {
+                ...headers,
+                'Authorization': `Bearer ${token}`
+            };
+        }
+
+        // 修改所有fetch请求，添加token
+        const originalFetch = window.fetch;
+        window.fetch = function(url, options = {}) {
+            if (!url.includes('/v1/admin/')) {
+                options.headers = addAuthHeader(options.headers);
+            }
+            return originalFetch(url, options);
+        };
     </script>
 </body>
 </html> 

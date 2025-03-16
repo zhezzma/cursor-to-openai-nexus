@@ -5,6 +5,115 @@ const $root = require('../proto/message.js');
 const { v4: uuidv4, v5: uuidv5 } = require('uuid');
 const { generateCursorBody, chunkToUtf8String, generateHashed64Hex, generateCursorChecksum } = require('../utils/utils.js');
 const keyManager = require('../utils/keyManager.js');
+const { spawn } = require('child_process');
+const path = require('path');
+const admin = require('../models/admin');
+
+// 存储刷新状态的变量
+let refreshStatus = {
+  isRunning: false,
+  status: 'idle', // idle, running, completed, failed
+  message: '',
+  startTime: null,
+  endTime: null,
+  error: null
+};
+
+// 检查是否已有管理员账号
+router.get('/admin/check', (req, res) => {
+  try {
+    return res.json({
+      success: true,
+      exists: admin.hasAdmin()
+    });
+  } catch (error) {
+    console.error('检查管理员账号失败:', error);
+    return res.status(500).json({
+      success: false,
+      message: error.message
+    });
+  }
+});
+
+// 注册管理员
+router.post('/admin/register', (req, res) => {
+  try {
+    const { username, password } = req.body;
+    
+    if (!username || !password) {
+      return res.status(400).json({
+        success: false,
+        message: '用户名和密码不能为空'
+      });
+    }
+    
+    const token = admin.register(username, password);
+    
+    return res.json({
+      success: true,
+      message: '注册成功',
+      token
+    });
+  } catch (error) {
+    console.error('注册管理员失败:', error);
+    return res.status(400).json({
+      success: false,
+      message: error.message
+    });
+  }
+});
+
+// 管理员登录
+router.post('/admin/login', (req, res) => {
+  try {
+    const { username, password } = req.body;
+    
+    if (!username || !password) {
+      return res.status(400).json({
+        success: false,
+        message: '用户名和密码不能为空'
+      });
+    }
+    
+    const token = admin.login(username, password);
+    
+    return res.json({
+      success: true,
+      message: '登录成功',
+      token
+    });
+  } catch (error) {
+    console.error('登录失败:', error);
+    return res.status(400).json({
+      success: false,
+      message: error.message
+    });
+  }
+});
+
+// 验证token
+router.get('/admin/verify', (req, res) => {
+  try {
+    const authHeader = req.headers.authorization;
+    if (!authHeader || !authHeader.startsWith('Bearer ')) {
+      return res.status(401).json({
+        success: false,
+        message: '未提供认证token'
+      });
+    }
+    
+    const token = authHeader.split(' ')[1];
+    const result = admin.verifyToken(token);
+    
+    return res.json(result);
+  } catch (error) {
+    console.error('验证token失败:', error);
+    return res.status(401).json({
+      success: false,
+      message: error.message
+    });
+  }
+});
 
 // 添加API key管理路由
 router.post("/api-keys", async (req, res) => {
@@ -343,7 +452,6 @@ router.post('/chat/completions', async (req, res) => {
               details: errorDetails
             })}\n\n`);
             res.write('data: [DONE]\n\n');
-            res.end();
             responseEnded = true; // 标记响应已结束
             break; // 跳出循环，不再处理后续数据
           }
@@ -486,6 +594,136 @@ router.post('/chat/completions', async (req, res) => {
         res.status(error.name === 'TimeoutError' ? 408 : 500).json(errorMessage);
       }
     }
+  }
+});
+
+// 触发Cookie刷新
+router.post("/refresh-cookies", async (req, res) => {
+  try {
+    // 如果已经有刷新进程在运行，则返回错误
+    if (refreshStatus.isRunning) {
+      return res.status(409).json({
+        success: false,
+        message: '已有刷新进程在运行，请等待完成后再试'
+      });
+    }
+    
+    // 获取请求参数
+    const apiKey = req.query.apiKey || '';
+    
+    // 重置刷新状态
+    refreshStatus = {
+      isRunning: true,
+      status: 'running',
+      message: '正在启动刷新进程...',
+      startTime: new Date(),
+      endTime: null,
+      error: null
+    };
+    
+    console.log(`收到刷新Cookie请求，API Key: ${apiKey || '所有'}`);
+    
+    // 构建命令行参数
+    const args = [];
+    if (apiKey) {
+      args.push(apiKey);
+    }
+    
+    // 获取auto-refresh-cookies.js的绝对路径
+    const scriptPath = path.resolve(__dirname, '../../auto-refresh-cookies.js');
+    
+    // 启动子进程执行刷新脚本
+    const refreshProcess = spawn('node', [scriptPath, ...args], {
+      stdio: ['ignore', 'pipe', 'pipe']
+    });
+    
+    // 收集输出
+    let output = '';
+    
+    refreshProcess.stdout.on('data', (data) => {
+      const text = data.toString();
+      output += text;
+      console.log(`刷新进程输出: ${text}`);
+      
+      // 更新状态消息
+      if (text.includes('开始自动刷新')) {
+        refreshStatus.message = '正在刷新Cookie...';
+      } else if (text.includes('刷新结果:')) {
+        refreshStatus.message = text.trim();
+      }
+    });
+    
+    refreshProcess.stderr.on('data', (data) => {
+      const text = data.toString();
+      output += text;
+      console.error(`刷新进程错误: ${text}`);
+      
+      // 更新错误信息
+      refreshStatus.error = text.trim();
+      refreshStatus.message = `发生错误: ${text.trim()}`;
+    });
+    
+    refreshProcess.on('close', (code) => {
+      console.log(`刷新进程退出，代码: ${code}`);
+      
+      refreshStatus.isRunning = false;
+      refreshStatus.endTime = new Date();
+      
+      if (code === 0) {
+        refreshStatus.status = 'completed';
+        
+        // 提取成功信息
+        const successMatch = output.match(/成功刷新 (\d+) 个/);
+        if (successMatch) {
+          refreshStatus.message = `成功刷新 ${successMatch[1]} 个API Key的Cookie`;
+        } else {
+          refreshStatus.message = '刷新完成';
+        }
+      } else {
+        refreshStatus.status = 'failed';
+        refreshStatus.message = refreshStatus.error || '刷新失败，请查看服务器日志';
+      }
+    });
+    
+    // 立即返回响应，不等待刷新完成
+    return res.json({
+      success: true,
+      message: '刷新请求已接受，正在后台处理'
+    });
+  } catch (error) {
+    console.error('触发刷新Cookie失败:', error);
+    
+    // 更新刷新状态
+    refreshStatus.isRunning = false;
+    refreshStatus.status = 'failed';
+    refreshStatus.endTime = new Date();
+    refreshStatus.error = error.message;
+    refreshStatus.message = `触发刷新失败: ${error.message}`;
+    
+    return res.status(500).json({
+      success: false,
+      message: `触发刷新失败: ${error.message}`
+    });
+  }
+});
+
+// 获取刷新状态
+router.get("/refresh-status", async (req, res) => {
+  try {
+    return res.json({
+      success: true,
+      status: refreshStatus.status,
+      message: refreshStatus.message,
+      isRunning: refreshStatus.isRunning,
+      startTime: refreshStatus.startTime,
+      endTime: refreshStatus.endTime
+    });
+  } catch (error) {
+    console.error('获取刷新状态失败:', error);
+    return res.status(500).json({
+      success: false,
+      message: `获取刷新状态失败: ${error.message}`
+    });
   }
 });
 

@@ -43,6 +43,84 @@ This project provides a proxy service that converts the AI chat of the Cursor Ed
 
 3. 系统在启动时会检查 `.env` 文件是否存在以及必要的环境变量是否已设置，如果不符合要求将拒绝启动并显示错误信息。
 
+4. **API Keys 合并逻辑**：系统启动时会自动合并 `.env` 中的 API Keys 和 `data/api_keys.json` 文件中的 API Keys，确保通过刷新添加的 Cookie 不会丢失。合并规则如下：
+   - 如果某个 API Key 只存在于 `.env` 或 `data/api_keys.json` 中的一处，则直接使用该处的配置
+   - 如果某个 API Key 同时存在于两处，则合并其 Cookie 列表，确保不重复
+   - 合并后的结果会保存到 `data/api_keys.json` 文件中
+
+5. **Cookie 持久化**：系统会自动将所有 API Keys 和 Cookies 保存到 `data/api_keys.json` 文件中，确保在程序重启后不会丢失。以下情况会触发保存操作：
+   - 系统启动时合并 API Keys 后
+   - 添加或更新 API Key 时
+   - 移除 API Key 时
+   - 从 API Key 中移除 Cookie 时
+   - 自动刷新添加新 Cookie 时
+
+## 自动刷新 Cookie 功能
+
+系统支持自动刷新 Cookie，确保 API Key 始终有足够的可用 Cookie。
+
+### 配置说明
+
+1. 在 `.env` 文件中设置以下变量：
+   ```
+   # 是否启用自动刷新 Cookie
+   ENABLE_AUTO_REFRESH=true
+   
+   # 自动刷新的定时规则（Cron 表达式）
+   REFRESH_CRON=0 */6 * * *
+   
+   # 每个 API Key 的最小 Cookie 数量，低于此数量将触发刷新
+   MIN_COOKIE_COUNT=2
+   
+   # GitHub 相关配置
+   GITHUB_TOKEN=your_github_token
+   GITHUB_OWNER=your_github_username
+   GITHUB_REPO=your_repo_name
+   GITHUB_WORKFLOW_ID=cursor_register.yml
+   TRIGGER_WORKFLOW=true
+   
+   # 工作流参数
+   REGISTER_NUMBER=2
+   REGISTER_MAX_WORKERS=1
+   REGISTER_EMAIL_SERVER=TempEmail
+   REGISTER_INGEST_TO_ONEAPI=false
+   REGISTER_UPLOAD_ARTIFACT=true
+   ```
+
+2. 系统会根据 `REFRESH_CRON` 定时检查每个 API Key 的 Cookie 数量，如果低于 `MIN_COOKIE_COUNT`，则触发刷新流程。
+
+### 手动刷新
+
+您也可以通过命令行手动触发刷新：
+
+```
+# 刷新所有 API Key
+npm run refresh-cookies
+
+# 刷新特定 API Key
+npm run refresh-cookies -- your_api_key
+
+# 强制刷新（忽略 Cookie 数量检查）
+npm run refresh-cookies -- --force
+npm run refresh-cookies -- your_api_key --force
+```
+
+### 工作原理
+
+1. 系统检查 API Key 的 Cookie 数量，如果低于阈值，则触发刷新流程。
+2. 系统连接到 GitHub，触发指定的工作流（如 `cursor_register.yml`）。
+3. 系统等待工作流完成，然后下载生成的 Artifact。
+4. 系统从 Artifact 中提取 Cookie，并添加到对应的 API Key 中。
+5. 新的 Cookie 会自动保存到 `data/api_keys.json` 文件中，确保在程序重启后不会丢失。
+
+### 错误处理
+
+系统实现了完善的错误处理机制，包括：
+
+1. 网络超时重试：在触发工作流、获取工作流状态、下载 Artifact 等环节，系统会自动重试多次，确保临时网络问题不会导致刷新失败。
+2. 文件解析容错：系统能够处理各种格式的 CSV 文件，确保能够正确提取 Cookie。
+3. Cookie 验证：系统会验证提取的 Cookie 是否完整有效，避免添加无效的 Cookie。
+
 ## How to Run
 
 ### Run in docker
