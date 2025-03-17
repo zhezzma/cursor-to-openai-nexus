@@ -304,35 +304,26 @@ function removeApiKey(apiKey) {
 
 // 获取API key对应的cookie值（根据轮询策略）
 function getCookieForApiKey(apiKey, strategy = config.defaultRotationStrategy) {
-    // 简单的cookie格式检查（以user_开头）
-    if (apiKey && typeof apiKey === 'string' && apiKey.startsWith('user_')) {
-        // 如果传入的参数已经是cookie格式，直接返回
-        return { cookie: apiKey, isDirectCookie: true };
-    }
-    
-    // 如果API key不存在，返回错误信息
+    // 如果API key不存在，则直接返回API key本身（向后兼容）
     if (!apiKeyMap.has(apiKey)) {
-        console.log(`警告: API Key ${apiKey} 不存在`);
-        return { error: 'API_KEY_NOT_FOUND', apiKey };
+        return apiKey;
     }
     
     const cookies = apiKeyMap.get(apiKey);
     
-    // 如果没有可用的cookie，返回错误信息
     if (!cookies || cookies.length === 0) {
-        console.log(`警告: API Key ${apiKey} 存在但没有关联的cookie`);
-        return { error: 'NO_COOKIES_FOR_API_KEY', apiKey };
+        return apiKey;
     }
     
     if (cookies.length === 1) {
-        return { cookie: cookies[0], apiKey };
+        return cookies[0];
     }
     
     // 根据策略选择cookie
     if (strategy === 'random') {
         // 随机策略
         const randomIndex = Math.floor(Math.random() * cookies.length);
-        return { cookie: cookies[randomIndex], apiKey };
+        return cookies[randomIndex];
     } else {
         // 轮询策略（round-robin）
         let currentIndex = rotationIndexes.get(apiKey) || 0;
@@ -342,7 +333,7 @@ function getCookieForApiKey(apiKey, strategy = config.defaultRotationStrategy) {
         currentIndex = (currentIndex + 1) % cookies.length;
         rotationIndexes.set(apiKey, currentIndex);
         
-        return { cookie, apiKey };
+        return cookie;
     }
 }
 
