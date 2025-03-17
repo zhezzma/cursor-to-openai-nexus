@@ -267,16 +267,33 @@ router.get("/models", async (req, res) => {
     let bearerToken = req.headers.authorization?.replace('Bearer ', '');
     
     // 使用keyManager获取实际的cookie
-    let authToken = keyManager.getCookieForApiKey(bearerToken);
+    const result = keyManager.getCookieForApiKey(bearerToken);
     
-    // 处理cookie为null的情况
-    if (!authToken) {
-      return res.status(401).json({
-        error: 'Authentication failed',
-        message: 'Invalid API Key or no valid cookies associated with this API Key'
-      });
+    // 处理错误情况
+    if (result.error) {
+      // API Key不存在
+      if (result.error === 'API_KEY_NOT_FOUND') {
+        return res.status(401).json({
+          error: 'Authentication failed',
+          message: 'API Key not found'
+        });
+      }
+      // API Key存在但没有关联的cookie
+      else if (result.error === 'NO_COOKIES_FOR_API_KEY') {
+        return res.status(401).json({
+          error: 'Authentication failed',
+          message: 'No valid cookies associated with this API Key'
+        });
+      }
     }
-    
+
+    let authToken = result.cookie;
+    // 如果是直接传入的cookie，不需要保存原始cookie
+    const isDirectCookie = result.isDirectCookie || false;
+    // 保存API Key和原始cookie，用于后续可能的错误处理
+    const originalApiKey = result.apiKey;
+    const originalAuthToken = authToken;
+
     if (authToken.includes('%3A%3A')) {
       authToken = authToken.split('%3A%3A')[1];
     }
@@ -344,17 +361,31 @@ router.post('/chat/completions', async (req, res) => {
     let bearerToken = req.headers.authorization?.replace('Bearer ', '');
     
     // 使用keyManager获取实际的cookie
-    let authToken = keyManager.getCookieForApiKey(bearerToken);
+    const result = keyManager.getCookieForApiKey(bearerToken);
     
-    // 处理cookie为null的情况
-    if (!authToken) {
-      return res.status(401).json({
-        error: 'Authentication failed',
-        message: 'Invalid API Key or no valid cookies associated with this API Key'
-      });
+    // 处理错误情况
+    if (result.error) {
+      // API Key不存在
+      if (result.error === 'API_KEY_NOT_FOUND') {
+        return res.status(401).json({
+          error: 'Authentication failed',
+          message: 'API Key not found'
+        });
+      }
+      // API Key存在但没有关联的cookie
+      else if (result.error === 'NO_COOKIES_FOR_API_KEY') {
+        return res.status(401).json({
+          error: 'Authentication failed',
+          message: 'No valid cookies associated with this API Key'
+        });
+      }
     }
 
-    // 保存原始cookie，用于后续可能的错误处理
+    let authToken = result.cookie;
+    // 如果是直接传入的cookie，不需要保存原始cookie
+    const isDirectCookie = result.isDirectCookie || false;
+    // 保存API Key和原始cookie，用于后续可能的错误处理
+    const originalApiKey = result.apiKey;
     const originalAuthToken = authToken;
 
     if (authToken.includes('%3A%3A')) {
@@ -454,25 +485,40 @@ router.post('/chat/completions', async (req, res) => {
             const errorStr = typeof text.error === 'string' ? text.error : JSON.stringify(text.error);
             
             if (errorStr.includes('Not logged in') || errorStr.includes('resource_exhausted')) {
-              // 确保originalAuthToken不是API Key本身，且不为空
-              if (originalAuthToken && originalAuthToken !== bearerToken) {
-                console.error('检测到无效cookie:', originalAuthToken);
+              // 直接传入的cookie
+              if (isDirectCookie) {
+                console.error('检测到无效cookie（直接传入）:', originalAuthToken);
+                
+                // 将cookie添加到无效列表
+                keyManager.getInvalidCookies().add(originalAuthToken);
+                keyManager.saveInvalidCookiesToFile();
+                
+                // 返回错误信息给客户端
+                res.write(`data: ${JSON.stringify({ 
+                  error: 'Invalid cookie detected and added to blacklist. Please use a valid cookie.',
+                  details: text.error
+                })}\n\n`);
+              }
+              // 通过API Key使用的cookie
+              else if (originalApiKey && originalAuthToken) {
+                console.error('检测到无效cookie:', originalAuthToken, '，API Key:', originalApiKey);
                 
                 // 从API Key中移除无效cookie
-                const removed = keyManager.removeCookieFromApiKey(bearerToken, originalAuthToken);
+                const removed = keyManager.removeCookieFromApiKey(originalApiKey, originalAuthToken);
                 console.log(`Cookie移除${removed ? '成功' : '失败'}`);
                 
                 // 返回错误信息给客户端
                 res.write(`data: ${JSON.stringify({ 
-                  error: 'Invalid cookie detected and removed. Please try again.',
+                  error: 'Invalid cookie detected and removed from API Key. Please try again.',
                   details: text.error
                 })}\n\n`);
-              } else {
-                console.error('API Key无效或未找到对应的cookie:', bearerToken);
+              } 
+              else {
+                console.error('无法识别的认证方式或cookie格式');
                 
-                // 返回错误信息给客户端，注明API Key无效
+                // 返回错误信息给客户端
                 res.write(`data: ${JSON.stringify({ 
-                  error: 'API Key invalid or no associated cookie found.',
+                  error: 'Unrecognized authentication method or cookie format.',
                   details: text.error
                 })}\n\n`);
               }
@@ -548,25 +594,40 @@ router.post('/chat/completions', async (req, res) => {
             const errorStr = typeof chunkText.error === 'string' ? chunkText.error : JSON.stringify(chunkText.error);
             
             if (errorStr.includes('Not logged in') || errorStr.includes('resource_exhausted')) {
-              // 确保originalAuthToken不是API Key本身，且不为空
-              if (originalAuthToken && originalAuthToken !== bearerToken) {
-                console.error('检测到无效cookie:', originalAuthToken);
+              // 直接传入的cookie
+              if (isDirectCookie) {
+                console.error('检测到无效cookie（直接传入）:', originalAuthToken);
+                
+                // 将cookie添加到无效列表
+                keyManager.getInvalidCookies().add(originalAuthToken);
+                keyManager.saveInvalidCookiesToFile();
+                
+                // 返回错误信息给客户端
+                res.status(400).json({
+                  error: 'Invalid cookie detected and added to blacklist. Please use a valid cookie.',
+                  details: chunkText.error
+                });
+              }
+              // 通过API Key使用的cookie
+              else if (originalApiKey && originalAuthToken) {
+                console.error('检测到无效cookie:', originalAuthToken, '，API Key:', originalApiKey);
                 
                 // 从API Key中移除无效cookie
-                const removed = keyManager.removeCookieFromApiKey(bearerToken, originalAuthToken);
+                const removed = keyManager.removeCookieFromApiKey(originalApiKey, originalAuthToken);
                 console.log(`Cookie移除${removed ? '成功' : '失败'}`);
                 
                 // 返回错误信息给客户端
                 res.status(400).json({
-                  error: 'Invalid cookie detected and removed. Please try again.',
+                  error: 'Invalid cookie detected and removed from API Key. Please try again.',
                   details: chunkText.error
                 });
-              } else {
-                console.error('API Key无效或未找到对应的cookie:', bearerToken);
+              } 
+              else {
+                console.error('无法识别的认证方式或cookie格式');
                 
-                // 返回错误信息给客户端，注明API Key无效
+                // 返回错误信息给客户端
                 res.status(400).json({
-                  error: 'API Key invalid or no associated cookie found.',
+                  error: 'Unrecognized authentication method or cookie format.',
                   details: chunkText.error
                 });
               }
