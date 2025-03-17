@@ -436,7 +436,7 @@ router.post('/chat/completions', async (req, res) => {
             
             // 检查是否包含特定的无效cookie错误信息
             const errorStr = typeof text.error === 'string' ? text.error : JSON.stringify(text.error);
-            if (errorStr.includes('Not logged in') || errorStr.includes('resource_exhausted')) {
+            if (errorStr.includes('Not logged in') || errorStr.includes('resource_exhausted') || errorStr.includes('User is unauthorized')) {
               console.error('检测到无效cookie:', originalAuthToken);
               
               // 从API Key中移除无效cookie
@@ -518,7 +518,7 @@ router.post('/chat/completions', async (req, res) => {
             
             // 检查是否包含特定的无效cookie错误信息
             const errorStr = typeof chunkText.error === 'string' ? chunkText.error : JSON.stringify(chunkText.error);
-            if (errorStr.includes('Not logged in') || errorStr.includes('resource_exhausted')) {
+            if (errorStr.includes('Not logged in') || errorStr.includes('resource_exhausted') || errorStr.includes('User is unauthorized')) {
               console.error('检测到无效cookie:', originalAuthToken);
               
               // 从API Key中移除无效cookie
