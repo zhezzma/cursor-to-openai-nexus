@@ -431,39 +431,26 @@ router.post('/chat/completions', async (req, res) => {
           
           // 检查是否返回了错误对象
           if (text && typeof text === 'object' && text.error) {
-            console.error('检测到错误响应:', text.error);
+            console.error('检测到无效cookie:', originalAuthToken);
+            console.error('错误响应:', text.error);
             
-            // 检查是否包含特定的无效cookie错误信息
-            const errorStr = typeof text.error === 'string' ? text.error : JSON.stringify(text.error);
-            if (errorStr.includes('Not logged in') || errorStr.includes('resource_exhausted')) {
-              // 确保originalAuthToken是实际的cookie而不是API Key
-              if (originalAuthToken && originalAuthToken !== bearerToken) {
-                console.error('检测到无效cookie:', originalAuthToken);
-                
-                // 从API Key中移除无效cookie
-                const removed = keyManager.removeCookieFromApiKey(bearerToken, originalAuthToken);
-                console.log(`Cookie移除${removed ? '成功' : '失败'}`);
-                
-                // 返回错误信息给客户端
-                res.write(`data: ${JSON.stringify({ 
-                  error: 'Invalid cookie detected and removed. Please try again.',
-                  details: text.error
-                })}\n\n`);
-              } else {
-                console.error('API Key无效或未找到对应的cookie:', bearerToken);
-                res.write(`data: ${JSON.stringify({ 
-                  error: 'Invalid API Key or no valid cookies found for this API Key.',
-                  details: text.error
-                })}\n\n`);
-              }
-            } else {
-              // 其他错误，不移除cookie
-              res.write(`data: ${JSON.stringify({ 
-                error: 'Error occurred but cookie was not removed.',
-                details: text.error
-              })}\n\n`);
+            // 从API Key中移除无效cookie
+            const removed = keyManager.removeCookieFromApiKey(bearerToken, originalAuthToken);
+            console.log(`Cookie移除${removed ? '成功' : '失败'}`);
+            
+            // 尝试解析错误响应为JSON
+            let errorDetails;
+            try {
+              errorDetails = JSON.parse(text.error);
+            } catch (parseError) {
+              errorDetails = text.error;
             }
             
+            // 返回错误信息给客户端
+            res.write(`data: ${JSON.stringify({ 
+              error: 'Invalid cookie detected and removed. Please try again.',
+              details: errorDetails
+            })}\n\n`);
             res.write('data: [DONE]\n\n');
             responseEnded = true; // 标记响应已结束
             break; // 跳出循环，不再处理后续数据
@@ -522,39 +509,26 @@ router.post('/chat/completions', async (req, res) => {
           
           // 检查是否返回了错误对象
           if (chunkText && typeof chunkText === 'object' && chunkText.error) {
-            console.error('检测到错误响应:', chunkText.error);
+            console.error('检测到无效cookie:', originalAuthToken);
+            console.error('错误响应:', chunkText.error);
             
-            // 检查是否包含特定的无效cookie错误信息
-            const errorStr = typeof chunkText.error === 'string' ? chunkText.error : JSON.stringify(chunkText.error);
-            if (errorStr.includes('Not logged in') || errorStr.includes('resource_exhausted')) {
-              // 确保originalAuthToken是实际的cookie而不是API Key
-              if (originalAuthToken && originalAuthToken !== bearerToken) {
-                console.error('检测到无效cookie:', originalAuthToken);
-                
-                // 从API Key中移除无效cookie
-                const removed = keyManager.removeCookieFromApiKey(bearerToken, originalAuthToken);
-                console.log(`Cookie移除${removed ? '成功' : '失败'}`);
-                
-                // 返回错误信息给客户端
-                res.status(400).json({
-                  error: 'Invalid cookie detected and removed. Please try again.',
-                  details: chunkText.error
-                });
-              } else {
-                console.error('API Key无效或未找到对应的cookie:', bearerToken);
-                res.status(400).json({
-                  error: 'Invalid API Key or no valid cookies found for this API Key.',
-                  details: chunkText.error
-                });
-              }
-            } else {
-              // 其他错误，不移除cookie
-              res.status(400).json({
-                error: 'Error occurred but cookie was not removed.',
-                details: chunkText.error
-              });
+            // 从API Key中移除无效cookie
+            const removed = keyManager.removeCookieFromApiKey(bearerToken, originalAuthToken);
+            console.log(`Cookie移除${removed ? '成功' : '失败'}`);
+            
+            // 尝试解析错误响应为JSON
+            let errorDetails;
+            try {
+              errorDetails = JSON.parse(chunkText.error);
+            } catch (parseError) {
+              errorDetails = chunkText.error;
             }
             
+            // 返回错误信息给客户端
+            res.status(400).json({
+              error: 'Invalid cookie detected and removed. Please try again.',
+              details: errorDetails
+            });
             responseEnded = true; // 标记响应已结束
             break; // 跳出循环，不再处理后续数据
           }
