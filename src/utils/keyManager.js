@@ -306,9 +306,6 @@ function removeApiKey(apiKey) {
 function getCookieForApiKey(apiKey, strategy = config.defaultRotationStrategy) {
     // 如果API key不存在，则直接返回API key本身（向后兼容）
     if (!apiKeyMap.has(apiKey)) {
-      console.log('------------------测试', apiKey);
-      console.log('------------------测试2', apiKeyMap);
-      console.log('------------------测试3', apiKeyMap.has(apiKey));
       return apiKey;
     }
     const cookies = apiKeyMap.get(apiKey);
