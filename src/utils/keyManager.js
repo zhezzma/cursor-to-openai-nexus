@@ -304,15 +304,24 @@ function removeApiKey(apiKey) {
 
 // 获取API key对应的cookie值（根据轮询策略）
 function getCookieForApiKey(apiKey, strategy = config.defaultRotationStrategy) {
-    // 如果API key不存在，则直接返回API key本身（向后兼容）
-    if (!apiKeyMap.has(apiKey)) {
+    // 简单的cookie格式检查（以user_开头）
+    if (apiKey && typeof apiKey === 'string' && apiKey.startsWith('user_')) {
+        // 如果传入的参数已经是cookie格式，直接返回
         return apiKey;
+    }
+    
+    // 如果API key不存在，返回null
+    if (!apiKeyMap.has(apiKey)) {
+        console.log(`警告: API Key ${apiKey} 不存在或没有关联的cookie`);
+        return null;
     }
     
     const cookies = apiKeyMap.get(apiKey);
     
+    // 如果没有可用的cookie，返回null
     if (!cookies || cookies.length === 0) {
-        return apiKey;
+        console.log(`警告: API Key ${apiKey} 没有可用的cookie`);
+        return null;
     }
     
     if (cookies.length === 1) {
