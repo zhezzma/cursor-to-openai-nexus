@@ -339,8 +339,10 @@ router.post('/chat/completions', async (req, res) => {
     let authToken = keyManager.getCookieForApiKey(bearerToken);
     // 保存原始cookie，用于后续可能的错误处理
     const originalAuthToken = authToken;
-    // 记录是否使用了映射的cookie
-    const usedMappedCookie = authToken !== bearerToken;
+    // 检查是否是API Key映射
+    const apiKeyCookies = keyManager.getAllCookiesForApiKey(bearerToken);
+    // 如果API Key有映射的cookies，则认为是使用了映射
+    const usedMappedCookie = apiKeyCookies && apiKeyCookies.length > 0;
 
     if (authToken && authToken.includes('%3A%3A')) {
       authToken = authToken.split('%3A%3A')[1];
