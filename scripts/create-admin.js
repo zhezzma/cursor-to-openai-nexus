@@ -18,7 +18,7 @@ function generateSalt() {
 
 // 使用盐值哈希密码
 function hashPassword(password, salt) {
-    return crypto.pbkdf2Sync(password, salt, 10000, 64, 'sha512').toString('hex');
+    return crypto.pbkdf2Sync(password, salt, 1000, 64, 'sha512').toString('hex');
 }
 
 // 提示用户输入
