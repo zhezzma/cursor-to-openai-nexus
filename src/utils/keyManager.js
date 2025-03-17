@@ -349,6 +349,19 @@ function getAllCookiesForApiKey(apiKey) {
 
 // 从API key的cookie列表中移除特定cookie
 function removeCookieFromApiKey(apiKey, cookieToRemove) {
+    // 验证参数
+    if (!apiKey || !cookieToRemove) {
+        console.log('API Key或Cookie值为空，无法执行移除操作');
+        return false;
+    }
+    
+    // 确保不会将API Key本身添加到无效cookie列表中
+    if (cookieToRemove === apiKey) {
+        console.log(`警告: 尝试将API Key (${apiKey}) 本身添加到无效cookie列表，操作已阻止`);
+        return false;
+    }
+    
+    // 检查API Key是否存在
     if (!apiKeyMap.has(apiKey)) {
         console.log(`API Key ${apiKey} 不存在，无法移除cookie`);
         return false;
