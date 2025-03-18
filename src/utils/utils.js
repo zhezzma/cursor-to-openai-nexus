@@ -103,7 +103,7 @@ function chunkToUtf8String(chunk) {
             if(content !== undefined) {
               // 检查文本内容是否包含错误信息
               if (content.includes('Not logged in') || 
-                  content.includes('resource_exhausted') ||
+                  content.includes('You\'ve reached your trial request limit') ||
                   content.includes('User is unauthorized')) {
                 console.error('检测到文本错误:', content);
                 errorResults.hasError = true;
@@ -125,7 +125,7 @@ function chunkToUtf8String(chunk) {
             if(content !== undefined) {
               // 检查文本内容是否包含错误信息
               if (content.includes('Not logged in') || 
-                  content.includes('resource_exhausted') ||
+                  content.includes('You\'ve reached your trial request limit') ||
                   content.includes('User is unauthorized')) {
                 console.error('检测到Gzip文本错误:', content);
                 errorResults.hasError = true;
@@ -149,7 +149,7 @@ function chunkToUtf8String(chunk) {
               
               // 检查JSON对象是否包含错误信息
               if (message && message.error && 
-                  (utf8.includes('Not logged in') || utf8.includes('resource_exhausted') ||
+                  (utf8.includes('Not logged in') || utf8.includes('You\'ve reached your trial request limit') ||
                    utf8.includes('User is unauthorized'))) {
                 console.error('检测到JSON错误对象:', utf8);
                 errorResults.hasError = true;
@@ -157,7 +157,7 @@ function chunkToUtf8String(chunk) {
               }
               // 检查JSON字符串是否包含错误关键词
               else if (utf8.includes('Not logged in') || 
-                       utf8.includes('resource_exhausted') ||
+                       utf8.includes('You\'ve reached your trial request limit') ||
                        utf8.includes('User is unauthorized')) {
                 console.error('检测到JSON错误关键词:', utf8);
                 errorResults.hasError = true;
@@ -172,7 +172,7 @@ function chunkToUtf8String(chunk) {
               console.error('JSON解析错误:', jsonError, '原始数据:', utf8);
               // 即使JSON解析失败，也检查原始字符串是否包含错误关键词
               if (utf8.includes('Not logged in') || 
-                  utf8.includes('resource_exhausted') ||
+                  utf8.includes('You\'ve reached your trial request limit') ||
                   utf8.includes('User is unauthorized')) {
                 console.error('JSON解析失败但检测到错误关键词:', utf8);
                 errorResults.hasError = true;
@@ -193,7 +193,7 @@ function chunkToUtf8String(chunk) {
               
               // 检查JSON对象是否包含错误信息
               if (message && message.error && 
-                  (utf8.includes('Not logged in') || utf8.includes('resource_exhausted') ||
+                  (utf8.includes('Not logged in') || utf8.includes('You\'ve reached your trial request limit') ||
                    utf8.includes('User is unauthorized'))) {
                 console.error('检测到Gzip JSON错误对象:', utf8);
                 errorResults.hasError = true;
@@ -201,7 +201,7 @@ function chunkToUtf8String(chunk) {
               }
               // 检查JSON字符串是否包含错误关键词
               else if (utf8.includes('Not logged in') || 
-                       utf8.includes('resource_exhausted') ||
+                       utf8.includes('You\'ve reached your trial request limit') ||
                        utf8.includes('User is unauthorized')) {
                 console.error('检测到Gzip JSON错误关键词:', utf8);
                 errorResults.hasError = true;
@@ -216,7 +216,7 @@ function chunkToUtf8String(chunk) {
               console.error('Gzip JSON解析错误:', jsonError, '解压后数据:', utf8);
               // 即使JSON解析失败，也检查原始字符串是否包含错误关键词
               if (utf8.includes('Not logged in') || 
-                  utf8.includes('resource_exhausted') ||
+                  utf8.includes('You\'ve reached your trial request limit') ||
                   utf8.includes('User is unauthorized')) {
                 console.error('Gzip JSON解析失败但检测到错误关键词:', utf8);
                 errorResults.hasError = true;

@@ -339,7 +339,7 @@ router.post('/chat/completions', async (req, res) => {
     let authToken = keyManager.getCookieForApiKey(bearerToken);
     // 保存原始cookie，用于后续可能的错误处理
     const originalAuthToken = authToken;
-    console.log('原始cookie:', originalAuthToken);
+    //console.log('原始cookie:', originalAuthToken);
 
     if (authToken && authToken.includes('%3A%3A')) {
       authToken = authToken.split('%3A%3A')[1];
@@ -436,7 +436,7 @@ router.post('/chat/completions', async (req, res) => {
             
             // 检查是否包含特定的无效cookie错误信息
             const errorStr = typeof text.error === 'string' ? text.error : JSON.stringify(text.error);
-            if (errorStr.includes('Not logged in') || errorStr.includes('resource_exhausted') || errorStr.includes('User is unauthorized')) {
+            if (errorStr.includes('Not logged in') || errorStr.includes('You\'ve reached your trial request limit') || errorStr.includes('User is unauthorized')) {
               console.error('检测到无效cookie:', originalAuthToken);
               
               // 从API Key中移除无效cookie
@@ -518,7 +518,7 @@ router.post('/chat/completions', async (req, res) => {
             
             // 检查是否包含特定的无效cookie错误信息
             const errorStr = typeof chunkText.error === 'string' ? chunkText.error : JSON.stringify(chunkText.error);
-            if (errorStr.includes('Not logged in') || errorStr.includes('resource_exhausted') || errorStr.includes('User is unauthorized')) {
+            if (errorStr.includes('Not logged in') || errorStr.includes('You\'ve reached your trial request limit') || errorStr.includes('User is unauthorized')) {
               console.error('检测到无效cookie:', originalAuthToken);
               
               // 从API Key中移除无效cookie
