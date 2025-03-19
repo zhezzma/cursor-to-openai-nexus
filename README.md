@@ -49,13 +49,13 @@ npm start
 ```
 
 2. 访问管理界面
-打开浏览器访问`http://localhost:3000`（或你配置的其他端口），使用管理员账户登录。
+打开浏览器访问`http://localhost:3010`（或你配置的其他端口），使用管理员账户登录。
 
 3. 添加API Key
 在管理界面添加Cursor API Key，系统会自动获取和刷新Cookie。
 
 4. 使用API
-将你的OpenAI客户端的base URL改为`http://localhost:3000`，然后像使用OpenAI API一样使用即可。
+将你的OpenAI客户端的base URL改为`http://localhost:3010`，然后像使用OpenAI API一样使用即可。
 
 ## 注意事项
 
