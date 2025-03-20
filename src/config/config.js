@@ -35,7 +35,9 @@ module.exports = {
         maxWorkers: parseInt(process.env.REGISTER_MAX_WORKERS || '1', 10),
         emailServer: process.env.REGISTER_EMAIL_SERVER || 'TempEmail',
         ingestToOneapi: process.env.REGISTER_INGEST_TO_ONEAPI === 'true',
-        uploadArtifact: process.env.REGISTER_UPLOAD_ARTIFACT === 'true'
+        uploadArtifact: process.env.REGISTER_UPLOAD_ARTIFACT === 'true',
+        useConfigFile: process.env.REGISTER_USE_CONFIG_FILE !== 'false',
+        emailConfigs: process.env.REGISTER_EMAIL_CONFIGS || '[]'
     },
     
     // 刷新配置

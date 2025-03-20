@@ -51,8 +51,10 @@ async function triggerWorkflow() {
     const emailServer = process.env.REGISTER_EMAIL_SERVER || 'TempEmail';
     const ingestToOneapi = process.env.REGISTER_INGEST_TO_ONEAPI === 'true';
     const uploadArtifact = process.env.REGISTER_UPLOAD_ARTIFACT !== 'false'; // 默认为true
+    const useConfigFile = process.env.REGISTER_USE_CONFIG_FILE !== 'false'; // 默认为true
+    const emailConfigs = process.env.REGISTER_EMAIL_CONFIGS || '[]';
 
-    console.log(`工作流参数: number=${number}, maxWorkers=${maxWorkers}, emailServer=${emailServer}, ingestToOneapi=${ingestToOneapi}, uploadArtifact=${uploadArtifact}`);
+    console.log(`工作流参数: number=${number}, maxWorkers=${maxWorkers}, emailServer=${emailServer}, ingestToOneapi=${ingestToOneapi}, uploadArtifact=${uploadArtifact}, useConfigFile=${useConfigFile}`);
 
     // 获取触发前的最新工作流ID，用于后续识别新触发的工作流
     const { data: beforeWorkflowRuns } = await octokit.actions.listWorkflowRuns({
@@ -79,7 +81,9 @@ async function triggerWorkflow() {
         max_workers: maxWorkers,
         email_server: emailServer,
         ingest_to_oneapi: ingestToOneapi.toString(),
-        upload_artifact: uploadArtifact.toString()
+        upload_artifact: uploadArtifact.toString(),
+        use_config_file: useConfigFile.toString(),
+        email_configs: emailConfigs
       }
     });
 

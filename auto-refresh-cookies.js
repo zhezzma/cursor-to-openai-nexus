@@ -6,6 +6,9 @@ const envChecker = require('./src/utils/envChecker');
 console.log('启动前检查环境配置...');
 envChecker.enforceEnvCheck();
 
+// 已适配GitHub Actions工作流新参数 (use_config_file, email_configs)
+console.log('环境检查通过，已适配最新GitHub Actions工作流参数');
+
 const cookieRefresher = require('./src/utils/cookieRefresher');
 const keyManager = require('./src/utils/keyManager');
 const config = require('./src/config/config');
@@ -104,7 +107,7 @@ async function main() {
         
         // 执行刷新
         console.log(`开始自动刷新 Cookie，目标 API Key: ${apiKey}，最小 Cookie 数量: ${MIN_COOKIE_COUNT}`);
-        const result = await cookieRefresher.autoRefreshCookies(apiKey);
+        const result = await cookieRefresher.autoRefreshCookies(apiKey, MIN_COOKIE_COUNT);
         
         if (result.success) {
           refreshedCount++;
