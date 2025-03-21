@@ -51,7 +51,7 @@ function enforceEnvCheck() {
   if (!envFileExists) {
     console.error('\n错误: 未找到 .env 文件!');
     console.error('请根据 .env.example 创建 .env 文件并配置必要的环境变量。');
-    console.error('执行以下命令复制示例文件: cp .env.example .env\n');
+    console.error('执行以下命令复制示例文件: cp .env.example .env,或执行npm run setup\n');
     process.exit(1); // 退出程序，状态码 1 表示错误
   }
   
