@@ -429,6 +429,9 @@ router.post('/chat/completions', async (req, res) => {
           }
           
           let text = chunkToUtf8String(chunk);
+          // 输出完整的text内容和类型，便于调试
+          console.log("收到的响应:", typeof text, text && typeof text === 'object' ? JSON.stringify(text) : text);
+
           
           // 检查是否返回了错误对象
           if (text && typeof text === 'object' && text.error) {
@@ -436,25 +439,71 @@ router.post('/chat/completions', async (req, res) => {
             
             // 检查是否包含特定的无效cookie错误信息
             const errorStr = typeof text.error === 'string' ? text.error : JSON.stringify(text.error);
-            if (errorStr.includes('Not logged in') || errorStr.includes('You\'ve reached your trial request limit') || errorStr.includes('User is unauthorized')) {
-              console.error('检测到无效cookie:', originalAuthToken);
-              
-              // 从API Key中移除无效cookie
+            
+            // 根据不同错误类型返回具体错误信息
+            let errorMessage = '';
+            let isCookieError = false;
+            
+            if (errorStr.includes('Not logged in')) {
+              console.error('检测到登录无效cookie:', originalAuthToken);
+              errorMessage = `错误：Cookie无效或已过期，可能是填写错误或API Key中已无可用Cookie。\n\n详细信息：${text.error}`;
+              isCookieError = true;
+            } else if (errorStr.includes('You\'ve reached your trial request limit')) {
+              console.error('检测到额度用尽cookie:', originalAuthToken);
+              errorMessage = `错误：Cookie使用额度已用完，请更换Cookie或等待刷新。\n\n详细信息：${text.error}`;
+              isCookieError = true;
+            } else if (errorStr.includes('User is unauthorized')) {
+              console.error('检测到未授权cookie:', originalAuthToken);
+              errorMessage = `错误：Cookie已被封禁或失效，请更换Cookie。\n\n详细信息：${text.error}`;
+              isCookieError = true;
+            } else if (errorStr.includes('suspicious activity checks')) {
+              console.error('检测到IP黑名单:', originalAuthToken);
+              errorMessage = `错误：IP可能被列入黑名单，请尝试更换网络环境或使用代理。\n\n详细信息：${text.error}`;
+            } else if (errorStr.includes('Too many computers')) {
+              console.error('检测到账户暂时被封禁:', originalAuthToken);
+              errorMessage = `错误：账户因在多台设备登录而暂时被封禁，请稍后再试或更换账户。\n\n详细信息：${text.error}`;
+              isCookieError = true;
+            } else if (errorStr.includes('Login expired') || errorStr.includes('login expired')) {
+              console.error('检测到登录过期cookie:', originalAuthToken);
+              errorMessage = `错误：Cookie登录已过期，请更新Cookie。\n\n详细信息：${text.error}`;
+              isCookieError = true;
+            } else if (isCookieError) {
+              console.error('检测到其他无效cookie:', originalAuthToken);
+              errorMessage = `错误：Cookie无效，请更换Cookie重试。\n\n详细信息：${text.error}`;
+            } else {
+              // 非Cookie相关错误
+              console.error('检测到其他错误:', text.error);
+              errorMessage = `错误：请求失败。\n\n详细信息：${text.error}`;
+            }
+            
+            // 如果是Cookie错误，从API Key中移除无效cookie
+            if (isCookieError) {
               const removed = keyManager.removeCookieFromApiKey(bearerToken, originalAuthToken);
               console.log(`Cookie移除${removed ? '成功' : '失败'}`);
               
-              // 返回错误信息给客户端
-              res.write(`data: ${JSON.stringify({ 
-                error: 'Invalid cookie detected and removed. Please try again.',
-                details: text.error
-              })}\n\n`);
-            } else {
-              // 其他错误，不移除cookie
-              res.write(`data: ${JSON.stringify({ 
-                error: 'Error occurred but cookie was not removed.',
-                details: text.error
-              })}\n\n`);
+              // 如果成功移除，在错误消息中添加明确提示
+              if (removed) {
+                errorMessage = `⚠️ Cookie已从API Key中移除 ⚠️\n\n${errorMessage}`;
+              }
             }
+            
+            // 返回错误信息给客户端，作为assistant消息
+            res.write(
+              `data: ${JSON.stringify({
+                id: responseId,
+                object: 'chat.completion.chunk',
+                created: Math.floor(Date.now() / 1000),
+                model: req.body.model,
+                choices: [
+                  {
+                    index: 0,
+                    delta: {
+                      content: errorMessage,
+                    },
+                  },
+                ],
+              })}\n\n`
+            );
             
             res.write('data: [DONE]\n\n');
             responseEnded = true; // 标记响应已结束
@@ -491,9 +540,43 @@ router.post('/chat/completions', async (req, res) => {
         // 确保在发送错误信息前检查响应是否已结束
         if (!res.writableEnded) {
           if (streamError.name === 'TimeoutError') {
-            res.write(`data: ${JSON.stringify({ error: 'Server response timeout' })}\n\n`);
+            // 将超时错误作为assistant消息发送
+            const errorMessage = `⚠️ 请求超时 ⚠️\n\n错误：服务器响应超时，请稍后重试。`;
+            res.write(
+              `data: ${JSON.stringify({
+                id: responseId,
+                object: 'chat.completion.chunk',
+                created: Math.floor(Date.now() / 1000),
+                model: req.body.model,
+                choices: [
+                  {
+                    index: 0,
+                    delta: {
+                      content: errorMessage,
+                    },
+                  },
+                ],
+              })}\n\n`
+            );
           } else {
-            res.write(`data: ${JSON.stringify({ error: 'Stream processing error' })}\n\n`);
+            // 将处理错误作为assistant消息发送
+            const errorMessage = `⚠️ 处理错误 ⚠️\n\n错误：流处理出错，请稍后重试。\n\n${streamError.message || ''}`;
+            res.write(
+              `data: ${JSON.stringify({
+                id: responseId,
+                object: 'chat.completion.chunk',
+                created: Math.floor(Date.now() / 1000),
+                model: req.body.model,
+                choices: [
+                  {
+                    index: 0,
+                    delta: {
+                      content: errorMessage,
+                    },
+                  },
+                ],
+              })}\n\n`
+            );
           }
           res.write('data: [DONE]\n\n');
           res.end();
@@ -511,6 +594,8 @@ router.post('/chat/completions', async (req, res) => {
           }
           
           const chunkText = chunkToUtf8String(chunk);
+          // 输出完整的chunkText内容和类型，便于调试
+          console.log("收到的非流式响应:", typeof chunkText, chunkText && typeof chunkText === 'object' ? JSON.stringify(chunkText) : chunkText);
           
           // 检查是否返回了错误对象
           if (chunkText && typeof chunkText === 'object' && chunkText.error) {
@@ -518,25 +603,76 @@ router.post('/chat/completions', async (req, res) => {
             
             // 检查是否包含特定的无效cookie错误信息
             const errorStr = typeof chunkText.error === 'string' ? chunkText.error : JSON.stringify(chunkText.error);
-            if (errorStr.includes('Not logged in') || errorStr.includes('You\'ve reached your trial request limit') || errorStr.includes('User is unauthorized')) {
-              console.error('检测到无效cookie:', originalAuthToken);
-              
-              // 从API Key中移除无效cookie
+            
+            // 根据不同错误类型返回具体错误信息
+            let errorMessage = '';
+            let isCookieError = false;            
+            if (errorStr.includes('Not logged in')) {
+              console.error('检测到登录无效cookie:', originalAuthToken);
+              errorMessage = `错误：Cookie无效或已过期，可能是填写错误或API Key中已无可用Cookie。\n\n详细信息：${chunkText.error}`;
+              isCookieError = true;
+            } else if (errorStr.includes('You\'ve reached your trial request limit')) {
+              console.error('检测到额度用尽cookie:', originalAuthToken);
+              errorMessage = `错误：Cookie使用额度已用完，请更换Cookie或等待刷新。\n\n详细信息：${chunkText.error}`;
+              isCookieError = true;
+            } else if (errorStr.includes('User is unauthorized')) {
+              console.error('检测到未授权cookie:', originalAuthToken);
+              errorMessage = `错误：Cookie已被封禁或失效，请更换Cookie。\n\n详细信息：${chunkText.error}`;
+              isCookieError = true;
+            } else if (errorStr.includes('suspicious activity checks')) {
+              console.error('检测到IP黑名单:', originalAuthToken);
+              errorMessage = `错误：IP可能被列入黑名单，请尝试更换网络环境或使用代理。\n\n详细信息：${chunkText.error}`;
+              isCookieError = true;
+            } else if (errorStr.includes('Too many computers')) {
+              console.error('检测到账户暂时被封禁:', originalAuthToken);
+              errorMessage = `错误：账户因在多台设备登录而暂时被封禁，请稍后再试或更换账户。\n\n详细信息：${chunkText.error}`;
+              isCookieError = true;
+            } else if (errorStr.includes('Login expired') || errorStr.includes('login expired')) {
+              console.error('检测到登录过期cookie:', originalAuthToken);
+              errorMessage = `错误：Cookie登录已过期，请更新Cookie。\n\n详细信息：${chunkText.error}`;
+              isCookieError = true;
+            } else if (isCookieError) {
+              console.error('检测到其他无效cookie:', originalAuthToken);
+              errorMessage = `错误：Cookie无效，请更换Cookie重试。\n\n详细信息：${chunkText.error}`;
+            } else {
+              // 非Cookie相关错误
+              console.error('检测到其他错误:', chunkText.error);
+              errorMessage = `错误：请求失败。\n\n详细信息：${chunkText.error}`;
+            }
+            
+            // 如果是Cookie错误，从API Key中移除无效cookie
+            if (isCookieError) {
               const removed = keyManager.removeCookieFromApiKey(bearerToken, originalAuthToken);
               console.log(`Cookie移除${removed ? '成功' : '失败'}`);
               
-              // 返回错误信息给客户端
-              res.status(400).json({
-                error: 'Invalid cookie detected and removed. Please try again.',
-                details: chunkText.error
-              });
-            } else {
-              // 其他错误，不移除cookie
-              res.status(400).json({
-                error: 'Error occurred but cookie was not removed.',
-                details: chunkText.error
-              });
+              // 如果成功移除，在错误消息中添加明确提示
+              if (removed) {
+                errorMessage = `⚠️ Cookie已从API Key中移除 ⚠️\n\n${errorMessage}`;
+              }
             }
+            
+            // 无效cookie错误，格式化为assistant消息
+            res.json({
+              id: `chatcmpl-${uuidv4()}`,
+              object: 'chat.completion',
+              created: Math.floor(Date.now() / 1000),
+              model,
+              choices: [
+                {
+                  index: 0,
+                  message: {
+                    role: 'assistant',
+                    content: errorMessage,
+                  },
+                  finish_reason: 'stop',
+                },
+              ],
+              usage: {
+                prompt_tokens: 0,
+                completion_tokens: 0,
+                total_tokens: 0,
+              },
+            });
             
             responseEnded = true; // 标记响应已结束
             break; // 跳出循环，不再处理后续数据
@@ -582,7 +718,29 @@ router.post('/chat/completions', async (req, res) => {
         // 确保在发送错误信息前检查响应是否已结束
         if (!res.headersSent) {
           if (error.name === 'TimeoutError') {
-            return res.status(408).json({ error: 'Server response timeout' });
+            // 使用统一的错误格式
+            const errorMessage = `⚠️ 请求超时 ⚠️\n\n错误：服务器响应超时，请稍后重试。`;
+            return res.json({
+              id: `chatcmpl-${uuidv4()}`,
+              object: 'chat.completion',
+              created: Math.floor(Date.now() / 1000),
+              model: req.body.model || 'unknown',
+              choices: [
+                {
+                  index: 0,
+                  message: {
+                    role: 'assistant',
+                    content: errorMessage,
+                  },
+                  finish_reason: 'stop',
+                },
+              ],
+              usage: {
+                prompt_tokens: 0,
+                completion_tokens: 0,
+                total_tokens: 0,
+              },
+            });
           }
           throw error;
         }
@@ -591,16 +749,56 @@ router.post('/chat/completions', async (req, res) => {
   } catch (error) {
     console.error('Error:', error);
     if (!res.headersSent) {
-      const errorMessage = {
-        error: error.name === 'TimeoutError' ? 'Request timeout' : 'Internal server error'
-      };
-
+      const errorText = error.name === 'TimeoutError' ? '请求超时' : '服务器内部错误';
+      
       if (req.body.stream) {
-        res.write(`data: ${JSON.stringify(errorMessage)}\n\n`);
+        // 流式响应格式的错误
+        const responseId = `chatcmpl-${uuidv4()}`;
+        // 添加清晰的错误提示
+        const errorMessage = `⚠️ 请求失败 ⚠️\n\n错误：${errorText}，请稍后重试。\n\n${error.message || ''}`;
+        res.write(
+          `data: ${JSON.stringify({
+            id: responseId,
+            object: 'chat.completion.chunk',
+            created: Math.floor(Date.now() / 1000),
+            model: req.body.model || 'unknown',
+            choices: [
+              {
+                index: 0,
+                delta: {
+                  content: errorMessage,
+                },
+              },
+            ],
+          })}\n\n`
+        );
         res.write('data: [DONE]\n\n');
         res.end();
       } else {
-        res.status(error.name === 'TimeoutError' ? 408 : 500).json(errorMessage);
+        // 非流式响应格式的错误
+        // 添加清晰的错误提示
+        const errorMessage = `⚠️ 请求失败 ⚠️\n\n错误：${errorText}，请稍后重试。\n\n${error.message || ''}`;
+        res.json({
+          id: `chatcmpl-${uuidv4()}`,
+          object: 'chat.completion',
+          created: Math.floor(Date.now() / 1000),
+          model: req.body.model || 'unknown',
+          choices: [
+            {
+              index: 0,
+              message: {
+                role: 'assistant',
+                content: errorMessage,
+              },
+              finish_reason: 'stop',
+            },
+          ],
+          usage: {
+            prompt_tokens: 0,
+            completion_tokens: 0,
+            total_tokens: 0,
+          },
+        });
       }
     }
   }

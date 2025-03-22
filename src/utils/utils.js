@@ -105,7 +105,20 @@ function chunkToUtf8String(chunk) {
               if (content.includes('Not logged in') || 
                   content.includes('You\'ve reached your trial request limit') ||
                   content.includes('User is unauthorized')) {
-                console.error('检测到文本错误:', content);
+                console.error('检测到文本错误(无效cookie):', content);
+                errorResults.hasError = true;
+                errorResults.errorMessage = content;
+              } 
+              // 检查是否包含Too many computers相关关键词
+              else if (content.includes('Too many computers')) {
+                console.error('检测到文本错误(账户暂时被封禁):', content);
+                errorResults.hasError = true;
+                errorResults.errorMessage = content;
+              }
+              // 检查是否包含suspicious activity检查相关关键词
+              else if (content.includes('suspicious activity') || content.includes('blocked') || 
+                      content.includes('hi@cursor.com') || content.includes('ERROR_UNAUTHORIZED')) {
+                console.error('检测到文本错误(IP黑名单):', content);
                 errorResults.hasError = true;
                 errorResults.errorMessage = content;
               } else {
@@ -127,7 +140,20 @@ function chunkToUtf8String(chunk) {
               if (content.includes('Not logged in') || 
                   content.includes('You\'ve reached your trial request limit') ||
                   content.includes('User is unauthorized')) {
-                console.error('检测到Gzip文本错误:', content);
+                console.error('检测到Gzip文本错误(无效cookie):', content);
+                errorResults.hasError = true;
+                errorResults.errorMessage = content;
+              } 
+              // 检查是否包含Too many computers相关关键词
+              else if (content.includes('Too many computers')) {
+                console.error('检测到Gzip文本错误(账户暂时被封禁):', content);
+                errorResults.hasError = true;
+                errorResults.errorMessage = content;
+              }
+              // 检查是否包含suspicious activity检查相关关键词
+              else if (content.includes('suspicious activity') || content.includes('blocked') || 
+                      content.includes('hi@cursor.com') || content.includes('ERROR_UNAUTHORIZED')) {
+                console.error('检测到Gzip文本错误(IP黑名单):', content);
                 errorResults.hasError = true;
                 errorResults.errorMessage = content;
               } else {
@@ -148,18 +174,52 @@ function chunkToUtf8String(chunk) {
               const message = JSON.parse(utf8)
               
               // 检查JSON对象是否包含错误信息
-              if (message && message.error && 
-                  (utf8.includes('Not logged in') || utf8.includes('You\'ve reached your trial request limit') ||
-                   utf8.includes('User is unauthorized'))) {
-                console.error('检测到JSON错误对象:', utf8);
-                errorResults.hasError = true;
-                errorResults.errorMessage = utf8;
+              if (message && message.error) {
+                // 检查是否包含无效cookie相关关键词
+                if (utf8.includes('Not logged in') || utf8.includes('You\'ve reached your trial request limit') ||
+                   utf8.includes('User is unauthorized')) {
+                  console.error('检测到JSON错误对象(无效cookie):', utf8);
+                  errorResults.hasError = true;
+                  errorResults.errorMessage = utf8;
+                }
+                // 检查是否包含Too many computers相关关键词
+                else if (utf8.includes('Too many computers')) {
+                  console.error('检测到JSON错误对象(账户暂时被封禁):', utf8);
+                  errorResults.hasError = true;
+                  errorResults.errorMessage = utf8;
+                }
+                // 检查是否包含suspicious activity检查相关关键词
+                else if (utf8.includes('suspicious activity') || utf8.includes('blocked') || 
+                         utf8.includes('hi@cursor.com') || utf8.includes('ERROR_UNAUTHORIZED')) {
+                  console.error('检测到JSON错误对象(IP黑名单):', utf8);
+                  errorResults.hasError = true;
+                  errorResults.errorMessage = utf8;
+                }
+                // 其他类型的错误对象
+                else {
+                  console.error('检测到JSON错误对象(其他):', utf8);
+                  errorResults.hasError = true;
+                  errorResults.errorMessage = utf8;
+                }
               }
               // 检查JSON字符串是否包含错误关键词
               else if (utf8.includes('Not logged in') || 
                        utf8.includes('You\'ve reached your trial request limit') ||
                        utf8.includes('User is unauthorized')) {
                 console.error('检测到JSON错误关键词:', utf8);
+                errorResults.hasError = true;
+                errorResults.errorMessage = utf8;
+              }
+              // 检查是否包含Too many computers相关关键词
+              else if (utf8.includes('Too many computers')) {
+                console.error('检测到JSON错误关键词(账户暂时被封禁):', utf8);
+                errorResults.hasError = true;
+                errorResults.errorMessage = utf8;
+              }
+              // 检查是否包含suspicious activity检查相关关键词
+              else if (utf8.includes('suspicious activity') || utf8.includes('blocked') || 
+                      utf8.includes('hi@cursor.com') || utf8.includes('ERROR_UNAUTHORIZED')) {
+                console.error('检测到JSON错误关键词(IP黑名单):', utf8);
                 errorResults.hasError = true;
                 errorResults.errorMessage = utf8;
               }
@@ -174,7 +234,20 @@ function chunkToUtf8String(chunk) {
               if (utf8.includes('Not logged in') || 
                   utf8.includes('You\'ve reached your trial request limit') ||
                   utf8.includes('User is unauthorized')) {
-                console.error('JSON解析失败但检测到错误关键词:', utf8);
+                console.error('JSON解析失败但检测到错误关键词(无效cookie):', utf8);
+                errorResults.hasError = true;
+                errorResults.errorMessage = utf8;
+              }
+              // 检查是否包含Too many computers相关关键词
+              else if (utf8.includes('Too many computers')) {
+                console.error('JSON解析失败但检测到错误关键词(账户暂时被封禁):', utf8);
+                errorResults.hasError = true;
+                errorResults.errorMessage = utf8;
+              }
+              // 检查是否包含suspicious activity检查相关关键词
+              else if (utf8.includes('suspicious activity') || utf8.includes('blocked') || 
+                      utf8.includes('hi@cursor.com') || utf8.includes('ERROR_UNAUTHORIZED')) {
+                console.error('JSON解析失败但检测到错误关键词(IP黑名单):', utf8);
                 errorResults.hasError = true;
                 errorResults.errorMessage = utf8;
               }
@@ -192,18 +265,52 @@ function chunkToUtf8String(chunk) {
               const message = JSON.parse(utf8);
               
               // 检查JSON对象是否包含错误信息
-              if (message && message.error && 
-                  (utf8.includes('Not logged in') || utf8.includes('You\'ve reached your trial request limit') ||
-                   utf8.includes('User is unauthorized'))) {
-                console.error('检测到Gzip JSON错误对象:', utf8);
-                errorResults.hasError = true;
-                errorResults.errorMessage = utf8;
+              if (message && message.error) {
+                // 检查是否包含无效cookie相关关键词
+                if (utf8.includes('Not logged in') || utf8.includes('You\'ve reached your trial request limit') ||
+                   utf8.includes('User is unauthorized')) {
+                  console.error('检测到Gzip JSON错误对象(无效cookie):', utf8);
+                  errorResults.hasError = true;
+                  errorResults.errorMessage = utf8;
+                }
+                // 检查是否包含Too many computers相关关键词
+                else if (utf8.includes('Too many computers')) {
+                  console.error('检测到Gzip JSON错误对象(账户暂时被封禁):', utf8);
+                  errorResults.hasError = true;
+                  errorResults.errorMessage = utf8;
+                }
+                // 检查是否包含suspicious activity检查相关关键词
+                else if (utf8.includes('suspicious activity') || utf8.includes('blocked') || 
+                         utf8.includes('hi@cursor.com') || utf8.includes('ERROR_UNAUTHORIZED')) {
+                  console.error('检测到Gzip JSON错误对象(IP黑名单):', utf8);
+                  errorResults.hasError = true;
+                  errorResults.errorMessage = utf8;
+                }
+                // 其他类型的错误对象
+                else {
+                  console.error('检测到Gzip JSON错误对象(其他):', utf8);
+                  errorResults.hasError = true;
+                  errorResults.errorMessage = utf8;
+                }
               }
               // 检查JSON字符串是否包含错误关键词
               else if (utf8.includes('Not logged in') || 
                        utf8.includes('You\'ve reached your trial request limit') ||
                        utf8.includes('User is unauthorized')) {
                 console.error('检测到Gzip JSON错误关键词:', utf8);
+                errorResults.hasError = true;
+                errorResults.errorMessage = utf8;
+              }
+              // 检查是否包含Too many computers相关关键词
+              else if (utf8.includes('Too many computers')) {
+                console.error('检测到Gzip JSON错误关键词(账户暂时被封禁):', utf8);
+                errorResults.hasError = true;
+                errorResults.errorMessage = utf8;
+              }
+              // 检查是否包含suspicious activity检查相关关键词
+              else if (utf8.includes('suspicious activity') || utf8.includes('blocked') || 
+                      utf8.includes('hi@cursor.com') || utf8.includes('ERROR_UNAUTHORIZED')) {
+                console.error('检测到Gzip JSON错误关键词(IP黑名单):', utf8);
                 errorResults.hasError = true;
                 errorResults.errorMessage = utf8;
               }
@@ -218,7 +325,20 @@ function chunkToUtf8String(chunk) {
               if (utf8.includes('Not logged in') || 
                   utf8.includes('You\'ve reached your trial request limit') ||
                   utf8.includes('User is unauthorized')) {
-                console.error('Gzip JSON解析失败但检测到错误关键词:', utf8);
+                console.error('Gzip JSON解析失败但检测到错误关键词(无效cookie):', utf8);
+                errorResults.hasError = true;
+                errorResults.errorMessage = utf8;
+              }
+              // 检查是否包含Too many computers相关关键词
+              else if (utf8.includes('Too many computers')) {
+                console.error('Gzip JSON解析失败但检测到错误关键词(账户暂时被封禁):', utf8);
+                errorResults.hasError = true;
+                errorResults.errorMessage = utf8;
+              }
+              // 检查是否包含suspicious activity检查相关关键词
+              else if (utf8.includes('suspicious activity') || utf8.includes('blocked') || 
+                      utf8.includes('hi@cursor.com') || utf8.includes('ERROR_UNAUTHORIZED')) {
+                console.error('Gzip JSON解析失败但检测到错误关键词(IP黑名单):', utf8);
                 errorResults.hasError = true;
                 errorResults.errorMessage = utf8;
               }
