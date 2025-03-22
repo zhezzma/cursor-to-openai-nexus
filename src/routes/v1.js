@@ -435,7 +435,7 @@ router.post('/chat/completions', async (req, res) => {
           
           // 检查是否返回了错误对象
           if (text && typeof text === 'object' && text.error) {
-            console.error('检测到错误响应:', text.error);
+            //console.error('检测到错误响应:', text.error);
             
             // 检查是否包含特定的无效cookie错误信息
             const errorStr = typeof text.error === 'string' ? text.error : JSON.stringify(text.error);
@@ -599,7 +599,7 @@ router.post('/chat/completions', async (req, res) => {
           
           // 检查是否返回了错误对象
           if (chunkText && typeof chunkText === 'object' && chunkText.error) {
-            console.error('检测到错误响应:', chunkText.error);
+            //console.error('检测到错误响应:', chunkText.error);
             
             // 检查是否包含特定的无效cookie错误信息
             const errorStr = typeof chunkText.error === 'string' ? chunkText.error : JSON.stringify(chunkText.error);
