@@ -25,11 +25,6 @@ check_docker() {
         echo -e "${RED}未安装Docker。请先安装Docker。${NC}"
         exit 1
     fi
-
-    if ! command -v docker-compose &> /dev/null && ! docker compose version &> /dev/null; then
-        echo -e "${RED}未安装Docker Compose。请先安装Docker Compose。${NC}"
-        exit 1
-    fi
 }
 
 # Function to check if Node.js is installed
