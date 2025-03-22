@@ -622,7 +622,6 @@ router.post('/chat/completions', async (req, res) => {
             } else if (errorStr.includes('suspicious activity checks')) {
               console.error('检测到IP黑名单:', originalAuthToken);
               errorMessage = `错误：IP可能被列入黑名单，请尝试更换网络环境或使用代理。\n\n详细信息：${chunkText.error}`;
-              isCookieError = true;
             } else if (errorStr.includes('Too many computers')) {
               console.error('检测到账户暂时被封禁:', originalAuthToken);
               errorMessage = `错误：账户因在多台设备登录而暂时被封禁，请稍后再试或更换账户。\n\n详细信息：${chunkText.error}`;
