@@ -445,8 +445,19 @@ router.post('/chat/completions', async (req, res) => {
             let isCookieError = false;
             
             if (errorStr.includes('Not logged in')) {
-              console.error('检测到登录无效cookie:', originalAuthToken);
-              errorMessage = `错误：Cookie无效或已过期，可能是填写错误或API Key中已无可用Cookie。\n\n详细信息：${text.error}`;
+              // 更明确的错误日志
+              if (originalAuthToken === bearerToken) {
+                console.error(`检测到API Key "${bearerToken}" 中没有可用Cookie，正在尝试以向后兼容模式使用API Key本身`);
+              } else {
+                console.error('检测到无效cookie:', originalAuthToken);
+              }
+              
+              // 检查是否是API Key直接作为cookie使用（向后兼容模式）
+              if (originalAuthToken === bearerToken) {
+                errorMessage = `错误：API Key "${bearerToken}" 中没有可用的Cookie。请添加有效的Cookie到此API Key，或使用其他有效的API Key。\n\n详细信息：${text.error}`;
+              } else {
+                errorMessage = `错误：Cookie无效或已过期，请更新Cookie。\n\n详细信息：${text.error}`;
+              }
               isCookieError = true;
             } else if (errorStr.includes('You\'ve reached your trial request limit')) {
               console.error('检测到额度用尽cookie:', originalAuthToken);
@@ -608,8 +619,19 @@ router.post('/chat/completions', async (req, res) => {
             let errorMessage = '';
             let isCookieError = false;            
             if (errorStr.includes('Not logged in')) {
-              console.error('检测到登录无效cookie:', originalAuthToken);
-              errorMessage = `错误：Cookie无效或已过期，可能是填写错误或API Key中已无可用Cookie。\n\n详细信息：${chunkText.error}`;
+              // 更明确的错误日志
+              if (originalAuthToken === bearerToken) {
+                console.error(`检测到API Key "${bearerToken}" 中没有可用Cookie，正在尝试以向后兼容模式使用API Key本身`);
+              } else {
+                console.error('检测到无效cookie:', originalAuthToken);
+              }
+              
+              // 检查是否是API Key直接作为cookie使用（向后兼容模式）
+              if (originalAuthToken === bearerToken) {
+                errorMessage = `错误：API Key "${bearerToken}" 中没有可用的Cookie。请添加有效的Cookie到此API Key，或使用其他有效的API Key。\n\n详细信息：${chunkText.error}`;
+              } else {
+                errorMessage = `错误：Cookie无效或已过期，请更新Cookie。\n\n详细信息：${chunkText.error}`;
+              }
               isCookieError = true;
             } else if (errorStr.includes('You\'ve reached your trial request limit')) {
               console.error('检测到额度用尽cookie:', originalAuthToken);

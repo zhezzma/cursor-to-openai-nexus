@@ -176,7 +176,13 @@ function chunkToUtf8String(chunk) {
               // 检查JSON对象是否包含错误信息
               if (message && message.error) {
                 // 检查是否包含无效cookie相关关键词
-                if (utf8.includes('Not logged in') || utf8.includes('You\'ve reached your trial request limit') ||
+                if (utf8.includes('Not logged in')) {
+                  // 针对"Not logged in"错误添加特殊提示
+                  console.error('检测到JSON错误对象(登录认证失败，可能是无效cookie或API Key中没有cookie):', utf8);
+                  errorResults.hasError = true;
+                  errorResults.errorMessage = utf8;
+                }
+                else if (utf8.includes('You\'ve reached your trial request limit') ||
                    utf8.includes('User is unauthorized')) {
                   console.error('检测到JSON错误对象(无效cookie):', utf8);
                   errorResults.hasError = true;
@@ -267,7 +273,13 @@ function chunkToUtf8String(chunk) {
               // 检查JSON对象是否包含错误信息
               if (message && message.error) {
                 // 检查是否包含无效cookie相关关键词
-                if (utf8.includes('Not logged in') || utf8.includes('You\'ve reached your trial request limit') ||
+                if (utf8.includes('Not logged in')) {
+                  // 针对"Not logged in"错误添加特殊提示
+                  console.error('检测到Gzip JSON错误对象(登录认证失败，可能是无效cookie或API Key中没有cookie):', utf8);
+                  errorResults.hasError = true;
+                  errorResults.errorMessage = utf8;
+                }
+                else if (utf8.includes('You\'ve reached your trial request limit') ||
                    utf8.includes('User is unauthorized')) {
                   console.error('检测到Gzip JSON错误对象(无效cookie):', utf8);
                   errorResults.hasError = true;

@@ -325,6 +325,12 @@ function removeCookieFromApiKey(apiKey, cookieToRemove) {
     const cookies = apiKeyMap.get(apiKey);
     const initialLength = cookies.length;
     
+    // 检查是否尝试移除与API Key相同的值（可能是向后兼容模式）
+    if (cookieToRemove === apiKey && initialLength === 0) {
+        console.log(`API Key ${apiKey} 中没有任何cookie，系统正在尝试以向后兼容模式使用API Key本身`);
+        return false;
+    }
+    
     // 过滤掉要移除的cookie
     const filteredCookies = cookies.filter(cookie => cookie !== cookieToRemove);
     
