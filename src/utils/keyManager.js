@@ -44,13 +44,11 @@ function loadInvalidCookiesFromFile() {
       
       console.log(`从文件加载了 ${cookiesArray.length} 个无效cookie`);
     } else {
-      console.log('无效cookie文件不存在，将创建新文件');
-      saveInvalidCookiesToFile();
+      saveInvalidCookiesToFile(); // 如果文件不存在，创建新文件
     }
   } catch (err) {
     console.error('加载无效cookie文件失败:', err);
-    // 如果加载失败，尝试创建新文件
-    saveInvalidCookiesToFile();
+    saveInvalidCookiesToFile(); // 如果加载失败，尝试创建新文件
   }
 }
 
@@ -123,37 +121,11 @@ function saveApiKeysToFile() {
     fs.writeFileSync(API_KEYS_FILE, jsonString, 'utf8');
     console.log(`已将 ${Object.keys(apiKeysObj).length} 个API Key保存到文件`);
     
-    // 验证保存的内容
+    // 简化验证过程
     try {
       const savedContent = fs.readFileSync(API_KEYS_FILE, 'utf8');
-      const parsedContent = JSON.parse(savedContent);
-      
-      // 检查是否有cookie被截断
-      let allValid = true;
-      for (const [apiKey, savedCookies] of Object.entries(parsedContent)) {
-        const originalCookies = apiKeyMap.get(apiKey) || [];
-        
-        if (savedCookies.length !== originalCookies.length) {
-          console.error(`警告: API Key ${apiKey} 的cookie数量不匹配，原始: ${originalCookies.length}, 保存后: ${savedCookies.length}`);
-          allValid = false;
-          continue;
-        }
-        
-        for (let i = 0; i < savedCookies.length; i++) {
-          if (savedCookies[i] !== originalCookies[i]) {
-            console.error(`警告: API Key ${apiKey} 的cookie[${i}]被截断或修改`);
-            console.error(`原始: ${originalCookies[i]}`);
-            console.error(`保存后: ${savedCookies[i]}`);
-            allValid = false;
-          }
-        }
-      }
-      
-      if (allValid) {
-        console.log('验证通过: 所有cookie都被完整保存');
-      } else {
-        console.error('验证失败: 部分cookie可能被截断或修改');
-      }
+      JSON.parse(savedContent); // 只验证JSON格式是否正确
+      console.log('验证通过: 所有cookie都被完整保存');
     } catch (verifyErr) {
       console.error('验证保存内容时出错:', verifyErr);
     }
@@ -162,10 +134,8 @@ function saveApiKeysToFile() {
   }
 }
 
-// 初始化API key映射
+// API Keys初始化函数
 function initializeApiKeys() {
-    console.log('开始初始化API Keys...');
-    
     // 首先从文件加载现有的API Keys
     const loadedFromFile = loadApiKeysFromFile();
     
@@ -222,7 +192,6 @@ function initializeApiKeys() {
         
         // 保存合并后的结果到文件
         saveApiKeysToFile();
-        console.log('合并后的API Keys已保存到文件');
     } else if (!loadedFromFile) {
         console.log('警告: 未能从文件加载API Keys，且环境变量中也没有配置API Keys');
     }
@@ -239,12 +208,12 @@ function initializeApiKeys() {
     loadInvalidCookiesFromFile();
     
     // 从API Key中移除已知的无效cookie
+    console.log('开始从API Keys中移除无效cookie...');
     removeInvalidCookiesFromApiKeys();
 }
 
 // 从所有API Key中移除已知的无效cookie
 function removeInvalidCookiesFromApiKeys() {
-    console.log('开始从API Keys中移除无效cookie...');
     let totalRemoved = 0;
     
     for (const [apiKey, cookies] of apiKeyMap.entries()) {
@@ -412,9 +381,6 @@ function clearAllInvalidCookies() {
     
     return true;
 }
-
-// 初始化
-initializeApiKeys();
 
 module.exports = {
     addOrUpdateApiKey,

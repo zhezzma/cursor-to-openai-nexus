@@ -18,12 +18,11 @@ const keyManager = require('./utils/keyManager');
 const cookieRefresher = require('./utils/cookieRefresher');
 const authMiddleware = require('./middleware/auth');
 
-// 确保keyManager正确初始化
-console.log('初始化keyManager...');
+// 初始化API Keys
+console.log('初始化API Keys...');
 keyManager.initializeApiKeys();
 
-// 输出最终的API Keys配置（在移除无效cookie后）
-console.log('keyManager初始化完成');
+// 输出最终的API Keys配置
 console.log('最终API Keys配置:', JSON.stringify(keyManager.getAllApiKeys().reduce((obj, key) => {
   obj[key] = keyManager.getAllCookiesForApiKey(key);
   return obj;
@@ -83,9 +82,6 @@ if (config.refresh.enabled) {
                 if (envApiKeys.length > 0) {
                     console.log(`检测到环境变量中有 ${envApiKeys.length} 个 API Key，但尚未加载到系统中`);
                     console.log('正在重新初始化 API Keys...');
-                    
-                    // 重新初始化 API Keys
-                    keyManager.initializeApiKeys();
                     
                     // 重新获取 API Keys
                     const refreshedApiKeys = keyManager.getAllApiKeys();

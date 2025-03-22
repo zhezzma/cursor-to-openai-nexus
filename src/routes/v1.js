@@ -483,7 +483,7 @@ router.post('/chat/completions', async (req, res) => {
               
               // 如果成功移除，在错误消息中添加明确提示
               if (removed) {
-                errorMessage = `⚠️ Cookie已从API Key中移除 ⚠️\n\n${errorMessage}`;
+                errorMessage = `⚠️ 目前Cookie已从API Key中移除 ⚠️\n\n${errorMessage}`;
               }
             }
             
@@ -595,7 +595,7 @@ router.post('/chat/completions', async (req, res) => {
           
           const chunkText = chunkToUtf8String(chunk);
           // 输出完整的chunkText内容和类型，便于调试
-          console.log("收到的非流式响应:", typeof chunkText, chunkText && typeof chunkText === 'object' ? JSON.stringify(chunkText) : chunkText);
+          //console.log("收到的非流式响应:", typeof chunkText, chunkText && typeof chunkText === 'object' ? JSON.stringify(chunkText) : chunkText);
           
           // 检查是否返回了错误对象
           if (chunkText && typeof chunkText === 'object' && chunkText.error) {
@@ -646,7 +646,7 @@ router.post('/chat/completions', async (req, res) => {
               
               // 如果成功移除，在错误消息中添加明确提示
               if (removed) {
-                errorMessage = `⚠️ Cookie已从API Key中移除 ⚠️\n\n${errorMessage}`;
+                errorMessage = `⚠️ 目前Cookie已从API Key中移除 ⚠️\n\n${errorMessage}`;
               }
             }
             
