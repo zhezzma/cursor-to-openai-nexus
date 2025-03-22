@@ -430,7 +430,7 @@ router.post('/chat/completions', async (req, res) => {
           
           let text = chunkToUtf8String(chunk);
           // 输出完整的text内容和类型，便于调试
-          console.log("收到的响应:", typeof text, text && typeof text === 'object' ? JSON.stringify(text) : text);
+          //console.log("收到的响应:", typeof text, text && typeof text === 'object' ? JSON.stringify(text) : text);
 
           
           // 检查是否返回了错误对象
