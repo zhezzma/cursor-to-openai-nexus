@@ -125,7 +125,7 @@ if (config.refresh.enabled) {
                     
                     // 执行刷新
                     console.log(`开始自动刷新 Cookie，目标 API Key: ${apiKey}，最小 Cookie 数量: ${minCookieCount}`);
-                    const result = await cookieRefresher.autoRefreshCookies(apiKey);
+                    const result = await cookieRefresher.autoRefreshCookies(apiKey, minCookieCount);
                     
                     if (result.success) {
                         refreshedCount++;

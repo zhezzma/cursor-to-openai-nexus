@@ -601,13 +601,13 @@ function cleanupTempFiles() {
 }
 
 // 检查 API Key 是否需要补充 Cookie
-function checkApiKeyNeedRefresh(apiKey, minCookieCount = 2) {
+function checkApiKeyNeedRefresh(apiKey, minCookieCount = config.refresh.minCookieCount) {
   const cookies = keyManager.getAllCookiesForApiKey(apiKey);
   return cookies.length < minCookieCount;
 }
 
 // 主函数：自动刷新 Cookie
-async function autoRefreshCookies(apiKey, minCookieCount = 2) {
+async function autoRefreshCookies(apiKey, minCookieCount = config.refresh.minCookieCount) {
   console.log(`开始自动刷新 Cookie，目标 API Key: ${apiKey}，最小 Cookie 数量: ${minCookieCount}`);
   
   try {
