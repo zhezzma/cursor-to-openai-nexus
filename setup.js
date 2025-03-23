@@ -338,7 +338,7 @@ async function main() {
       console.log('\n===== 配置完成 =====');
       console.log('你可以使用以下命令启动服务:');
       console.log('  npm start');
-      console.log('\n如需手动触发Cookie刷新:');
+      console.log('\n如需手动获取cookie执行:');
       console.log('  node auto-refresh-cookies.js --force');
       
       // 根据配置的刷新模式提供提示
