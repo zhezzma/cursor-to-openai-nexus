@@ -3,6 +3,7 @@
 const fs = require('fs');
 const path = require('path');
 const readline = require('readline');
+const dotenv = require('dotenv');
 
 // 创建交互式命令行界面
 const rl = readline.createInterface({
@@ -24,6 +25,9 @@ API_KEYS={API_KEYS_PLACEHOLDER}
 # 轮询策略 (random 或 round-robin)
 ROTATION_STRATEGY=round-robin
 
+# Cursor校验和 (可选)
+# x-cursor-checksum=xxxxxxxx 
+
 # 自动刷新Cookie设置
 # 是否启用自动刷新Cookie (true 或 false)
 ENABLE_AUTO_REFRESH=true
@@ -36,9 +40,15 @@ REFRESH_CRON=0 */6 * * *
 # 当Cookie数量低于此值时，会自动尝试刷新
 MIN_COOKIE_COUNT=1000
 
+# Cookie刷新模式
+# replace: 每次刷新都将现有cookie全部标记为无效并替换成新cookie
+# append: 保留现有cookie，仅追加新cookie（默认）
+COOKIE_REFRESH_MODE=append
+
 # GitHub 仓库信息
 GITHUB_OWNER={GITHUB_OWNER_PLACEHOLDER}
 GITHUB_REPO=Cursor-Register-fix
+
 # GitHub Token (用于从GitHub Actions下载Artifact)
 # 需要有repo权限
 GITHUB_TOKEN={GITHUB_TOKEN_PLACEHOLDER}
@@ -51,7 +61,7 @@ GITHUB_WORKFLOW_ID=cursor_register.yml
 # 设置为true时，会自动触发工作流而不是仅获取最新结果
 TRIGGER_WORKFLOW=true
 
-# 工作流参数设置
+# 工作流参数设置 目前只支持gmail，outlook过于复杂，暂时不支持
 # 注册账号数量
 REGISTER_NUMBER=1
 # 最大并发工作线程数
@@ -65,10 +75,8 @@ REGISTER_UPLOAD_ARTIFACT=true
 # 是否从config.yaml读取邮箱配置 (true 或 false)
 REGISTER_USE_CONFIG_FILE=false
 # 邮箱配置JSON字符串（仅在REGISTER_USE_CONFIG_FILE=false时有效）
+# 格式例如[{"email":"example@gmail.com","imap_server":"imap.gmail.com","imap_port":993,"username":"example@gmail.com","password":"your_app_password"}]
 REGISTER_EMAIL_CONFIGS={EMAIL_CONFIGS_PLACEHOLDER}
-
-# Cursor校验和 (可选)
-# x-cursor-checksum=xxxxxxxx 
 `;
 
 // 提示信息
@@ -90,71 +98,188 @@ function printAppPasswordInstructions() {
   console.log('注意: 应用密码只会显示一次，请务必保存好\n');
 }
 
-// 收集配置信息
-async function collectConfig() {
+// 从现有.env文件加载配置
+function loadExistingConfig() {
+  const envPath = path.join(process.cwd(), '.env');
+  let existingConfig = {
+    apiKeys: {},
+    githubOwner: '',
+    githubToken: '',
+    emailConfigs: [],
+    cookieRefreshMode: 'append'
+  };
+  
+  if (fs.existsSync(envPath)) {
+    console.log('发现现有的.env配置文件，将加载现有设置作为默认值');
+    console.log('提示: 直接按回车将保留现有设置不变\n');
+    
+    try {
+      // 加载.env文件
+      const envConfig = dotenv.parse(fs.readFileSync(envPath));
+      
+      // 提取API Keys
+      if (envConfig.API_KEYS) {
+        try {
+          existingConfig.apiKeys = JSON.parse(envConfig.API_KEYS);
+        } catch (e) {
+          console.log('无法解析现有的API Keys配置，将使用默认设置');
+        }
+      }
+      
+      // 提取GitHub Owner
+      if (envConfig.GITHUB_OWNER) {
+        existingConfig.githubOwner = envConfig.GITHUB_OWNER;
+      }
+      
+      // 提取GitHub Token
+      if (envConfig.GITHUB_TOKEN) {
+        existingConfig.githubToken = envConfig.GITHUB_TOKEN;
+      }
+      
+      // 提取Email配置
+      if (envConfig.REGISTER_EMAIL_CONFIGS) {
+        try {
+          existingConfig.emailConfigs = JSON.parse(envConfig.REGISTER_EMAIL_CONFIGS);
+        } catch (e) {
+          console.log('无法解析现有的Email配置，将使用默认设置');
+        }
+      }
+      
+      // 提取Cookie刷新模式
+      if (envConfig.COOKIE_REFRESH_MODE) {
+        existingConfig.cookieRefreshMode = envConfig.COOKIE_REFRESH_MODE;
+      }
+      
+      console.log('成功加载现有配置');
+    } catch (error) {
+      console.error('加载现有配置时出错:', error.message);
+      console.log('将使用默认设置');
+    }
+  } else {
+    console.log('未找到现有的.env配置文件，将创建新的配置文件');
+  }
+  
+  return existingConfig;
+}
+
+// 提示用户输入，带有默认值
+function promptWithDefault(question, defaultValue) {
   return new Promise((resolve) => {
-    const config = {
-      apiKeys: {},
-      githubOwner: '',
-      githubToken: '',
-      emailConfigs: []
-    };
-
-    // 获取GitHub用户名
-    rl.question('请输入你的GitHub用户名: ', (githubOwner) => {
-      config.githubOwner = githubOwner;
-
-      // 获取GitHub Token
-      rl.question('请输入你的GitHub Token (具有repo权限): ', (githubToken) => {
-        config.githubToken = githubToken;
-
-        // 询问API Key
-        rl.question('请输入自定义的API Key (不含sk-前缀，将自动添加): ', (apiKey) => {
-          const fullApiKey = apiKey.startsWith('sk-') ? apiKey : `sk-${apiKey}`;
-          
-          // 初始化为空数组
-          config.apiKeys[fullApiKey] = [];
-
-          // 询问Gmail配置
-          printAppPasswordInstructions();
-
-          function askForGmailAccount() {
-            rl.question('\n是否添加Gmail账号用于注册? (y/n): ', (answer) => {
-              if (answer.toLowerCase() === 'y') {
-                rl.question('请输入Gmail地址: ', (email) => {
-                  rl.question('请输入Gmail的应用密码 (不是邮箱密码): ', (password) => {
-                    // 添加Email配置
-                    config.emailConfigs.push({
-                      email: email,
-                      imap_server: "imap.gmail.com",
-                      imap_port: 993,
-                      username: email,
-                      password: password
-                    });
-
-                    // 询问是否添加下一个
-                    rl.question('是否继续添加另一个Gmail账号? (y/n): ', (continueAnswer) => {
-                      if (continueAnswer.toLowerCase() === 'y') {
-                        askForGmailAccount();
-                      } else {
-                        resolve(config);
-                      }
-                    });
-                  });
-                });
-              } else {
-                console.log('\n⚠️ 警告: 未添加Gmail账号，自动刷新功能可能无法正常工作');
-                console.log('你可以稍后在.env文件中手动配置REGISTER_EMAIL_CONFIGS\n');
-                resolve(config);
-              }
-            });
-          }
-
-          askForGmailAccount();
-        });
-      });
+    const defaultText = defaultValue ? ` [${defaultValue}]` : '';
+    rl.question(`${question}${defaultText}: `, (answer) => {
+      // 如果用户只按了回车，使用默认值
+      resolve(answer.trim() || defaultValue || '');
     });
   });
+}
+
+// 收集配置信息
+async function collectConfig() {
+  // 加载现有配置
+  const existingConfig = loadExistingConfig();
+  
+  const config = {
+    apiKeys: {},
+    githubOwner: '',
+    githubToken: '',
+    emailConfigs: [],
+    cookieRefreshMode: 'append'
+  };
+
+  // 获取GitHub用户名
+  config.githubOwner = await promptWithDefault('请输入你的GitHub用户名', existingConfig.githubOwner);
+
+  // 获取GitHub Token
+  config.githubToken = await promptWithDefault('请输入你的GitHub Token (具有repo权限)', existingConfig.githubToken);
+
+  // 处理API Keys
+  const existingApiKeys = Object.keys(existingConfig.apiKeys);
+  if (existingApiKeys.length > 0) {
+    console.log('\n现有的API Keys:');
+    existingApiKeys.forEach(key => console.log(`- ${key}`));
+    
+    const keepExistingApiKeys = await promptWithDefault('是否保留现有的API Keys? (y/n)', 'y');
+    if (keepExistingApiKeys.toLowerCase() === 'y') {
+      config.apiKeys = { ...existingConfig.apiKeys };
+    }
+  }
+
+  // 询问是否添加新的API Key
+  const addNewApiKey = await promptWithDefault('是否添加新的API Key? (y/n)', existingApiKeys.length === 0 ? 'y' : 'n');
+  if (addNewApiKey.toLowerCase() === 'y') {
+    const apiKey = await promptWithDefault('请输入自定义的API Key (不含sk-前缀，将自动添加)', '');
+    if (apiKey) {
+      const fullApiKey = apiKey.startsWith('sk-') ? apiKey : `sk-${apiKey}`;
+      config.apiKeys[fullApiKey] = [];
+    }
+  }
+
+  // 询问Cookie刷新模式
+  const refreshModePrompt = `选择Cookie刷新模式 [append/replace]`;
+  const defaultRefreshMode = existingConfig.cookieRefreshMode || 'append';
+  config.cookieRefreshMode = await promptWithDefault(refreshModePrompt, defaultRefreshMode);
+
+  // 解释所选的刷新模式
+  if (config.cookieRefreshMode.toLowerCase() === 'replace') {
+    config.cookieRefreshMode = 'replace';
+    console.log('已选择替换模式: 每次刷新都将现有cookie全部标记为无效并替换成新cookie');
+  } else {
+    config.cookieRefreshMode = 'append';
+    console.log('已选择追加模式: 保留现有cookie，仅追加新cookie');
+  }
+
+  // 处理Email配置
+  if (existingConfig.emailConfigs.length > 0) {
+    console.log('\n现有的Gmail账号:');
+    existingConfig.emailConfigs.forEach((emailConfig, index) => {
+      console.log(`- ${index + 1}: ${emailConfig.email}`);
+    });
+    
+    const keepExistingEmails = await promptWithDefault('是否保留现有的Gmail账号? (y/n)', 'y');
+    if (keepExistingEmails.toLowerCase() === 'y') {
+      config.emailConfigs = [...existingConfig.emailConfigs];
+    }
+  }
+
+  // 询问是否添加新的Gmail账号
+  const addNewGmail = await promptWithDefault('是否添加新的Gmail账号? (y/n)', existingConfig.emailConfigs.length === 0 ? 'y' : 'n');
+  if (addNewGmail.toLowerCase() === 'y') {
+    printAppPasswordInstructions();
+    await askForGmailAccount(config);
+  } else if (config.emailConfigs.length === 0 && existingConfig.emailConfigs.length === 0) {
+    console.log('\n⚠️ 警告: 未添加Gmail账号，自动刷新功能可能无法正常工作');
+    console.log('你可以稍后在.env文件中手动配置REGISTER_EMAIL_CONFIGS\n');
+  }
+
+  return config;
+}
+
+// 询问Gmail账号
+async function askForGmailAccount(config) {
+  const addGmail = await promptWithDefault('\n是否添加Gmail账号用于注册? (y/n)', 'y');
+  
+  if (addGmail.toLowerCase() === 'y') {
+    const email = await promptWithDefault('请输入Gmail地址', '');
+    const password = await promptWithDefault('请输入Gmail的应用密码 (不是邮箱密码)', '');
+    
+    if (email && password) {
+      // 添加Email配置
+      config.emailConfigs.push({
+        email: email,
+        imap_server: "imap.gmail.com",
+        imap_port: 993,
+        username: email,
+        password: password
+      });
+    }
+    
+    const continueAnswer = await promptWithDefault('是否继续添加另一个Gmail账号? (y/n)', 'n');
+    if (continueAnswer.toLowerCase() === 'y') {
+      await askForGmailAccount(config);
+    }
+  }
+  
+  return config;
 }
 
 // 生成配置文件
@@ -172,11 +297,22 @@ function generateEnvFile(config) {
       .replace('{GITHUB_OWNER_PLACEHOLDER}', config.githubOwner)
       .replace('{GITHUB_TOKEN_PLACEHOLDER}', config.githubToken)
       .replace('{EMAIL_CONFIGS_PLACEHOLDER}', emailConfigsJson);
+      
+    // 更新Cookie刷新模式
+    envContent = envContent.replace('COOKIE_REFRESH_MODE=append', `COOKIE_REFRESH_MODE=${config.cookieRefreshMode}`);
     
     // 写入.env文件
     const envPath = path.join(process.cwd(), '.env');
-    fs.writeFileSync(envPath, envContent, 'utf8');
     
+    // 检查是否存在备份文件
+    const backupPath = path.join(process.cwd(), '.env.backup');
+    if (fs.existsSync(envPath)) {
+      // 创建备份
+      fs.copyFileSync(envPath, backupPath);
+      console.log(`\n✅ 已创建原配置文件备份: ${backupPath}`);
+    }
+    
+    fs.writeFileSync(envPath, envContent, 'utf8');
     console.log(`\n✅ 配置文件已生成: ${envPath}`);
     
     // 检查data目录
@@ -204,6 +340,15 @@ async function main() {
       console.log('  npm start');
       console.log('\n如需手动触发Cookie刷新:');
       console.log('  node auto-refresh-cookies.js --force');
+      
+      // 根据配置的刷新模式提供提示
+      console.log(`\n当前Cookie刷新模式为: ${config.cookieRefreshMode}`);
+      if (config.cookieRefreshMode === 'replace') {
+        console.log('每次刷新都会将现有cookie全部标记为无效并替换成新cookie');
+      } else {
+        console.log('刷新时会保留现有cookie，仅追加新cookie');
+      }
+      console.log('你可以在.env文件中修改COOKIE_REFRESH_MODE设置');
     }
   } catch (error) {
     console.error('\n❌ 配置过程中出错:', error.message);
