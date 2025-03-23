@@ -273,7 +273,7 @@ function removeApiKey(apiKey) {
 
 // 获取API key对应的cookie值（根据轮询策略）
 function getCookieForApiKey(apiKey, strategy = config.defaultRotationStrategy) {
-    // 如果API key不存在，则直接返回API key本身（向后兼容）
+    // 如果API key不存在，也许是cookie本身，直接返回API key本身（向后兼容）
     if (!apiKeyMap.has(apiKey)) {
       return apiKey;
     }

@@ -21,10 +21,14 @@ const forceRefresh = args.includes('--force') || args.includes('-f');
 // 最小 Cookie 数量
 const MIN_COOKIE_COUNT = config.refresh.minCookieCount;
 
+// 获取Cookie刷新模式
+const COOKIE_REFRESH_MODE = process.env.COOKIE_REFRESH_MODE || 'append';
+
 // 主函数
 async function main() {
   console.log('===== 自动刷新 Cookie 开始 =====');
   console.log(`最小 Cookie 数量: ${MIN_COOKIE_COUNT}`);
+  console.log(`Cookie 刷新模式: ${COOKIE_REFRESH_MODE} (${COOKIE_REFRESH_MODE === 'replace' ? '替换现有cookie' : '追加新cookie'})`);
   
   if (targetApiKey) {
     console.log(`指定刷新 API Key: ${targetApiKey}`);
@@ -106,12 +110,19 @@ async function main() {
         }
         
         // 执行刷新
-        console.log(`开始自动刷新 Cookie，目标 API Key: ${apiKey}，最小 Cookie 数量: ${MIN_COOKIE_COUNT}`);
+        console.log(`开始自动刷新 Cookie，目标 API Key: ${apiKey}，最小 Cookie 数量: ${MIN_COOKIE_COUNT}，刷新模式: ${COOKIE_REFRESH_MODE}`);
         const result = await cookieRefresher.autoRefreshCookies(apiKey, MIN_COOKIE_COUNT);
         
         if (result.success) {
           refreshedCount++;
           console.log(`刷新结果: ${result.message}`);
+          
+          // 根据刷新模式输出额外的信息
+          if (COOKIE_REFRESH_MODE === 'replace') {
+            console.log(`使用替换模式: 现有cookie已全部标记为无效，系统现在只使用新cookie`);
+          } else {
+            console.log(`使用追加模式: 现有cookie已保留，新cookie已添加到系统`);
+          }
         } else {
           console.error(`刷新失败: ${result.message}`);
         }

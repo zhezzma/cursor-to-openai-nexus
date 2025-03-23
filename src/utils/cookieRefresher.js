@@ -606,6 +606,49 @@ function checkApiKeyNeedRefresh(apiKey, minCookieCount = config.refresh.minCooki
   return cookies.length < minCookieCount;
 }
 
+// 将现有cookie全部设为无效并从API Key中移除
+function markExistingCookiesAsInvalid(apiKey) {
+  try {
+    // 获取当前API Key的所有cookie
+    const currentCookies = keyManager.getAllCookiesForApiKey(apiKey) || [];
+    console.log(`正在将API Key ${apiKey} 的 ${currentCookies.length} 个现有cookie标记为无效...`);
+    
+    // 如果没有cookie，直接返回
+    if (currentCookies.length === 0) {
+      console.log(`API Key ${apiKey} 没有现有cookie，无需标记为无效`);
+      return 0;
+    }
+    
+    // 获取无效cookie列表
+    const invalidCookies = keyManager.getInvalidCookies();
+    let markedCount = 0;
+    
+    // 遍历cookie并添加到无效列表
+    for (const cookie of currentCookies) {
+      // 将cookie添加到无效集合中
+      if (invalidCookies instanceof Set) {
+        invalidCookies.add(cookie);
+      }
+      markedCount++;
+    }
+    
+    // 保存无效cookie到文件
+    keyManager.saveInvalidCookiesToFile();
+    
+    // 清空当前API Key的cookie列表
+    keyManager.addOrUpdateApiKey(apiKey, []);
+    
+    // 保存更新后的API Keys
+    keyManager.saveApiKeysToFile();
+    
+    console.log(`已将API Key ${apiKey} 的 ${markedCount} 个cookie标记为无效并从API Key中移除`);
+    return markedCount;
+  } catch (error) {
+    console.error(`标记现有cookie为无效时出错:`, error);
+    return 0;
+  }
+}
+
 // 主函数：自动刷新 Cookie
 async function autoRefreshCookies(apiKey, minCookieCount = config.refresh.minCookieCount) {
   console.log(`开始自动刷新 Cookie，目标 API Key: ${apiKey}，最小 Cookie 数量: ${minCookieCount}`);
@@ -661,6 +704,17 @@ async function autoRefreshCookies(apiKey, minCookieCount = config.refresh.minCoo
       };
     }
     
+    // 根据配置决定是否将现有cookie标记为无效
+    const refreshMode = process.env.COOKIE_REFRESH_MODE || 'append';
+    
+    if (refreshMode === 'replace') {
+      // 将现有cookie标记为无效并从API Key中移除
+      console.log('使用替换模式: 将现有cookie标记为无效');
+      markExistingCookiesAsInvalid(apiKey);
+    } else {
+      console.log('使用追加模式: 保留现有cookie，只添加新cookie');
+    }
+    
     // 添加新的 Cookie 到系统
     const addedCount = addNewCookiesToSystem(apiKey, cookies);
     
@@ -691,5 +745,6 @@ module.exports = {
   extractCookiesFromCsvFile,
   addNewCookiesToSystem,
   cleanupTempFiles,
-  triggerWorkflow
+  triggerWorkflow,
+  markExistingCookiesAsInvalid
 }; 
