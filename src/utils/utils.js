@@ -101,29 +101,7 @@ function chunkToUtf8String(chunk) {
             const resMessage = $root.ResMessage.decode(data);
             const content = resMessage.content
             if(content !== undefined) {
-              // 检查文本内容是否包含错误信息
-              if (content.includes('Not logged in') || 
-                  content.includes('You\'ve reached your trial request limit') ||
-                  content.includes('User is unauthorized')) {
-                console.error('检测到文本错误(无效cookie):', content);
-                errorResults.hasError = true;
-                errorResults.errorMessage = content;
-              } 
-              // 检查是否包含Too many computers相关关键词
-              else if (content.includes('Too many computers')) {
-                console.error('检测到文本错误(账户暂时被封禁):', content);
-                errorResults.hasError = true;
-                errorResults.errorMessage = content;
-              }
-              // 检查是否包含suspicious activity检查相关关键词
-              else if (content.includes('suspicious activity') || content.includes('blocked') || 
-                      content.includes('hi@cursor.com') || content.includes('ERROR_UNAUTHORIZED')) {
-                console.error('检测到文本错误(IP黑名单):', content);
-                errorResults.hasError = true;
-                errorResults.errorMessage = content;
-              } else {
-                results.push(content)
-              }
+              results.push(content)
             }
           } catch (protoError) {
             console.error('解析Proto消息错误:', protoError);
@@ -136,32 +114,8 @@ function chunkToUtf8String(chunk) {
             const resMessage = $root.ResMessage.decode(gunzipData);
             const content = resMessage.content
             if(content !== undefined) {
-              // 检查文本内容是否包含错误信息
-              if (content.includes('Not logged in') || 
-                  content.includes('You\'ve reached your trial request limit') ||
-                  content.includes('User is unauthorized')) {
-                console.error('检测到Gzip文本错误(无效cookie):', content);
-                errorResults.hasError = true;
-                errorResults.errorMessage = content;
-              } 
-              // 检查是否包含Too many computers相关关键词
-              else if (content.includes('Too many computers')) {
-                console.error('检测到Gzip文本错误(账户暂时被封禁):', content);
-                errorResults.hasError = true;
-                errorResults.errorMessage = content;
-              }
-              // 检查是否包含suspicious activity检查相关关键词
-              else if (content.includes('suspicious activity') || content.includes('blocked') || 
-                      content.includes('hi@cursor.com') || content.includes('ERROR_UNAUTHORIZED')) {
-                console.error('检测到Gzip文本错误(IP黑名单):', content);
-                errorResults.hasError = true;
-                errorResults.errorMessage = content;
-              } else {
-                results.push(content)
-              }
+              results.push(content)
             }
-            // The prompt is not empty, but skip to handle this here.
-            const prompt = resMessage.prompt
           } catch (gzipProtoError) {
             console.error('解析Gzip Proto消息错误:', gzipProtoError);
           }
