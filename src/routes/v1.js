@@ -435,66 +435,20 @@ router.post('/chat/completions', async (req, res) => {
           
           // 检查是否返回了错误对象
           if (text && typeof text === 'object' && text.error) {
-            //console.error('检测到错误响应:', text.error);
-            
             // 检查是否包含特定的无效cookie错误信息
             const errorStr = typeof text.error === 'string' ? text.error : JSON.stringify(text.error);
             
-            // 根据不同错误类型返回具体错误信息
-            let errorMessage = '';
-            let isCookieError = false;
+            // 处理错误并获取结果
+            const errorResult = handleCursorError(errorStr, bearerToken, originalAuthToken);
             
-            if (errorStr.includes('Not logged in')) {
-              // 更明确的错误日志
-              if (originalAuthToken === bearerToken) {
-                console.error(`检测到API Key "${bearerToken}" 中没有可用Cookie，正在尝试以向后兼容模式使用API Key本身`);
-              } else {
-                console.error('检测到无效cookie:', originalAuthToken);
-              }
-              
-              // 检查是否是API Key直接作为cookie使用（向后兼容模式）
-              if (originalAuthToken === bearerToken) {
-                errorMessage = `错误：API Key "${bearerToken}" 中没有可用的Cookie。请添加有效的Cookie到此API Key，或使用其他有效的API Key。\n\n详细信息：${text.error}`;
-              } else {
-                errorMessage = `错误：Cookie无效或已过期，请更新Cookie。\n\n详细信息：${text.error}`;
-              }
-              isCookieError = true;
-            } else if (errorStr.includes('You\'ve reached your trial request limit')) {
-              console.error('检测到额度用尽cookie:', originalAuthToken);
-              errorMessage = `错误：Cookie使用额度已用完，请更换Cookie或等待刷新。\n\n详细信息：${text.error}`;
-              isCookieError = true;
-            } else if (errorStr.includes('User is unauthorized')) {
-              console.error('检测到未授权cookie:', originalAuthToken);
-              errorMessage = `错误：Cookie已被封禁或失效，请更换Cookie。\n\n详细信息：${text.error}`;
-              isCookieError = true;
-            } else if (errorStr.includes('suspicious activity checks')) {
-              console.error('检测到IP黑名单:', originalAuthToken);
-              errorMessage = `错误：IP可能被列入黑名单，请尝试更换网络环境或使用代理。\n\n详细信息：${text.error}`;
-            } else if (errorStr.includes('Too many computers')) {
-              console.error('检测到账户暂时被封禁:', originalAuthToken);
-              errorMessage = `错误：账户因在多台设备登录而暂时被封禁，请稍后再试或更换账户。\n\n详细信息：${text.error}`;
-              isCookieError = true;
-            } else if (errorStr.includes('Login expired') || errorStr.includes('login expired')) {
-              console.error('检测到登录过期cookie:', originalAuthToken);
-              errorMessage = `错误：Cookie登录已过期，请更新Cookie。\n\n详细信息：${text.error}`;
-              isCookieError = true;
-            } else if (isCookieError) {
-              console.error('检测到其他无效cookie:', originalAuthToken);
-              errorMessage = `错误：Cookie无效，请更换Cookie重试。\n\n详细信息：${text.error}`;
-            } else {
-              // 非Cookie相关错误
-              console.error('检测到其他错误:', text.error);
-              errorMessage = `错误：请求失败。\n\n详细信息：${text.error}`;
-            }
-            
-            // 如果是Cookie错误，从API Key中移除无效cookie
-            if (isCookieError) {
+            // 如果是需要移除的cookie，从API Key中移除
+            if (errorResult.shouldRemoveCookie) {
               const removed = keyManager.removeCookieFromApiKey(bearerToken, originalAuthToken);
               console.log(`Cookie移除${removed ? '成功' : '失败'}`);
               
               // 如果成功移除，在错误消息中添加明确提示
               if (removed) {
-                errorMessage = `⚠️ 目前Cookie已从API Key中移除 ⚠️\n\n${errorMessage}`;
+                errorResult.message = `⚠️ 目前Cookie已从API Key中移除 ⚠️\n\n${errorResult.message}`;
               }
             }
             
@@ -509,7 +463,7 @@ router.post('/chat/completions', async (req, res) => {
                   {
                     index: 0,
                     delta: {
-                      content: errorMessage,
+                      content: errorResult.message,
                     },
                   },
                 ],
@@ -615,60 +569,17 @@ router.post('/chat/completions', async (req, res) => {
             // 检查是否包含特定的无效cookie错误信息
             const errorStr = typeof chunkText.error === 'string' ? chunkText.error : JSON.stringify(chunkText.error);
             
-            // 根据不同错误类型返回具体错误信息
-            let errorMessage = '';
-            let isCookieError = false;            
-            if (errorStr.includes('Not logged in')) {
-              // 更明确的错误日志
-              if (originalAuthToken === bearerToken) {
-                console.error(`检测到API Key "${bearerToken}" 中没有可用Cookie，正在尝试以向后兼容模式使用API Key本身`);
-              } else {
-                console.error('检测到无效cookie:', originalAuthToken);
-              }
-              
-              // 检查是否是API Key直接作为cookie使用（向后兼容模式）
-              if (originalAuthToken === bearerToken) {
-                errorMessage = `错误：API Key "${bearerToken}" 中没有可用的Cookie。请添加有效的Cookie到此API Key，或使用其他有效的API Key。\n\n详细信息：${chunkText.error}`;
-              } else {
-                errorMessage = `错误：Cookie无效或已过期，请更新Cookie。\n\n详细信息：${chunkText.error}`;
-              }
-              isCookieError = true;
-            } else if (errorStr.includes('You\'ve reached your trial request limit')) {
-              console.error('检测到额度用尽cookie:', originalAuthToken);
-              errorMessage = `错误：Cookie使用额度已用完，请更换Cookie或等待刷新。\n\n详细信息：${chunkText.error}`;
-              isCookieError = true;
-            } else if (errorStr.includes('User is unauthorized')) {
-              console.error('检测到未授权cookie:', originalAuthToken);
-              errorMessage = `错误：Cookie已被封禁或失效，请更换Cookie。\n\n详细信息：${chunkText.error}`;
-              isCookieError = true;
-            } else if (errorStr.includes('suspicious activity checks')) {
-              console.error('检测到IP黑名单:', originalAuthToken);
-              errorMessage = `错误：IP可能被列入黑名单，请尝试更换网络环境或使用代理。\n\n详细信息：${chunkText.error}`;
-            } else if (errorStr.includes('Too many computers')) {
-              console.error('检测到账户暂时被封禁:', originalAuthToken);
-              errorMessage = `错误：账户因在多台设备登录而暂时被封禁，请稍后再试或更换账户。\n\n详细信息：${chunkText.error}`;
-              isCookieError = true;
-            } else if (errorStr.includes('Login expired') || errorStr.includes('login expired')) {
-              console.error('检测到登录过期cookie:', originalAuthToken);
-              errorMessage = `错误：Cookie登录已过期，请更新Cookie。\n\n详细信息：${chunkText.error}`;
-              isCookieError = true;
-            } else if (isCookieError) {
-              console.error('检测到其他无效cookie:', originalAuthToken);
-              errorMessage = `错误：Cookie无效，请更换Cookie重试。\n\n详细信息：${chunkText.error}`;
-            } else {
-              // 非Cookie相关错误
-              console.error('检测到其他错误:', chunkText.error);
-              errorMessage = `错误：请求失败。\n\n详细信息：${chunkText.error}`;
-            }
+            // 处理错误并获取结果
+            const errorResult = handleCursorError(errorStr, bearerToken, originalAuthToken);
             
-            // 如果是Cookie错误，从API Key中移除无效cookie
-            if (isCookieError) {
+            // 如果是需要移除的cookie，从API Key中移除
+            if (errorResult.shouldRemoveCookie) {
               const removed = keyManager.removeCookieFromApiKey(bearerToken, originalAuthToken);
               console.log(`Cookie移除${removed ? '成功' : '失败'}`);
               
               // 如果成功移除，在错误消息中添加明确提示
               if (removed) {
-                errorMessage = `⚠️ 目前Cookie已从API Key中移除 ⚠️\n\n${errorMessage}`;
+                errorResult.message = `⚠️ 目前Cookie已从API Key中移除 ⚠️\n\n${errorResult.message}`;
               }
             }
             
@@ -683,7 +594,7 @@ router.post('/chat/completions', async (req, res) => {
                   index: 0,
                   message: {
                     role: 'assistant',
-                    content: errorMessage,
+                    content: errorResult.message,
                   },
                   finish_reason: 'stop',
                 },
@@ -954,5 +865,53 @@ router.get("/refresh-status", async (req, res) => {
     });
   }
 });
+
+// 在文件末尾添加错误处理函数
+function handleCursorError(errorStr, bearerToken, originalAuthToken) {
+  let message = '';
+  let shouldRemoveCookie = false;
+  
+  if (errorStr.includes('Not logged in')) {
+    // 更明确的错误日志
+    if (originalAuthToken === bearerToken) {
+      console.error(`检测到API Key "${bearerToken}" 中没有可用Cookie，正在尝试以向后兼容模式使用API Key本身`);
+      message = `错误：API Key "${bearerToken}" 中没有可用的Cookie。请添加有效的Cookie到此API Key，或使用其他有效的API Key。\n\n详细信息：${errorStr}`;
+    } else {
+      console.error('检测到无效cookie:', originalAuthToken);
+      message = `错误：Cookie无效或已过期，请更新Cookie。\n\n详细信息：${errorStr}`;
+    }
+    shouldRemoveCookie = true;
+  } else if (errorStr.includes('You\'ve reached your trial request limit')) {
+    console.error('检测到额度用尽cookie:', originalAuthToken);
+    message = `错误：Cookie使用额度已用完，请更换Cookie或等待刷新。\n\n详细信息：${errorStr}`;
+    shouldRemoveCookie = true;
+  } else if (errorStr.includes('User is unauthorized')) {
+    console.error('检测到未授权cookie:', originalAuthToken);
+    message = `错误：Cookie已被封禁或失效，请更换Cookie。\n\n详细信息：${errorStr}`;
+    shouldRemoveCookie = true;
+  } else if (errorStr.includes('suspicious activity checks')) {
+    console.error('检测到IP黑名单:', originalAuthToken);
+    message = `错误：IP可能被列入黑名单，请尝试更换网络环境或使用代理。\n\n详细信息：${errorStr}`;
+    shouldRemoveCookie = false;
+  } else if (errorStr.includes('Too many computers')) {
+    console.error('检测到账户暂时被封禁:', originalAuthToken);
+    message = `错误：账户因在多台设备登录而暂时被封禁，请稍后再试或更换账户。\n\n详细信息：${errorStr}`;
+    shouldRemoveCookie = true;
+  } else if (errorStr.includes('Login expired') || errorStr.includes('login expired')) {
+    console.error('检测到登录过期cookie:', originalAuthToken);
+    message = `错误：Cookie登录已过期，请更新Cookie。\n\n详细信息：${errorStr}`;
+    shouldRemoveCookie = true;
+  } else {
+    // 非Cookie相关错误
+    console.error('检测到其他错误:', errorStr);
+    message = `错误：请求失败。\n\n详细信息：${errorStr}`;
+    shouldRemoveCookie = false;
+  }
+  
+  return {
+    message,
+    shouldRemoveCookie
+  };
+}
 
 module.exports = router;
