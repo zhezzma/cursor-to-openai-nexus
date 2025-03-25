@@ -41,9 +41,9 @@ REFRESH_CRON=0 */6 * * *
 MIN_COOKIE_COUNT=1000
 
 # Cookie刷新模式
-# replace: 每次刷新都将现有cookie全部标记为无效并替换成新cookie
-# append: 保留现有cookie，仅追加新cookie（默认）
-COOKIE_REFRESH_MODE=append
+# replace: 每次刷新都将现有cookie全部标记为无效并替换成新cookie（默认）
+# append: 保留现有cookie，仅追加新cookie
+COOKIE_REFRESH_MODE=replace
 
 # GitHub 仓库信息
 GITHUB_OWNER={GITHUB_OWNER_PLACEHOLDER}
@@ -216,7 +216,7 @@ async function collectConfig() {
 
   // 询问Cookie刷新模式
   const refreshModePrompt = `选择Cookie刷新模式 [append/replace]`;
-  const defaultRefreshMode = existingConfig.cookieRefreshMode || 'append';
+  const defaultRefreshMode = existingConfig.cookieRefreshMode || 'replace';
   config.cookieRefreshMode = await promptWithDefault(refreshModePrompt, defaultRefreshMode);
 
   // 解释所选的刷新模式
