@@ -183,7 +183,7 @@ async function collectConfig() {
     githubOwner: '',
     githubToken: '',
     emailConfigs: [],
-    cookieRefreshMode: 'append'
+    cookieRefreshMode: 'replace'
   };
 
   // 获取GitHub用户名

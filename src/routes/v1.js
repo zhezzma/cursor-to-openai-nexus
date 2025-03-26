@@ -818,6 +818,16 @@ router.post("/refresh-cookies", async (req, res) => {
         } else {
           refreshStatus.message = '刷新完成';
         }
+        
+        // 子进程执行完成后，重新初始化API Keys来加载新的Cookie
+        try {
+          const keyManager = require('../utils/keyManager');
+          console.log('子进程刷新Cookie完成，重新初始化主进程中的API Keys...');
+          keyManager.initializeApiKeys();
+          console.log('主进程API Keys重新加载完成');
+        } catch (initError) {
+          console.error('重新初始化API Keys失败:', initError);
+        }
       } else {
         refreshStatus.status = 'failed';
         refreshStatus.message = refreshStatus.error || '刷新失败，请查看服务器日志';
@@ -846,16 +856,20 @@ router.post("/refresh-cookies", async (req, res) => {
   }
 });
 
-// 获取刷新状态
-router.get("/refresh-status", async (req, res) => {
+// 查询Cookie刷新状态
+router.get("/refresh-status", (req, res) => {
   try {
+    // 返回当前刷新状态
     return res.json({
       success: true,
-      status: refreshStatus.status,
-      message: refreshStatus.message,
-      isRunning: refreshStatus.isRunning,
-      startTime: refreshStatus.startTime,
-      endTime: refreshStatus.endTime
+      data: {
+        ...refreshStatus,
+        isRunning: refreshStatus.isRunning || false,
+        status: refreshStatus.status || 'unknown',
+        message: refreshStatus.message || '未触发刷新',
+        startTime: refreshStatus.startTime || null,
+        endTime: refreshStatus.endTime || null
+      }
     });
   } catch (error) {
     console.error('获取刷新状态失败:', error);
