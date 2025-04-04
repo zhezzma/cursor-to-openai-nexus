@@ -186,13 +186,6 @@ docker compose logs -f
 docker compose down
 ```
 
-### 使用npm
-
-```bash
-npm install
-npm run start
-```
-
 ## API使用示例
 
 ### Python示例
