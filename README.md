@@ -80,9 +80,6 @@ npm start
 # 刷新Cookie
 npm run refresh-cookies
 
-# 刷新Cookie
-npm run refresh-cookies
-
 # 管理邮箱配置
 npm run manage-emails
 
