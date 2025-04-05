@@ -96,6 +96,7 @@ function generateCursorBody(messages, modelName) {
 
 function chunkToUtf8String(chunk) {
   const results = []
+  const errorResults = { hasError: false, errorMessage: '' }
   const buffer = Buffer.from(chunk, 'hex');
   //console.log("Chunk buffer:", buffer.toString('hex'))
 
@@ -109,11 +110,10 @@ function chunkToUtf8String(chunk) {
       if (magicNumber == 0 || magicNumber == 1) {
         const gunzipData = magicNumber == 0 ? data : zlib.gunzipSync(data)
         const response = $root.StreamUnifiedChatWithToolsResponse.decode(gunzipData);
-
         const thinking = response?.message?.thinking?.content
         if (thinking !== undefined){
-          results.push(thinking)
-          //console.log(thinking)
+            results.push(thinking);
+            //console.log(thinking);
         }
 
         const content = response?.message?.content
@@ -133,8 +133,13 @@ function chunkToUtf8String(chunk) {
           (Array.isArray(message) ? message.length > 0 : Object.keys(message).length > 0))){
             //results.push(utf8)
             console.error(utf8)
+            
+            // 检查是否为错误消息
+            if (message && message.error) {
+              errorResults.hasError = true;
+              errorResults.errorMessage = utf8;
+            }
         }
-
       }
       else {
         //console.log('Unknown magic number when parsing chunk response: ' + magicNumber)
@@ -144,6 +149,11 @@ function chunkToUtf8String(chunk) {
     }
   } catch (err) {
     console.log('Error parsing chunk response:', err)
+  }
+
+  // 如果存在错误，返回错误对象
+  if (errorResults.hasError) {
+    return { error: errorResults.errorMessage };
   }
 
   return results.join('')
