@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+const { fetch, ProxyAgent, Agent } = require('undici');
 
 const $root = require('../proto/message.js');
 const { v4: uuidv4, v5: uuidv5 } = require('uuid');
@@ -8,6 +9,7 @@ const keyManager = require('../utils/keyManager.js');
 const { spawn } = require('child_process');
 const path = require('path');
 const admin = require('../models/admin');
+const config = require('../config/config');
 
 // 存储刷新状态的变量
 let refreshStatus = {
@@ -280,7 +282,7 @@ router.get("/models", async (req, res) => {
       ?? process.env['x-cursor-checksum'] 
       ?? generateCursorChecksum(authToken.trim());
     //const cursorClientVersion = "0.45.11"
-    const cursorClientVersion = "0.48.6";
+    const cursorClientVersion = "0.48.7";
 
     const availableModelsResponse = await fetch("https://api2.cursor.sh/aiserver.v1.AiService/AvailableModels", {
       method: 'POST',
@@ -292,6 +294,7 @@ router.get("/models", async (req, res) => {
         'user-agent': 'connect-es/1.6.1',
         'x-cursor-checksum': checksum,
         'x-cursor-client-version': cursorClientVersion,
+        'x-cursor-config-version': uuidv4(),
         'x-cursor-timezone': 'Asia/Shanghai',
         'x-ghost-mode': 'true',
         'Host': 'api2.cursor.sh',
@@ -362,7 +365,7 @@ router.post('/chat/completions', async (req, res) => {
     const sessionid = uuidv5(authToken,  uuidv5.DNS);
     const clientKey = generateHashed64Hex(authToken)
     //const cursorClientVersion = "0.45.11"
-    const cursorClientVersion = "0.48.6";
+    const cursorClientVersion = "0.48.7";
     // Request the AvailableModels before StreamChat.
     const availableModelsResponse = await fetch("https://api2.cursor.sh/aiserver.v1.AiService/AvailableModels", {
       method: 'POST',
@@ -385,7 +388,14 @@ router.post('/chat/completions', async (req, res) => {
     })
 
     const cursorBody = generateCursorBody(messages, model);
-    const response = await fetch('https://api2.cursor.sh/aiserver.v1.AiService/StreamChat', {
+    
+    // 添加代理支持
+    const dispatcher = config.proxy && config.proxy.enabled
+      ? new ProxyAgent(config.proxy.url, { allowH2: true })
+      : new Agent({ allowH2: true });
+    
+    // 更新接口地址为 StreamUnifiedChatWithTools
+    const response = await fetch('https://api2.cursor.sh/aiserver.v1.ChatService/StreamUnifiedChatWithTools', {
       method: 'POST',
       headers: {
         'authorization': `Bearer ${authToken}`,
@@ -398,6 +408,7 @@ router.post('/chat/completions', async (req, res) => {
         'x-client-key': clientKey,
         'x-cursor-checksum': checksum,
         'x-cursor-client-version': cursorClientVersion,
+        'x-cursor-config-version': uuidv4(),
         'x-cursor-timezone': 'Asia/Shanghai',
         'x-ghost-mode': 'true',
         'x-request-id': uuidv4(),
@@ -405,6 +416,7 @@ router.post('/chat/completions', async (req, res) => {
         'Host': 'api2.cursor.sh',
       },
       body: cursorBody,
+      dispatcher: dispatcher,
       timeout: {
         connect: 5000,
         read: 30000
