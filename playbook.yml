@@ -51,7 +51,8 @@
         echo '#!/bin/bash
         cd {{ deploy_path }}
         test -f $HOME/.nvm/nvm.sh && source $HOME/.nvm/nvm.sh
-        exec npm run start
+        npm run install
+        npm run start
         ' > {{ deploy_path }}/start.sh
         chmod +x {{ deploy_path }}/start.sh
         nohup {{ deploy_path }}/start.sh > {{ deploy_path }}/nohup.log 2>&1 &
