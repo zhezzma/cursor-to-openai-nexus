@@ -38,7 +38,7 @@
 
     - name: 解压文件
       shell: |
-        rm -rf {{ deploy_path }}  
+        rm -rf {{ deploy_path }}
         mkdir -p {{ deploy_path }}
         tar -zxvf /root/deploy/{{ app_name }}.tar.gz -C {{ deploy_path }}
       args:
@@ -51,8 +51,8 @@
         echo '#!/bin/bash
         cd {{ deploy_path }}
         test -f $HOME/.nvm/nvm.sh && source $HOME/.nvm/nvm.sh
-        npm run install
-        npm run start
+        npm install
+        PORT={{ app_port }} npm run start
         ' > {{ deploy_path }}/start.sh
         chmod +x {{ deploy_path }}/start.sh
         nohup {{ deploy_path }}/start.sh > {{ deploy_path }}/nohup.log 2>&1 &
