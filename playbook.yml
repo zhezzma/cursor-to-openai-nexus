@@ -51,7 +51,6 @@
     - name: 构建并运行
       shell: |
         cd {{ deploy_path }}
-        pip install --no-cache-dir -r requirements.txt
         echo '#!/bin/bash
         cd {{ deploy_path }}
         test -f $HOME/.nvm/nvm.sh && source $HOME/.nvm/nvm.sh
