@@ -1181,7 +1181,11 @@ function handleCursorError(errorStr, bearerToken, originalAuthToken) {
     shouldRemoveCookie = true;
   } else if(errorStr.includes('your request has been blocked due to the use of a temporary email service for this account')) {
     logger.error('检测到临时邮箱:', originalAuthToken);
-    message = `错误：请求被阻止，因为检测到临时邮箱服务。\n\n详细信息：${errorStr}`;
+    message = `错误：请求被阻止，检测到临时邮箱服务，请更换邮箱。\n\n详细信息：${errorStr}`;
+    shouldRemoveCookie = true;
+  } else if (errorStr.includes('Your request has been blocked as our system has detected suspicious activity from your account')) {
+    logger.error('检测到账户异常:', originalAuthToken);
+    message = `错误：请求被阻止，账号被ban，请更换账号。\n\n详细信息：${errorStr}`;
     shouldRemoveCookie = true;
   } else {
     // 非Cookie相关错误
