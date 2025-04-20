@@ -436,7 +436,7 @@ router.post('/chat/completions', async (req, res) => {
 
       const responseId = `chatcmpl-${uuidv4()}`;
       
-
+      let isThinking_status = 0; //0为没有思考，1为处于思考状态
       try {
         let responseEnded = false; // 添加标志，标记响应是否已结束
         
@@ -446,15 +446,15 @@ router.post('/chat/completions', async (req, res) => {
             continue;
           }
           
-          let text = chunkToUtf8String(chunk);
+          let result = chunkToUtf8String(chunk);
           // 输出完整的text内容和类型，便于调试
           //console.log("收到的响应:", typeof text, text && typeof text === 'object' ? JSON.stringify(text) : text);
 
           
           // 检查是否返回了错误对象
-          if (text && typeof text === 'object' && text.error) {
+          if (result && typeof result === 'object' && result.error) {
             // 检查是否包含特定的无效cookie错误信息
-            const errorStr = typeof text.error === 'string' ? text.error : JSON.stringify(text.error);
+            const errorStr = typeof result.error === 'string' ? result.error : JSON.stringify(result.error);
             
             // 处理错误并获取结果
             const errorResult = handleCursorError(errorStr, bearerToken, originalAuthToken);
@@ -492,7 +492,18 @@ router.post('/chat/completions', async (req, res) => {
             responseEnded = true; // 标记响应已结束
             break; // 跳出循环，不再处理后续数据
           }
-
+          let text = result.content;
+          if (result.isThink && isThinking_status == 0)
+          {
+            isThinking_status = 1; //存在思考内容，并且状态为开始思考
+            text = "<think>"+"\n"+text;
+          }
+          else if (!result.isThink && isThinking_status == 1)
+          {
+            isThinking_status = 0; //初始化状态
+            console.log("text:" + text);
+            text = text+"\n"+"</think>"+"\n";
+          }
           if (text && text.length > 0) {
             res.write(
               `data: ${JSON.stringify({
@@ -576,16 +587,16 @@ router.post('/chat/completions', async (req, res) => {
             continue;
           }
           
-          const chunkText = chunkToUtf8String(chunk);
+          const result = chunkToUtf8String(chunk);
           // 输出完整的chunkText内容和类型，便于调试
           //console.log("收到的非流式响应:", typeof chunkText, chunkText && typeof chunkText === 'object' ? JSON.stringify(chunkText) : chunkText);
           
           // 检查是否返回了错误对象
-          if (chunkText && typeof chunkText === 'object' && chunkText.error) {
+          if (result && typeof result === 'object' && result.error) {
             //console.error('检测到错误响应:', chunkText.error);
             
             // 检查是否包含特定的无效cookie错误信息
-            const errorStr = typeof chunkText.error === 'string' ? chunkText.error : JSON.stringify(chunkText.error);
+            const errorStr = typeof result.error === 'string' ? result.error : JSON.stringify(result.error);
             
             // 处理错误并获取结果
             const errorResult = handleCursorError(errorStr, bearerToken, originalAuthToken);
@@ -629,6 +640,7 @@ router.post('/chat/completions', async (req, res) => {
           }
           
           // 正常文本，添加到结果中
+          let chunkText = result.content;
           if (chunkText && typeof chunkText === 'string') {
             text += chunkText;
           }
@@ -1166,6 +1178,10 @@ function handleCursorError(errorStr, bearerToken, originalAuthToken) {
   } else if (errorStr.includes('Login expired') || errorStr.includes('login expired')) {
     logger.error('检测到登录过期cookie:', originalAuthToken);
     message = `错误：Cookie登录已过期，请更新Cookie。\n\n详细信息：${errorStr}`;
+    shouldRemoveCookie = true;
+  } else if(errorStr.includes('your request has been blocked due to the use of a temporary email service for this account')) {
+    logger.error('检测到临时邮箱:', originalAuthToken);
+    message = `错误：请求被阻止，因为检测到临时邮箱服务。\n\n详细信息：${errorStr}`;
     shouldRemoveCookie = true;
   } else {
     // 非Cookie相关错误
