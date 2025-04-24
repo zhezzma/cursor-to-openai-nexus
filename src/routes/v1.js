@@ -368,11 +368,201 @@ router.post('/chat/completions', async (req, res) => {
       ?? generateCursorChecksum(authToken.trim());
 
     const sessionid = uuidv5(authToken,  uuidv5.DNS);
-    const clientKey = generateHashed64Hex(authToken)
-    //const cursorClientVersion = "0.45.11"
+    const clientKey = generateHashed64Hex(authToken);
     const cursorClientVersion = "0.48.7";
-    // Request the AvailableModels before StreamChat.
-    const availableModelsResponse = await fetch("https://api2.cursor.sh/aiserver.v1.AiService/AvailableModels", {
+    
+    // 在请求聊天接口前，依次调用7个接口
+    // 1. 调用 CountTokens 接口
+    const countTokensResponse = await fetch('https://api2.cursor.sh/aiserver.v1.AiService/CountTokens', {
+      method: 'POST',
+      headers: {
+        'accept-encoding': 'gzip',
+        'authorization': `Bearer ${authToken}`,
+        'connect-protocol-version': '1',
+        'content-type': 'application/proto',
+        'user-agent': 'connect-es/1.6.1',
+        'x-client-key': clientKey,
+        'x-cursor-checksum': checksum,
+        'x-cursor-client-version': cursorClientVersion,
+        'x-cursor-config-version': uuidv4(),
+        'x-cursor-timezone': 'Asia/Shanghai',
+        'x-ghost-mode': 'true',
+        'x-new-onboarding-completed': 'false',
+        'x-session-id': sessionid,
+        'Host': 'api2.cursor.sh',
+      },
+      body: '', // 实际请求需要包含消息内容
+      timeout: {
+        connect: 5000,
+        read: 30000
+      }
+    });
+    logger.info(`CountTokens 接口调用状态码: ${countTokensResponse.status}`);
+
+    // 2. 调用 CheckFeatureStatus 接口
+    const checkFeatureResponse = await fetch('https://api2.cursor.sh/aiserver.v1.AiService/CheckFeatureStatus', {
+      method: 'POST',
+      headers: {
+        'accept-encoding': 'gzip',
+        'authorization': `Bearer ${authToken}`,
+        'connect-protocol-version': '1',
+        'content-type': 'application/proto',
+        'user-agent': 'connect-es/1.6.1',
+        'x-client-key': clientKey,
+        'x-cursor-checksum': checksum,
+        'x-cursor-client-version': cursorClientVersion,
+        'x-cursor-config-version': uuidv4(),
+        'x-cursor-timezone': 'Asia/Shanghai',
+        'x-ghost-mode': 'true',
+        'x-new-onboarding-completed': 'false',
+        'x-session-id': sessionid,
+        'Host': 'api2.cursor.sh',
+      },
+      body: '', // 实际长度为23字节
+      timeout: {
+        connect: 5000,
+        read: 30000
+      }
+    });
+    logger.info(`CheckFeatureStatus 接口调用状态码: ${checkFeatureResponse.status}`);
+
+    // 3. 调用 AvailableDocs 接口
+    const availableDocsResponse = await fetch('https://api2.cursor.sh/aiserver.v1.AiService/AvailableDocs', {
+      method: 'POST',
+      headers: {
+        'authorization': `Bearer ${authToken}`,
+        'connect-accept-encoding': 'gzip',
+        'connect-protocol-version': '1',
+        'content-type': 'application/proto',
+        'user-agent': 'connect-es/1.6.1',
+        'x-amzn-trace-id': `Root=${uuidv4()}`,
+        'x-client-key': clientKey,
+        'x-cursor-checksum': checksum,
+        'x-cursor-client-version': cursorClientVersion,
+        'x-cursor-config-version': uuidv4(),
+        'x-cursor-timezone': 'Asia/Shanghai',
+        'x-ghost-mode': 'true',
+        'x-request-id': uuidv4(),
+        'x-session-id': sessionid,
+        'Host': 'api2.cursor.sh',
+      },
+      timeout: {
+        connect: 5000,
+        read: 30000
+      }
+    });
+    logger.info(`AvailableDocs 接口调用状态码: ${availableDocsResponse.status}`);
+
+    // 4. 调用 GetTeams 接口
+    const getTeamsResponse = await fetch('https://api2.cursor.sh/aiserver.v1.DashboardService/GetTeams', {
+      method: 'POST',
+      headers: {
+        'accept-encoding': 'gzip',
+        'authorization': `Bearer ${authToken}`,
+        'connect-protocol-version': '1',
+        'content-type': 'application/proto',
+        'user-agent': 'connect-es/1.6.1',
+        'x-amzn-trace-id': `Root=${uuidv4()}`,
+        'x-client-key': clientKey,
+        'x-cursor-checksum': checksum,
+        'x-cursor-client-version': cursorClientVersion,
+        'x-cursor-config-version': uuidv4(),
+        'x-cursor-timezone': 'Asia/Shanghai',
+        'x-ghost-mode': 'true',
+        'x-new-onboarding-completed': 'false',
+        'x-request-id': uuidv4(),
+        'x-session-id': sessionid,
+        'Host': 'api2.cursor.sh',
+      },
+      body: '',
+      timeout: {
+        connect: 5000,
+        read: 30000
+      }
+    });
+    logger.info(`GetTeams 接口调用状态码: ${getTeamsResponse.status}`);
+
+    // 5. 调用 full_stripe_profile 接口
+    const stripeProfileResponse = await fetch('https://api2.cursor.sh/auth/full_stripe_profile', {
+      method: 'GET',
+      headers: {
+        'Host': 'api2.cursor.sh',
+        'Connection': 'keep-alive',
+        'Authorization': `Bearer ${authToken}`,
+        'x-new-onboarding-completed': 'false',
+        'x-ghost-mode': 'true',
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Cursor/0.49.4 Chrome/132.0.6834.210 Electron/34.3.4 Safari/537.36',
+        'Accept': '*/*',
+        'Origin': 'vscode-file://vscode-app',
+        'Sec-Fetch-Site': 'cross-site',
+        'Sec-Fetch-Mode': 'cors',
+        'Sec-Fetch-Dest': 'empty',
+        'Accept-Encoding': 'gzip, deflate, br, zstd',
+        'Accept-Language': 'zh-CN'
+      },
+      timeout: {
+        connect: 5000,
+        read: 30000
+      }
+    });
+    logger.info(`StripeProfile 接口调用状态码: ${stripeProfileResponse.status}`);
+
+    // 6. 调用 GetUsageBasedPremiumRequests 接口
+    const usageBasedResponse = await fetch('https://api2.cursor.sh/aiserver.v1.DashboardService/GetUsageBasedPremiumRequests', {
+      method: 'POST',
+      headers: {
+        'accept-encoding': 'gzip',
+        'authorization': `Bearer ${authToken}`,
+        'connect-protocol-version': '1',
+        'content-type': 'application/proto',
+        'user-agent': 'connect-es/1.6.1',
+        'x-client-key': clientKey,
+        'x-cursor-checksum': checksum,
+        'x-cursor-client-version': cursorClientVersion,
+        'x-cursor-config-version': uuidv4(),
+        'x-cursor-timezone': 'Asia/Shanghai',
+        'x-ghost-mode': 'true',
+        'x-new-onboarding-completed': 'false',
+        'x-session-id': sessionid,
+        'Host': 'api2.cursor.sh',
+      },
+      body: '',
+      timeout: {
+        connect: 5000,
+        read: 30000
+      }
+    });
+    logger.info(`GetUsageBasedPremiumRequests 接口调用状态码: ${usageBasedResponse.status}`);
+
+    // 7. 调用 GetHardLimit 接口
+    const hardLimitResponse = await fetch('https://api2.cursor.sh/aiserver.v1.DashboardService/GetHardLimit', {
+      method: 'POST',
+      headers: {
+        'accept-encoding': 'gzip',
+        'authorization': `Bearer ${authToken}`,
+        'connect-protocol-version': '1',
+        'content-type': 'application/proto',
+        'user-agent': 'connect-es/1.6.1',
+        'x-client-key': clientKey,
+        'x-cursor-checksum': checksum,
+        'x-cursor-client-version': cursorClientVersion,
+        'x-cursor-config-version': uuidv4(),
+        'x-cursor-timezone': 'Asia/Shanghai',
+        'x-ghost-mode': 'true',
+        'x-new-onboarding-completed': 'false',
+        'x-session-id': sessionid,
+        'Host': 'api2.cursor.sh',
+      },
+      body: '',
+      timeout: {
+        connect: 5000,
+        read: 30000
+      }
+    });
+    logger.info(`GetHardLimit 接口调用状态码: ${hardLimitResponse.status}`);
+
+    // 然后继续请求 AvailableModels 接口
+    await fetch("https://api2.cursor.sh/aiserver.v1.AiService/AvailableModels", {
       method: 'POST',
       headers: {
         'accept-encoding': 'gzip',
