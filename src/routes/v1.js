@@ -511,7 +511,7 @@ async function testModel() {
     // 分析响应
     const cleanResponse = fullResponse.trim();
     const isDowngraded = cleanResponse.includes('I apologize');
-    const isNormal = cleanResponse.includes('I'm sorry') || 
+    const isNormal = cleanResponse.includes('I’m sorry') || 
                     cleanResponse.includes("I'm sorry") ||
                     cleanResponse.includes('对不起');
     
