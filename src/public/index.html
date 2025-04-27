@@ -95,7 +95,6 @@
                         <div>加载中...</div>
                     </div>
                 </div>
-                <button id="clearAllInvalidCookies" style="background: #e74c3c;">清除所有无效Cookie</button>
             </div>
         </div>
 
@@ -190,6 +189,32 @@
                         </div>
                     </div>
                     <textarea id="editCookieValues" name="editCookieValues" style="display: none;"></textarea>
+                </div>
+                <button type="submit">保存修改</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- 无效Cookie编辑模态框 -->
+    <div id="invalidCookieModal" class="modal">
+        <div class="modal-content">
+            <span class="close" id="closeInvalidCookieModal">&times;</span>
+            <h2>管理无效Cookie</h2>
+            <div id="invalidCookieModalMessage"></div>
+            <form id="invalidCookieForm">
+                <div class="form-group">
+                    <label for="invalidCookiesValues">无效Cookie列表</label>
+                    <div class="cookies-container" id="invalidCookieTagsContainer">
+                        <!-- Cookie标签将在这里动态显示 -->
+                    </div>
+                    <div class="form-group">
+                        <label for="newInvalidCookie">添加Cookie</label>
+                        <div class="form-input-group" style="display: flex; gap: 10px;">
+                            <input type="text" id="newInvalidCookie" placeholder="输入Cookie值">
+                            <button type="button" id="addInvalidCookieBtn" class="add-cookie-btn">添加</button>
+                        </div>
+                    </div>
+                    <textarea id="invalidCookiesValues" name="invalidCookiesValues" style="display: none;"></textarea>
                 </div>
                 <button type="submit">保存修改</button>
             </form>

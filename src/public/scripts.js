@@ -40,6 +40,7 @@ function bindEventListeners() {
     // 表单提交
     document.getElementById('addKeyForm').addEventListener('submit', handleAddKeyForm);
     document.getElementById('editCookieForm').addEventListener('submit', handleEditCookieForm);
+    document.getElementById('invalidCookieForm').addEventListener('submit', handleInvalidCookieForm);
     
     // 按钮点击
     // 注意：testApiBtn可能在页面上出现两次，需要检查元素是否存在
@@ -56,7 +57,8 @@ function bindEventListeners() {
     // 其他按钮
     if(document.getElementById('addNewCookieBtn')) document.getElementById('addNewCookieBtn').addEventListener('click', handleAddNewCookie);
     if(document.getElementById('addCookieBtn')) document.getElementById('addCookieBtn').addEventListener('click', handleAddCookie);
-    if(document.getElementById('clearAllInvalidCookies')) document.getElementById('clearAllInvalidCookies').addEventListener('click', handleClearAllInvalidCookies);
+    if(document.getElementById('addInvalidCookieBtn')) document.getElementById('addInvalidCookieBtn').addEventListener('click', handleAddInvalidCookie);
+    if(document.getElementById('closeInvalidCookieModal')) document.getElementById('closeInvalidCookieModal').addEventListener('click', closeInvalidCookieModal);
     
     // 修复刷新Cookie和生成链接按钮的事件绑定
     const refreshCookieBtn = document.getElementById('refreshCookieBtn');
@@ -671,52 +673,26 @@ async function renderInvalidCookies() {
             return;
         }
         
-        let html = '<div class="table-responsive"><table><thead><tr><th>无效Cookie</th><th>操作</th></tr></thead><tbody>';
+        let html = '<div class="table-responsive"><table><thead><tr><th>无效Cookie</th><th>数量</th><th>操作</th></tr></thead><tbody>';
         
-        invalidCookies.forEach(cookie => {
-            // 截断显示cookie，避免页面过长
-            const displayCookie = cookie.length > 50 ? cookie.substring(0, 50) + '...' : cookie;
-            
-            html += `
-                <tr>
-                    <td class="cookie-text" data-title="无效Cookie" title="${cookie}">${displayCookie}</td>
-                    <td data-title="操作">
-                        <button class="action-btn copy-invalid-cookie" data-cookie="${cookie}">
-                            复制
-                        </button>
-                        <button class="action-btn clear-invalid-cookie" data-cookie="${cookie}">
-                            清除
-                        </button>
-                    </td>
-                </tr>
-            `;
-        });
+        // 展示为一行，类似于API Key列表
+        html += `
+            <tr>
+                <td data-title="无效Cookie">无效Cookie</td>
+                <td data-title="数量">${invalidCookies.length}</td>
+                <td data-title="操作">
+                    <button class="edit-btn" id="editInvalidCookiesBtn">修改</button>
+                    <button class="action-btn" id="clearAllInvalidCookiesInTable">删除</button>
+                </td>
+            </tr>
+        `;
         
         html += '</tbody></table></div>';
         container.innerHTML = html;
         
-        // 添加清除按钮事件监听
-        document.querySelectorAll('.clear-invalid-cookie').forEach(button => {
-            button.addEventListener('click', async function() {
-                const cookie = this.getAttribute('data-cookie');
-                
-                try {
-                    await clearInvalidCookie(cookie);
-                    showMessage('invalidCookiesContainer', '无效Cookie已清除', 'info');
-                    renderInvalidCookies(); // 重新渲染列表
-                } catch (error) {
-                    showMessage('invalidCookiesContainer', `清除失败: ${error.message}`, 'error');
-                }
-            });
-        });
-        
-        // 添加复制按钮事件监听
-        document.querySelectorAll('.copy-invalid-cookie').forEach(button => {
-            button.addEventListener('click', async function() {
-                const cookie = this.getAttribute('data-cookie');
-                handleCopyCookie(cookie);
-            });
-        });
+        // 添加按钮事件监听
+        document.getElementById('editInvalidCookiesBtn').addEventListener('click', openInvalidCookieModal);
+        document.getElementById('clearAllInvalidCookiesInTable').addEventListener('click', handleClearAllInvalidCookies);
         
     } catch (error) {
         container.innerHTML = `<div class="error">加载失败: ${error.message}</div>`;
@@ -1150,4 +1126,194 @@ function addAuthHeader(headers = {}) {
         }
         return originalFetch(url, options);
     };
-})(); 
+})();
+
+// 无效Cookie模态窗口相关函数
+// 打开无效Cookie模态窗口
+async function openInvalidCookieModal() {
+    try {
+        document.getElementById('invalidCookieModalMessage').innerHTML = '';
+        
+        // 获取当前无效Cookie列表
+        const invalidCookies = await getInvalidCookies();
+        
+        // 更新隐藏的textarea
+        document.getElementById('invalidCookiesValues').value = invalidCookies.join(',');
+        
+        // 渲染Cookie标签
+        renderInvalidCookieTags(invalidCookies);
+        
+        // 清空新Cookie输入框
+        document.getElementById('newInvalidCookie').value = '';
+        
+        // 显示模态框
+        document.getElementById('invalidCookieModal').style.display = 'block';
+    } catch (error) {
+        alert(`获取无效Cookie失败: ${error.message}`);
+    }
+}
+
+// 关闭无效Cookie模态窗口
+function closeInvalidCookieModal() {
+    document.getElementById('invalidCookieModal').style.display = 'none';
+}
+
+// 渲染无效Cookie标签
+function renderInvalidCookieTags(cookies) {
+    const container = document.getElementById('invalidCookieTagsContainer');
+    container.innerHTML = '';
+    
+    if (cookies.length === 0) {
+        container.innerHTML = '<div style="padding: 10px; color: #666;">暂无无效Cookie</div>';
+        return;
+    }
+    
+    cookies.forEach((cookie, index) => {
+        // 创建标签
+        const tag = document.createElement('span');
+        tag.className = 'cookie-tag';
+        
+        // 对短文本添加特殊类
+        if (cookie.length < 5) {
+            tag.classList.add('short-cookie');
+        }
+        
+        // 截断Cookie显示
+        const displayText = cookie.length > 20 ? 
+            cookie.substring(0, 8) + '...' + cookie.substring(cookie.length - 8) : 
+            cookie;
+        
+        tag.title = cookie; // 完整Cookie作为工具提示
+        
+        // 修改样式，使用与API Key相同的删除按钮样式
+        tag.innerHTML = `
+            <span class="cookie-text-content">${displayText}</span>
+            <div class="cookie-buttons">
+                <button type="button" class="copy-btn" data-cookie="${cookie}" aria-label="复制">C</button>
+                <button type="button" class="delete-cookie" data-index="${index}" aria-label="删除">×</button>
+            </div>
+        `;
+        container.appendChild(tag);
+    });
+    
+    // 添加删除按钮的事件监听
+    document.querySelectorAll('#invalidCookieTagsContainer .delete-cookie').forEach(btn => {
+        btn.addEventListener('click', function() {
+            const index = parseInt(this.getAttribute('data-index'));
+            deleteInvalidCookieTag(index);
+        });
+    });
+    
+    // 添加复制按钮的事件监听
+    document.querySelectorAll('#invalidCookieTagsContainer .copy-btn').forEach(btn => {
+        btn.addEventListener('click', function() {
+            const cookie = this.getAttribute('data-cookie');
+            handleCopyCookie(cookie);
+        });
+    });
+}
+
+// 删除无效Cookie标签
+function deleteInvalidCookieTag(index) {
+    // 从隐藏的textarea中获取当前的cookies
+    const cookieValuesElem = document.getElementById('invalidCookiesValues');
+    let cookies = cookieValuesElem.value.split(',').map(c => c.trim()).filter(c => c);
+    
+    // 删除指定索引的cookie
+    cookies.splice(index, 1);
+    
+    // 更新隐藏的textarea
+    cookieValuesElem.value = cookies.join(',');
+    
+    // 重新渲染标签
+    renderInvalidCookieTags(cookies);
+}
+
+// 处理添加新无效Cookie
+function handleAddInvalidCookie() {
+    const newCookieInput = document.getElementById('newInvalidCookie');
+    const newCookie = newCookieInput.value.trim();
+    
+    if (!newCookie) {
+        return;
+    }
+    
+    // 获取当前的cookies
+    const cookieValuesElem = document.getElementById('invalidCookiesValues');
+    let cookies = cookieValuesElem.value ? 
+        cookieValuesElem.value.split(',').map(c => c.trim()).filter(c => c) : 
+        [];
+    
+    // 添加新cookie
+    cookies.push(newCookie);
+    
+    // 更新隐藏的textarea
+    cookieValuesElem.value = cookies.join(',');
+    
+    // 重新渲染标签
+    renderInvalidCookieTags(cookies);
+    
+    // 清空输入框
+    newCookieInput.value = '';
+}
+
+// 处理无效Cookie编辑表单提交
+async function handleInvalidCookieForm(e) {
+    e.preventDefault();
+    
+    const cookieValuesText = document.getElementById('invalidCookiesValues').value.trim();
+    
+    // 将逗号分隔的 Cookie 值转换为数组
+    const invalidCookies = cookieValuesText ? 
+        cookieValuesText.split(',').map(cookie => cookie.trim()).filter(cookie => cookie) : 
+        [];
+    
+    try {
+        // 先清除所有无效Cookie
+        await clearAllInvalidCookies();
+        
+        // 如果有新的无效Cookie，逐个添加
+        if (invalidCookies.length > 0) {
+            // 假设API提供了批量添加无效Cookie的接口
+            const response = await fetch('/v1/invalid-cookies', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    invalidCookies,
+                }),
+            });
+            
+            const data = await response.json();
+            
+            if (data.success) {
+                document.getElementById('invalidCookieModalMessage').innerHTML = `
+                    <div class="info">无效Cookie修改成功</div>
+                `;
+                setTimeout(() => {
+                    closeInvalidCookieModal();
+                    renderInvalidCookies(); // 重新渲染列表
+                }, 1500);
+            } else {
+                document.getElementById('invalidCookieModalMessage').innerHTML = `
+                    <div class="error">无效Cookie修改失败: ${data.error}</div>
+                `;
+            }
+        } else {
+            // 如果清空了所有无效Cookie
+            document.getElementById('invalidCookieModalMessage').innerHTML = `
+                <div class="info">已清空所有无效Cookie</div>
+            `;
+            setTimeout(() => {
+                closeInvalidCookieModal();
+                renderInvalidCookies(); // 重新渲染列表
+            }, 1500);
+        }
+    } catch (error) {
+        console.error('修改无效Cookie失败:', error);
+        document.getElementById('invalidCookieModalMessage').innerHTML = `
+            <div class="error">修改无效Cookie失败: ${error.message}</div>
+        `;
+    }
+} 

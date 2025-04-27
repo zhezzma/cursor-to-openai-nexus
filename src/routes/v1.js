@@ -269,6 +269,45 @@ router.delete("/invalid-cookies", async (req, res) => {
   }
 });
 
+// 批量添加无效cookie
+router.post("/invalid-cookies", async (req, res) => {
+  try {
+    const { invalidCookies } = req.body;
+    
+    if (!Array.isArray(invalidCookies)) {
+      return res.status(400).json({
+        success: false,
+        error: 'Invalid request',
+        message: 'invalidCookies必须是一个数组'
+      });
+    }
+    
+    // 获取当前无效cookie集合
+    const currentInvalidCookies = keyManager.getInvalidCookies();
+    
+    // 添加新的无效cookie
+    for (const cookie of invalidCookies) {
+      if (typeof cookie === 'string' && cookie.trim()) {
+        currentInvalidCookies.add(cookie.trim());
+      }
+    }
+    
+    // 保存到文件
+    keyManager.saveInvalidCookiesToFile();
+    
+    return res.json({
+      success: true,
+      message: `已添加${invalidCookies.length}个无效cookie`
+    });
+  } catch (error) {
+    logger.error('添加无效cookie失败:', error);
+    return res.status(500).json({
+      error: 'Internal server error',
+      message: error.message
+    });
+  }
+});
+
 router.get("/models", async (req, res) => {
   try{
     let bearerToken = req.headers.authorization?.replace('Bearer ', '');
@@ -379,15 +418,28 @@ async function testModel() {
     // 获取随机的API Key和Cookie
     const apiKeys = keyManager.getAllApiKeys();
     if (!apiKeys || apiKeys.length === 0) {
-      throw new Error('没有可用的API Key');
+      logger.warn("未设置apikey，请在管理页面设置，pass");
+      return {
+        isDowngraded: false,
+        response: '未设置apikey，请在管理页面设置，pass',
+        timestamp: new Date()
+      }
     }
-    
-    const apiKey = apiKeys[Math.floor(Math.random() * apiKeys.length)];
-    let authToken = keyManager.getCookieForApiKey(apiKey);
-    
-    if (!authToken) {
-      throw new Error(`API Key ${apiKey} 没有可用的Cookie`);
+    let notNullApiKey = [];
+    for(const apiKey of apiKeys){
+      if(apiKey !== keyManager.getCookieForApiKey(apiKey)){
+        notNullApiKey.push(apiKey);
+      }
     }
+    if (notNullApiKey.length === 0) {
+      logger.warn("未检测到cookie，pass")
+      return {
+        isDowngraded: false,
+        response: '未检测到cookie，pass',
+        timestamp: new Date()
+      }
+    }
+    let authToken = keyManager.getCookieForApiKey(notNullApiKey[Math.floor(Math.random() * notNullApiKey.length)]);
     
     if (authToken && authToken.includes('%3A%3A')) {
       authToken = authToken.split('%3A%3A')[1];
