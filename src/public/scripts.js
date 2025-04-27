@@ -681,6 +681,9 @@ async function renderInvalidCookies() {
                 <tr>
                     <td class="cookie-text" data-title="无效Cookie" title="${cookie}">${displayCookie}</td>
                     <td data-title="操作">
+                        <button class="action-btn copy-invalid-cookie" data-cookie="${cookie}">
+                            复制
+                        </button>
                         <button class="action-btn clear-invalid-cookie" data-cookie="${cookie}">
                             清除
                         </button>
@@ -704,6 +707,14 @@ async function renderInvalidCookies() {
                 } catch (error) {
                     showMessage('invalidCookiesContainer', `清除失败: ${error.message}`, 'error');
                 }
+            });
+        });
+        
+        // 添加复制按钮事件监听
+        document.querySelectorAll('.copy-invalid-cookie').forEach(button => {
+            button.addEventListener('click', async function() {
+                const cookie = this.getAttribute('data-cookie');
+                handleCopyCookie(cookie);
             });
         });
         
