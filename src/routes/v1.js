@@ -511,7 +511,7 @@ async function testModel() {
     // 分析响应
     const cleanResponse = fullResponse.trim();
     const isDowngraded = cleanResponse.includes('I apologize');
-    const isNormal = cleanResponse.includes('I’m sorry') || 
+    const isNormal = cleanResponse.includes('I'm sorry') || 
                     cleanResponse.includes("I'm sorry") ||
                     cleanResponse.includes('对不起');
     
@@ -547,18 +547,34 @@ async function testModel() {
   }
 }
 
-// 初始化：每30分钟自动检测一次
+// 初始化：每28-32分钟随机时间自动检测一次
 if (testInterval) {
   clearInterval(testInterval);
 }
-testInterval = setInterval(async () => {
-  try {
-    await testModel();
-    logger.info(`定时测试完成，模型状态: ${isModelDowngraded ? '降级' : '正常'}`);
-  } catch (error) {
-    logger.error('定时测试失败:', error);
-  }
-}, 30 * 60 * 1000); // 30分钟
+
+// 设置随机定时器函数
+function setRandomTestInterval() {
+  // 生成28-32分钟的随机毫秒数（28-32分钟 * 60秒 * 1000毫秒）
+  const randomMinutes = 28 + Math.floor(Math.random() * 5);
+  const intervalTime = randomMinutes * 60 * 1000;
+  
+  logger.info(`设置下次模型测试时间为${randomMinutes}分钟后`);
+  
+  return setTimeout(async () => {
+    try {
+      await testModel();
+      logger.info(`定时测试完成，模型状态: ${isModelDowngraded ? '降级' : '正常'}`);
+    } catch (error) {
+      logger.error('定时测试失败:', error);
+    } finally {
+      // 测试完成后重新设置随机定时器
+      testInterval = setRandomTestInterval();
+    }
+  }, intervalTime);
+}
+
+// 初始设置随机定时器
+testInterval = setRandomTestInterval();
 
 // 服务启动时执行一次测试
 setTimeout(() => {
