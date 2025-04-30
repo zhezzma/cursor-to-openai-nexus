@@ -452,71 +452,80 @@ router.post('/chat/completions', async (req, res) => {
     const dispatcher = config.proxy && config.proxy.enabled
       ? new ProxyAgent(config.proxy.url, { allowH2: true })
       : new Agent({ allowH2: true });
+
+    // 根据.env配置决定是否使用TLS代理
+    const useTlsProxy = process.env.USE_TLS_PROXY === 'true';
     
-    // // 更新接口地址为 StreamUnifiedChatWithTools
-    // const response = await fetch('http://localhost:8080/proxy','https://api2.cursor.sh/aiserver.v1.ChatService/StreamUnifiedChatWithTools', {
-    //   method: 'POST',
-    //   headers: {
-    //     'authorization': `Bearer ${authToken}`,
-    //     'connect-accept-encoding': 'gzip',
-    //     'connect-content-encoding': 'gzip',
-    //     'connect-protocol-version': '1',
-    //     'content-type': 'application/connect+proto',
-    //     'user-agent': 'connect-es/1.6.1',
-    //     'x-amzn-trace-id': `Root=${uuidv4()}`,
-    //     'x-client-key': clientKey,
-    //     'x-cursor-checksum': checksum,
-    //     'x-cursor-client-version': cursorClientVersion,
-    //     'x-cursor-config-version': uuidv4(),
-    //     'x-cursor-timezone': 'Asia/Shanghai',
-    //     'x-ghost-mode': 'true',
-    //     'x-request-id': uuidv4(),
-    //     'x-session-id': sessionid,
-    //     'Host': 'api2.cursor.sh',
-    //   },
-    //   body: cursorBody,
-    //   dispatcher: dispatcher,
-    //   timeout: {
-    //     connect: 5000,
-    //     read: 30000
-    //   }
-    // });
-    // 更新为使用JA3指纹伪造代理服务器
-const response = await fetch('http://localhost:8080/proxy', {
-  method: 'POST',
-  headers: {
-    'Content-Type': 'application/json',
-  },
-  body: JSON.stringify({
-    url: 'https://api2.cursor.sh/aiserver.v1.ChatService/StreamUnifiedChatWithTools',
-    method: 'POST',
-    headers: {
-      'authorization': `Bearer ${authToken}`,
-      'connect-accept-encoding': 'gzip',
-      'connect-content-encoding': 'gzip',
-      'connect-protocol-version': '1',
-      'content-type': 'application/connect+proto',
-      'user-agent': 'connect-es/1.6.1',
-      'x-amzn-trace-id': `Root=${uuidv4()}`,
-      'x-client-key': clientKey,
-      'x-cursor-checksum': checksum,
-      'x-cursor-client-version': cursorClientVersion,
-      'x-cursor-config-version': uuidv4(),
-      'x-cursor-timezone': 'Asia/Shanghai',
-      'x-ghost-mode': 'true',
-      'x-request-id': uuidv4(),
-      'x-session-id': sessionid,
-      'Host': 'api2.cursor.sh',
-    },
-    body: cursorBody,
-    stream: true // 启用流式响应，确保实时获取AI回复
-  }),
-  // 如果你的框架支持，保持原请求的超时配置
-  timeout: {
-    connect: 5000,
-    read: 30000
-  }
-});
+    let response;
+    
+    if (useTlsProxy) {
+      // 使用JA3指纹伪造代理服务器
+      logger.info(`使用TLS代理服务器`);
+      response = await fetch('http://localhost:8080/proxy', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          url: 'https://api2.cursor.sh/aiserver.v1.ChatService/StreamUnifiedChatWithTools',
+          method: 'POST',
+          headers: {
+            'authorization': `Bearer ${authToken}`,
+            'connect-accept-encoding': 'gzip',
+            'connect-content-encoding': 'gzip',
+            'connect-protocol-version': '1',
+            'content-type': 'application/connect+proto',
+            'user-agent': 'connect-es/1.6.1',
+            'x-amzn-trace-id': `Root=${uuidv4()}`,
+            'x-client-key': clientKey,
+            'x-cursor-checksum': checksum,
+            'x-cursor-client-version': cursorClientVersion,
+            'x-cursor-config-version': uuidv4(),
+            'x-cursor-timezone': 'Asia/Shanghai',
+            'x-ghost-mode': 'true',
+            'x-request-id': uuidv4(),
+            'x-session-id': sessionid,
+            'Host': 'api2.cursor.sh',
+          },
+          body: cursorBody,
+          stream: true // 启用流式响应
+        }),
+        timeout: {
+          connect: 5000,
+          read: 30000
+        }
+      });
+    } else {
+      // 直接调用API，不使用TLS代理
+      logger.info('不使用TLS代理服务器，直接请求API');
+      response = await fetch('https://api2.cursor.sh/aiserver.v1.ChatService/StreamUnifiedChatWithTools', {
+        method: 'POST',
+        headers: {
+          'authorization': `Bearer ${authToken}`,
+          'connect-accept-encoding': 'gzip',
+          'connect-content-encoding': 'gzip',
+          'connect-protocol-version': '1',
+          'content-type': 'application/connect+proto',
+          'user-agent': 'connect-es/1.6.1',
+          'x-amzn-trace-id': `Root=${uuidv4()}`,
+          'x-client-key': clientKey,
+          'x-cursor-checksum': checksum,
+          'x-cursor-client-version': cursorClientVersion,
+          'x-cursor-config-version': uuidv4(),
+          'x-cursor-timezone': 'Asia/Shanghai',
+          'x-ghost-mode': 'true',
+          'x-request-id': uuidv4(),
+          'x-session-id': sessionid,
+          'Host': 'api2.cursor.sh',
+        },
+        body: cursorBody,
+        dispatcher: dispatcher,
+        timeout: {
+          connect: 5000,
+          read: 30000
+        }
+      });
+    }
 
     // 处理响应
     if (stream) {

@@ -34,6 +34,15 @@ const routes = require('./routes');
 const keyManager = require('./utils/keyManager');
 const cookieRefresher = require('./utils/cookieRefresher');
 const authMiddleware = require('./middleware/auth');
+const proxyLauncher = require('./utils/proxyLauncher');
+
+// 初始化代理服务器
+if (process.env.USE_TLS_PROXY === 'true') {
+  logger.info('正在启动TLS代理服务器...');
+  proxyLauncher.startProxyServer();
+} else {
+  logger.info('TLS代理服务器未启用，跳过启动代理');
+}
 
 // 加载路由
 const v1Router = require('./routes/v1');
@@ -167,6 +176,27 @@ app.use((req, res) => {
 app.listen(config.port, () => {
     logger.info(`服务器已启动，监听端口: ${config.port}`);
     logger.info(`打开管理界面: http://localhost:${config.port}`);
+});
+
+// 处理进程退出事件，清理资源
+process.on('SIGINT', () => {
+  logger.info('接收到SIGINT信号，正在优雅关闭服务...');
+  // 停止代理服务器
+  if (process.env.USE_TLS_PROXY === 'true') {
+    logger.info('正在停止TLS代理服务器...');
+    proxyLauncher.stopProxyServer();
+  }
+  process.exit(0);
+});
+
+process.on('SIGTERM', () => {
+  logger.info('接收到SIGTERM信号，正在优雅关闭服务...');
+  // 停止代理服务器
+  if (process.env.USE_TLS_PROXY === 'true') {
+    logger.info('正在停止TLS代理服务器...');
+    proxyLauncher.stopProxyServer();
+  }
+  process.exit(0);
 });
 
 module.exports = app;

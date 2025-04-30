@@ -77,6 +77,18 @@ REGISTER_USE_CONFIG_FILE=false
 # 邮箱配置JSON字符串（仅在REGISTER_USE_CONFIG_FILE=false时有效）
 # 格式例如[{"email":"example@gmail.com","imap_server":"imap.gmail.com","imap_port":993,"username":"example@gmail.com","password":"your_app_password"}]
 REGISTER_EMAIL_CONFIGS={EMAIL_CONFIGS_PLACEHOLDER}
+
+# 是否使用TLS代理 (true 或 false)
+USE_TLS_PROXY=true
+
+
+# 代理服务器平台
+# 可选值: auto, windows_x64, linux_x64, android_arm64
+# auto: 自动检测平台
+# windows_x64: Windows 64位
+# linux_x64: Linux 64位
+# android_arm64: 安卓ARM 64位
+PROXY_PLATFORM=auto
 `;
 
 // 提示信息
@@ -106,7 +118,9 @@ function loadExistingConfig() {
     githubOwner: '',
     githubToken: '',
     emailConfigs: [],
-    cookieRefreshMode: 'append'
+    cookieRefreshMode: 'append',
+    useTlsProxy: true,
+    proxyPlatform: 'auto'
   };
   
   if (fs.existsSync(envPath)) {
@@ -150,6 +164,16 @@ function loadExistingConfig() {
         existingConfig.cookieRefreshMode = envConfig.COOKIE_REFRESH_MODE;
       }
       
+      // 提取TLS代理配置
+      if (envConfig.USE_TLS_PROXY !== undefined) {
+        existingConfig.useTlsProxy = envConfig.USE_TLS_PROXY === 'true';
+      }
+      
+      // 提取代理服务器平台
+      if (envConfig.PROXY_PLATFORM) {
+        existingConfig.proxyPlatform = envConfig.PROXY_PLATFORM;
+      }
+      
       console.log('成功加载现有配置');
     } catch (error) {
       console.error('加载现有配置时出错:', error.message);
@@ -183,7 +207,9 @@ async function collectConfig() {
     githubOwner: '',
     githubToken: '',
     emailConfigs: [],
-    cookieRefreshMode: 'replace'
+    cookieRefreshMode: 'replace',
+    useTlsProxy: existingConfig.useTlsProxy,
+    proxyPlatform: existingConfig.proxyPlatform
   };
 
   // 获取GitHub用户名
@@ -251,6 +277,25 @@ async function collectConfig() {
     console.log('你可以稍后在.env文件中手动配置REGISTER_EMAIL_CONFIGS\n');
   }
 
+  // 询问是否使用TLS代理
+  const useTlsProxyPrompt = `是否使用TLS代理服务器? (y/n)`;
+  const defaultUseTlsProxy = existingConfig.useTlsProxy ? 'y' : 'n';
+  const useTlsProxyAnswer = await promptWithDefault(useTlsProxyPrompt, defaultUseTlsProxy);
+  config.useTlsProxy = useTlsProxyAnswer.toLowerCase() === 'y';
+
+  if (config.useTlsProxy) {
+    // 询问代理服务器平台
+    console.log('\n代理服务器平台选项:');
+    console.log('- auto: 自动检测当前系统平台');
+    console.log('- windows_x64: Windows 64位');
+    console.log('- linux_x64: Linux 64位');
+    console.log('- android_arm64: 安卓ARM 64位');
+    
+    const proxyPlatformPrompt = `选择代理服务器平台`;
+    const defaultProxyPlatform = existingConfig.proxyPlatform || 'auto';
+    config.proxyPlatform = await promptWithDefault(proxyPlatformPrompt, defaultProxyPlatform);
+  }
+
   return config;
 }
 
@@ -299,7 +344,13 @@ function generateEnvFile(config) {
       .replace('{EMAIL_CONFIGS_PLACEHOLDER}', emailConfigsJson);
       
     // 更新Cookie刷新模式
-    envContent = envContent.replace('COOKIE_REFRESH_MODE=append', `COOKIE_REFRESH_MODE=${config.cookieRefreshMode}`);
+    envContent = envContent.replace('COOKIE_REFRESH_MODE=replace', `COOKIE_REFRESH_MODE=${config.cookieRefreshMode}`);
+    
+    // 更新TLS代理配置
+    envContent = envContent.replace('USE_TLS_PROXY=true', `USE_TLS_PROXY=${config.useTlsProxy}`);
+    
+    // 更新代理服务器平台
+    envContent = envContent.replace('PROXY_PLATFORM=auto', `PROXY_PLATFORM=${config.proxyPlatform}`);
     
     // 写入.env文件
     const envPath = path.join(process.cwd(), '.env');
@@ -349,6 +400,14 @@ async function main() {
         console.log('刷新时会保留现有cookie，仅追加新cookie');
       }
       console.log('你可以在.env文件中修改COOKIE_REFRESH_MODE设置');
+      
+      // 显示TLS代理配置信息
+      console.log(`\n当前TLS代理配置:`);
+      console.log(`- 是否启用TLS代理: ${config.useTlsProxy ? '是' : '否'}`);
+      if (config.useTlsProxy) {
+        console.log(`- 代理服务器平台: ${config.proxyPlatform}`);
+      }
+      console.log('你可以在.env文件中修改USE_TLS_PROXY和PROXY_PLATFORM设置');
     }
   } catch (error) {
     console.error('\n❌ 配置过程中出错:', error.message);
