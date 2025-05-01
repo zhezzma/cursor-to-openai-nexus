@@ -1,5 +1,7 @@
 # Cursor-To-OpenAI-Nexus
 
+[English](README.en.md) | 中文
+
 将Cursor的API请求转发到OpenAI，支持多个API Key轮询。
 
 ## 项目特点
