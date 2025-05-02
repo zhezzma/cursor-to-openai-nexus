@@ -51,11 +51,6 @@ npm start
 - Search for "cloudfare domain email" for configuration tutorials
 - ⚠️ Register no more than 2 accounts at a time to avoid being blocked
 
-## 📚 Common Issues and Updates
-- ❓ Common questions: https://discord.com/channels/1134557553011998840/1350685789151035473/1352482226683641938
-- 📜 Old tutorial: https://discord.com/channels/1134557553011998840/1350685789151035473/1350685789151035473
-- 🆕 Latest updates: https://discord.com/channels/1134557553011998840/1350685789151035473/1367025087500255395
-
 ## 🛠️ Common Commands
 ```
 npm start           # Start project
