@@ -538,6 +538,11 @@ router.post('/chat/completions', async (req, res) => {
       let isThinking_status = 0; //0为没有思考，1为处于思考状态
       try {
         let responseEnded = false; // 添加标志，标记响应是否已结束
+        let hasWrittenThinkingStart = false; // 标记是否已发送thinking开始标签
+        let hasWrittenThinkingEnd = false; // 标记是否已发送thinking结束标签
+        let hasWrittenContent = false; // 标记是否已发送content
+        let accumulatedThinking = ''; // 累积thinking内容
+        let accumulatedContent = ''; // 累积content内容
         
         for await (const chunk of response.body) {
           // 如果响应已结束，不再处理后续数据
@@ -546,9 +551,6 @@ router.post('/chat/completions', async (req, res) => {
           }
           
           let result = chunkToUtf8String(chunk);
-          // 输出完整的text内容和类型，便于调试
-          //console.log("收到的响应:", typeof text, text && typeof text === 'object' ? JSON.stringify(text) : text);
-
           
           // 检查是否返回了错误对象
           if (result && typeof result === 'object' && result.error) {
@@ -591,19 +593,34 @@ router.post('/chat/completions', async (req, res) => {
             responseEnded = true; // 标记响应已结束
             break; // 跳出循环，不再处理后续数据
           }
-          let text = result.content;
-          if (result.isThink && isThinking_status == 0)
-          {
-            isThinking_status = 1; //存在思考内容，并且状态为开始思考
-            text = "<think>"+"\n"+text;
-          }
-          else if (!result.isThink && isThinking_status == 1)
-          {
-            isThinking_status = 0; //初始化状态
-            console.log("text:" + text);
-            text = text+"\n"+"</think>"+"\n";
-          }
-          if (text && text.length > 0) {
+
+          // 处理thinking内容
+          if (result.isThink && result.thinkingContent && result.thinkingContent.length > 0) {
+            // 累积thinking内容
+            accumulatedThinking += result.thinkingContent;
+            
+            // 如果没有发送thinking开始标记，则发送
+            if (!hasWrittenThinkingStart) {
+              res.write(
+                `data: ${JSON.stringify({
+                  id: responseId,
+                  object: 'chat.completion.chunk',
+                  created: Math.floor(Date.now() / 1000),
+                  model: req.body.model,
+                  choices: [
+                    {
+                      index: 0,
+                      delta: {
+                        content: "<think>\n",
+                      },
+                    },
+                  ],
+                })}\n\n`
+              );
+              hasWrittenThinkingStart = true;
+            }
+            
+            // 发送accumulated thinking内容片段
             res.write(
               `data: ${JSON.stringify({
                 id: responseId,
@@ -614,17 +631,83 @@ router.post('/chat/completions', async (req, res) => {
                   {
                     index: 0,
                     delta: {
-                      content: text,
+                      content: result.thinkingContent,
                     },
                   },
                 ],
               })}\n\n`
             );
           }
+
+          // 处理常规内容
+          if (result.content && result.content.length > 0) {
+            // 累积content内容
+            accumulatedContent += result.content;
+            
+            // 如果已经有thinking内容，且尚未发送thinking结束标记，则发送
+            if (hasWrittenThinkingStart && !hasWrittenThinkingEnd) {
+              res.write(
+                `data: ${JSON.stringify({
+                  id: responseId,
+                  object: 'chat.completion.chunk',
+                  created: Math.floor(Date.now() / 1000),
+                  model: req.body.model,
+                  choices: [
+                    {
+                      index: 0,
+                      delta: {
+                        content: "\n</think>\n",
+                      },
+                    },
+                  ],
+                })}\n\n`
+              );
+              hasWrittenThinkingEnd = true;
+            }
+
+            // 发送content内容
+            res.write(
+              `data: ${JSON.stringify({
+                id: responseId,
+                object: 'chat.completion.chunk',
+                created: Math.floor(Date.now() / 1000),
+                model: req.body.model,
+                choices: [
+                  {
+                    index: 0,
+                    delta: {
+                      content: result.content,
+                    },
+                  },
+                ],
+              })}\n\n`
+            );
+            hasWrittenContent = true;
+          }
         }
         
-        // 只有在响应尚未结束的情况下，才发送结束标记
+        // 处理结束逻辑：确保thinking标签被正确关闭
         if (!responseEnded) {
+          // 如果有thinking内容但没有发送结束标记，则发送
+          if (hasWrittenThinkingStart && !hasWrittenThinkingEnd) {
+            res.write(
+              `data: ${JSON.stringify({
+                id: responseId,
+                object: 'chat.completion.chunk',
+                created: Math.floor(Date.now() / 1000),
+                model: req.body.model,
+                choices: [
+                  {
+                    index: 0,
+                    delta: {
+                      content: "\n</think>\n",
+                    },
+                  },
+                ],
+              })}\n\n`
+            );
+          }
+          
           res.write('data: [DONE]\n\n');
           res.end();
         }
@@ -678,6 +761,8 @@ router.post('/chat/completions', async (req, res) => {
     } else {
       try {
         let text = '';
+        let thinkingText = '';
+        let hasThinking = false;
         let responseEnded = false; // 添加标志，标记响应是否已结束
         
         for await (const chunk of response.body) {
@@ -687,12 +772,12 @@ router.post('/chat/completions', async (req, res) => {
           }
           
           const result = chunkToUtf8String(chunk);
-          // 输出完整的chunkText内容和类型，便于调试
-          //console.log("收到的非流式响应:", typeof chunkText, chunkText && typeof chunkText === 'object' ? JSON.stringify(chunkText) : chunkText);
+          // 输出完整的result内容和类型，便于调试
+          //console.log("收到的非流式响应:", typeof result, result && typeof result === 'object' ? JSON.stringify(result) : result);
           
           // 检查是否返回了错误对象
           if (result && typeof result === 'object' && result.error) {
-            //console.error('检测到错误响应:', chunkText.error);
+            //console.error('检测到错误响应:', result.error);
             
             // 检查是否包含特定的无效cookie错误信息
             const errorStr = typeof result.error === 'string' ? result.error : JSON.stringify(result.error);
@@ -738,10 +823,15 @@ router.post('/chat/completions', async (req, res) => {
             break; // 跳出循环，不再处理后续数据
           }
           
-          // 正常文本，添加到结果中
-          let chunkText = result.content;
-          if (chunkText && typeof chunkText === 'string') {
-            text += chunkText;
+          // 处理thinking内容
+          if (result.thinkingContent && result.thinkingContent.length > 0) {
+            thinkingText += result.thinkingContent;
+            hasThinking = true;
+          }
+          
+          // 处理正常文本内容
+          if (result.content && typeof result.content === 'string') {
+            text += result.content;
           }
         }
         
@@ -750,7 +840,12 @@ router.post('/chat/completions', async (req, res) => {
           // 对解析后的字符串进行进一步处理
           text = text.replace(/^.*<\|END_USER\|>/s, '');
           text = text.replace(/^\n[a-zA-Z]?/, '').trim();
-          // console.log(text)
+          
+          // 如果存在thinking内容，添加标签
+          let finalContent = text;
+          if (hasThinking && thinkingText.length > 0) {
+            finalContent = `<think>\n${thinkingText}\n</think>\n${text}`;
+          }
 
           res.json({
             id: `chatcmpl-${uuidv4()}`,
@@ -762,7 +857,7 @@ router.post('/chat/completions', async (req, res) => {
                 index: 0,
                 message: {
                   role: 'assistant',
-                  content: text,
+                  content: finalContent,
                 },
                 finish_reason: 'stop',
               },
