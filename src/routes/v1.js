@@ -326,7 +326,7 @@ router.get("/models", async (req, res) => {
       ?? process.env['x-cursor-checksum'] 
       ?? generateCursorChecksum(authToken.trim());
     //const cursorClientVersion = "0.45.11"
-    const cursorClientVersion = "0.48.7";
+    const cursorClientVersion = "0.49.4";
 
     const availableModelsResponse = await fetch("https://api2.cursor.sh/aiserver.v1.AiService/AvailableModels", {
       method: 'POST',
@@ -339,7 +339,7 @@ router.get("/models", async (req, res) => {
         'x-cursor-checksum': checksum,
         'x-cursor-client-version': cursorClientVersion,
         'x-cursor-config-version': uuidv4(),
-        'x-cursor-timezone': 'Asia/Shanghai',
+        'x-cursor-timezone': 'Asia/Tokyo',
         'x-ghost-mode': 'true',
         'Host': 'api2.cursor.sh',
       },
@@ -425,27 +425,6 @@ router.post('/chat/completions', async (req, res) => {
     const clientKey = generateHashed64Hex(authToken);
     const cursorClientVersion = "0.49.4";
 
-    // 然后继续请求 AvailableModels 接口
-    await fetch("https://api2.cursor.sh/aiserver.v1.AiService/AvailableModels", {
-      method: 'POST',
-      headers: {
-        'accept-encoding': 'gzip',
-        'authorization': `Bearer ${authToken}`,
-        'connect-protocol-version': '1',
-        'content-type': 'application/proto',
-        'user-agent': 'connect-es/1.6.1',
-        'x-amzn-trace-id': `Root=${uuidv4()}`,
-        'x-client-key': clientKey,
-        'x-cursor-checksum': checksum,
-        'x-cursor-client-version': cursorClientVersion,
-        'x-cursor-timezone': 'Asia/Shanghai',
-        'x-ghost-mode': 'true',
-        "x-request-id": uuidv4(),
-        "x-session-id": sessionid,
-        'Host': 'api2.cursor.sh',
-      },
-    })
-
     const cursorBody = generateCursorBody(messages, model);
     
     // 添加代理支持
@@ -481,7 +460,7 @@ router.post('/chat/completions', async (req, res) => {
             'x-cursor-checksum': checksum,
             'x-cursor-client-version': cursorClientVersion,
             'x-cursor-config-version': uuidv4(),
-            'x-cursor-timezone': 'Asia/Shanghai',
+            'x-cursor-timezone': 'Asia/Tokyo',
             'x-ghost-mode': 'true',
             'x-request-id': uuidv4(),
             'x-session-id': sessionid,
@@ -1132,7 +1111,7 @@ router.post('/generate-cookie-link', async (req, res) => {
     const challenge = crypto.createHash('sha256').update(verifier).digest('base64url');
 
     // 生成登录链接
-    const loginUrl = `https://www.cursor.com/cn/loginDeepControl?challenge=${challenge}&uuid=${uuid}&mode=login`;
+    const loginUrl = `https://www.cursor.com/ja/loginDeepControl?challenge=${challenge}&uuid=${uuid}&mode=login`;
     
     // 记录请求信息
     pendingCookieRequests.set(uuid, {
