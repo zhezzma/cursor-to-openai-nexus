@@ -53,13 +53,27 @@ function generateCursorBody(messages, modelName) {
       unknown19: 1,
       //unknown22: 1,
       conversationId: uuidv4(),
-      metadata: {
-        os: "win32",
-        arch: "x64",
-        version: "10.0.22631",
-        path: "C:\\Program Files\\PowerShell\\7\\pwsh.exe",
-        timestamp: new Date().toISOString(),
-      },
+      metadata: (() => {
+        const osIndex = Math.floor(Math.random() * 3);
+        const os = ["win32", "darwin", "linux"][osIndex];
+        // 为每种操作系统选择合适的路径
+        let path;
+        if (os === "win32") {
+          path = ["C:\\Windows\\System32\\cmd.exe", "C:\\Program Files\\PowerShell\\7\\pwsh.exe"][Math.floor(Math.random() * 2)];
+        } else if (os === "darwin") {
+          path = ["/bin/zsh", "/bin/bash"][Math.floor(Math.random() * 2)];
+        } else { // linux
+          path = ["/bin/bash", "/usr/bin/bash", "/bin/sh"][Math.floor(Math.random() * 3)];
+        }
+        
+        return {
+          os,
+          arch: ["x64", "arm64", "ia32"][Math.floor(Math.random() * 3)],
+          version: `${Math.floor(Math.random() * 11 + 10)}.${Math.floor(Math.random() * 10)}.${Math.floor(Math.random() * 50000)}`,
+          path,
+          timestamp: new Date().toISOString(),
+        };
+      })(),
       unknown27: 0,
       //unknown29: "",
       messageIds: messageIds,
