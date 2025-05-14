@@ -308,7 +308,8 @@ async function collectConfig() {
   // 询问是否使用其它接口
   const useOthersPrompt = `是否使用其它接口? (y/n)`;
   const defaultUseOthers = existingConfig.useOthers ? 'y' : 'n';
-  config.useOthers = await promptWithDefault(useOthersPrompt, defaultUseOthers);
+  const useOthersAnswer = await promptWithDefault(useOthersPrompt, defaultUseOthers);
+  config.useOthers = useOthersAnswer.toLowerCase() === 'y';
 
   return config;
 }
@@ -365,6 +366,9 @@ function generateEnvFile(config) {
     
     // 更新代理服务器平台
     envContent = envContent.replace('PROXY_PLATFORM=auto', `PROXY_PLATFORM=${config.proxyPlatform}`);
+    
+    // 更新是否使用其它接口
+    envContent = envContent.replace('USE_OTHERS=true', `USE_OTHERS=${config.useOthers}`);
     
     // 写入.env文件
     const envPath = path.join(process.cwd(), '.env');
