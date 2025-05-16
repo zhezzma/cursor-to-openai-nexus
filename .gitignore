@@ -137,3 +137,5 @@ data/invalid_cookies.json
 # 测试脚本
 test-*.js
 src/utils/test-*.js
+
+*.bak
