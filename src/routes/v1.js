@@ -310,58 +310,29 @@ router.post("/invalid-cookies", async (req, res) => {
 
 router.get("/models", async (req, res) => {
   try{
-    let bearerToken = req.headers.authorization?.replace('Bearer ', '');
-    
-    // 使用keyManager获取实际的cookie
-    let authToken = keyManager.getCookieForApiKey(bearerToken);
-    
-    if (authToken && authToken.includes('%3A%3A')) {
-      authToken = authToken.split('%3A%3A')[1];
-    }
-    else if (authToken && authToken.includes('::')) {
-      authToken = authToken.split('::')[1];
-    }
+    // 直接返回指定的模型列表
+    const models = [
+      "claude-3-opus",
+      "claude-3.5-sonnet",
+      "claude-3.7-sonnet",
+      "claude-3.7-sonnet-thinking",
+      "deepseek-r1",
+      "deepseek-v3",
+      "deepseek-v3.1",
+      "gemini-2.5-falsh-preview-04-17",
+      "gemini-2.5-pro-exp-04-17",
+      "gemini-2.5-pro-preview-05-06"
+    ];
 
-    const checksum = req.headers['x-cursor-checksum'] 
-      ?? process.env['x-cursor-checksum'] 
-      ?? generateCursorChecksum(authToken.trim());
-    //const cursorClientVersion = "0.45.11"
-    const cursorClientVersion = "0.49.4";
-
-    const availableModelsResponse = await fetch("https://api2.cursor.sh/aiserver.v1.AiService/AvailableModels", {
-      method: 'POST',
-      headers: {
-        'accept-encoding': 'gzip',
-        'authorization': `Bearer ${authToken}`,
-        'connect-protocol-version': '1',
-        'content-type': 'application/proto',
-        'user-agent': 'connect-es/1.6.1',
-        'x-cursor-checksum': checksum,
-        'x-cursor-client-version': cursorClientVersion,
-        'x-cursor-config-version': uuidv4(),
-        'x-cursor-timezone': 'Asia/Tokyo',
-        'x-ghost-mode': 'true',
-        'Host': 'api2.cursor.sh',
-      },
-    })
-    const data = await availableModelsResponse.arrayBuffer();
-    const buffer = Buffer.from(data);
-    try{
-      const models = $root.AvailableModelsResponse.decode(buffer).models;
-
-      return res.json({
-        object: "list",
-        data: models.map(model => ({
-          id: model.name,
-          created: Date.now(),
-          object: 'model',
-          owned_by: 'cursor'
-        }))
-      })
-    } catch (error) {
-      const text = buffer.toString('utf-8');
-      throw new Error(text);      
-    }
+    return res.json({
+      object: "list",
+      data: models.map(modelName => ({
+        id: modelName,
+        created: Date.now(),
+        object: 'model',
+        owned_by: 'cursor'
+      }))
+    });
   }
   catch (error) {
     logger.error(error);
@@ -423,7 +394,7 @@ router.post('/chat/completions', async (req, res) => {
 
     const sessionid = uuidv5(authToken,  uuidv5.DNS);
     const clientKey = generateHashed64Hex(authToken);
-    const cursorClientVersion = "0.49.4";
+    const cursorClientVersion = "0.50.4";
     
     // 在请求聊天接口前，依次调用6个接口
     if (process.env.USE_OTHERS === 'true') {
