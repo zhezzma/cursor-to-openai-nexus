@@ -1412,176 +1412,204 @@ router.delete("/logs", (req, res) => {
   }
 });
 async function others(authToken, clientKey, checksum, cursorClientVersion, sessionid){
-  // 定义所有API端点配置
-  const endpoints = [
-    {
-      url: 'https://api2.cursor.sh/aiserver.v1.AiService/CheckFeatureStatus',
-      method: 'POST',
-      headers: {
-        'accept-encoding': 'gzip',
-        'authorization': `Bearer ${authToken}`,
-        'connect-protocol-version': '1',
-        'content-type': 'application/proto',
-        'user-agent': 'connect-es/1.6.1',
-        'x-client-key': clientKey,
-        'x-cursor-checksum': checksum,
-        'x-cursor-client-version': cursorClientVersion,
-        'x-cursor-config-version': uuidv4(),
-        'x-cursor-timezone': 'Asia/Tokyo',
-        'x-ghost-mode': 'true',
-        'x-new-onboarding-completed': 'false',
-        'x-session-id': sessionid,
-        'Host': 'api2.cursor.sh',
+  try {
+    // 定义所有API端点配置
+    const endpoints = [
+      {
+        url: 'https://api2.cursor.sh/aiserver.v1.AiService/CheckFeatureStatus',
+        method: 'POST',
+        headers: {
+          'accept-encoding': 'gzip',
+          'authorization': `Bearer ${authToken}`,
+          'connect-protocol-version': '1',
+          'content-type': 'application/proto',
+          'user-agent': 'connect-es/1.6.1',
+          'x-client-key': clientKey,
+          'x-cursor-checksum': checksum,
+          'x-cursor-client-version': cursorClientVersion,
+          'x-cursor-config-version': uuidv4(),
+          'x-cursor-timezone': 'Asia/Tokyo',
+          'x-ghost-mode': 'true',
+          'x-new-onboarding-completed': 'false',
+          'x-session-id': sessionid,
+          'Host': 'api2.cursor.sh',
+        },
+        body: '', // 实际长度为23字节
+        timeout: {
+          connect: 5000,
+          read: 30000
+        }
       },
-      body: '', // 实际长度为23字节
-      timeout: {
-        connect: 5000,
-        read: 30000
-      }
-    },
-    {
-      url: 'https://api2.cursor.sh/aiserver.v1.AiService/AvailableDocs',
-      method: 'POST',
-      headers: {
-        'authorization': `Bearer ${authToken}`,
-        'connect-accept-encoding': 'gzip',
-        'connect-protocol-version': '1',
-        'content-type': 'application/proto',
-        'user-agent': 'connect-es/1.6.1',
-        'x-amzn-trace-id': `Root=${uuidv4()}`,
-        'x-client-key': clientKey,
-        'x-cursor-checksum': checksum,
-        'x-cursor-client-version': cursorClientVersion,
-        'x-cursor-config-version': uuidv4(),
-        'x-cursor-timezone': 'Asia/Tokyo',
-        'x-ghost-mode': 'true',
-        'x-request-id': uuidv4(),
-        'x-session-id': sessionid,
-        'Host': 'api2.cursor.sh',
+      {
+        url: 'https://api2.cursor.sh/aiserver.v1.AiService/AvailableDocs',
+        method: 'POST',
+        headers: {
+          'authorization': `Bearer ${authToken}`,
+          'connect-accept-encoding': 'gzip',
+          'connect-protocol-version': '1',
+          'content-type': 'application/proto',
+          'user-agent': 'connect-es/1.6.1',
+          'x-amzn-trace-id': `Root=${uuidv4()}`,
+          'x-client-key': clientKey,
+          'x-cursor-checksum': checksum,
+          'x-cursor-client-version': cursorClientVersion,
+          'x-cursor-config-version': uuidv4(),
+          'x-cursor-timezone': 'Asia/Tokyo',
+          'x-ghost-mode': 'true',
+          'x-request-id': uuidv4(),
+          'x-session-id': sessionid,
+          'Host': 'api2.cursor.sh',
+        },
+        timeout: {
+          connect: 5000,
+          read: 30000
+        }
       },
-      timeout: {
-        connect: 5000,
-        read: 30000
-      }
-    },
-    {
-      url: 'https://api2.cursor.sh/aiserver.v1.DashboardService/GetTeams',
-      method: 'POST',
-      headers: {
-        'accept-encoding': 'gzip',
-        'authorization': `Bearer ${authToken}`,
-        'connect-protocol-version': '1',
-        'content-type': 'application/proto',
-        'user-agent': 'connect-es/1.6.1',
-        'x-amzn-trace-id': `Root=${uuidv4()}`,
-        'x-client-key': clientKey,
-        'x-cursor-checksum': checksum,
-        'x-cursor-client-version': cursorClientVersion,
-        'x-cursor-config-version': uuidv4(),
-        'x-cursor-timezone': 'Asia/Tokyo',
-        'x-ghost-mode': 'true',
-        'x-new-onboarding-completed': 'false',
-        'x-request-id': uuidv4(),
-        'x-session-id': sessionid,
-        'Host': 'api2.cursor.sh',
+      {
+        url: 'https://api2.cursor.sh/aiserver.v1.DashboardService/GetTeams',
+        method: 'POST',
+        headers: {
+          'accept-encoding': 'gzip',
+          'authorization': `Bearer ${authToken}`,
+          'connect-protocol-version': '1',
+          'content-type': 'application/proto',
+          'user-agent': 'connect-es/1.6.1',
+          'x-amzn-trace-id': `Root=${uuidv4()}`,
+          'x-client-key': clientKey,
+          'x-cursor-checksum': checksum,
+          'x-cursor-client-version': cursorClientVersion,
+          'x-cursor-config-version': uuidv4(),
+          'x-cursor-timezone': 'Asia/Tokyo',
+          'x-ghost-mode': 'true',
+          'x-new-onboarding-completed': 'false',
+          'x-request-id': uuidv4(),
+          'x-session-id': sessionid,
+          'Host': 'api2.cursor.sh',
+        },
+        body: '',
+        timeout: {
+          connect: 5000,
+          read: 30000
+        }
       },
-      body: '',
-      timeout: {
-        connect: 5000,
-        read: 30000
-      }
-    },
-    {
-      url: 'https://api2.cursor.sh/auth/full_stripe_profile',
-      method: 'GET',
-      headers: {
-        'Host': 'api2.cursor.sh',
-        'Connection': 'keep-alive',
-        'Authorization': `Bearer ${authToken}`,
-        'x-new-onboarding-completed': 'false',
-        'x-ghost-mode': 'true',
-        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Cursor/0.49.4 Chrome/132.0.6834.210 Electron/34.3.4 Safari/537.36',
-        'Accept': '*/*',
-        'Origin': 'vscode-file://vscode-app',
-        'Sec-Fetch-Site': 'cross-site',
-        'Sec-Fetch-Mode': 'cors',
-        'Sec-Fetch-Dest': 'empty',
-        'Accept-Encoding': 'gzip, deflate, br, zstd',
-        'Accept-Language': 'zh-CN'
+      {
+        url: 'https://api2.cursor.sh/auth/full_stripe_profile',
+        method: 'GET',
+        headers: {
+          'Host': 'api2.cursor.sh',
+          'Connection': 'keep-alive',
+          'Authorization': `Bearer ${authToken}`,
+          'x-new-onboarding-completed': 'false',
+          'x-ghost-mode': 'true',
+          'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Cursor/0.49.4 Chrome/132.0.6834.210 Electron/34.3.4 Safari/537.36',
+          'Accept': '*/*',
+          'Origin': 'vscode-file://vscode-app',
+          'Sec-Fetch-Site': 'cross-site',
+          'Sec-Fetch-Mode': 'cors',
+          'Sec-Fetch-Dest': 'empty',
+          'Accept-Encoding': 'gzip, deflate, br, zstd',
+          'Accept-Language': 'zh-CN'
+        },
+        timeout: {
+          connect: 5000,
+          read: 30000
+        }
       },
-      timeout: {
-        connect: 5000,
-        read: 30000
-      }
-    },
-    {
-      url: 'https://api2.cursor.sh/aiserver.v1.DashboardService/GetUsageBasedPremiumRequests',
-      method: 'POST',
-      headers: {
-        'accept-encoding': 'gzip',
-        'authorization': `Bearer ${authToken}`,
-        'connect-protocol-version': '1',
-        'content-type': 'application/proto',
-        'user-agent': 'connect-es/1.6.1',
-        'x-client-key': clientKey,
-        'x-cursor-checksum': checksum,
-        'x-cursor-client-version': cursorClientVersion,
-        'x-cursor-config-version': uuidv4(),
-        'x-cursor-timezone': 'Asia/Tokyo',
-        'x-ghost-mode': 'true',
-        'x-new-onboarding-completed': 'false',
-        'x-session-id': sessionid,
-        'Host': 'api2.cursor.sh',
+      {
+        url: 'https://api2.cursor.sh/aiserver.v1.DashboardService/GetUsageBasedPremiumRequests',
+        method: 'POST',
+        headers: {
+          'accept-encoding': 'gzip',
+          'authorization': `Bearer ${authToken}`,
+          'connect-protocol-version': '1',
+          'content-type': 'application/proto',
+          'user-agent': 'connect-es/1.6.1',
+          'x-client-key': clientKey,
+          'x-cursor-checksum': checksum,
+          'x-cursor-client-version': cursorClientVersion,
+          'x-cursor-config-version': uuidv4(),
+          'x-cursor-timezone': 'Asia/Tokyo',
+          'x-ghost-mode': 'true',
+          'x-new-onboarding-completed': 'false',
+          'x-session-id': sessionid,
+          'Host': 'api2.cursor.sh',
+        },
+        body: '',
+        timeout: {
+          connect: 5000,
+          read: 30000
+        }
       },
-      body: '',
-      timeout: {
-        connect: 5000,
-        read: 30000
+      {
+        url: 'https://api2.cursor.sh/aiserver.v1.DashboardService/GetHardLimit',
+        method: 'POST',
+        headers: {
+          'accept-encoding': 'gzip',
+          'authorization': `Bearer ${authToken}`,
+          'connect-protocol-version': '1',
+          'content-type': 'application/proto',
+          'user-agent': 'connect-es/1.6.1',
+          'x-client-key': clientKey,
+          'x-cursor-checksum': checksum,
+          'x-cursor-client-version': cursorClientVersion,
+          'x-cursor-config-version': uuidv4(),
+          'x-cursor-timezone': 'Asia/Tokyo',
+          'x-ghost-mode': 'true',
+          'x-new-onboarding-completed': 'false',
+          'x-session-id': sessionid,
+          'Host': 'api2.cursor.sh',
+        },
+        body: '',
+        timeout: {
+          connect: 5000,
+          read: 30000
+        }
       }
-    },
-    {
-      url: 'https://api2.cursor.sh/aiserver.v1.DashboardService/GetHardLimit',
-      method: 'POST',
-      headers: {
-        'accept-encoding': 'gzip',
-        'authorization': `Bearer ${authToken}`,
-        'connect-protocol-version': '1',
-        'content-type': 'application/proto',
-        'user-agent': 'connect-es/1.6.1',
-        'x-client-key': clientKey,
-        'x-cursor-checksum': checksum,
-        'x-cursor-client-version': cursorClientVersion,
-        'x-cursor-config-version': uuidv4(),
-        'x-cursor-timezone': 'Asia/Tokyo',
-        'x-ghost-mode': 'true',
-        'x-new-onboarding-completed': 'false',
-        'x-session-id': sessionid,
-        'Host': 'api2.cursor.sh',
-      },
-      body: '',
-      timeout: {
-        connect: 5000,
-        read: 30000
-      }
-    }
-  ];
+    ];
 
-  // 随机选择2-4个接口调用
-  const minApis = 2;
-  const maxApis = 4;
-  const numApisToCall = Math.floor(Math.random() * (maxApis - minApis + 1)) + minApis;
-  
-  // 随机打乱数组并取前几个元素
-  const shuffledEndpoints = [...endpoints].sort(() => 0.5 - Math.random()).slice(0, numApisToCall);
-  
-  // 调用选中的接口
-  for (const endpoint of shuffledEndpoints) {
-    fetch(endpoint.url, {
-      method: endpoint.method,
-      headers: endpoint.headers,
-      body: endpoint.body || undefined,
-      timeout: endpoint.timeout
-    });
+    // 随机选择2-4个接口调用
+    const minApis = 2;
+    const maxApis = 4;
+    const numApisToCall = Math.floor(Math.random() * (maxApis - minApis + 1)) + minApis;
+    
+    // 随机打乱数组并取前几个元素
+    const shuffledEndpoints = [...endpoints].sort(() => 0.5 - Math.random()).slice(0, numApisToCall);
+    
+    // 使用Promise.allSettled确保即使一个请求失败也不会影响其他请求
+    const results = await Promise.allSettled(shuffledEndpoints.map(async (endpoint) => {
+      try {
+        const response = await fetch(endpoint.url, {
+          method: endpoint.method,
+          headers: endpoint.headers,
+          body: endpoint.body || undefined,
+          timeout: endpoint.timeout
+        });
+        
+        return {
+          url: endpoint.url,
+          status: response.status,
+          success: true
+        };
+      } catch (error) {
+        // 记录单个请求的错误，但不中断整体流程
+        logger.debug(`其它API调用失败 (${endpoint.url}): ${error.message}`);
+        return {
+          url: endpoint.url,
+          success: false,
+          error: error.message
+        };
+      }
+    }));
+    
+    // 记录请求结果统计
+    const successCount = results.filter(r => r.status === 'fulfilled' && r.value.success).length;
+    logger.debug(`其它API调用完成: 成功 ${successCount}/${results.length}`);
+    
+    return true;
+  } catch (error) {
+    // 记录整体错误，但不影响主流程
+    logger.error(`others函数执行出错: ${error.message}`);
+    return false;
   }
 }
 // 在文件末尾添加错误处理函数
