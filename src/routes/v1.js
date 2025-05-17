@@ -601,7 +601,19 @@ router.post('/chat/completions', async (req, res) => {
             continue;
           }
           
-          let result = chunkToUtf8String(chunk);
+          let result = {};
+          try {
+            result = chunkToUtf8String(chunk);
+          } catch (error) {
+            logger.error('解析响应块失败:', error);
+            // 提供默认的空结果，避免后续处理出错
+            result = {
+              isThink: false, 
+              thinkingContent: '', 
+              content: '',
+              error: `解析错误: ${error.message}`
+            };
+          }
           
           // 检查是否返回了错误对象
           if (result && typeof result === 'object' && result.error) {
@@ -822,7 +834,18 @@ router.post('/chat/completions', async (req, res) => {
             continue;
           }
           
-          const result = chunkToUtf8String(chunk);
+          let result = {};
+          try {
+            result = chunkToUtf8String(chunk);
+          } catch (error) {
+            logger.error('非流式响应解析块失败:', error);
+            // 提供默认的空结果，避免后续处理出错
+            result = {
+              thinkingContent: '', 
+              content: '',
+              error: `解析错误: ${error.message}`
+            };
+          }
           // 输出完整的result内容和类型，便于调试
           //console.log("收到的非流式响应:", typeof result, result && typeof result === 'object' ? JSON.stringify(result) : result);
           
