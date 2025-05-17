@@ -14,3 +14,4 @@ if %ERRORLEVEL% neq 0 (
 REM 启动应用
 echo start application...
 call npm start
+pause

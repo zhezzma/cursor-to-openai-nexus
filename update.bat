@@ -30,3 +30,4 @@ echo update failed,please check network connection or solve conflict
 exit /b 1
 
 :end
+pause
