@@ -448,16 +448,48 @@ router.post('/chat/completions', async (req, res) => {
     
     let response;
     
-    if (useTlsProxy) {
-      // 使用JA3指纹伪造代理服务器
-      logger.info(`使用TLS代理服务器`);
-      response = await fetch('http://localhost:8080/proxy', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          url: 'https://api2.cursor.sh/aiserver.v1.ChatService/StreamUnifiedChatWithTools',
+    try {
+      if (useTlsProxy) {
+        // 使用JA3指纹伪造代理服务器
+        logger.info(`使用TLS代理服务器`);
+        response = await fetch('http://localhost:8080/proxy', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            url: 'https://api2.cursor.sh/aiserver.v1.ChatService/StreamUnifiedChatWithTools',
+            method: 'POST',
+            headers: {
+              'authorization': `Bearer ${authToken}`,
+              'connect-accept-encoding': 'gzip',
+              'connect-content-encoding': 'gzip',
+              'connect-protocol-version': '1',
+              'content-type': 'application/connect+proto',
+              'user-agent': 'connect-es/1.6.1',
+              'x-amzn-trace-id': `Root=${uuidv4()}`,
+              'x-client-key': clientKey,
+              'x-cursor-checksum': checksum,
+              'x-cursor-client-version': cursorClientVersion,
+              'x-cursor-config-version': uuidv4(),
+              'x-cursor-timezone': 'Asia/Tokyo',
+              'x-ghost-mode': 'true',
+              'x-request-id': uuidv4(),
+              'x-session-id': sessionid,
+              'Host': 'api2.cursor.sh',
+            },
+            body: cursorBody,
+            stream: true // 启用流式响应
+          }),
+          timeout: {
+            connect: 5000,
+            read: 30000
+          }
+        });
+      } else {
+        // 直接调用API，不使用TLS代理
+        logger.info('不使用TLS代理服务器，直接请求API');
+        response = await fetch('https://api2.cursor.sh/aiserver.v1.ChatService/StreamUnifiedChatWithTools', {
           method: 'POST',
           headers: {
             'authorization': `Bearer ${authToken}`,
@@ -471,50 +503,79 @@ router.post('/chat/completions', async (req, res) => {
             'x-cursor-checksum': checksum,
             'x-cursor-client-version': cursorClientVersion,
             'x-cursor-config-version': uuidv4(),
-            'x-cursor-timezone': 'Asia/Tokyo',
+            'x-cursor-timezone': 'Asia/Shanghai',
             'x-ghost-mode': 'true',
             'x-request-id': uuidv4(),
             'x-session-id': sessionid,
             'Host': 'api2.cursor.sh',
           },
           body: cursorBody,
-          stream: true // 启用流式响应
-        }),
-        timeout: {
-          connect: 5000,
-          read: 30000
-        }
-      });
-    } else {
-      // 直接调用API，不使用TLS代理
-      logger.info('不使用TLS代理服务器，直接请求API');
-      response = await fetch('https://api2.cursor.sh/aiserver.v1.ChatService/StreamUnifiedChatWithTools', {
-        method: 'POST',
-        headers: {
-          'authorization': `Bearer ${authToken}`,
-          'connect-accept-encoding': 'gzip',
-          'connect-content-encoding': 'gzip',
-          'connect-protocol-version': '1',
-          'content-type': 'application/connect+proto',
-          'user-agent': 'connect-es/1.6.1',
-          'x-amzn-trace-id': `Root=${uuidv4()}`,
-          'x-client-key': clientKey,
-          'x-cursor-checksum': checksum,
-          'x-cursor-client-version': cursorClientVersion,
-          'x-cursor-config-version': uuidv4(),
-          'x-cursor-timezone': 'Asia/Shanghai',
-          'x-ghost-mode': 'true',
-          'x-request-id': uuidv4(),
-          'x-session-id': sessionid,
-          'Host': 'api2.cursor.sh',
-        },
-        body: cursorBody,
-        dispatcher: dispatcher,
-        timeout: {
-          connect: 5000,
-          read: 30000
-        }
-      });
+          dispatcher: dispatcher,
+          timeout: {
+            connect: 5000,
+            read: 30000
+          }
+        });
+      }
+    } catch (fetchError) {
+      logger.error(`Fetch错误: ${fetchError.message}`);
+      
+      // 处理连接超时错误
+      const isConnectTimeout = fetchError.cause && 
+                             (fetchError.cause.code === 'UND_ERR_CONNECT_TIMEOUT' || 
+                              fetchError.message.includes('Connect Timeout Error'));
+      
+      // 构建错误响应
+      const errorMessage = isConnectTimeout 
+        ? `⚠️ 连接超时 ⚠️\n\n无法连接到API服务器(api2.cursor.sh)，请检查您的网络连接或尝试使用代理。`
+        : `⚠️ 请求失败 ⚠️\n\n错误: ${fetchError.message}`;
+
+      if (stream) {
+        // 流式响应格式的错误
+        const responseId = `chatcmpl-${uuidv4()}`;
+        res.write(
+          `data: ${JSON.stringify({
+            id: responseId,
+            object: 'chat.completion.chunk',
+            created: Math.floor(Date.now() / 1000),
+            model: req.body.model || 'unknown',
+            choices: [
+              {
+                index: 0,
+                delta: {
+                  content: errorMessage,
+                },
+              },
+            ],
+          })}\n\n`
+        );
+        res.write('data: [DONE]\n\n');
+        res.end();
+      } else {
+        // 非流式响应格式的错误
+        res.json({
+          id: `chatcmpl-${uuidv4()}`,
+          object: 'chat.completion',
+          created: Math.floor(Date.now() / 1000),
+          model: req.body.model || 'unknown',
+          choices: [
+            {
+              index: 0,
+              message: {
+                role: 'assistant',
+                content: errorMessage,
+              },
+              finish_reason: 'stop',
+            },
+          ],
+          usage: {
+            prompt_tokens: 0,
+            completion_tokens: 0,
+            total_tokens: 0,
+          },
+        });
+      }
+      return; // 重要：提前返回
     }
 
     // 处理响应
