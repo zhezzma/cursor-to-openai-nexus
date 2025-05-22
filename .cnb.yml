@@ -1,0 +1,18 @@
+main:
+  push:
+    - docker:
+        image: node:18
+      imports: https://cnb.cool/godgodgame/oci-private-key/-/blob/main/envs.yml
+      stages:
+        - name: 环境检查
+          script: echo $GITHUB_TOKEN_GK && echo $GITHUB_TOKEN && node -v && npm -v
+        - name: 构建并打包
+          script: | 
+            mkdir archive
+            tar --exclude='./archive' --exclude='.git' -zcvf archive/release.tar.gz .
+        - name: ansible发布
+          image: plugins/ansible
+          settings:
+            private_key: $SERVER_PRIVATE_KEY
+            inventory: hosts
+            playbook: playbook.yml
