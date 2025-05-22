@@ -34,6 +34,9 @@ jobs:
           git lfs install
           git lfs track "*.png"
           git lfs track "*.webp"
+          git lfs track "*.webp"
+          git lfs track "*_arm64"
+          git lfs track "*_arm64.exe"
           git add .gitattributes
           git add .
           git commit -m "Update from GitHub Actions"
