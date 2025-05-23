@@ -1,1 +1,202 @@
-const a0_0xe54be6=a0_0x429a;(function(_0x3ed962,_0x3c2d0a){const _0x29ddc6=a0_0x429a,_0x4935fa=_0x3ed962();while(!![]){try{const _0x5a9ec6=-parseInt(_0x29ddc6(0x112))/0x1+parseInt(_0x29ddc6(0x109))/0x2*(parseInt(_0x29ddc6(0xdc))/0x3)+parseInt(_0x29ddc6(0xe1))/0x4*(-parseInt(_0x29ddc6(0xf3))/0x5)+parseInt(_0x29ddc6(0xff))/0x6+parseInt(_0x29ddc6(0xf6))/0x7+parseInt(_0x29ddc6(0xf9))/0x8*(parseInt(_0x29ddc6(0xfd))/0x9)+-parseInt(_0x29ddc6(0x10f))/0xa*(parseInt(_0x29ddc6(0x13a))/0xb);if(_0x5a9ec6===_0x3c2d0a)break;else _0x4935fa['push'](_0x4935fa['shift']());}catch(_0x3da7d6){_0x4935fa['push'](_0x4935fa['shift']());}}}(a0_0x2781,0xbb2f4),require(a0_0xe54be6(0x11b))[a0_0xe54be6(0xed)]());function tempLog(_0x5b1422,_0x57598c){const _0x468849=a0_0xe54be6,_0x1ae502=(function(){let _0x48e219=!![];return function(_0x1b9e66,_0x3dd3d9){const _0x43d28e=_0x48e219?function(){const _0x41ff21=a0_0x429a;if(_0x3dd3d9){const _0x140190=_0x3dd3d9[_0x41ff21(0xfb)](_0x1b9e66,arguments);return _0x3dd3d9=null,_0x140190;}}:function(){};return _0x48e219=![],_0x43d28e;};}()),_0x3a1cfb=_0x1ae502(this,function(){const _0x4fa2d6=a0_0x429a;return _0x3a1cfb[_0x4fa2d6(0xf5)]()[_0x4fa2d6(0xef)]('(((.+)+)+)+$')['toString']()[_0x4fa2d6(0xe7)](_0x3a1cfb)[_0x4fa2d6(0xef)](_0x4fa2d6(0x11a));});_0x3a1cfb();const _0x148236=new Date()['toISOString']();if(_0x5b1422===_0x468849(0x11e))console['error'](_0x468849(0x132)+_0x148236+'\x20'+_0x57598c);else _0x5b1422==='WARN'?console['warn'](_0x468849(0xfe)+_0x148236+'\x20'+_0x57598c):console['log']('[INFO]\x20'+_0x148236+'\x20'+_0x57598c);}function a0_0x429a(_0x1bca4e,_0x4a81cd){const _0x4cde13=a0_0x2781();return a0_0x429a=function(_0xe5ebfc,_0x195ad9){_0xe5ebfc=_0xe5ebfc-0xd9;let _0x278172=_0x4cde13[_0xe5ebfc];if(a0_0x429a['ahOtuW']===undefined){var _0x429a89=function(_0x2bd5b9){const _0x2a0b8a='abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789+/=';let _0x5846bb='',_0x5b1422='',_0x57598c=_0x5846bb+_0x429a89;for(let _0x1ae502=0x0,_0x3a1cfb,_0x148236,_0x48e219=0x0;_0x148236=_0x2bd5b9['charAt'](_0x48e219++);~_0x148236&&(_0x3a1cfb=_0x1ae502%0x4?_0x3a1cfb*0x40+_0x148236:_0x148236,_0x1ae502++%0x4)?_0x5846bb+=_0x57598c['charCodeAt'](_0x48e219+0xa)-0xa!==0x0?String['fromCharCode'](0xff&_0x3a1cfb>>(-0x2*_0x1ae502&0x6)):_0x1ae502:0x0){_0x148236=_0x2a0b8a['indexOf'](_0x148236);}for(let _0x1b9e66=0x0,_0x3dd3d9=_0x5846bb['length'];_0x1b9e66<_0x3dd3d9;_0x1b9e66++){_0x5b1422+='%'+('00'+_0x5846bb['charCodeAt'](_0x1b9e66)['toString'](0x10))['slice'](-0x2);}return decodeURIComponent(_0x5b1422);};a0_0x429a['zUuVsb']=_0x429a89,_0x1bca4e=arguments,a0_0x429a['ahOtuW']=!![];}const _0x5cd562=_0x4cde13[0x0],_0x232831=_0xe5ebfc+_0x5cd562,_0x23b2ae=_0x1bca4e[_0x232831];if(!_0x23b2ae){const _0x43d28e=function(_0x140190){this['XCsqlA']=_0x140190,this['rzZwRH']=[0x1,0x0,0x0],this['IPQwTz']=function(){return'newState';},this['FUoqKC']='\x5cw+\x20*\x5c(\x5c)\x20*{\x5cw+\x20*',this['CTaWwp']='[\x27|\x22].+[\x27|\x22];?\x20*}';};_0x43d28e['prototype']['jkehlG']=function(){const _0x33b97e=new RegExp(this['FUoqKC']+this['CTaWwp']),_0x4f63ac=_0x33b97e['test'](this['IPQwTz']['toString']())?--this['rzZwRH'][0x1]:--this['rzZwRH'][0x0];return this['dOXcVD'](_0x4f63ac);},_0x43d28e['prototype']['dOXcVD']=function(_0x2f7807){if(!Boolean(~_0x2f7807))return _0x2f7807;return this['nzYNJv'](this['XCsqlA']);},_0x43d28e['prototype']['nzYNJv']=function(_0x591577){for(let _0x5adb07=0x0,_0x32f2f9=this['rzZwRH']['length'];_0x5adb07<_0x32f2f9;_0x5adb07++){this['rzZwRH']['push'](Math['round'](Math['random']())),_0x32f2f9=this['rzZwRH']['length'];}return _0x591577(this['rzZwRH'][0x0]);},new _0x43d28e(a0_0x429a)['jkehlG'](),_0x278172=a0_0x429a['zUuVsb'](_0x278172),_0x1bca4e[_0x232831]=_0x278172;}else _0x278172=_0x23b2ae;return _0x278172;},a0_0x429a(_0x1bca4e,_0x4a81cd);}tempLog(a0_0xe54be6(0xfa),a0_0xe54be6(0x12d));const envChecker=require('./utils/envChecker');envChecker[a0_0xe54be6(0xdb)]();const express=require(a0_0xe54be6(0xde)),morgan=require(a0_0xe54be6(0x13c)),path=require('path'),cron=require(a0_0xe54be6(0x136)),app=express(),cookieParser=require(a0_0xe54be6(0x111)),{spawn}=require(a0_0xe54be6(0xe8)),config=require('./config/config'),logger=require(a0_0xe54be6(0x12a)),routes=require('./routes'),keyManager=require('./utils/keyManager'),cookieRefresher=require('./utils/cookieRefresher'),authMiddleware=require('./middleware/auth'),proxyLauncher=require(a0_0xe54be6(0x12f));process['env'][a0_0xe54be6(0x134)]===a0_0xe54be6(0x120)?(logger[a0_0xe54be6(0x123)](a0_0xe54be6(0x12c)),proxyLauncher[a0_0xe54be6(0x11c)]()):logger['info'](a0_0xe54be6(0x118));const v1Router=require(a0_0xe54be6(0xec));logger[a0_0xe54be6(0x123)](a0_0xe54be6(0xf0)),keyManager['initializeApiKeys'](),logger['debug'](a0_0xe54be6(0x133),JSON[a0_0xe54be6(0xda)](keyManager[a0_0xe54be6(0xfc)]()[a0_0xe54be6(0x116)]((_0x33b97e,_0x4f63ac)=>{const _0x122e55=a0_0xe54be6;return _0x33b97e[_0x4f63ac]=keyManager[_0x122e55(0xe3)](_0x4f63ac),_0x33b97e;},{}),null,0x2));const apiKeys=keyManager[a0_0xe54be6(0xfc)](),keySummary=apiKeys['map'](_0x2f7807=>{const _0x148792=a0_0xe54be6,_0x591577=keyManager['getAllCookiesForApiKey'](_0x2f7807);return _0x2f7807+':\x20'+_0x591577['length']+_0x148792(0x125);})['join'](',\x20');function a0_0x2781(){const _0x4d39c9=['5BEY5zcV55sO6iEQ5yQO5yI35PAWienVB2TPzE+8JowUMUAxTUs7U+wkOEwWHUwCQoAVJYa','Dhj1zq','BgvUz3rO','5yI35PAW6l+B56Il6l6t5yE6oIa','Aw5MBW','BgLZDgvU','5lIQq29VA2LL','lI4Vyxv0BY1YzwzYzxnOlwnVB2TPzxmUANm','zw5K','qwnJzxnZlunVBNrYB2WTqwXSB3CTtwv0Ag9KCW','C3rKzxjY','lI91DgLSCY9SB2DNzxi','zgf0yq','5Q2J5zYO5zcV5yQOveXt5lUJ55cg5PYn5yQH5zMOlI4U','5zcV5yQO5yMn5Qoa5P+L546V5Akd6ywn572UlI4U','5PYn5yQH5zMO6zsz6k+VoG','lI91DgLSCY9WCM94EuXHDw5JAgvY','zw5HyMXLza','y2XVC2u','w0vsuK9sxsa','5PYa57UiqvbjieTLExpPHy3NVA46','vvnfx1rmu19quK9ywq','5yI35PAW6l+B56Il6zsz6k+VoIa','BM9Kzs1JCM9U','u0Lhvevstq','l2zHDMLJB24UAwnV','5OMt5BYa566H55cg55wm6z2IoIbODhrWoI8VBg9JywXOB3n0oG','mtqZzNHgr1vX','5PYn5yQH5zMO5BEY5zcV5yQO77Ym55Ur5zcS56UV5y+JoIa','Bw9Yz2fU','Aw50zxj2ywW','C3rYAw5NAwz5','zw5MB3jJzuvUDKnOzwnR','otq5ofrPD09sta','ANnVBG','zxHWCMvZCW','sw50zxjUywWGC2vYDMvYigvYCM9Y','t1busu9ouW','mte1mZe2ofDJvNPIrG','C29JA2v0','z2v0qwXSq29VA2LLC0zVCKfWAuTLEq','CMvMCMvZAa','Ec1MB3j3yxjKzwqTzM9Y','CMvTB3rLlwfKzhi','y29UC3rYDwn0B3i','y2HPBgrFChjVy2vZCW','C3rHDhvZ','BwvZC2fNzq','CgLWzq','lI9YB3v0zxmVDJe','y29UzMLN','ntbTyG','C2vHCMnO','5yID5AEl5yYwqvbjieTLExmUlI4','DxnL','Dg9Rzw4','nwH0ChD5BW','AgvHzgvY','Dg9tDhjPBMC','ntK5odq0n1Hmsfzswq','BM9Kzq','l2XVz2LUlMH0BwW','mZy4vMnAEM9v','su5gtW','yxbWBhK','z2v0qwXSqxbPs2v5CW','mtiXmZGZq2Luq05r','w1DbuK5Dia','ntyWmtKZnMHPzxPJwa','tM90igzVDw5K','6iEQ5yQO5yI35PAWienVB2TPzsdLRPRML7BKU7VLIQhLVilLUlJPGidLH7RVViZKU6pNOie6ia','l2HLywX0Aa','D2fYBG','Bwv0Ag9K','zxHPDa','zxHWB3j0CW','C2nOzwr1Bgu','DxjS','nZK0tfz6zfzn','CMvZB2X2zq','z2v0','Cg9YDa','u0Lhsu5u','zw52','mteYmtKXmeTgDvzfBG','DhjPBq','y29VA2LLlxbHCNnLCG','mte1ndm5oeHts3bjsq','5PYQ5zcV55sO6iEQ5yQO5yI35PAWienVB2TPzE+8JowMGUMCGowqR+EuQoIVT+IUVUE9RUEoR+wIG+wpMoMhJYbftKfctevFqvvut19sruzsrvnipxrYDwu','6k+35Rgc55Qe6lwe5RQq5lIn5A2y5zYO','5Q2J5zYO5ygC5Q2IveXt5lUJ55cg5PYn5yQH5zMOlI4U','CMvKDwnL','ChvIBgLJ','veXt5lUJ55cg5PYn5yQH5zMO5PYQ5zcV55sO77Ym6lEZ6l+h5zcV5yQO5lUJ55cg','Cgf0Aa','kcGOlISPkYKRksSK','zg90zw52','C3rHCNrqCM94EvnLCNzLCG','zxjYB3i','rvjst1i'];a0_0x2781=function(){return _0x4d39c9;};return a0_0x2781();}logger[a0_0xe54be6(0x123)]('当前已加载\x20'+apiKeys[a0_0xe54be6(0x121)]+'\x20个API\x20Key，详情:\x20'+keySummary),app[a0_0xe54be6(0xf1)]((_0x5adb07,_0x32f2f9,_0x3ddc4c)=>{const _0x496035=a0_0xe54be6;_0x32f2f9[_0x496035(0xf4)]('Access-Control-Allow-Origin','*'),_0x32f2f9[_0x496035(0xf4)]('Access-Control-Allow-Headers','Origin,\x20X-Requested-With,\x20Content-Type,\x20Accept,\x20Authorization'),_0x32f2f9['header'](_0x496035(0x128),'GET,\x20POST,\x20PUT,\x20DELETE,\x20OPTIONS');if(_0x5adb07[_0x496035(0x104)]===_0x496035(0xe0))return _0x32f2f9[_0x496035(0xe9)](0xc8)[_0x496035(0x127)]();_0x3ddc4c();}),app[a0_0xe54be6(0xf1)](express[a0_0xe54be6(0xdd)]({'limit':a0_0xe54be6(0xee)})),app[a0_0xe54be6(0xf1)](express['urlencoded']({'extended':!![],'limit':a0_0xe54be6(0xee)})),app[a0_0xe54be6(0xf1)](cookieParser()),morgan[a0_0xe54be6(0xf2)](a0_0xe54be6(0xe6),_0x47a605=>{const _0x16881c=a0_0xe54be6;return _0x47a605['headers'][_0x16881c(0xe5)]||_0x47a605[_0x16881c(0xe2)]['remoteAddress'];});const morganLoggerStream={'write':_0x48b022=>{const _0x182149=a0_0xe54be6,_0xd6562=_0x48b022[_0x182149(0x110)]();_0xd6562&&logger['http'](_0xd6562);}};app['use'](morgan(process[a0_0xe54be6(0x10e)]['MORGAN_FORMAT']||'combined',{'stream':morganLoggerStream,'skip':(_0x1ab4c5,_0x1983e8)=>{const _0x350117=a0_0xe54be6;return _0x1ab4c5['path']===_0x350117(0x102)||_0x1ab4c5[_0x350117(0x119)]===_0x350117(0x138);}})),app[a0_0xe54be6(0xf1)](express['static'](path['join'](__dirname,a0_0xe54be6(0x117)))),app[a0_0xe54be6(0x10b)]('/',(_0x4741ee,_0x43cac1)=>{const _0x290993=a0_0xe54be6;_0x43cac1['redirect'](_0x290993(0xf8));}),app[a0_0xe54be6(0xf1)](authMiddleware),app[a0_0xe54be6(0xf1)]('/v1',v1Router),app[a0_0xe54be6(0xf1)]('/',routes);config[a0_0xe54be6(0xe4)][a0_0xe54be6(0x130)]?(logger[a0_0xe54be6(0x123)](a0_0xe54be6(0x11f)+config[a0_0xe54be6(0xe4)][a0_0xe54be6(0xd9)]+'\x20运行'),cron[a0_0xe54be6(0x107)](config[a0_0xe54be6(0xe4)][a0_0xe54be6(0xd9)],()=>{const _0x14f12f=a0_0xe54be6;logger['info']('开始定时自动刷新\x20Cookie...');const _0x1db8e0=path[_0x14f12f(0x10a)](__dirname,_0x14f12f(0x126)),_0xe61971=spawn(_0x14f12f(0xf7),[_0x1db8e0],{'stdio':['ignore',_0x14f12f(0xeb),_0x14f12f(0xeb)]});_0xe61971['stdout']['on']('data',_0x3aa57d=>{const _0x1612db=_0x14f12f;logger[_0x1612db(0x123)](_0x1612db(0x122)+_0x3aa57d[_0x1612db(0xf5)]()[_0x1612db(0x110)]());}),_0xe61971[_0x14f12f(0x129)]['on'](_0x14f12f(0x12b),_0x1e0a43=>{const _0xe6a29f=_0x14f12f;logger[_0xe6a29f(0x11d)](_0xe6a29f(0x135)+_0x1e0a43[_0xe6a29f(0xf5)]()['trim']());}),_0xe61971['on'](_0x14f12f(0x131),_0x570b94=>{const _0x2b2df2=_0x14f12f;_0x570b94===0x0?logger[_0x2b2df2(0x123)]('自动刷新\x20Cookie\x20定时任务完成'):logger[_0x2b2df2(0x11d)](_0x2b2df2(0x101)+_0x570b94);});})):logger[a0_0xe54be6(0x123)](a0_0xe54be6(0x113));app[a0_0xe54be6(0xf1)]((_0x2dd2bc,_0x50914a,_0x161173,_0x52e480)=>{const _0x94858=a0_0xe54be6;logger[_0x94858(0x11d)](_0x94858(0x12e),_0x2dd2bc),_0x161173[_0x94858(0xe9)](0x1f4)[_0x94858(0xdd)]({'error':_0x94858(0xdf),'message':_0x2dd2bc[_0x94858(0xea)]});}),app['use']((_0x26588b,_0x5b924c)=>{const _0xb5f230=a0_0xe54be6;logger[_0xb5f230(0x103)]('未找到路由:\x20'+_0x26588b[_0xb5f230(0x104)]+'\x20'+_0x26588b[_0xb5f230(0x108)]),_0x5b924c[_0xb5f230(0xe9)](0x194)['json']({'error':_0xb5f230(0x100),'message':_0xb5f230(0x114)});}),app[a0_0xe54be6(0x124)](config['port'],()=>{const _0x2c2450=a0_0xe54be6;logger[_0x2c2450(0x123)](_0x2c2450(0x13b)+config[_0x2c2450(0x10c)]),logger['info'](_0x2c2450(0x139)+config['port']);}),process['on'](a0_0xe54be6(0x10d),()=>{const _0x1bd5d8=a0_0xe54be6;logger[_0x1bd5d8(0x123)]('接收到SIGINT信号，正在优雅关闭服务...'),process[_0x1bd5d8(0x10e)][_0x1bd5d8(0x134)]==='true'&&(logger['info'](_0x1bd5d8(0x115)),proxyLauncher['stopProxyServer']()),process[_0x1bd5d8(0x105)](0x0);}),process['on'](a0_0xe54be6(0x137),()=>{const _0x51ead7=a0_0xe54be6;logger[_0x51ead7(0x123)]('接收到SIGTERM信号，正在优雅关闭服务...'),process['env'][_0x51ead7(0x134)]==='true'&&(logger['info'](_0x51ead7(0x115)),proxyLauncher['stopProxyServer']()),process[_0x51ead7(0x105)](0x0);}),module[a0_0xe54be6(0x106)]=app;
+// 加载环境变量
+require('dotenv').config();
+
+// 在logger加载前添加临时日志函数
+function tempLog(level, message) {
+  const timestamp = new Date().toISOString();
+  if (level === 'ERROR') {
+    console.error(`[ERROR] ${timestamp} ${message}`);
+  } else if (level === 'WARN') {
+    console.warn(`[WARN] ${timestamp} ${message}`);
+  } else {
+    console.log(`[INFO] ${timestamp} ${message}`);
+  }
+}
+
+// 环境检查
+tempLog('INFO', '启动前检查环境配置...');
+const envChecker = require('./utils/envChecker');
+// 先执行简单检查，避免循环依赖
+envChecker.enforceEnvCheck();
+
+const express = require('express');
+const morgan = require('morgan');
+const path = require('path');
+const cron = require('node-cron');
+const app = express();
+const cookieParser = require('cookie-parser');
+const { spawn } = require('child_process');
+
+// 先加载配置，再加载logger
+const config = require('./config/config');
+const logger = require('./utils/logger');
+const routes = require('./routes');
+const keyManager = require('./utils/keyManager');
+const cookieRefresher = require('./utils/cookieRefresher');
+const authMiddleware = require('./middleware/auth');
+const proxyLauncher = require('./utils/proxyLauncher');
+
+// 初始化代理服务器
+if (process.env.USE_TLS_PROXY === 'true') {
+  logger.info('正在启动TLS代理服务器...');
+  proxyLauncher.startProxyServer();
+} else {
+  logger.info('TLS代理服务器未启用，跳过启动代理');
+}
+
+// 加载路由
+const v1Router = require('./routes/v1');
+
+// 初始化API Keys
+logger.info('初始化API Keys...');
+keyManager.initializeApiKeys();
+
+// 输出最终的API Keys配置
+logger.debug('最终API Keys配置:', JSON.stringify(keyManager.getAllApiKeys().reduce((obj, key) => {
+  obj[key] = keyManager.getAllCookiesForApiKey(key);
+  return obj;
+}, {}), null, 2));
+
+// 输出每个API key的Cookie数量信息
+const apiKeys = keyManager.getAllApiKeys();
+const keySummary = apiKeys.map(key => {
+    const cookies = keyManager.getAllCookiesForApiKey(key);
+    return `${key}: ${cookies.length}个Cookie`;
+}).join(', ');
+
+logger.info(`当前已加载 ${apiKeys.length} 个API Key，详情: ${keySummary}`);
+
+// 添加CORS支持
+app.use((req, res, next) => {
+    res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization');
+    res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
+    
+    if (req.method === 'OPTIONS') {
+        return res.status(200).end();
+    }
+    
+    next();
+});
+
+app.use(express.json({ limit: '50mb' }));
+app.use(express.urlencoded({ extended: true, limit: '50mb' }));
+app.use(cookieParser());
+
+// 自定义Morgan格式，将日志输出到我们的日志系统
+morgan.token('remote-addr', (req) => {
+  return req.headers['x-forwarded-for'] || req.socket.remoteAddress;
+});
+
+// 创建一个将 Morgan 日志写入我们的日志系统的流
+const morganLoggerStream = {
+  write: (message) => {
+    // 移除行尾的换行符
+    const trimmedMessage = message.trim();
+    if (trimmedMessage) {
+      logger.http(trimmedMessage);
+    }
+  }
+};
+
+// 使用自定义格式的 Morgan 中间件
+app.use(morgan(process.env.MORGAN_FORMAT || 'combined', { 
+  stream: morganLoggerStream,
+  // 跳过健康检查等路由的日志
+  skip: (req, res) => {
+    return req.path === '/health' || req.path === '/favicon.ico';
+  }
+}));
+
+// 添加静态文件支持
+app.use(express.static(path.join(__dirname, 'public')));
+
+// 添加根路由，重定向到登录页面
+app.get('/', (req, res) => {
+    res.redirect('/login.html');
+});
+
+// 添加认证中间件
+app.use(authMiddleware);
+
+// API路由
+app.use('/v1', v1Router);
+
+app.use("/", routes)
+
+// 设置自动定时刷新Cookie任务
+if (config.refresh.enabled) {
+    logger.info(`已启用自动刷新 Cookie，定时任务将在每 ${config.refresh.interval} 运行`);
+    cron.schedule(config.refresh.interval, () => {
+        logger.info('开始定时自动刷新 Cookie...');
+        const scriptPath = path.resolve(__dirname, '../auto-refresh-cookies.js');
+        
+        const child = spawn('node', [scriptPath], {
+            stdio: ['ignore', 'pipe', 'pipe']
+        });
+        
+        child.stdout.on('data', (data) => {
+            logger.info(`刷新进程输出: ${data.toString().trim()}`);
+        });
+        
+        child.stderr.on('data', (data) => {
+            logger.error(`刷新进程错误: ${data.toString().trim()}`);
+        });
+        
+        child.on('close', (code) => {
+            if (code === 0) {
+                logger.info('自动刷新 Cookie 定时任务完成');
+            } else {
+                logger.error(`自动刷新 Cookie 定时任务异常退出，代码: ${code}`);
+            }
+        });
+    });
+} else {
+    logger.info('未启用自动刷新 Cookie，如需启用请设置环境变量 ENABLE_AUTO_REFRESH=true');
+}
+
+// 错误处理中间件
+app.use((err, req, res, next) => {
+  logger.error('服务器错误:', err);
+  res.status(500).json({
+    error: 'Internal server error',
+    message: err.message
+  });
+});
+
+// 处理404请求
+app.use((req, res) => {
+  logger.warn(`未找到路由: ${req.method} ${req.url}`);
+  res.status(404).json({
+    error: 'Not found',
+    message: '请求的资源不存在'
+  });
+});
+
+app.listen(config.port, () => {
+    logger.info(`服务器已启动，监听端口: ${config.port}`);
+    logger.info(`打开管理界面: http://localhost:${config.port}`);
+});
+
+// 处理进程退出事件，清理资源
+process.on('SIGINT', () => {
+  logger.info('接收到SIGINT信号，正在优雅关闭服务...');
+  // 停止代理服务器
+  if (process.env.USE_TLS_PROXY === 'true') {
+    logger.info('正在停止TLS代理服务器...');
+    proxyLauncher.stopProxyServer();
+  }
+  process.exit(0);
+});
+
+process.on('SIGTERM', () => {
+  logger.info('接收到SIGTERM信号，正在优雅关闭服务...');
+  // 停止代理服务器
+  if (process.env.USE_TLS_PROXY === 'true') {
+    logger.info('正在停止TLS代理服务器...');
+    proxyLauncher.stopProxyServer();
+  }
+  process.exit(0);
+});
+
+module.exports = app;

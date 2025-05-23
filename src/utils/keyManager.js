@@ -1,1 +1,410 @@
-const a0_0xd0c84b=a0_0x5c7a;(function(_0x156a0a,_0x336895){const _0x198a8f=a0_0x5c7a,_0x1f54ae=_0x156a0a();while(!![]){try{const _0x314a44=-parseInt(_0x198a8f(0x10a))/0x1*(-parseInt(_0x198a8f(0xe8))/0x2)+parseInt(_0x198a8f(0xee))/0x3+-parseInt(_0x198a8f(0x104))/0x4*(parseInt(_0x198a8f(0x110))/0x5)+-parseInt(_0x198a8f(0x113))/0x6*(-parseInt(_0x198a8f(0x115))/0x7)+parseInt(_0x198a8f(0xf0))/0x8*(parseInt(_0x198a8f(0xe7))/0x9)+-parseInt(_0x198a8f(0x11f))/0xa*(parseInt(_0x198a8f(0x11e))/0xb)+-parseInt(_0x198a8f(0xea))/0xc*(parseInt(_0x198a8f(0x105))/0xd);if(_0x314a44===_0x336895)break;else _0x1f54ae['push'](_0x1f54ae['shift']());}catch(_0xa3e348){_0x1f54ae['push'](_0x1f54ae['shift']());}}}(a0_0x5355,0xe45ce));const a0_0x3944ea=(function(){let _0x23cf28=!![];return function(_0x5e11a8,_0x1d340d){const _0x100f3a=_0x23cf28?function(){if(_0x1d340d){const _0x520df7=_0x1d340d['apply'](_0x5e11a8,arguments);return _0x1d340d=null,_0x520df7;}}:function(){};return _0x23cf28=![],_0x100f3a;};}()),a0_0x2aa974=a0_0x3944ea(this,function(){const _0x1f86ba=a0_0x5c7a;return a0_0x2aa974[_0x1f86ba(0x103)]()['search'](_0x1f86ba(0xe5))[_0x1f86ba(0x103)]()[_0x1f86ba(0xe1)](a0_0x2aa974)['search']('(((.+)+)+)+$');});a0_0x2aa974();const config=require(a0_0xd0c84b(0x10f)),fs=require('fs'),path=require(a0_0xd0c84b(0x118)),logger=require(a0_0xd0c84b(0xe4)),INVALID_COOKIES_FILE=path['join'](__dirname,a0_0xd0c84b(0xe9)),API_KEYS_FILE=path[a0_0xd0c84b(0xe0)](__dirname,a0_0xd0c84b(0xff));function ensureDataDirExists(){const _0x26a664=a0_0xd0c84b,_0x40ea03=path['join'](__dirname,_0x26a664(0xf4));if(!fs['existsSync'](_0x40ea03))try{fs[_0x26a664(0x124)](_0x40ea03,{'recursive':!![]}),logger[_0x26a664(0xde)](_0x26a664(0x126)+_0x40ea03);}catch(_0xa93da4){logger[_0x26a664(0x128)]('创建data目录失败:',_0xa93da4);}}let apiKeyMap=new Map(),rotationIndexes=new Map(),invalidCookies=new Set();function loadInvalidCookiesFromFile(){const _0x34d301=a0_0xd0c84b;ensureDataDirExists();try{if(fs[_0x34d301(0x127)](INVALID_COOKIES_FILE)){const _0x451291=fs[_0x34d301(0x108)](INVALID_COOKIES_FILE,'utf8'),_0x2cf4d1=JSON['parse'](_0x451291);invalidCookies['clear'](),_0x2cf4d1['forEach'](_0x3f0d50=>invalidCookies[_0x34d301(0x121)](_0x3f0d50)),logger[_0x34d301(0xde)](_0x34d301(0xfb)+_0x2cf4d1[_0x34d301(0x125)]+_0x34d301(0xfd));}else saveInvalidCookiesToFile();}catch(_0x26fc0c){logger[_0x34d301(0x128)](_0x34d301(0xf5),_0x26fc0c),saveInvalidCookiesToFile();}}function saveInvalidCookiesToFile(){const _0x558449=a0_0xd0c84b;ensureDataDirExists();try{const _0x1c2c33=Array[_0x558449(0xf7)](invalidCookies);fs[_0x558449(0x10d)](INVALID_COOKIES_FILE,JSON[_0x558449(0xef)](_0x1c2c33,null,0x2),_0x558449(0xdf)),logger[_0x558449(0xde)](_0x558449(0x114)+_0x1c2c33[_0x558449(0x125)]+_0x558449(0xf3));}catch(_0x1a3454){logger['error'](_0x558449(0xdc),_0x1a3454);}}function loadApiKeysFromFile(){const _0x45bfa7=a0_0xd0c84b;ensureDataDirExists();try{if(fs[_0x45bfa7(0x127)](API_KEYS_FILE)){const _0x2e3992=fs['readFileSync'](API_KEYS_FILE,_0x45bfa7(0xdf)),_0x2af418=JSON[_0x45bfa7(0xfc)](_0x2e3992);apiKeyMap['clear'](),rotationIndexes[_0x45bfa7(0xfa)]();let _0x40abb9=0x0;for(const [_0x2fde8d,_0x251f03]of Object['entries'](_0x2af418)){Array['isArray'](_0x251f03)?(apiKeyMap[_0x45bfa7(0x120)](_0x2fde8d,_0x251f03),rotationIndexes[_0x45bfa7(0x120)](_0x2fde8d,0x0),_0x40abb9+=_0x251f03['length']):logger['error'](_0x45bfa7(0xe3)+_0x2fde8d+_0x45bfa7(0xed));}const _0x5528f9=Object['keys'](_0x2af418)['length'];return logger[_0x45bfa7(0xde)](_0x45bfa7(0xfb)+_0x5528f9+_0x45bfa7(0xdd)+_0x40abb9+_0x45bfa7(0xf6)),_0x5528f9>0x0;}else return logger['info'](_0x45bfa7(0x10e)),![];}catch(_0x297752){return logger[_0x45bfa7(0x128)](_0x45bfa7(0x11b),_0x297752),![];}}function saveApiKeysToFile(){const _0x5cb52e=a0_0xd0c84b;ensureDataDirExists();try{const _0x5b9b75={};for(const [_0x51d029,_0x2d9ec2]of apiKeyMap['entries']()){_0x5b9b75[_0x51d029]=_0x2d9ec2;}const _0x23ab11=JSON['stringify'](_0x5b9b75,null,0x2);fs[_0x5cb52e(0x10d)](API_KEYS_FILE,_0x23ab11,_0x5cb52e(0xdf)),logger[_0x5cb52e(0xde)](_0x5cb52e(0x114)+Object['keys'](_0x5b9b75)[_0x5cb52e(0x125)]+'\x20个API\x20Key保存到文件');try{const _0x590c92=fs['readFileSync'](API_KEYS_FILE,_0x5cb52e(0xdf));JSON['parse'](_0x590c92),logger[_0x5cb52e(0xde)](_0x5cb52e(0x11c));}catch(_0x3fbdca){logger[_0x5cb52e(0x128)](_0x5cb52e(0x119),_0x3fbdca);}}catch(_0x408c86){logger[_0x5cb52e(0x128)]('保存API\x20Keys文件失败:',_0x408c86);}}function initializeApiKeys(){const _0x2f1094=a0_0xd0c84b,_0x52cb9e=loadApiKeysFromFile(),_0x46bdc2=config[_0x2f1094(0x11d)],_0x2d856e=Object[_0x2f1094(0xf1)](_0x46bdc2)[_0x2f1094(0x125)]>0x0;if(_0x2d856e){logger['info']('从环境变量检测到API\x20Keys配置，将合并到现有配置...');let _0x1d5774=0x0;for(const _0x569cf1 of apiKeyMap['values']()){_0x1d5774+=_0x569cf1['length'];}for(const [_0x9f39c1,_0x57d211]of Object[_0x2f1094(0x116)](_0x46bdc2)){const _0x324920=apiKeyMap[_0x2f1094(0xda)](_0x9f39c1)||[];let _0x498b3a=[];if(typeof _0x57d211===_0x2f1094(0xd8))_0x498b3a=[_0x57d211];else Array['isArray'](_0x57d211)&&(_0x498b3a=_0x57d211);const _0x32bbf1=[..._0x324920];for(const _0x57fc0c of _0x498b3a){!_0x32bbf1[_0x2f1094(0x10c)](_0x57fc0c)&&_0x32bbf1[_0x2f1094(0x100)](_0x57fc0c);}apiKeyMap['set'](_0x9f39c1,_0x32bbf1),!rotationIndexes[_0x2f1094(0x123)](_0x9f39c1)&&rotationIndexes[_0x2f1094(0x120)](_0x9f39c1,0x0);}let _0x3493f1=0x0;for(const _0x4d0c35 of apiKeyMap['values']()){_0x3493f1+=_0x4d0c35[_0x2f1094(0x125)];}logger[_0x2f1094(0xde)]('合并前共有\x20'+_0x1d5774+_0x2f1094(0xf2)+_0x3493f1+_0x2f1094(0xf6)),saveApiKeysToFile();}else!_0x52cb9e&&logger['warn'](_0x2f1094(0x102));let _0x578385=0x0;for(const _0x4c84e0 of apiKeyMap[_0x2f1094(0xdb)]()){_0x578385+=_0x4c84e0[_0x2f1094(0x125)];}logger[_0x2f1094(0xde)]('API\x20Keys初始化完成，共有\x20'+apiKeyMap[_0x2f1094(0xeb)]+_0x2f1094(0x122)+_0x578385+_0x2f1094(0xf6)),loadInvalidCookiesFromFile(),logger[_0x2f1094(0xde)]('开始从API\x20Keys中移除无效cookie...'),removeInvalidCookiesFromApiKeys();}function removeInvalidCookiesFromApiKeys(){const _0x1ff967=a0_0xd0c84b;let _0x2ae3c6=0x0;for(const [_0x48d00d,_0x31b217]of apiKeyMap[_0x1ff967(0x116)]()){const _0x11604e=_0x31b217[_0x1ff967(0x125)],_0x51650f=_0x31b217[_0x1ff967(0xec)](_0x1393bb=>!invalidCookies['has'](_0x1393bb));if(_0x51650f[_0x1ff967(0x125)]<_0x11604e){const _0x243914=_0x11604e-_0x51650f[_0x1ff967(0x125)];_0x2ae3c6+=_0x243914,apiKeyMap['set'](_0x48d00d,_0x51650f),rotationIndexes['set'](_0x48d00d,0x0),logger[_0x1ff967(0xde)](_0x1ff967(0x106)+_0x48d00d+'\x20中移除了\x20'+_0x243914+_0x1ff967(0x101)+_0x51650f[_0x1ff967(0x125)]+'\x20个');}}logger['info'](_0x1ff967(0xd9)+_0x2ae3c6+_0x1ff967(0xfd)),_0x2ae3c6>0x0&&saveApiKeysToFile();}function addOrUpdateApiKey(_0x2774c2,_0xe7e5f0){const _0x4158aa=a0_0xd0c84b;!Array['isArray'](_0xe7e5f0)&&(_0xe7e5f0=[_0xe7e5f0]);const _0xa8c725=_0xe7e5f0[_0x4158aa(0xec)](_0x3fa627=>!invalidCookies[_0x4158aa(0x123)](_0x3fa627));_0xa8c725['length']<_0xe7e5f0[_0x4158aa(0x125)]&&logger[_0x4158aa(0xde)]('API\x20Key\x20'+_0x2774c2+'\x20中有\x20'+(_0xe7e5f0[_0x4158aa(0x125)]-_0xa8c725[_0x4158aa(0x125)])+_0x4158aa(0xe2)),apiKeyMap[_0x4158aa(0x120)](_0x2774c2,_0xa8c725),rotationIndexes[_0x4158aa(0x120)](_0x2774c2,0x0),saveApiKeysToFile();}function removeApiKey(_0x1775aa){const _0x4f668c=a0_0xd0c84b;apiKeyMap[_0x4f668c(0x109)](_0x1775aa),rotationIndexes[_0x4f668c(0x109)](_0x1775aa),saveApiKeysToFile();}function getCookieForApiKey(_0xcdc2c8,_0x934f53=config[a0_0xd0c84b(0xf9)]){const _0x12f96a=a0_0xd0c84b;if(!apiKeyMap[_0x12f96a(0x123)](_0xcdc2c8))return _0xcdc2c8;const _0xf7da0a=apiKeyMap[_0x12f96a(0xda)](_0xcdc2c8);if(!_0xf7da0a||_0xf7da0a[_0x12f96a(0x125)]===0x0)return _0xcdc2c8;if(_0xf7da0a[_0x12f96a(0x125)]===0x1)return _0xf7da0a[0x0];if(_0x934f53===_0x12f96a(0xfe)){const _0x464fad=Math[_0x12f96a(0xe6)](Math[_0x12f96a(0xfe)]()*_0xf7da0a[_0x12f96a(0x125)]);return _0xf7da0a[_0x464fad];}else{if(_0x934f53==='round-robin'){let _0x5a2994=rotationIndexes[_0x12f96a(0xda)](_0xcdc2c8)||0x0;const _0x29da53=_0xf7da0a[_0x5a2994];return _0x5a2994=(_0x5a2994+0x1)%_0xf7da0a[_0x12f96a(0x125)],rotationIndexes[_0x12f96a(0x120)](_0xcdc2c8,_0x5a2994),_0x29da53;}else return _0xf7da0a[0x0];}}function getAllApiKeys(){const _0x3ed0d1=a0_0xd0c84b;return Array[_0x3ed0d1(0xf7)](apiKeyMap[_0x3ed0d1(0xf1)]());}function getAllCookiesForApiKey(_0x457d2a){return apiKeyMap['get'](_0x457d2a)||[];}function removeCookieFromApiKey(_0x1d26e9,_0x241685){const _0x46ce50=a0_0xd0c84b;if(!apiKeyMap[_0x46ce50(0x123)](_0x1d26e9))return logger[_0x46ce50(0xde)]('API\x20Key\x20'+_0x1d26e9+_0x46ce50(0xf8)),![];const _0x25c2c3=apiKeyMap[_0x46ce50(0xda)](_0x1d26e9),_0x569fe4=_0x25c2c3['length'];if(_0x241685===_0x1d26e9&&_0x569fe4===0x0)return logger[_0x46ce50(0xde)](_0x46ce50(0xe3)+_0x1d26e9+_0x46ce50(0x117)),![];const _0x3f1712=_0x25c2c3['filter'](_0x310583=>_0x310583!==_0x241685);if(_0x3f1712[_0x46ce50(0x125)]===_0x569fe4)return logger[_0x46ce50(0xde)](_0x46ce50(0x112)+_0x241685),![];return apiKeyMap[_0x46ce50(0x120)](_0x1d26e9,_0x3f1712),rotationIndexes[_0x46ce50(0x120)](_0x1d26e9,0x0),invalidCookies[_0x46ce50(0x121)](_0x241685),saveInvalidCookiesToFile(),saveApiKeysToFile(),logger['info'](_0x46ce50(0x11a)+_0x1d26e9+_0x46ce50(0x111)+_0x241685),logger[_0x46ce50(0xde)](_0x46ce50(0x10b)+_0x3f1712['length']),!![];}function getInvalidCookies(){return invalidCookies;}function a0_0x5c7a(_0x5888dc,_0x5c6215){const _0x373246=a0_0x5355();return a0_0x5c7a=function(_0x2aa974,_0x3944ea){_0x2aa974=_0x2aa974-0xd8;let _0x53559f=_0x373246[_0x2aa974];if(a0_0x5c7a['SuQZpm']===undefined){var _0x5c7ad9=function(_0x2a6040){const _0x148ff4='abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789+/=';let _0x1a0694='',_0x23cf28='',_0x5e11a8=_0x1a0694+_0x5c7ad9;for(let _0x1d340d=0x0,_0x100f3a,_0x520df7,_0x40ea03=0x0;_0x520df7=_0x2a6040['charAt'](_0x40ea03++);~_0x520df7&&(_0x100f3a=_0x1d340d%0x4?_0x100f3a*0x40+_0x520df7:_0x520df7,_0x1d340d++%0x4)?_0x1a0694+=_0x5e11a8['charCodeAt'](_0x40ea03+0xa)-0xa!==0x0?String['fromCharCode'](0xff&_0x100f3a>>(-0x2*_0x1d340d&0x6)):_0x1d340d:0x0){_0x520df7=_0x148ff4['indexOf'](_0x520df7);}for(let _0xa93da4=0x0,_0x451291=_0x1a0694['length'];_0xa93da4<_0x451291;_0xa93da4++){_0x23cf28+='%'+('00'+_0x1a0694['charCodeAt'](_0xa93da4)['toString'](0x10))['slice'](-0x2);}return decodeURIComponent(_0x23cf28);};a0_0x5c7a['mVHFwL']=_0x5c7ad9,_0x5888dc=arguments,a0_0x5c7a['SuQZpm']=!![];}const _0x4ad6e6=_0x373246[0x0],_0x477a21=_0x2aa974+_0x4ad6e6,_0x43cdb8=_0x5888dc[_0x477a21];if(!_0x43cdb8){const _0x2cf4d1=function(_0x3f0d50){this['EbkguE']=_0x3f0d50,this['lvwRFv']=[0x1,0x0,0x0],this['mPIrLR']=function(){return'newState';},this['LWZRar']='\x5cw+\x20*\x5c(\x5c)\x20*{\x5cw+\x20*',this['fJlqWW']='[\x27|\x22].+[\x27|\x22];?\x20*}';};_0x2cf4d1['prototype']['iqlary']=function(){const _0x26fc0c=new RegExp(this['LWZRar']+this['fJlqWW']),_0x1c2c33=_0x26fc0c['test'](this['mPIrLR']['toString']())?--this['lvwRFv'][0x1]:--this['lvwRFv'][0x0];return this['JxdSOU'](_0x1c2c33);},_0x2cf4d1['prototype']['JxdSOU']=function(_0x1a3454){if(!Boolean(~_0x1a3454))return _0x1a3454;return this['Eaqlwh'](this['EbkguE']);},_0x2cf4d1['prototype']['Eaqlwh']=function(_0x2e3992){for(let _0x2af418=0x0,_0x40abb9=this['lvwRFv']['length'];_0x2af418<_0x40abb9;_0x2af418++){this['lvwRFv']['push'](Math['round'](Math['random']())),_0x40abb9=this['lvwRFv']['length'];}return _0x2e3992(this['lvwRFv'][0x0]);},new _0x2cf4d1(a0_0x5c7a)['iqlary'](),_0x53559f=a0_0x5c7a['mVHFwL'](_0x53559f),_0x5888dc[_0x477a21]=_0x53559f;}else _0x53559f=_0x43cdb8;return _0x53559f;},a0_0x5c7a(_0x5888dc,_0x5c6215);}function a0_0x5355(){const _0x2a4796=['yxbPs2v5CW','mti1ota2mZn6wMHtsxy','mtbtvvjAy0S','C2v0','ywrK','ios4QKfqssblzxNVViW','AgfZ','BwTKAxjtEw5J','BgvUz3rO','5yIB5BU6zgf0yEEBRUw9LtOG','zxHPC3rZu3LUyW','zxjYB3i','C3rYAw5N','5Oc75ywX5lUoqvbjieTLExpKUk3NP7VPMAtKUOyG','z2v0','DMfSDwvZ','5l+D5A2y5PEG5Pwiy29VA2LL5PAh5lU25AsX6lsLoG','ios4QKfqssblzxNVViZLHBeG','Aw5MBW','DxrMoa','AM9PBG','y29UC3rYDwn0B3i','ios4QUAxOoAvIgnVB2TPzEIIQ+I/H+A7Pa','qvbjieTLEsa','lI9SB2DNzxi','kcGOlISPkYKRksSK','zMXVB3i','oxHVB2z3va','odyYmduYExbRtxjV','lI4VlI4Vzgf0ys9PBNzHBgLKx2nVB2TPzxmUANnVBG','otz0vNPTwxG','C2L6zq','zMLSDgvY','ioEAHgnVB2TPzxpKUi3MMk/MLBdNU4tVViZOT7pOV4C','mtK4mtmXnhjsAMPAsG','C3rYAw5NAwz5','otK2mtq2ne5ZzLfwsG','A2v5CW','ios4QKnVB2TPzE+8JowqIow5TUwqJUwfSEACIsa','ios4QUAxOoAvIgnVB2TPzEs/NEwTMowiSoAwH+s7TG','lI4VlI4Vzgf0yq','5yQG6l295PEG5Pwiy29VA2LL5PAh5lU25AsX6lsLoG','ios4QKnVB2TPzq','zNjVBq','ios4JEwTMowCQo+8JoAxOoAZLEENU+MzPgnVB2TPzq','zgvMyxvSDfjVDgf0Aw9Uu3rYyxrLz3K','y2XLyxi','5lUo5PAh5lU25yQG6l295lQgia','CgfYC2u','ios4QUAxOoAvIgnVB2TPzq','CMfUzg9T','lI4VlI4Vzgf0ys9HCgLFA2v5CY5QC29U','ChvZAa','ios4QUAxOoAvIgnVB2TPzE+8JowjQEs9Msa','6k2M5zgkoIdMNkROG73KU47MLOFKU7BLIQdOVB1bueKGs2v5C++8Jos4LoEoR+wIG+wpMoMhJ+s4REs5N+AYOEACIEMfJEE9RKfqssblzxLZ','Dg9tDhjPBMC','ota2ofberLnvzW','nduWnJy5n2jeDeXfAq','5lUoqvbjieTLEsa','zxHWB3j0CW','CMvHzezPBgvtEw5J','zgvSzxrL','nhbhEMnPsG','5yMP5l2zy29VA2LL5PwW6yEpoIa','Aw5JBhvKzxm','D3jPDgvgAwXLu3LUyW','qvbjieTLExpMLOFKU7BKUi3LRzJLNkJVViZLSiBKVB/NLkJPHy3NVA7KUk3NMOrbueKGs2v5CW','lI4Vy29UzMLNl2nVBMzPzW','mtiWmgP6AKXwuW','ios4REENU+MzPgnVB2TPztOG','5PYQ5OM+5yIW6kAb56E76zMK55Qey29VA2LLoIa','mtm5ntu0v0fXtNf1','5BEY5Bcgia','ntmYAvHdsMHg','zw50CMLLCW','ios4REAYOEACIEs7U+s9LwnVB2TPzE+8JoEZU+E7N+ATO+wCQowWNEIVLEs7PEwqKEwqJUwfVowUUEAOOEw8J+s9V+EuQefqssblzxNMNkZOUQS','Cgf0Aa','6AQm6k+b5l+D5A2y5yAf5A655PE25yE66zszoG','5BEY5lUoqvbjieTLEsa','5yQG6l29qvbjieTLExpMLOFKU7BLPlhOTku6','6AQm6k+b6ycA6l+hoIdMIydMNiLJB29RAwxPG73OOQVLROZMLBtKV53LRzG'];a0_0x5355=function(){return _0x2a4796;};return a0_0x5355();}function clearInvalidCookie(_0x411d0e){const _0x4e5e51=a0_0xd0c84b,_0x570d5b=invalidCookies[_0x4e5e51(0x109)](_0x411d0e);return _0x570d5b&&saveInvalidCookiesToFile(),_0x570d5b;}function clearAllInvalidCookies(){const _0x45d6d6=a0_0xd0c84b;return invalidCookies[_0x45d6d6(0xfa)](),saveInvalidCookiesToFile(),!![];}module[a0_0xd0c84b(0x107)]={'addOrUpdateApiKey':addOrUpdateApiKey,'removeApiKey':removeApiKey,'getCookieForApiKey':getCookieForApiKey,'getAllApiKeys':getAllApiKeys,'getAllCookiesForApiKey':getAllCookiesForApiKey,'initializeApiKeys':initializeApiKeys,'removeCookieFromApiKey':removeCookieFromApiKey,'getInvalidCookies':getInvalidCookies,'clearInvalidCookie':clearInvalidCookie,'clearAllInvalidCookies':clearAllInvalidCookies,'loadInvalidCookiesFromFile':loadInvalidCookiesFromFile,'saveInvalidCookiesToFile':saveInvalidCookiesToFile,'loadApiKeysFromFile':loadApiKeysFromFile,'saveApiKeysToFile':saveApiKeysToFile};
+const config = require('../config/config');
+const fs = require('fs');
+const path = require('path');
+const logger = require('./logger');
+
+// 定义无效cookie的存储文件路径
+const INVALID_COOKIES_FILE = path.join(__dirname, '../../data/invalid_cookies.json');
+// 定义API Keys的存储文件路径
+const API_KEYS_FILE = path.join(__dirname, '../../data/api_keys.json');
+
+// 确保data目录存在
+function ensureDataDirExists() {
+  const dataDir = path.join(__dirname, '../../data');
+  if (!fs.existsSync(dataDir)) {
+    try {
+      fs.mkdirSync(dataDir, { recursive: true });
+      logger.info(`创建data目录: ${dataDir}`);
+    } catch (err) {
+      logger.error('创建data目录失败:', err);
+    }
+  }
+}
+
+// 存储API key与Cursor cookie的映射关系
+let apiKeyMap = new Map();
+
+// 存储每个API key对应的cookie轮询索引
+let rotationIndexes = new Map();
+
+// 存储被标记为无效的cookie
+let invalidCookies = new Set();
+
+// 从文件加载无效cookie
+function loadInvalidCookiesFromFile() {
+  ensureDataDirExists();
+  
+  try {
+    if (fs.existsSync(INVALID_COOKIES_FILE)) {
+      const data = fs.readFileSync(INVALID_COOKIES_FILE, 'utf8');
+      const cookiesArray = JSON.parse(data);
+      
+      // 清空当前集合并添加从文件加载的cookie
+      invalidCookies.clear();
+      cookiesArray.forEach(cookie => invalidCookies.add(cookie));
+      
+      logger.info(`从文件加载了 ${cookiesArray.length} 个无效cookie`);
+    } else {
+      saveInvalidCookiesToFile(); // 如果文件不存在，创建新文件
+    }
+  } catch (err) {
+    logger.error('加载无效cookie文件失败:', err);
+    saveInvalidCookiesToFile(); // 如果加载失败，尝试创建新文件
+  }
+}
+
+// 将无效cookie保存到文件
+function saveInvalidCookiesToFile() {
+  ensureDataDirExists();
+  
+  try {
+    const cookiesArray = Array.from(invalidCookies);
+    fs.writeFileSync(INVALID_COOKIES_FILE, JSON.stringify(cookiesArray, null, 2), 'utf8');
+    logger.info(`已将 ${cookiesArray.length} 个无效cookie保存到文件`);
+  } catch (err) {
+    logger.error('保存无效cookie文件失败:', err);
+  }
+}
+
+// 从文件加载API Keys
+function loadApiKeysFromFile() {
+  ensureDataDirExists();
+  
+  try {
+    if (fs.existsSync(API_KEYS_FILE)) {
+      const data = fs.readFileSync(API_KEYS_FILE, 'utf8');
+      const apiKeysObj = JSON.parse(data);
+      
+      // 清空现有映射
+      apiKeyMap.clear();
+      rotationIndexes.clear();
+      
+      // 统计总cookie数量
+      let totalCookies = 0;
+      
+      // 添加从文件加载的API Keys
+      for (const [apiKey, cookies] of Object.entries(apiKeysObj)) {
+        if (Array.isArray(cookies)) {
+          apiKeyMap.set(apiKey, cookies);
+          rotationIndexes.set(apiKey, 0);
+          totalCookies += cookies.length;
+        } else {
+          logger.error(`API Key ${apiKey} 的cookies不是数组，跳过`);
+        }
+      }
+      
+      const apiKeyCount = Object.keys(apiKeysObj).length;
+      logger.info(`从文件加载了 ${apiKeyCount} 个API Key，共 ${totalCookies} 个Cookie`);
+      return apiKeyCount > 0;
+    } else {
+      logger.info('API Keys文件不存在，将使用配置中的API Keys');
+      return false;
+    }
+  } catch (err) {
+    logger.error('加载API Keys文件失败:', err);
+    return false;
+  }
+}
+
+// 将API Keys保存到文件
+function saveApiKeysToFile() {
+  ensureDataDirExists();
+  
+  try {
+    // 将Map转换为普通对象
+    const apiKeysObj = {};
+    for (const [apiKey, cookies] of apiKeyMap.entries()) {
+      apiKeysObj[apiKey] = cookies;
+    }
+    
+    // 使用JSON.stringify时避免特殊字符处理问题
+    const jsonString = JSON.stringify(apiKeysObj, null, 2);
+    fs.writeFileSync(API_KEYS_FILE, jsonString, 'utf8');
+    logger.info(`已将 ${Object.keys(apiKeysObj).length} 个API Key保存到文件`);
+    
+    // 简化验证过程
+    try {
+      const savedContent = fs.readFileSync(API_KEYS_FILE, 'utf8');
+      JSON.parse(savedContent); // 只验证JSON格式是否正确
+      logger.info('验证通过: 所有cookie都被完整保存');
+    } catch (verifyErr) {
+      logger.error('验证保存内容时出错:', verifyErr);
+    }
+  } catch (err) {
+    logger.error('保存API Keys文件失败:', err);
+  }
+}
+
+// API Keys初始化函数
+function initializeApiKeys() {
+    // 首先从文件加载现有的API Keys
+    const loadedFromFile = loadApiKeysFromFile();
+    
+    // 检查环境变量中是否有API Keys配置
+    const configApiKeys = config.apiKeys;
+    const hasEnvApiKeys = Object.keys(configApiKeys).length > 0;
+    
+    if (hasEnvApiKeys) {
+        logger.info('从环境变量检测到API Keys配置，将合并到现有配置...');
+        
+        // 记录合并前的Cookie数量
+        let beforeMergeCookies = 0;
+        for (const cookies of apiKeyMap.values()) {
+            beforeMergeCookies += cookies.length;
+        }
+        
+        // 合并环境变量中的API Keys到现有映射
+        for (const [apiKey, cookieValue] of Object.entries(configApiKeys)) {
+            // 获取现有的cookies（如果有）
+            const existingCookies = apiKeyMap.get(apiKey) || [];
+            
+            // 准备要添加的新cookies
+            let newCookies = [];
+            if (typeof cookieValue === 'string') {
+                newCookies = [cookieValue];
+            } else if (Array.isArray(cookieValue)) {
+                newCookies = cookieValue;
+            }
+            
+            // 合并cookies，确保不重复
+            const mergedCookies = [...existingCookies];
+            for (const cookie of newCookies) {
+                if (!mergedCookies.includes(cookie)) {
+                    mergedCookies.push(cookie);
+                }
+            }
+            
+            // 更新映射
+            apiKeyMap.set(apiKey, mergedCookies);
+            
+            // 确保轮询索引存在
+            if (!rotationIndexes.has(apiKey)) {
+                rotationIndexes.set(apiKey, 0);
+            }
+        }
+        
+        // 记录合并后的Cookie数量
+        let afterMergeCookies = 0;
+        for (const cookies of apiKeyMap.values()) {
+            afterMergeCookies += cookies.length;
+        }
+        
+        logger.info(`合并前共有 ${beforeMergeCookies} 个Cookie，合并后共有 ${afterMergeCookies} 个Cookie`);
+        
+        // 保存合并后的结果到文件
+        saveApiKeysToFile();
+    } else if (!loadedFromFile) {
+        logger.warn('警告: 未能从文件加载API Keys，且环境变量中也没有配置API Keys');
+    }
+    
+    // 统计API Keys和Cookies数量
+    let totalCookies = 0;
+    for (const cookies of apiKeyMap.values()) {
+        totalCookies += cookies.length;
+    }
+    
+    logger.info(`API Keys初始化完成，共有 ${apiKeyMap.size} 个API Key，${totalCookies} 个Cookie`);
+    
+    // 加载无效cookie
+    loadInvalidCookiesFromFile();
+    
+    // 从API Key中移除已知的无效cookie
+    logger.info('开始从API Keys中移除无效cookie...');
+    removeInvalidCookiesFromApiKeys();
+}
+
+// 从所有API Key中移除已知的无效cookie
+function removeInvalidCookiesFromApiKeys() {
+    let totalRemoved = 0;
+    
+    for (const [apiKey, cookies] of apiKeyMap.entries()) {
+        const initialLength = cookies.length;
+        
+        // 过滤掉无效的cookie
+        const filteredCookies = cookies.filter(cookie => !invalidCookies.has(cookie));
+        
+        // 如果有cookie被移除，更新API Key的cookie列表
+        if (filteredCookies.length < initialLength) {
+            const removedCount = initialLength - filteredCookies.length;
+            totalRemoved += removedCount;
+            
+            apiKeyMap.set(apiKey, filteredCookies);
+            rotationIndexes.set(apiKey, 0);
+            
+            logger.info(`从API Key ${apiKey} 中移除了 ${removedCount} 个无效cookie，剩余 ${filteredCookies.length} 个`);
+        }
+    }
+    
+    logger.info(`总共从API Keys中移除了 ${totalRemoved} 个无效cookie`);
+    
+    // 如果有cookie被移除，保存更新后的API Keys
+    if (totalRemoved > 0) {
+        saveApiKeysToFile();
+    }
+}
+
+// 添加或更新API key映射
+function addOrUpdateApiKey(apiKey, cookieValues) {
+    if (!Array.isArray(cookieValues)) {
+        cookieValues = [cookieValues];
+    }
+    
+    // 过滤掉已知的无效cookie
+    const validCookies = cookieValues.filter(cookie => !invalidCookies.has(cookie));
+    
+    if (validCookies.length < cookieValues.length) {
+        logger.info(`API Key ${apiKey} 中有 ${cookieValues.length - validCookies.length} 个无效cookie被过滤`);
+    }
+    
+    apiKeyMap.set(apiKey, validCookies);
+    rotationIndexes.set(apiKey, 0);
+    
+    // 保存更新后的API Keys
+    saveApiKeysToFile();
+}
+
+// 删除API key映射
+function removeApiKey(apiKey) {
+    apiKeyMap.delete(apiKey);
+    rotationIndexes.delete(apiKey);
+    
+    // 保存更新后的API Keys
+    saveApiKeysToFile();
+}
+
+// 获取API key对应的cookie值（根据轮询策略）
+function getCookieForApiKey(apiKey, strategy = config.defaultRotationStrategy) {
+    // 如果API key不存在，也许是cookie本身，直接返回API key本身（向后兼容）
+    if (!apiKeyMap.has(apiKey)) {
+      return apiKey;
+    }
+    const cookies = apiKeyMap.get(apiKey);
+    
+    if (!cookies || cookies.length === 0) {
+        return apiKey;
+    }
+    
+    if (cookies.length === 1) {
+        return cookies[0];
+    }
+    
+    // 根据策略选择cookie
+    if (strategy === 'random') {
+        // 随机策略
+        const randomIndex = Math.floor(Math.random() * cookies.length);
+        return cookies[randomIndex];
+    } else if(strategy === 'round-robin') {
+        // 轮询策略（round-robin）
+        let currentIndex = rotationIndexes.get(apiKey) || 0;
+        const cookie = cookies[currentIndex];
+        
+        // 更新索引
+        currentIndex = (currentIndex + 1) % cookies.length;
+        rotationIndexes.set(apiKey, currentIndex);
+        
+        return cookie;
+    } else {
+      // 默认策略(default)
+        return cookies[0];
+    }
+}
+
+// 获取所有API key
+function getAllApiKeys() {
+    return Array.from(apiKeyMap.keys());
+}
+
+// 获取API key对应的所有cookie
+function getAllCookiesForApiKey(apiKey) {
+    return apiKeyMap.get(apiKey) || [];
+}
+
+// 从API key的cookie列表中移除特定cookie
+function removeCookieFromApiKey(apiKey, cookieToRemove) {
+    if (!apiKeyMap.has(apiKey)) {
+        logger.info(`API Key ${apiKey} 不存在，无法移除cookie`);
+        return false;
+    }
+    
+    const cookies = apiKeyMap.get(apiKey);
+    const initialLength = cookies.length;
+    
+    // 检查是否尝试移除与API Key相同的值（可能是向后兼容模式）
+    if (cookieToRemove === apiKey && initialLength === 0) {
+        logger.info(`API Key ${apiKey} 中没有任何cookie，系统正在尝试以向后兼容模式使用API Key本身`);
+        return false;
+    }
+    
+    // 过滤掉要移除的cookie
+    const filteredCookies = cookies.filter(cookie => cookie !== cookieToRemove);
+    
+    // 如果长度没变，说明没有找到要移除的cookie
+    if (filteredCookies.length === initialLength) {
+        logger.info(`未找到要移除的cookie: ${cookieToRemove}`);
+        return false;
+    }
+    
+    // 更新cookie列表
+    apiKeyMap.set(apiKey, filteredCookies);
+    
+    // 重置轮询索引
+    rotationIndexes.set(apiKey, 0);
+    
+    // 将移除的cookie添加到无效cookie集合中
+    invalidCookies.add(cookieToRemove);
+    
+    // 保存无效cookie到文件
+    saveInvalidCookiesToFile();
+    
+    // 保存更新后的API Keys
+    saveApiKeysToFile();
+    
+    logger.info(`已从API Key ${apiKey} 中移除cookie: ${cookieToRemove}`);
+    logger.info(`剩余cookie数量: ${filteredCookies.length}`);
+    
+    return true;
+}
+
+// 获取所有被标记为无效的cookie
+function getInvalidCookies() {
+    return invalidCookies;
+}
+
+// 清除特定的无效cookie记录
+function clearInvalidCookie(cookie) {
+    const result = invalidCookies.delete(cookie);
+    
+    if (result) {
+        // 保存更新后的无效cookie到文件
+        saveInvalidCookiesToFile();
+    }
+    
+    return result;
+}
+
+// 清除所有无效cookie记录
+function clearAllInvalidCookies() {
+    invalidCookies.clear();
+    
+    // 保存更新后的无效cookie到文件
+    saveInvalidCookiesToFile();
+    
+    return true;
+}
+
+module.exports = {
+    addOrUpdateApiKey,
+    removeApiKey,
+    getCookieForApiKey,
+    getAllApiKeys,
+    getAllCookiesForApiKey,
+    initializeApiKeys,
+    removeCookieFromApiKey,
+    getInvalidCookies,
+    clearInvalidCookie,
+    clearAllInvalidCookies,
+    loadInvalidCookiesFromFile,
+    saveInvalidCookiesToFile,
+    loadApiKeysFromFile,
+    saveApiKeysToFile
+}; 
