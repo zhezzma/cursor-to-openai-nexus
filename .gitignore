@@ -139,4 +139,3 @@ test-*.js
 src/utils/test-*.js
 
 *.bak
-example/*
