@@ -9,6 +9,5295 @@ var $Reader = $protobuf.Reader, $Writer = $protobuf.Writer, $util = $protobuf.ut
 // Exported root namespace
 var $root = $protobuf.roots["default"] || ($protobuf.roots["default"] = {});
 
+$root.GetPromptDryRunRequest = (function() {
+
+    /**
+     * Properties of a GetPromptDryRunRequest.
+     * @exports IGetPromptDryRunRequest
+     * @interface IGetPromptDryRunRequest
+     * @property {string|null} [userInput] GetPromptDryRunRequest userInput
+     * @property {boolean|null} [preprocessingFlag] GetPromptDryRunRequest preprocessingFlag
+     * @property {string|null} [conversationId] GetPromptDryRunRequest conversationId
+     * @property {Array.<number>|null} [capabilities] GetPromptDryRunRequest capabilities
+     * @property {boolean|null} [maxModeEnabled] GetPromptDryRunRequest maxModeEnabled
+     * @property {boolean|null} [agentMode] GetPromptDryRunRequest agentMode
+     * @property {string|null} [prompt] GetPromptDryRunRequest prompt
+     * @property {boolean|null} [controlFlag] GetPromptDryRunRequest controlFlag
+     * @property {IFileContext|null} [fileContext] GetPromptDryRunRequest fileContext
+     * @property {ISystemEnvironment|null} [systemInfo] GetPromptDryRunRequest systemInfo
+     * @property {IWorkspaceContext|null} [workspaceContext] GetPromptDryRunRequest workspaceContext
+     * @property {IMaxModeSettings|null} [maxSettings] GetPromptDryRunRequest maxSettings
+     */
+
+    /**
+     * Constructs a new GetPromptDryRunRequest.
+     * @exports GetPromptDryRunRequest
+     * @classdesc Represents a GetPromptDryRunRequest.
+     * @implements IGetPromptDryRunRequest
+     * @constructor
+     * @param {IGetPromptDryRunRequest=} [properties] Properties to set
+     */
+    function GetPromptDryRunRequest(properties) {
+        this.capabilities = [];
+        if (properties)
+            for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                if (properties[keys[i]] != null)
+                    this[keys[i]] = properties[keys[i]];
+    }
+
+    /**
+     * GetPromptDryRunRequest userInput.
+     * @member {string|null|undefined} userInput
+     * @memberof GetPromptDryRunRequest
+     * @instance
+     */
+    GetPromptDryRunRequest.prototype.userInput = null;
+
+    /**
+     * GetPromptDryRunRequest preprocessingFlag.
+     * @member {boolean} preprocessingFlag
+     * @memberof GetPromptDryRunRequest
+     * @instance
+     */
+    GetPromptDryRunRequest.prototype.preprocessingFlag = false;
+
+    /**
+     * GetPromptDryRunRequest conversationId.
+     * @member {string} conversationId
+     * @memberof GetPromptDryRunRequest
+     * @instance
+     */
+    GetPromptDryRunRequest.prototype.conversationId = "";
+
+    /**
+     * GetPromptDryRunRequest capabilities.
+     * @member {Array.<number>} capabilities
+     * @memberof GetPromptDryRunRequest
+     * @instance
+     */
+    GetPromptDryRunRequest.prototype.capabilities = $util.emptyArray;
+
+    /**
+     * GetPromptDryRunRequest maxModeEnabled.
+     * @member {boolean} maxModeEnabled
+     * @memberof GetPromptDryRunRequest
+     * @instance
+     */
+    GetPromptDryRunRequest.prototype.maxModeEnabled = false;
+
+    /**
+     * GetPromptDryRunRequest agentMode.
+     * @member {boolean} agentMode
+     * @memberof GetPromptDryRunRequest
+     * @instance
+     */
+    GetPromptDryRunRequest.prototype.agentMode = false;
+
+    /**
+     * GetPromptDryRunRequest prompt.
+     * @member {string|null|undefined} prompt
+     * @memberof GetPromptDryRunRequest
+     * @instance
+     */
+    GetPromptDryRunRequest.prototype.prompt = null;
+
+    /**
+     * GetPromptDryRunRequest controlFlag.
+     * @member {boolean} controlFlag
+     * @memberof GetPromptDryRunRequest
+     * @instance
+     */
+    GetPromptDryRunRequest.prototype.controlFlag = false;
+
+    /**
+     * GetPromptDryRunRequest fileContext.
+     * @member {IFileContext|null|undefined} fileContext
+     * @memberof GetPromptDryRunRequest
+     * @instance
+     */
+    GetPromptDryRunRequest.prototype.fileContext = null;
+
+    /**
+     * GetPromptDryRunRequest systemInfo.
+     * @member {ISystemEnvironment|null|undefined} systemInfo
+     * @memberof GetPromptDryRunRequest
+     * @instance
+     */
+    GetPromptDryRunRequest.prototype.systemInfo = null;
+
+    /**
+     * GetPromptDryRunRequest workspaceContext.
+     * @member {IWorkspaceContext|null|undefined} workspaceContext
+     * @memberof GetPromptDryRunRequest
+     * @instance
+     */
+    GetPromptDryRunRequest.prototype.workspaceContext = null;
+
+    /**
+     * GetPromptDryRunRequest maxSettings.
+     * @member {IMaxModeSettings|null|undefined} maxSettings
+     * @memberof GetPromptDryRunRequest
+     * @instance
+     */
+    GetPromptDryRunRequest.prototype.maxSettings = null;
+
+    // OneOf field names bound to virtual getters and setters
+    var $oneOfFields;
+
+    // Virtual OneOf for proto3 optional field
+    Object.defineProperty(GetPromptDryRunRequest.prototype, "_userInput", {
+        get: $util.oneOfGetter($oneOfFields = ["userInput"]),
+        set: $util.oneOfSetter($oneOfFields)
+    });
+
+    // Virtual OneOf for proto3 optional field
+    Object.defineProperty(GetPromptDryRunRequest.prototype, "_prompt", {
+        get: $util.oneOfGetter($oneOfFields = ["prompt"]),
+        set: $util.oneOfSetter($oneOfFields)
+    });
+
+    /**
+     * Creates a new GetPromptDryRunRequest instance using the specified properties.
+     * @function create
+     * @memberof GetPromptDryRunRequest
+     * @static
+     * @param {IGetPromptDryRunRequest=} [properties] Properties to set
+     * @returns {GetPromptDryRunRequest} GetPromptDryRunRequest instance
+     */
+    GetPromptDryRunRequest.create = function create(properties) {
+        return new GetPromptDryRunRequest(properties);
+    };
+
+    /**
+     * Encodes the specified GetPromptDryRunRequest message. Does not implicitly {@link GetPromptDryRunRequest.verify|verify} messages.
+     * @function encode
+     * @memberof GetPromptDryRunRequest
+     * @static
+     * @param {IGetPromptDryRunRequest} message GetPromptDryRunRequest message or plain object to encode
+     * @param {$protobuf.Writer} [writer] Writer to encode to
+     * @returns {$protobuf.Writer} Writer
+     */
+    GetPromptDryRunRequest.encode = function encode(message, writer) {
+        if (!writer)
+            writer = $Writer.create();
+        if (message.userInput != null && Object.hasOwnProperty.call(message, "userInput"))
+            writer.uint32(/* id 1, wireType 2 =*/10).string(message.userInput);
+        if (message.preprocessingFlag != null && Object.hasOwnProperty.call(message, "preprocessingFlag"))
+            writer.uint32(/* id 2, wireType 0 =*/16).bool(message.preprocessingFlag);
+        if (message.conversationId != null && Object.hasOwnProperty.call(message, "conversationId"))
+            writer.uint32(/* id 13, wireType 2 =*/106).string(message.conversationId);
+        if (message.fileContext != null && Object.hasOwnProperty.call(message, "fileContext"))
+            $root.FileContext.encode(message.fileContext, writer.uint32(/* id 15, wireType 2 =*/122).fork()).ldelim();
+        if (message.capabilities != null && message.capabilities.length) {
+            writer.uint32(/* id 19, wireType 2 =*/154).fork();
+            for (var i = 0; i < message.capabilities.length; ++i)
+                writer.int32(message.capabilities[i]);
+            writer.ldelim();
+        }
+        if (message.maxModeEnabled != null && Object.hasOwnProperty.call(message, "maxModeEnabled"))
+            writer.uint32(/* id 21, wireType 0 =*/168).bool(message.maxModeEnabled);
+        if (message.systemInfo != null && Object.hasOwnProperty.call(message, "systemInfo"))
+            $root.SystemEnvironment.encode(message.systemInfo, writer.uint32(/* id 26, wireType 2 =*/210).fork()).ldelim();
+        if (message.workspaceContext != null && Object.hasOwnProperty.call(message, "workspaceContext"))
+            $root.WorkspaceContext.encode(message.workspaceContext, writer.uint32(/* id 30, wireType 2 =*/242).fork()).ldelim();
+        if (message.maxSettings != null && Object.hasOwnProperty.call(message, "maxSettings"))
+            $root.MaxModeSettings.encode(message.maxSettings, writer.uint32(/* id 35, wireType 2 =*/282).fork()).ldelim();
+        if (message.agentMode != null && Object.hasOwnProperty.call(message, "agentMode"))
+            writer.uint32(/* id 42, wireType 0 =*/336).bool(message.agentMode);
+        if (message.prompt != null && Object.hasOwnProperty.call(message, "prompt"))
+            writer.uint32(/* id 50, wireType 2 =*/402).string(message.prompt);
+        if (message.controlFlag != null && Object.hasOwnProperty.call(message, "controlFlag"))
+            writer.uint32(/* id 63, wireType 0 =*/504).bool(message.controlFlag);
+        return writer;
+    };
+
+    /**
+     * Encodes the specified GetPromptDryRunRequest message, length delimited. Does not implicitly {@link GetPromptDryRunRequest.verify|verify} messages.
+     * @function encodeDelimited
+     * @memberof GetPromptDryRunRequest
+     * @static
+     * @param {IGetPromptDryRunRequest} message GetPromptDryRunRequest message or plain object to encode
+     * @param {$protobuf.Writer} [writer] Writer to encode to
+     * @returns {$protobuf.Writer} Writer
+     */
+    GetPromptDryRunRequest.encodeDelimited = function encodeDelimited(message, writer) {
+        return this.encode(message, writer).ldelim();
+    };
+
+    /**
+     * Decodes a GetPromptDryRunRequest message from the specified reader or buffer.
+     * @function decode
+     * @memberof GetPromptDryRunRequest
+     * @static
+     * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+     * @param {number} [length] Message length if known beforehand
+     * @returns {GetPromptDryRunRequest} GetPromptDryRunRequest
+     * @throws {Error} If the payload is not a reader or valid buffer
+     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+     */
+    GetPromptDryRunRequest.decode = function decode(reader, length) {
+        if (!(reader instanceof $Reader))
+            reader = $Reader.create(reader);
+        var end = length === undefined ? reader.len : reader.pos + length, message = new $root.GetPromptDryRunRequest();
+        while (reader.pos < end) {
+            var tag = reader.uint32();
+            switch (tag >>> 3) {
+            case 1: {
+                    message.userInput = reader.string();
+                    break;
+                }
+            case 2: {
+                    message.preprocessingFlag = reader.bool();
+                    break;
+                }
+            case 13: {
+                    message.conversationId = reader.string();
+                    break;
+                }
+            case 19: {
+                    if (!(message.capabilities && message.capabilities.length))
+                        message.capabilities = [];
+                    if ((tag & 7) === 2) {
+                        var end2 = reader.uint32() + reader.pos;
+                        while (reader.pos < end2)
+                            message.capabilities.push(reader.int32());
+                    } else
+                        message.capabilities.push(reader.int32());
+                    break;
+                }
+            case 21: {
+                    message.maxModeEnabled = reader.bool();
+                    break;
+                }
+            case 42: {
+                    message.agentMode = reader.bool();
+                    break;
+                }
+            case 50: {
+                    message.prompt = reader.string();
+                    break;
+                }
+            case 63: {
+                    message.controlFlag = reader.bool();
+                    break;
+                }
+            case 15: {
+                    message.fileContext = $root.FileContext.decode(reader, reader.uint32());
+                    break;
+                }
+            case 26: {
+                    message.systemInfo = $root.SystemEnvironment.decode(reader, reader.uint32());
+                    break;
+                }
+            case 30: {
+                    message.workspaceContext = $root.WorkspaceContext.decode(reader, reader.uint32());
+                    break;
+                }
+            case 35: {
+                    message.maxSettings = $root.MaxModeSettings.decode(reader, reader.uint32());
+                    break;
+                }
+            default:
+                reader.skipType(tag & 7);
+                break;
+            }
+        }
+        return message;
+    };
+
+    /**
+     * Decodes a GetPromptDryRunRequest message from the specified reader or buffer, length delimited.
+     * @function decodeDelimited
+     * @memberof GetPromptDryRunRequest
+     * @static
+     * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+     * @returns {GetPromptDryRunRequest} GetPromptDryRunRequest
+     * @throws {Error} If the payload is not a reader or valid buffer
+     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+     */
+    GetPromptDryRunRequest.decodeDelimited = function decodeDelimited(reader) {
+        if (!(reader instanceof $Reader))
+            reader = new $Reader(reader);
+        return this.decode(reader, reader.uint32());
+    };
+
+    /**
+     * Verifies a GetPromptDryRunRequest message.
+     * @function verify
+     * @memberof GetPromptDryRunRequest
+     * @static
+     * @param {Object.<string,*>} message Plain object to verify
+     * @returns {string|null} `null` if valid, otherwise the reason why it is not
+     */
+    GetPromptDryRunRequest.verify = function verify(message) {
+        if (typeof message !== "object" || message === null)
+            return "object expected";
+        var properties = {};
+        if (message.userInput != null && message.hasOwnProperty("userInput")) {
+            properties._userInput = 1;
+            if (!$util.isString(message.userInput))
+                return "userInput: string expected";
+        }
+        if (message.preprocessingFlag != null && message.hasOwnProperty("preprocessingFlag"))
+            if (typeof message.preprocessingFlag !== "boolean")
+                return "preprocessingFlag: boolean expected";
+        if (message.conversationId != null && message.hasOwnProperty("conversationId"))
+            if (!$util.isString(message.conversationId))
+                return "conversationId: string expected";
+        if (message.capabilities != null && message.hasOwnProperty("capabilities")) {
+            if (!Array.isArray(message.capabilities))
+                return "capabilities: array expected";
+            for (var i = 0; i < message.capabilities.length; ++i)
+                if (!$util.isInteger(message.capabilities[i]))
+                    return "capabilities: integer[] expected";
+        }
+        if (message.maxModeEnabled != null && message.hasOwnProperty("maxModeEnabled"))
+            if (typeof message.maxModeEnabled !== "boolean")
+                return "maxModeEnabled: boolean expected";
+        if (message.agentMode != null && message.hasOwnProperty("agentMode"))
+            if (typeof message.agentMode !== "boolean")
+                return "agentMode: boolean expected";
+        if (message.prompt != null && message.hasOwnProperty("prompt")) {
+            properties._prompt = 1;
+            if (!$util.isString(message.prompt))
+                return "prompt: string expected";
+        }
+        if (message.controlFlag != null && message.hasOwnProperty("controlFlag"))
+            if (typeof message.controlFlag !== "boolean")
+                return "controlFlag: boolean expected";
+        if (message.fileContext != null && message.hasOwnProperty("fileContext")) {
+            var error = $root.FileContext.verify(message.fileContext);
+            if (error)
+                return "fileContext." + error;
+        }
+        if (message.systemInfo != null && message.hasOwnProperty("systemInfo")) {
+            var error = $root.SystemEnvironment.verify(message.systemInfo);
+            if (error)
+                return "systemInfo." + error;
+        }
+        if (message.workspaceContext != null && message.hasOwnProperty("workspaceContext")) {
+            var error = $root.WorkspaceContext.verify(message.workspaceContext);
+            if (error)
+                return "workspaceContext." + error;
+        }
+        if (message.maxSettings != null && message.hasOwnProperty("maxSettings")) {
+            var error = $root.MaxModeSettings.verify(message.maxSettings);
+            if (error)
+                return "maxSettings." + error;
+        }
+        return null;
+    };
+
+    /**
+     * Creates a GetPromptDryRunRequest message from a plain object. Also converts values to their respective internal types.
+     * @function fromObject
+     * @memberof GetPromptDryRunRequest
+     * @static
+     * @param {Object.<string,*>} object Plain object
+     * @returns {GetPromptDryRunRequest} GetPromptDryRunRequest
+     */
+    GetPromptDryRunRequest.fromObject = function fromObject(object) {
+        if (object instanceof $root.GetPromptDryRunRequest)
+            return object;
+        var message = new $root.GetPromptDryRunRequest();
+        if (object.userInput != null)
+            message.userInput = String(object.userInput);
+        if (object.preprocessingFlag != null)
+            message.preprocessingFlag = Boolean(object.preprocessingFlag);
+        if (object.conversationId != null)
+            message.conversationId = String(object.conversationId);
+        if (object.capabilities) {
+            if (!Array.isArray(object.capabilities))
+                throw TypeError(".GetPromptDryRunRequest.capabilities: array expected");
+            message.capabilities = [];
+            for (var i = 0; i < object.capabilities.length; ++i)
+                message.capabilities[i] = object.capabilities[i] | 0;
+        }
+        if (object.maxModeEnabled != null)
+            message.maxModeEnabled = Boolean(object.maxModeEnabled);
+        if (object.agentMode != null)
+            message.agentMode = Boolean(object.agentMode);
+        if (object.prompt != null)
+            message.prompt = String(object.prompt);
+        if (object.controlFlag != null)
+            message.controlFlag = Boolean(object.controlFlag);
+        if (object.fileContext != null) {
+            if (typeof object.fileContext !== "object")
+                throw TypeError(".GetPromptDryRunRequest.fileContext: object expected");
+            message.fileContext = $root.FileContext.fromObject(object.fileContext);
+        }
+        if (object.systemInfo != null) {
+            if (typeof object.systemInfo !== "object")
+                throw TypeError(".GetPromptDryRunRequest.systemInfo: object expected");
+            message.systemInfo = $root.SystemEnvironment.fromObject(object.systemInfo);
+        }
+        if (object.workspaceContext != null) {
+            if (typeof object.workspaceContext !== "object")
+                throw TypeError(".GetPromptDryRunRequest.workspaceContext: object expected");
+            message.workspaceContext = $root.WorkspaceContext.fromObject(object.workspaceContext);
+        }
+        if (object.maxSettings != null) {
+            if (typeof object.maxSettings !== "object")
+                throw TypeError(".GetPromptDryRunRequest.maxSettings: object expected");
+            message.maxSettings = $root.MaxModeSettings.fromObject(object.maxSettings);
+        }
+        return message;
+    };
+
+    /**
+     * Creates a plain object from a GetPromptDryRunRequest message. Also converts values to other types if specified.
+     * @function toObject
+     * @memberof GetPromptDryRunRequest
+     * @static
+     * @param {GetPromptDryRunRequest} message GetPromptDryRunRequest
+     * @param {$protobuf.IConversionOptions} [options] Conversion options
+     * @returns {Object.<string,*>} Plain object
+     */
+    GetPromptDryRunRequest.toObject = function toObject(message, options) {
+        if (!options)
+            options = {};
+        var object = {};
+        if (options.arrays || options.defaults)
+            object.capabilities = [];
+        if (options.defaults) {
+            object.preprocessingFlag = false;
+            object.conversationId = "";
+            object.fileContext = null;
+            object.maxModeEnabled = false;
+            object.systemInfo = null;
+            object.workspaceContext = null;
+            object.maxSettings = null;
+            object.agentMode = false;
+            object.controlFlag = false;
+        }
+        if (message.userInput != null && message.hasOwnProperty("userInput")) {
+            object.userInput = message.userInput;
+            if (options.oneofs)
+                object._userInput = "userInput";
+        }
+        if (message.preprocessingFlag != null && message.hasOwnProperty("preprocessingFlag"))
+            object.preprocessingFlag = message.preprocessingFlag;
+        if (message.conversationId != null && message.hasOwnProperty("conversationId"))
+            object.conversationId = message.conversationId;
+        if (message.fileContext != null && message.hasOwnProperty("fileContext"))
+            object.fileContext = $root.FileContext.toObject(message.fileContext, options);
+        if (message.capabilities && message.capabilities.length) {
+            object.capabilities = [];
+            for (var j = 0; j < message.capabilities.length; ++j)
+                object.capabilities[j] = message.capabilities[j];
+        }
+        if (message.maxModeEnabled != null && message.hasOwnProperty("maxModeEnabled"))
+            object.maxModeEnabled = message.maxModeEnabled;
+        if (message.systemInfo != null && message.hasOwnProperty("systemInfo"))
+            object.systemInfo = $root.SystemEnvironment.toObject(message.systemInfo, options);
+        if (message.workspaceContext != null && message.hasOwnProperty("workspaceContext"))
+            object.workspaceContext = $root.WorkspaceContext.toObject(message.workspaceContext, options);
+        if (message.maxSettings != null && message.hasOwnProperty("maxSettings"))
+            object.maxSettings = $root.MaxModeSettings.toObject(message.maxSettings, options);
+        if (message.agentMode != null && message.hasOwnProperty("agentMode"))
+            object.agentMode = message.agentMode;
+        if (message.prompt != null && message.hasOwnProperty("prompt")) {
+            object.prompt = message.prompt;
+            if (options.oneofs)
+                object._prompt = "prompt";
+        }
+        if (message.controlFlag != null && message.hasOwnProperty("controlFlag"))
+            object.controlFlag = message.controlFlag;
+        return object;
+    };
+
+    /**
+     * Converts this GetPromptDryRunRequest to JSON.
+     * @function toJSON
+     * @memberof GetPromptDryRunRequest
+     * @instance
+     * @returns {Object.<string,*>} JSON object
+     */
+    GetPromptDryRunRequest.prototype.toJSON = function toJSON() {
+        return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+    };
+
+    /**
+     * Gets the default type url for GetPromptDryRunRequest
+     * @function getTypeUrl
+     * @memberof GetPromptDryRunRequest
+     * @static
+     * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+     * @returns {string} The default type url
+     */
+    GetPromptDryRunRequest.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+        if (typeUrlPrefix === undefined) {
+            typeUrlPrefix = "type.googleapis.com";
+        }
+        return typeUrlPrefix + "/GetPromptDryRunRequest";
+    };
+
+    return GetPromptDryRunRequest;
+})();
+
+$root.GetPromptDryRunResponse = (function() {
+
+    /**
+     * Properties of a GetPromptDryRunResponse.
+     * @exports IGetPromptDryRunResponse
+     * @interface IGetPromptDryRunResponse
+     * @property {string|null} [content] GetPromptDryRunResponse content
+     * @property {boolean|null} [success] GetPromptDryRunResponse success
+     * @property {string|null} [errorMessage] GetPromptDryRunResponse errorMessage
+     * @property {IMaxModeResponse|null} [maxResponse] GetPromptDryRunResponse maxResponse
+     * @property {IMessageThinking|null} [thinking] GetPromptDryRunResponse thinking
+     */
+
+    /**
+     * Constructs a new GetPromptDryRunResponse.
+     * @exports GetPromptDryRunResponse
+     * @classdesc Represents a GetPromptDryRunResponse.
+     * @implements IGetPromptDryRunResponse
+     * @constructor
+     * @param {IGetPromptDryRunResponse=} [properties] Properties to set
+     */
+    function GetPromptDryRunResponse(properties) {
+        if (properties)
+            for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                if (properties[keys[i]] != null)
+                    this[keys[i]] = properties[keys[i]];
+    }
+
+    /**
+     * GetPromptDryRunResponse content.
+     * @member {string} content
+     * @memberof GetPromptDryRunResponse
+     * @instance
+     */
+    GetPromptDryRunResponse.prototype.content = "";
+
+    /**
+     * GetPromptDryRunResponse success.
+     * @member {boolean} success
+     * @memberof GetPromptDryRunResponse
+     * @instance
+     */
+    GetPromptDryRunResponse.prototype.success = false;
+
+    /**
+     * GetPromptDryRunResponse errorMessage.
+     * @member {string} errorMessage
+     * @memberof GetPromptDryRunResponse
+     * @instance
+     */
+    GetPromptDryRunResponse.prototype.errorMessage = "";
+
+    /**
+     * GetPromptDryRunResponse maxResponse.
+     * @member {IMaxModeResponse|null|undefined} maxResponse
+     * @memberof GetPromptDryRunResponse
+     * @instance
+     */
+    GetPromptDryRunResponse.prototype.maxResponse = null;
+
+    /**
+     * GetPromptDryRunResponse thinking.
+     * @member {IMessageThinking|null|undefined} thinking
+     * @memberof GetPromptDryRunResponse
+     * @instance
+     */
+    GetPromptDryRunResponse.prototype.thinking = null;
+
+    /**
+     * Creates a new GetPromptDryRunResponse instance using the specified properties.
+     * @function create
+     * @memberof GetPromptDryRunResponse
+     * @static
+     * @param {IGetPromptDryRunResponse=} [properties] Properties to set
+     * @returns {GetPromptDryRunResponse} GetPromptDryRunResponse instance
+     */
+    GetPromptDryRunResponse.create = function create(properties) {
+        return new GetPromptDryRunResponse(properties);
+    };
+
+    /**
+     * Encodes the specified GetPromptDryRunResponse message. Does not implicitly {@link GetPromptDryRunResponse.verify|verify} messages.
+     * @function encode
+     * @memberof GetPromptDryRunResponse
+     * @static
+     * @param {IGetPromptDryRunResponse} message GetPromptDryRunResponse message or plain object to encode
+     * @param {$protobuf.Writer} [writer] Writer to encode to
+     * @returns {$protobuf.Writer} Writer
+     */
+    GetPromptDryRunResponse.encode = function encode(message, writer) {
+        if (!writer)
+            writer = $Writer.create();
+        if (message.content != null && Object.hasOwnProperty.call(message, "content"))
+            writer.uint32(/* id 1, wireType 2 =*/10).string(message.content);
+        if (message.success != null && Object.hasOwnProperty.call(message, "success"))
+            writer.uint32(/* id 2, wireType 0 =*/16).bool(message.success);
+        if (message.errorMessage != null && Object.hasOwnProperty.call(message, "errorMessage"))
+            writer.uint32(/* id 3, wireType 2 =*/26).string(message.errorMessage);
+        if (message.maxResponse != null && Object.hasOwnProperty.call(message, "maxResponse"))
+            $root.MaxModeResponse.encode(message.maxResponse, writer.uint32(/* id 10, wireType 2 =*/82).fork()).ldelim();
+        if (message.thinking != null && Object.hasOwnProperty.call(message, "thinking"))
+            $root.MessageThinking.encode(message.thinking, writer.uint32(/* id 25, wireType 2 =*/202).fork()).ldelim();
+        return writer;
+    };
+
+    /**
+     * Encodes the specified GetPromptDryRunResponse message, length delimited. Does not implicitly {@link GetPromptDryRunResponse.verify|verify} messages.
+     * @function encodeDelimited
+     * @memberof GetPromptDryRunResponse
+     * @static
+     * @param {IGetPromptDryRunResponse} message GetPromptDryRunResponse message or plain object to encode
+     * @param {$protobuf.Writer} [writer] Writer to encode to
+     * @returns {$protobuf.Writer} Writer
+     */
+    GetPromptDryRunResponse.encodeDelimited = function encodeDelimited(message, writer) {
+        return this.encode(message, writer).ldelim();
+    };
+
+    /**
+     * Decodes a GetPromptDryRunResponse message from the specified reader or buffer.
+     * @function decode
+     * @memberof GetPromptDryRunResponse
+     * @static
+     * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+     * @param {number} [length] Message length if known beforehand
+     * @returns {GetPromptDryRunResponse} GetPromptDryRunResponse
+     * @throws {Error} If the payload is not a reader or valid buffer
+     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+     */
+    GetPromptDryRunResponse.decode = function decode(reader, length) {
+        if (!(reader instanceof $Reader))
+            reader = $Reader.create(reader);
+        var end = length === undefined ? reader.len : reader.pos + length, message = new $root.GetPromptDryRunResponse();
+        while (reader.pos < end) {
+            var tag = reader.uint32();
+            switch (tag >>> 3) {
+            case 1: {
+                    message.content = reader.string();
+                    break;
+                }
+            case 2: {
+                    message.success = reader.bool();
+                    break;
+                }
+            case 3: {
+                    message.errorMessage = reader.string();
+                    break;
+                }
+            case 10: {
+                    message.maxResponse = $root.MaxModeResponse.decode(reader, reader.uint32());
+                    break;
+                }
+            case 25: {
+                    message.thinking = $root.MessageThinking.decode(reader, reader.uint32());
+                    break;
+                }
+            default:
+                reader.skipType(tag & 7);
+                break;
+            }
+        }
+        return message;
+    };
+
+    /**
+     * Decodes a GetPromptDryRunResponse message from the specified reader or buffer, length delimited.
+     * @function decodeDelimited
+     * @memberof GetPromptDryRunResponse
+     * @static
+     * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+     * @returns {GetPromptDryRunResponse} GetPromptDryRunResponse
+     * @throws {Error} If the payload is not a reader or valid buffer
+     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+     */
+    GetPromptDryRunResponse.decodeDelimited = function decodeDelimited(reader) {
+        if (!(reader instanceof $Reader))
+            reader = new $Reader(reader);
+        return this.decode(reader, reader.uint32());
+    };
+
+    /**
+     * Verifies a GetPromptDryRunResponse message.
+     * @function verify
+     * @memberof GetPromptDryRunResponse
+     * @static
+     * @param {Object.<string,*>} message Plain object to verify
+     * @returns {string|null} `null` if valid, otherwise the reason why it is not
+     */
+    GetPromptDryRunResponse.verify = function verify(message) {
+        if (typeof message !== "object" || message === null)
+            return "object expected";
+        if (message.content != null && message.hasOwnProperty("content"))
+            if (!$util.isString(message.content))
+                return "content: string expected";
+        if (message.success != null && message.hasOwnProperty("success"))
+            if (typeof message.success !== "boolean")
+                return "success: boolean expected";
+        if (message.errorMessage != null && message.hasOwnProperty("errorMessage"))
+            if (!$util.isString(message.errorMessage))
+                return "errorMessage: string expected";
+        if (message.maxResponse != null && message.hasOwnProperty("maxResponse")) {
+            var error = $root.MaxModeResponse.verify(message.maxResponse);
+            if (error)
+                return "maxResponse." + error;
+        }
+        if (message.thinking != null && message.hasOwnProperty("thinking")) {
+            var error = $root.MessageThinking.verify(message.thinking);
+            if (error)
+                return "thinking." + error;
+        }
+        return null;
+    };
+
+    /**
+     * Creates a GetPromptDryRunResponse message from a plain object. Also converts values to their respective internal types.
+     * @function fromObject
+     * @memberof GetPromptDryRunResponse
+     * @static
+     * @param {Object.<string,*>} object Plain object
+     * @returns {GetPromptDryRunResponse} GetPromptDryRunResponse
+     */
+    GetPromptDryRunResponse.fromObject = function fromObject(object) {
+        if (object instanceof $root.GetPromptDryRunResponse)
+            return object;
+        var message = new $root.GetPromptDryRunResponse();
+        if (object.content != null)
+            message.content = String(object.content);
+        if (object.success != null)
+            message.success = Boolean(object.success);
+        if (object.errorMessage != null)
+            message.errorMessage = String(object.errorMessage);
+        if (object.maxResponse != null) {
+            if (typeof object.maxResponse !== "object")
+                throw TypeError(".GetPromptDryRunResponse.maxResponse: object expected");
+            message.maxResponse = $root.MaxModeResponse.fromObject(object.maxResponse);
+        }
+        if (object.thinking != null) {
+            if (typeof object.thinking !== "object")
+                throw TypeError(".GetPromptDryRunResponse.thinking: object expected");
+            message.thinking = $root.MessageThinking.fromObject(object.thinking);
+        }
+        return message;
+    };
+
+    /**
+     * Creates a plain object from a GetPromptDryRunResponse message. Also converts values to other types if specified.
+     * @function toObject
+     * @memberof GetPromptDryRunResponse
+     * @static
+     * @param {GetPromptDryRunResponse} message GetPromptDryRunResponse
+     * @param {$protobuf.IConversionOptions} [options] Conversion options
+     * @returns {Object.<string,*>} Plain object
+     */
+    GetPromptDryRunResponse.toObject = function toObject(message, options) {
+        if (!options)
+            options = {};
+        var object = {};
+        if (options.defaults) {
+            object.content = "";
+            object.success = false;
+            object.errorMessage = "";
+            object.maxResponse = null;
+            object.thinking = null;
+        }
+        if (message.content != null && message.hasOwnProperty("content"))
+            object.content = message.content;
+        if (message.success != null && message.hasOwnProperty("success"))
+            object.success = message.success;
+        if (message.errorMessage != null && message.hasOwnProperty("errorMessage"))
+            object.errorMessage = message.errorMessage;
+        if (message.maxResponse != null && message.hasOwnProperty("maxResponse"))
+            object.maxResponse = $root.MaxModeResponse.toObject(message.maxResponse, options);
+        if (message.thinking != null && message.hasOwnProperty("thinking"))
+            object.thinking = $root.MessageThinking.toObject(message.thinking, options);
+        return object;
+    };
+
+    /**
+     * Converts this GetPromptDryRunResponse to JSON.
+     * @function toJSON
+     * @memberof GetPromptDryRunResponse
+     * @instance
+     * @returns {Object.<string,*>} JSON object
+     */
+    GetPromptDryRunResponse.prototype.toJSON = function toJSON() {
+        return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+    };
+
+    /**
+     * Gets the default type url for GetPromptDryRunResponse
+     * @function getTypeUrl
+     * @memberof GetPromptDryRunResponse
+     * @static
+     * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+     * @returns {string} The default type url
+     */
+    GetPromptDryRunResponse.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+        if (typeUrlPrefix === undefined) {
+            typeUrlPrefix = "type.googleapis.com";
+        }
+        return typeUrlPrefix + "/GetPromptDryRunResponse";
+    };
+
+    return GetPromptDryRunResponse;
+})();
+
+$root.FileContext = (function() {
+
+    /**
+     * Properties of a FileContext.
+     * @exports IFileContext
+     * @interface IFileContext
+     * @property {string|null} [workspacePath] FileContext workspacePath
+     * @property {string|null} [currentFile] FileContext currentFile
+     * @property {Uint8Array|null} [fileContent] FileContext fileContent
+     * @property {Array.<IFileReference>|null} [fileReferences] FileContext fileReferences
+     * @property {string|null} [projectType] FileContext projectType
+     */
+
+    /**
+     * Constructs a new FileContext.
+     * @exports FileContext
+     * @classdesc Represents a FileContext.
+     * @implements IFileContext
+     * @constructor
+     * @param {IFileContext=} [properties] Properties to set
+     */
+    function FileContext(properties) {
+        this.fileReferences = [];
+        if (properties)
+            for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                if (properties[keys[i]] != null)
+                    this[keys[i]] = properties[keys[i]];
+    }
+
+    /**
+     * FileContext workspacePath.
+     * @member {string} workspacePath
+     * @memberof FileContext
+     * @instance
+     */
+    FileContext.prototype.workspacePath = "";
+
+    /**
+     * FileContext currentFile.
+     * @member {string} currentFile
+     * @memberof FileContext
+     * @instance
+     */
+    FileContext.prototype.currentFile = "";
+
+    /**
+     * FileContext fileContent.
+     * @member {Uint8Array} fileContent
+     * @memberof FileContext
+     * @instance
+     */
+    FileContext.prototype.fileContent = $util.newBuffer([]);
+
+    /**
+     * FileContext fileReferences.
+     * @member {Array.<IFileReference>} fileReferences
+     * @memberof FileContext
+     * @instance
+     */
+    FileContext.prototype.fileReferences = $util.emptyArray;
+
+    /**
+     * FileContext projectType.
+     * @member {string} projectType
+     * @memberof FileContext
+     * @instance
+     */
+    FileContext.prototype.projectType = "";
+
+    /**
+     * Creates a new FileContext instance using the specified properties.
+     * @function create
+     * @memberof FileContext
+     * @static
+     * @param {IFileContext=} [properties] Properties to set
+     * @returns {FileContext} FileContext instance
+     */
+    FileContext.create = function create(properties) {
+        return new FileContext(properties);
+    };
+
+    /**
+     * Encodes the specified FileContext message. Does not implicitly {@link FileContext.verify|verify} messages.
+     * @function encode
+     * @memberof FileContext
+     * @static
+     * @param {IFileContext} message FileContext message or plain object to encode
+     * @param {$protobuf.Writer} [writer] Writer to encode to
+     * @returns {$protobuf.Writer} Writer
+     */
+    FileContext.encode = function encode(message, writer) {
+        if (!writer)
+            writer = $Writer.create();
+        if (message.workspacePath != null && Object.hasOwnProperty.call(message, "workspacePath"))
+            writer.uint32(/* id 1, wireType 2 =*/10).string(message.workspacePath);
+        if (message.currentFile != null && Object.hasOwnProperty.call(message, "currentFile"))
+            writer.uint32(/* id 2, wireType 2 =*/18).string(message.currentFile);
+        if (message.fileContent != null && Object.hasOwnProperty.call(message, "fileContent"))
+            writer.uint32(/* id 3, wireType 2 =*/26).bytes(message.fileContent);
+        if (message.fileReferences != null && message.fileReferences.length)
+            for (var i = 0; i < message.fileReferences.length; ++i)
+                $root.FileReference.encode(message.fileReferences[i], writer.uint32(/* id 4, wireType 2 =*/34).fork()).ldelim();
+        if (message.projectType != null && Object.hasOwnProperty.call(message, "projectType"))
+            writer.uint32(/* id 5, wireType 2 =*/42).string(message.projectType);
+        return writer;
+    };
+
+    /**
+     * Encodes the specified FileContext message, length delimited. Does not implicitly {@link FileContext.verify|verify} messages.
+     * @function encodeDelimited
+     * @memberof FileContext
+     * @static
+     * @param {IFileContext} message FileContext message or plain object to encode
+     * @param {$protobuf.Writer} [writer] Writer to encode to
+     * @returns {$protobuf.Writer} Writer
+     */
+    FileContext.encodeDelimited = function encodeDelimited(message, writer) {
+        return this.encode(message, writer).ldelim();
+    };
+
+    /**
+     * Decodes a FileContext message from the specified reader or buffer.
+     * @function decode
+     * @memberof FileContext
+     * @static
+     * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+     * @param {number} [length] Message length if known beforehand
+     * @returns {FileContext} FileContext
+     * @throws {Error} If the payload is not a reader or valid buffer
+     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+     */
+    FileContext.decode = function decode(reader, length) {
+        if (!(reader instanceof $Reader))
+            reader = $Reader.create(reader);
+        var end = length === undefined ? reader.len : reader.pos + length, message = new $root.FileContext();
+        while (reader.pos < end) {
+            var tag = reader.uint32();
+            switch (tag >>> 3) {
+            case 1: {
+                    message.workspacePath = reader.string();
+                    break;
+                }
+            case 2: {
+                    message.currentFile = reader.string();
+                    break;
+                }
+            case 3: {
+                    message.fileContent = reader.bytes();
+                    break;
+                }
+            case 4: {
+                    if (!(message.fileReferences && message.fileReferences.length))
+                        message.fileReferences = [];
+                    message.fileReferences.push($root.FileReference.decode(reader, reader.uint32()));
+                    break;
+                }
+            case 5: {
+                    message.projectType = reader.string();
+                    break;
+                }
+            default:
+                reader.skipType(tag & 7);
+                break;
+            }
+        }
+        return message;
+    };
+
+    /**
+     * Decodes a FileContext message from the specified reader or buffer, length delimited.
+     * @function decodeDelimited
+     * @memberof FileContext
+     * @static
+     * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+     * @returns {FileContext} FileContext
+     * @throws {Error} If the payload is not a reader or valid buffer
+     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+     */
+    FileContext.decodeDelimited = function decodeDelimited(reader) {
+        if (!(reader instanceof $Reader))
+            reader = new $Reader(reader);
+        return this.decode(reader, reader.uint32());
+    };
+
+    /**
+     * Verifies a FileContext message.
+     * @function verify
+     * @memberof FileContext
+     * @static
+     * @param {Object.<string,*>} message Plain object to verify
+     * @returns {string|null} `null` if valid, otherwise the reason why it is not
+     */
+    FileContext.verify = function verify(message) {
+        if (typeof message !== "object" || message === null)
+            return "object expected";
+        if (message.workspacePath != null && message.hasOwnProperty("workspacePath"))
+            if (!$util.isString(message.workspacePath))
+                return "workspacePath: string expected";
+        if (message.currentFile != null && message.hasOwnProperty("currentFile"))
+            if (!$util.isString(message.currentFile))
+                return "currentFile: string expected";
+        if (message.fileContent != null && message.hasOwnProperty("fileContent"))
+            if (!(message.fileContent && typeof message.fileContent.length === "number" || $util.isString(message.fileContent)))
+                return "fileContent: buffer expected";
+        if (message.fileReferences != null && message.hasOwnProperty("fileReferences")) {
+            if (!Array.isArray(message.fileReferences))
+                return "fileReferences: array expected";
+            for (var i = 0; i < message.fileReferences.length; ++i) {
+                var error = $root.FileReference.verify(message.fileReferences[i]);
+                if (error)
+                    return "fileReferences." + error;
+            }
+        }
+        if (message.projectType != null && message.hasOwnProperty("projectType"))
+            if (!$util.isString(message.projectType))
+                return "projectType: string expected";
+        return null;
+    };
+
+    /**
+     * Creates a FileContext message from a plain object. Also converts values to their respective internal types.
+     * @function fromObject
+     * @memberof FileContext
+     * @static
+     * @param {Object.<string,*>} object Plain object
+     * @returns {FileContext} FileContext
+     */
+    FileContext.fromObject = function fromObject(object) {
+        if (object instanceof $root.FileContext)
+            return object;
+        var message = new $root.FileContext();
+        if (object.workspacePath != null)
+            message.workspacePath = String(object.workspacePath);
+        if (object.currentFile != null)
+            message.currentFile = String(object.currentFile);
+        if (object.fileContent != null)
+            if (typeof object.fileContent === "string")
+                $util.base64.decode(object.fileContent, message.fileContent = $util.newBuffer($util.base64.length(object.fileContent)), 0);
+            else if (object.fileContent.length >= 0)
+                message.fileContent = object.fileContent;
+        if (object.fileReferences) {
+            if (!Array.isArray(object.fileReferences))
+                throw TypeError(".FileContext.fileReferences: array expected");
+            message.fileReferences = [];
+            for (var i = 0; i < object.fileReferences.length; ++i) {
+                if (typeof object.fileReferences[i] !== "object")
+                    throw TypeError(".FileContext.fileReferences: object expected");
+                message.fileReferences[i] = $root.FileReference.fromObject(object.fileReferences[i]);
+            }
+        }
+        if (object.projectType != null)
+            message.projectType = String(object.projectType);
+        return message;
+    };
+
+    /**
+     * Creates a plain object from a FileContext message. Also converts values to other types if specified.
+     * @function toObject
+     * @memberof FileContext
+     * @static
+     * @param {FileContext} message FileContext
+     * @param {$protobuf.IConversionOptions} [options] Conversion options
+     * @returns {Object.<string,*>} Plain object
+     */
+    FileContext.toObject = function toObject(message, options) {
+        if (!options)
+            options = {};
+        var object = {};
+        if (options.arrays || options.defaults)
+            object.fileReferences = [];
+        if (options.defaults) {
+            object.workspacePath = "";
+            object.currentFile = "";
+            if (options.bytes === String)
+                object.fileContent = "";
+            else {
+                object.fileContent = [];
+                if (options.bytes !== Array)
+                    object.fileContent = $util.newBuffer(object.fileContent);
+            }
+            object.projectType = "";
+        }
+        if (message.workspacePath != null && message.hasOwnProperty("workspacePath"))
+            object.workspacePath = message.workspacePath;
+        if (message.currentFile != null && message.hasOwnProperty("currentFile"))
+            object.currentFile = message.currentFile;
+        if (message.fileContent != null && message.hasOwnProperty("fileContent"))
+            object.fileContent = options.bytes === String ? $util.base64.encode(message.fileContent, 0, message.fileContent.length) : options.bytes === Array ? Array.prototype.slice.call(message.fileContent) : message.fileContent;
+        if (message.fileReferences && message.fileReferences.length) {
+            object.fileReferences = [];
+            for (var j = 0; j < message.fileReferences.length; ++j)
+                object.fileReferences[j] = $root.FileReference.toObject(message.fileReferences[j], options);
+        }
+        if (message.projectType != null && message.hasOwnProperty("projectType"))
+            object.projectType = message.projectType;
+        return object;
+    };
+
+    /**
+     * Converts this FileContext to JSON.
+     * @function toJSON
+     * @memberof FileContext
+     * @instance
+     * @returns {Object.<string,*>} JSON object
+     */
+    FileContext.prototype.toJSON = function toJSON() {
+        return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+    };
+
+    /**
+     * Gets the default type url for FileContext
+     * @function getTypeUrl
+     * @memberof FileContext
+     * @static
+     * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+     * @returns {string} The default type url
+     */
+    FileContext.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+        if (typeUrlPrefix === undefined) {
+            typeUrlPrefix = "type.googleapis.com";
+        }
+        return typeUrlPrefix + "/FileContext";
+    };
+
+    return FileContext;
+})();
+
+$root.SystemEnvironment = (function() {
+
+    /**
+     * Properties of a SystemEnvironment.
+     * @exports ISystemEnvironment
+     * @interface ISystemEnvironment
+     * @property {string|null} [platform] SystemEnvironment platform
+     * @property {string|null} [architecture] SystemEnvironment architecture
+     * @property {string|null} [osVersion] SystemEnvironment osVersion
+     * @property {string|null} [executablePath] SystemEnvironment executablePath
+     * @property {string|null} [shellPath] SystemEnvironment shellPath
+     * @property {string|null} [timestamp] SystemEnvironment timestamp
+     * @property {string|null} [timezone] SystemEnvironment timezone
+     * @property {string|null} [clientVersion] SystemEnvironment clientVersion
+     * @property {string|null} [configVersion] SystemEnvironment configVersion
+     */
+
+    /**
+     * Constructs a new SystemEnvironment.
+     * @exports SystemEnvironment
+     * @classdesc Represents a SystemEnvironment.
+     * @implements ISystemEnvironment
+     * @constructor
+     * @param {ISystemEnvironment=} [properties] Properties to set
+     */
+    function SystemEnvironment(properties) {
+        if (properties)
+            for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                if (properties[keys[i]] != null)
+                    this[keys[i]] = properties[keys[i]];
+    }
+
+    /**
+     * SystemEnvironment platform.
+     * @member {string} platform
+     * @memberof SystemEnvironment
+     * @instance
+     */
+    SystemEnvironment.prototype.platform = "";
+
+    /**
+     * SystemEnvironment architecture.
+     * @member {string} architecture
+     * @memberof SystemEnvironment
+     * @instance
+     */
+    SystemEnvironment.prototype.architecture = "";
+
+    /**
+     * SystemEnvironment osVersion.
+     * @member {string} osVersion
+     * @memberof SystemEnvironment
+     * @instance
+     */
+    SystemEnvironment.prototype.osVersion = "";
+
+    /**
+     * SystemEnvironment executablePath.
+     * @member {string} executablePath
+     * @memberof SystemEnvironment
+     * @instance
+     */
+    SystemEnvironment.prototype.executablePath = "";
+
+    /**
+     * SystemEnvironment shellPath.
+     * @member {string} shellPath
+     * @memberof SystemEnvironment
+     * @instance
+     */
+    SystemEnvironment.prototype.shellPath = "";
+
+    /**
+     * SystemEnvironment timestamp.
+     * @member {string} timestamp
+     * @memberof SystemEnvironment
+     * @instance
+     */
+    SystemEnvironment.prototype.timestamp = "";
+
+    /**
+     * SystemEnvironment timezone.
+     * @member {string} timezone
+     * @memberof SystemEnvironment
+     * @instance
+     */
+    SystemEnvironment.prototype.timezone = "";
+
+    /**
+     * SystemEnvironment clientVersion.
+     * @member {string} clientVersion
+     * @memberof SystemEnvironment
+     * @instance
+     */
+    SystemEnvironment.prototype.clientVersion = "";
+
+    /**
+     * SystemEnvironment configVersion.
+     * @member {string} configVersion
+     * @memberof SystemEnvironment
+     * @instance
+     */
+    SystemEnvironment.prototype.configVersion = "";
+
+    /**
+     * Creates a new SystemEnvironment instance using the specified properties.
+     * @function create
+     * @memberof SystemEnvironment
+     * @static
+     * @param {ISystemEnvironment=} [properties] Properties to set
+     * @returns {SystemEnvironment} SystemEnvironment instance
+     */
+    SystemEnvironment.create = function create(properties) {
+        return new SystemEnvironment(properties);
+    };
+
+    /**
+     * Encodes the specified SystemEnvironment message. Does not implicitly {@link SystemEnvironment.verify|verify} messages.
+     * @function encode
+     * @memberof SystemEnvironment
+     * @static
+     * @param {ISystemEnvironment} message SystemEnvironment message or plain object to encode
+     * @param {$protobuf.Writer} [writer] Writer to encode to
+     * @returns {$protobuf.Writer} Writer
+     */
+    SystemEnvironment.encode = function encode(message, writer) {
+        if (!writer)
+            writer = $Writer.create();
+        if (message.platform != null && Object.hasOwnProperty.call(message, "platform"))
+            writer.uint32(/* id 1, wireType 2 =*/10).string(message.platform);
+        if (message.architecture != null && Object.hasOwnProperty.call(message, "architecture"))
+            writer.uint32(/* id 2, wireType 2 =*/18).string(message.architecture);
+        if (message.osVersion != null && Object.hasOwnProperty.call(message, "osVersion"))
+            writer.uint32(/* id 3, wireType 2 =*/26).string(message.osVersion);
+        if (message.executablePath != null && Object.hasOwnProperty.call(message, "executablePath"))
+            writer.uint32(/* id 4, wireType 2 =*/34).string(message.executablePath);
+        if (message.shellPath != null && Object.hasOwnProperty.call(message, "shellPath"))
+            writer.uint32(/* id 5, wireType 2 =*/42).string(message.shellPath);
+        if (message.timestamp != null && Object.hasOwnProperty.call(message, "timestamp"))
+            writer.uint32(/* id 6, wireType 2 =*/50).string(message.timestamp);
+        if (message.timezone != null && Object.hasOwnProperty.call(message, "timezone"))
+            writer.uint32(/* id 7, wireType 2 =*/58).string(message.timezone);
+        if (message.clientVersion != null && Object.hasOwnProperty.call(message, "clientVersion"))
+            writer.uint32(/* id 8, wireType 2 =*/66).string(message.clientVersion);
+        if (message.configVersion != null && Object.hasOwnProperty.call(message, "configVersion"))
+            writer.uint32(/* id 9, wireType 2 =*/74).string(message.configVersion);
+        return writer;
+    };
+
+    /**
+     * Encodes the specified SystemEnvironment message, length delimited. Does not implicitly {@link SystemEnvironment.verify|verify} messages.
+     * @function encodeDelimited
+     * @memberof SystemEnvironment
+     * @static
+     * @param {ISystemEnvironment} message SystemEnvironment message or plain object to encode
+     * @param {$protobuf.Writer} [writer] Writer to encode to
+     * @returns {$protobuf.Writer} Writer
+     */
+    SystemEnvironment.encodeDelimited = function encodeDelimited(message, writer) {
+        return this.encode(message, writer).ldelim();
+    };
+
+    /**
+     * Decodes a SystemEnvironment message from the specified reader or buffer.
+     * @function decode
+     * @memberof SystemEnvironment
+     * @static
+     * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+     * @param {number} [length] Message length if known beforehand
+     * @returns {SystemEnvironment} SystemEnvironment
+     * @throws {Error} If the payload is not a reader or valid buffer
+     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+     */
+    SystemEnvironment.decode = function decode(reader, length) {
+        if (!(reader instanceof $Reader))
+            reader = $Reader.create(reader);
+        var end = length === undefined ? reader.len : reader.pos + length, message = new $root.SystemEnvironment();
+        while (reader.pos < end) {
+            var tag = reader.uint32();
+            switch (tag >>> 3) {
+            case 1: {
+                    message.platform = reader.string();
+                    break;
+                }
+            case 2: {
+                    message.architecture = reader.string();
+                    break;
+                }
+            case 3: {
+                    message.osVersion = reader.string();
+                    break;
+                }
+            case 4: {
+                    message.executablePath = reader.string();
+                    break;
+                }
+            case 5: {
+                    message.shellPath = reader.string();
+                    break;
+                }
+            case 6: {
+                    message.timestamp = reader.string();
+                    break;
+                }
+            case 7: {
+                    message.timezone = reader.string();
+                    break;
+                }
+            case 8: {
+                    message.clientVersion = reader.string();
+                    break;
+                }
+            case 9: {
+                    message.configVersion = reader.string();
+                    break;
+                }
+            default:
+                reader.skipType(tag & 7);
+                break;
+            }
+        }
+        return message;
+    };
+
+    /**
+     * Decodes a SystemEnvironment message from the specified reader or buffer, length delimited.
+     * @function decodeDelimited
+     * @memberof SystemEnvironment
+     * @static
+     * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+     * @returns {SystemEnvironment} SystemEnvironment
+     * @throws {Error} If the payload is not a reader or valid buffer
+     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+     */
+    SystemEnvironment.decodeDelimited = function decodeDelimited(reader) {
+        if (!(reader instanceof $Reader))
+            reader = new $Reader(reader);
+        return this.decode(reader, reader.uint32());
+    };
+
+    /**
+     * Verifies a SystemEnvironment message.
+     * @function verify
+     * @memberof SystemEnvironment
+     * @static
+     * @param {Object.<string,*>} message Plain object to verify
+     * @returns {string|null} `null` if valid, otherwise the reason why it is not
+     */
+    SystemEnvironment.verify = function verify(message) {
+        if (typeof message !== "object" || message === null)
+            return "object expected";
+        if (message.platform != null && message.hasOwnProperty("platform"))
+            if (!$util.isString(message.platform))
+                return "platform: string expected";
+        if (message.architecture != null && message.hasOwnProperty("architecture"))
+            if (!$util.isString(message.architecture))
+                return "architecture: string expected";
+        if (message.osVersion != null && message.hasOwnProperty("osVersion"))
+            if (!$util.isString(message.osVersion))
+                return "osVersion: string expected";
+        if (message.executablePath != null && message.hasOwnProperty("executablePath"))
+            if (!$util.isString(message.executablePath))
+                return "executablePath: string expected";
+        if (message.shellPath != null && message.hasOwnProperty("shellPath"))
+            if (!$util.isString(message.shellPath))
+                return "shellPath: string expected";
+        if (message.timestamp != null && message.hasOwnProperty("timestamp"))
+            if (!$util.isString(message.timestamp))
+                return "timestamp: string expected";
+        if (message.timezone != null && message.hasOwnProperty("timezone"))
+            if (!$util.isString(message.timezone))
+                return "timezone: string expected";
+        if (message.clientVersion != null && message.hasOwnProperty("clientVersion"))
+            if (!$util.isString(message.clientVersion))
+                return "clientVersion: string expected";
+        if (message.configVersion != null && message.hasOwnProperty("configVersion"))
+            if (!$util.isString(message.configVersion))
+                return "configVersion: string expected";
+        return null;
+    };
+
+    /**
+     * Creates a SystemEnvironment message from a plain object. Also converts values to their respective internal types.
+     * @function fromObject
+     * @memberof SystemEnvironment
+     * @static
+     * @param {Object.<string,*>} object Plain object
+     * @returns {SystemEnvironment} SystemEnvironment
+     */
+    SystemEnvironment.fromObject = function fromObject(object) {
+        if (object instanceof $root.SystemEnvironment)
+            return object;
+        var message = new $root.SystemEnvironment();
+        if (object.platform != null)
+            message.platform = String(object.platform);
+        if (object.architecture != null)
+            message.architecture = String(object.architecture);
+        if (object.osVersion != null)
+            message.osVersion = String(object.osVersion);
+        if (object.executablePath != null)
+            message.executablePath = String(object.executablePath);
+        if (object.shellPath != null)
+            message.shellPath = String(object.shellPath);
+        if (object.timestamp != null)
+            message.timestamp = String(object.timestamp);
+        if (object.timezone != null)
+            message.timezone = String(object.timezone);
+        if (object.clientVersion != null)
+            message.clientVersion = String(object.clientVersion);
+        if (object.configVersion != null)
+            message.configVersion = String(object.configVersion);
+        return message;
+    };
+
+    /**
+     * Creates a plain object from a SystemEnvironment message. Also converts values to other types if specified.
+     * @function toObject
+     * @memberof SystemEnvironment
+     * @static
+     * @param {SystemEnvironment} message SystemEnvironment
+     * @param {$protobuf.IConversionOptions} [options] Conversion options
+     * @returns {Object.<string,*>} Plain object
+     */
+    SystemEnvironment.toObject = function toObject(message, options) {
+        if (!options)
+            options = {};
+        var object = {};
+        if (options.defaults) {
+            object.platform = "";
+            object.architecture = "";
+            object.osVersion = "";
+            object.executablePath = "";
+            object.shellPath = "";
+            object.timestamp = "";
+            object.timezone = "";
+            object.clientVersion = "";
+            object.configVersion = "";
+        }
+        if (message.platform != null && message.hasOwnProperty("platform"))
+            object.platform = message.platform;
+        if (message.architecture != null && message.hasOwnProperty("architecture"))
+            object.architecture = message.architecture;
+        if (message.osVersion != null && message.hasOwnProperty("osVersion"))
+            object.osVersion = message.osVersion;
+        if (message.executablePath != null && message.hasOwnProperty("executablePath"))
+            object.executablePath = message.executablePath;
+        if (message.shellPath != null && message.hasOwnProperty("shellPath"))
+            object.shellPath = message.shellPath;
+        if (message.timestamp != null && message.hasOwnProperty("timestamp"))
+            object.timestamp = message.timestamp;
+        if (message.timezone != null && message.hasOwnProperty("timezone"))
+            object.timezone = message.timezone;
+        if (message.clientVersion != null && message.hasOwnProperty("clientVersion"))
+            object.clientVersion = message.clientVersion;
+        if (message.configVersion != null && message.hasOwnProperty("configVersion"))
+            object.configVersion = message.configVersion;
+        return object;
+    };
+
+    /**
+     * Converts this SystemEnvironment to JSON.
+     * @function toJSON
+     * @memberof SystemEnvironment
+     * @instance
+     * @returns {Object.<string,*>} JSON object
+     */
+    SystemEnvironment.prototype.toJSON = function toJSON() {
+        return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+    };
+
+    /**
+     * Gets the default type url for SystemEnvironment
+     * @function getTypeUrl
+     * @memberof SystemEnvironment
+     * @static
+     * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+     * @returns {string} The default type url
+     */
+    SystemEnvironment.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+        if (typeUrlPrefix === undefined) {
+            typeUrlPrefix = "type.googleapis.com";
+        }
+        return typeUrlPrefix + "/SystemEnvironment";
+    };
+
+    return SystemEnvironment;
+})();
+
+$root.WorkspaceContext = (function() {
+
+    /**
+     * Properties of a WorkspaceContext.
+     * @exports IWorkspaceContext
+     * @interface IWorkspaceContext
+     * @property {string|null} [workspaceId] WorkspaceContext workspaceId
+     * @property {string|null} [rootPath] WorkspaceContext rootPath
+     * @property {string|null} [currentDirectory] WorkspaceContext currentDirectory
+     * @property {string|null} [projectConfig] WorkspaceContext projectConfig
+     * @property {IGitInfo|null} [gitInfo] WorkspaceContext gitInfo
+     */
+
+    /**
+     * Constructs a new WorkspaceContext.
+     * @exports WorkspaceContext
+     * @classdesc Represents a WorkspaceContext.
+     * @implements IWorkspaceContext
+     * @constructor
+     * @param {IWorkspaceContext=} [properties] Properties to set
+     */
+    function WorkspaceContext(properties) {
+        if (properties)
+            for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                if (properties[keys[i]] != null)
+                    this[keys[i]] = properties[keys[i]];
+    }
+
+    /**
+     * WorkspaceContext workspaceId.
+     * @member {string} workspaceId
+     * @memberof WorkspaceContext
+     * @instance
+     */
+    WorkspaceContext.prototype.workspaceId = "";
+
+    /**
+     * WorkspaceContext rootPath.
+     * @member {string} rootPath
+     * @memberof WorkspaceContext
+     * @instance
+     */
+    WorkspaceContext.prototype.rootPath = "";
+
+    /**
+     * WorkspaceContext currentDirectory.
+     * @member {string} currentDirectory
+     * @memberof WorkspaceContext
+     * @instance
+     */
+    WorkspaceContext.prototype.currentDirectory = "";
+
+    /**
+     * WorkspaceContext projectConfig.
+     * @member {string} projectConfig
+     * @memberof WorkspaceContext
+     * @instance
+     */
+    WorkspaceContext.prototype.projectConfig = "";
+
+    /**
+     * WorkspaceContext gitInfo.
+     * @member {IGitInfo|null|undefined} gitInfo
+     * @memberof WorkspaceContext
+     * @instance
+     */
+    WorkspaceContext.prototype.gitInfo = null;
+
+    /**
+     * Creates a new WorkspaceContext instance using the specified properties.
+     * @function create
+     * @memberof WorkspaceContext
+     * @static
+     * @param {IWorkspaceContext=} [properties] Properties to set
+     * @returns {WorkspaceContext} WorkspaceContext instance
+     */
+    WorkspaceContext.create = function create(properties) {
+        return new WorkspaceContext(properties);
+    };
+
+    /**
+     * Encodes the specified WorkspaceContext message. Does not implicitly {@link WorkspaceContext.verify|verify} messages.
+     * @function encode
+     * @memberof WorkspaceContext
+     * @static
+     * @param {IWorkspaceContext} message WorkspaceContext message or plain object to encode
+     * @param {$protobuf.Writer} [writer] Writer to encode to
+     * @returns {$protobuf.Writer} Writer
+     */
+    WorkspaceContext.encode = function encode(message, writer) {
+        if (!writer)
+            writer = $Writer.create();
+        if (message.workspaceId != null && Object.hasOwnProperty.call(message, "workspaceId"))
+            writer.uint32(/* id 1, wireType 2 =*/10).string(message.workspaceId);
+        if (message.rootPath != null && Object.hasOwnProperty.call(message, "rootPath"))
+            writer.uint32(/* id 2, wireType 2 =*/18).string(message.rootPath);
+        if (message.currentDirectory != null && Object.hasOwnProperty.call(message, "currentDirectory"))
+            writer.uint32(/* id 3, wireType 2 =*/26).string(message.currentDirectory);
+        if (message.projectConfig != null && Object.hasOwnProperty.call(message, "projectConfig"))
+            writer.uint32(/* id 4, wireType 2 =*/34).string(message.projectConfig);
+        if (message.gitInfo != null && Object.hasOwnProperty.call(message, "gitInfo"))
+            $root.GitInfo.encode(message.gitInfo, writer.uint32(/* id 5, wireType 2 =*/42).fork()).ldelim();
+        return writer;
+    };
+
+    /**
+     * Encodes the specified WorkspaceContext message, length delimited. Does not implicitly {@link WorkspaceContext.verify|verify} messages.
+     * @function encodeDelimited
+     * @memberof WorkspaceContext
+     * @static
+     * @param {IWorkspaceContext} message WorkspaceContext message or plain object to encode
+     * @param {$protobuf.Writer} [writer] Writer to encode to
+     * @returns {$protobuf.Writer} Writer
+     */
+    WorkspaceContext.encodeDelimited = function encodeDelimited(message, writer) {
+        return this.encode(message, writer).ldelim();
+    };
+
+    /**
+     * Decodes a WorkspaceContext message from the specified reader or buffer.
+     * @function decode
+     * @memberof WorkspaceContext
+     * @static
+     * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+     * @param {number} [length] Message length if known beforehand
+     * @returns {WorkspaceContext} WorkspaceContext
+     * @throws {Error} If the payload is not a reader or valid buffer
+     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+     */
+    WorkspaceContext.decode = function decode(reader, length) {
+        if (!(reader instanceof $Reader))
+            reader = $Reader.create(reader);
+        var end = length === undefined ? reader.len : reader.pos + length, message = new $root.WorkspaceContext();
+        while (reader.pos < end) {
+            var tag = reader.uint32();
+            switch (tag >>> 3) {
+            case 1: {
+                    message.workspaceId = reader.string();
+                    break;
+                }
+            case 2: {
+                    message.rootPath = reader.string();
+                    break;
+                }
+            case 3: {
+                    message.currentDirectory = reader.string();
+                    break;
+                }
+            case 4: {
+                    message.projectConfig = reader.string();
+                    break;
+                }
+            case 5: {
+                    message.gitInfo = $root.GitInfo.decode(reader, reader.uint32());
+                    break;
+                }
+            default:
+                reader.skipType(tag & 7);
+                break;
+            }
+        }
+        return message;
+    };
+
+    /**
+     * Decodes a WorkspaceContext message from the specified reader or buffer, length delimited.
+     * @function decodeDelimited
+     * @memberof WorkspaceContext
+     * @static
+     * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+     * @returns {WorkspaceContext} WorkspaceContext
+     * @throws {Error} If the payload is not a reader or valid buffer
+     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+     */
+    WorkspaceContext.decodeDelimited = function decodeDelimited(reader) {
+        if (!(reader instanceof $Reader))
+            reader = new $Reader(reader);
+        return this.decode(reader, reader.uint32());
+    };
+
+    /**
+     * Verifies a WorkspaceContext message.
+     * @function verify
+     * @memberof WorkspaceContext
+     * @static
+     * @param {Object.<string,*>} message Plain object to verify
+     * @returns {string|null} `null` if valid, otherwise the reason why it is not
+     */
+    WorkspaceContext.verify = function verify(message) {
+        if (typeof message !== "object" || message === null)
+            return "object expected";
+        if (message.workspaceId != null && message.hasOwnProperty("workspaceId"))
+            if (!$util.isString(message.workspaceId))
+                return "workspaceId: string expected";
+        if (message.rootPath != null && message.hasOwnProperty("rootPath"))
+            if (!$util.isString(message.rootPath))
+                return "rootPath: string expected";
+        if (message.currentDirectory != null && message.hasOwnProperty("currentDirectory"))
+            if (!$util.isString(message.currentDirectory))
+                return "currentDirectory: string expected";
+        if (message.projectConfig != null && message.hasOwnProperty("projectConfig"))
+            if (!$util.isString(message.projectConfig))
+                return "projectConfig: string expected";
+        if (message.gitInfo != null && message.hasOwnProperty("gitInfo")) {
+            var error = $root.GitInfo.verify(message.gitInfo);
+            if (error)
+                return "gitInfo." + error;
+        }
+        return null;
+    };
+
+    /**
+     * Creates a WorkspaceContext message from a plain object. Also converts values to their respective internal types.
+     * @function fromObject
+     * @memberof WorkspaceContext
+     * @static
+     * @param {Object.<string,*>} object Plain object
+     * @returns {WorkspaceContext} WorkspaceContext
+     */
+    WorkspaceContext.fromObject = function fromObject(object) {
+        if (object instanceof $root.WorkspaceContext)
+            return object;
+        var message = new $root.WorkspaceContext();
+        if (object.workspaceId != null)
+            message.workspaceId = String(object.workspaceId);
+        if (object.rootPath != null)
+            message.rootPath = String(object.rootPath);
+        if (object.currentDirectory != null)
+            message.currentDirectory = String(object.currentDirectory);
+        if (object.projectConfig != null)
+            message.projectConfig = String(object.projectConfig);
+        if (object.gitInfo != null) {
+            if (typeof object.gitInfo !== "object")
+                throw TypeError(".WorkspaceContext.gitInfo: object expected");
+            message.gitInfo = $root.GitInfo.fromObject(object.gitInfo);
+        }
+        return message;
+    };
+
+    /**
+     * Creates a plain object from a WorkspaceContext message. Also converts values to other types if specified.
+     * @function toObject
+     * @memberof WorkspaceContext
+     * @static
+     * @param {WorkspaceContext} message WorkspaceContext
+     * @param {$protobuf.IConversionOptions} [options] Conversion options
+     * @returns {Object.<string,*>} Plain object
+     */
+    WorkspaceContext.toObject = function toObject(message, options) {
+        if (!options)
+            options = {};
+        var object = {};
+        if (options.defaults) {
+            object.workspaceId = "";
+            object.rootPath = "";
+            object.currentDirectory = "";
+            object.projectConfig = "";
+            object.gitInfo = null;
+        }
+        if (message.workspaceId != null && message.hasOwnProperty("workspaceId"))
+            object.workspaceId = message.workspaceId;
+        if (message.rootPath != null && message.hasOwnProperty("rootPath"))
+            object.rootPath = message.rootPath;
+        if (message.currentDirectory != null && message.hasOwnProperty("currentDirectory"))
+            object.currentDirectory = message.currentDirectory;
+        if (message.projectConfig != null && message.hasOwnProperty("projectConfig"))
+            object.projectConfig = message.projectConfig;
+        if (message.gitInfo != null && message.hasOwnProperty("gitInfo"))
+            object.gitInfo = $root.GitInfo.toObject(message.gitInfo, options);
+        return object;
+    };
+
+    /**
+     * Converts this WorkspaceContext to JSON.
+     * @function toJSON
+     * @memberof WorkspaceContext
+     * @instance
+     * @returns {Object.<string,*>} JSON object
+     */
+    WorkspaceContext.prototype.toJSON = function toJSON() {
+        return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+    };
+
+    /**
+     * Gets the default type url for WorkspaceContext
+     * @function getTypeUrl
+     * @memberof WorkspaceContext
+     * @static
+     * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+     * @returns {string} The default type url
+     */
+    WorkspaceContext.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+        if (typeUrlPrefix === undefined) {
+            typeUrlPrefix = "type.googleapis.com";
+        }
+        return typeUrlPrefix + "/WorkspaceContext";
+    };
+
+    return WorkspaceContext;
+})();
+
+$root.GitInfo = (function() {
+
+    /**
+     * Properties of a GitInfo.
+     * @exports IGitInfo
+     * @interface IGitInfo
+     * @property {string|null} [branch] GitInfo branch
+     * @property {string|null} [commitHash] GitInfo commitHash
+     * @property {boolean|null} [hasUncommittedChanges] GitInfo hasUncommittedChanges
+     * @property {string|null} [remoteUrl] GitInfo remoteUrl
+     */
+
+    /**
+     * Constructs a new GitInfo.
+     * @exports GitInfo
+     * @classdesc Represents a GitInfo.
+     * @implements IGitInfo
+     * @constructor
+     * @param {IGitInfo=} [properties] Properties to set
+     */
+    function GitInfo(properties) {
+        if (properties)
+            for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                if (properties[keys[i]] != null)
+                    this[keys[i]] = properties[keys[i]];
+    }
+
+    /**
+     * GitInfo branch.
+     * @member {string} branch
+     * @memberof GitInfo
+     * @instance
+     */
+    GitInfo.prototype.branch = "";
+
+    /**
+     * GitInfo commitHash.
+     * @member {string} commitHash
+     * @memberof GitInfo
+     * @instance
+     */
+    GitInfo.prototype.commitHash = "";
+
+    /**
+     * GitInfo hasUncommittedChanges.
+     * @member {boolean} hasUncommittedChanges
+     * @memberof GitInfo
+     * @instance
+     */
+    GitInfo.prototype.hasUncommittedChanges = false;
+
+    /**
+     * GitInfo remoteUrl.
+     * @member {string} remoteUrl
+     * @memberof GitInfo
+     * @instance
+     */
+    GitInfo.prototype.remoteUrl = "";
+
+    /**
+     * Creates a new GitInfo instance using the specified properties.
+     * @function create
+     * @memberof GitInfo
+     * @static
+     * @param {IGitInfo=} [properties] Properties to set
+     * @returns {GitInfo} GitInfo instance
+     */
+    GitInfo.create = function create(properties) {
+        return new GitInfo(properties);
+    };
+
+    /**
+     * Encodes the specified GitInfo message. Does not implicitly {@link GitInfo.verify|verify} messages.
+     * @function encode
+     * @memberof GitInfo
+     * @static
+     * @param {IGitInfo} message GitInfo message or plain object to encode
+     * @param {$protobuf.Writer} [writer] Writer to encode to
+     * @returns {$protobuf.Writer} Writer
+     */
+    GitInfo.encode = function encode(message, writer) {
+        if (!writer)
+            writer = $Writer.create();
+        if (message.branch != null && Object.hasOwnProperty.call(message, "branch"))
+            writer.uint32(/* id 1, wireType 2 =*/10).string(message.branch);
+        if (message.commitHash != null && Object.hasOwnProperty.call(message, "commitHash"))
+            writer.uint32(/* id 2, wireType 2 =*/18).string(message.commitHash);
+        if (message.hasUncommittedChanges != null && Object.hasOwnProperty.call(message, "hasUncommittedChanges"))
+            writer.uint32(/* id 3, wireType 0 =*/24).bool(message.hasUncommittedChanges);
+        if (message.remoteUrl != null && Object.hasOwnProperty.call(message, "remoteUrl"))
+            writer.uint32(/* id 4, wireType 2 =*/34).string(message.remoteUrl);
+        return writer;
+    };
+
+    /**
+     * Encodes the specified GitInfo message, length delimited. Does not implicitly {@link GitInfo.verify|verify} messages.
+     * @function encodeDelimited
+     * @memberof GitInfo
+     * @static
+     * @param {IGitInfo} message GitInfo message or plain object to encode
+     * @param {$protobuf.Writer} [writer] Writer to encode to
+     * @returns {$protobuf.Writer} Writer
+     */
+    GitInfo.encodeDelimited = function encodeDelimited(message, writer) {
+        return this.encode(message, writer).ldelim();
+    };
+
+    /**
+     * Decodes a GitInfo message from the specified reader or buffer.
+     * @function decode
+     * @memberof GitInfo
+     * @static
+     * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+     * @param {number} [length] Message length if known beforehand
+     * @returns {GitInfo} GitInfo
+     * @throws {Error} If the payload is not a reader or valid buffer
+     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+     */
+    GitInfo.decode = function decode(reader, length) {
+        if (!(reader instanceof $Reader))
+            reader = $Reader.create(reader);
+        var end = length === undefined ? reader.len : reader.pos + length, message = new $root.GitInfo();
+        while (reader.pos < end) {
+            var tag = reader.uint32();
+            switch (tag >>> 3) {
+            case 1: {
+                    message.branch = reader.string();
+                    break;
+                }
+            case 2: {
+                    message.commitHash = reader.string();
+                    break;
+                }
+            case 3: {
+                    message.hasUncommittedChanges = reader.bool();
+                    break;
+                }
+            case 4: {
+                    message.remoteUrl = reader.string();
+                    break;
+                }
+            default:
+                reader.skipType(tag & 7);
+                break;
+            }
+        }
+        return message;
+    };
+
+    /**
+     * Decodes a GitInfo message from the specified reader or buffer, length delimited.
+     * @function decodeDelimited
+     * @memberof GitInfo
+     * @static
+     * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+     * @returns {GitInfo} GitInfo
+     * @throws {Error} If the payload is not a reader or valid buffer
+     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+     */
+    GitInfo.decodeDelimited = function decodeDelimited(reader) {
+        if (!(reader instanceof $Reader))
+            reader = new $Reader(reader);
+        return this.decode(reader, reader.uint32());
+    };
+
+    /**
+     * Verifies a GitInfo message.
+     * @function verify
+     * @memberof GitInfo
+     * @static
+     * @param {Object.<string,*>} message Plain object to verify
+     * @returns {string|null} `null` if valid, otherwise the reason why it is not
+     */
+    GitInfo.verify = function verify(message) {
+        if (typeof message !== "object" || message === null)
+            return "object expected";
+        if (message.branch != null && message.hasOwnProperty("branch"))
+            if (!$util.isString(message.branch))
+                return "branch: string expected";
+        if (message.commitHash != null && message.hasOwnProperty("commitHash"))
+            if (!$util.isString(message.commitHash))
+                return "commitHash: string expected";
+        if (message.hasUncommittedChanges != null && message.hasOwnProperty("hasUncommittedChanges"))
+            if (typeof message.hasUncommittedChanges !== "boolean")
+                return "hasUncommittedChanges: boolean expected";
+        if (message.remoteUrl != null && message.hasOwnProperty("remoteUrl"))
+            if (!$util.isString(message.remoteUrl))
+                return "remoteUrl: string expected";
+        return null;
+    };
+
+    /**
+     * Creates a GitInfo message from a plain object. Also converts values to their respective internal types.
+     * @function fromObject
+     * @memberof GitInfo
+     * @static
+     * @param {Object.<string,*>} object Plain object
+     * @returns {GitInfo} GitInfo
+     */
+    GitInfo.fromObject = function fromObject(object) {
+        if (object instanceof $root.GitInfo)
+            return object;
+        var message = new $root.GitInfo();
+        if (object.branch != null)
+            message.branch = String(object.branch);
+        if (object.commitHash != null)
+            message.commitHash = String(object.commitHash);
+        if (object.hasUncommittedChanges != null)
+            message.hasUncommittedChanges = Boolean(object.hasUncommittedChanges);
+        if (object.remoteUrl != null)
+            message.remoteUrl = String(object.remoteUrl);
+        return message;
+    };
+
+    /**
+     * Creates a plain object from a GitInfo message. Also converts values to other types if specified.
+     * @function toObject
+     * @memberof GitInfo
+     * @static
+     * @param {GitInfo} message GitInfo
+     * @param {$protobuf.IConversionOptions} [options] Conversion options
+     * @returns {Object.<string,*>} Plain object
+     */
+    GitInfo.toObject = function toObject(message, options) {
+        if (!options)
+            options = {};
+        var object = {};
+        if (options.defaults) {
+            object.branch = "";
+            object.commitHash = "";
+            object.hasUncommittedChanges = false;
+            object.remoteUrl = "";
+        }
+        if (message.branch != null && message.hasOwnProperty("branch"))
+            object.branch = message.branch;
+        if (message.commitHash != null && message.hasOwnProperty("commitHash"))
+            object.commitHash = message.commitHash;
+        if (message.hasUncommittedChanges != null && message.hasOwnProperty("hasUncommittedChanges"))
+            object.hasUncommittedChanges = message.hasUncommittedChanges;
+        if (message.remoteUrl != null && message.hasOwnProperty("remoteUrl"))
+            object.remoteUrl = message.remoteUrl;
+        return object;
+    };
+
+    /**
+     * Converts this GitInfo to JSON.
+     * @function toJSON
+     * @memberof GitInfo
+     * @instance
+     * @returns {Object.<string,*>} JSON object
+     */
+    GitInfo.prototype.toJSON = function toJSON() {
+        return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+    };
+
+    /**
+     * Gets the default type url for GitInfo
+     * @function getTypeUrl
+     * @memberof GitInfo
+     * @static
+     * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+     * @returns {string} The default type url
+     */
+    GitInfo.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+        if (typeUrlPrefix === undefined) {
+            typeUrlPrefix = "type.googleapis.com";
+        }
+        return typeUrlPrefix + "/GitInfo";
+    };
+
+    return GitInfo;
+})();
+
+$root.MaxModeSettings = (function() {
+
+    /**
+     * Properties of a MaxModeSettings.
+     * @exports IMaxModeSettings
+     * @interface IMaxModeSettings
+     * @property {boolean|null} [enabled] MaxModeSettings enabled
+     * @property {IAgentCapabilities|null} [agentCaps] MaxModeSettings agentCaps
+     * @property {IThinkingConfiguration|null} [thinkingConfig] MaxModeSettings thinkingConfig
+     * @property {IContextConfiguration|null} [contextConfig] MaxModeSettings contextConfig
+     * @property {IToolConfiguration|null} [toolConfig] MaxModeSettings toolConfig
+     */
+
+    /**
+     * Constructs a new MaxModeSettings.
+     * @exports MaxModeSettings
+     * @classdesc Represents a MaxModeSettings.
+     * @implements IMaxModeSettings
+     * @constructor
+     * @param {IMaxModeSettings=} [properties] Properties to set
+     */
+    function MaxModeSettings(properties) {
+        if (properties)
+            for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                if (properties[keys[i]] != null)
+                    this[keys[i]] = properties[keys[i]];
+    }
+
+    /**
+     * MaxModeSettings enabled.
+     * @member {boolean} enabled
+     * @memberof MaxModeSettings
+     * @instance
+     */
+    MaxModeSettings.prototype.enabled = false;
+
+    /**
+     * MaxModeSettings agentCaps.
+     * @member {IAgentCapabilities|null|undefined} agentCaps
+     * @memberof MaxModeSettings
+     * @instance
+     */
+    MaxModeSettings.prototype.agentCaps = null;
+
+    /**
+     * MaxModeSettings thinkingConfig.
+     * @member {IThinkingConfiguration|null|undefined} thinkingConfig
+     * @memberof MaxModeSettings
+     * @instance
+     */
+    MaxModeSettings.prototype.thinkingConfig = null;
+
+    /**
+     * MaxModeSettings contextConfig.
+     * @member {IContextConfiguration|null|undefined} contextConfig
+     * @memberof MaxModeSettings
+     * @instance
+     */
+    MaxModeSettings.prototype.contextConfig = null;
+
+    /**
+     * MaxModeSettings toolConfig.
+     * @member {IToolConfiguration|null|undefined} toolConfig
+     * @memberof MaxModeSettings
+     * @instance
+     */
+    MaxModeSettings.prototype.toolConfig = null;
+
+    /**
+     * Creates a new MaxModeSettings instance using the specified properties.
+     * @function create
+     * @memberof MaxModeSettings
+     * @static
+     * @param {IMaxModeSettings=} [properties] Properties to set
+     * @returns {MaxModeSettings} MaxModeSettings instance
+     */
+    MaxModeSettings.create = function create(properties) {
+        return new MaxModeSettings(properties);
+    };
+
+    /**
+     * Encodes the specified MaxModeSettings message. Does not implicitly {@link MaxModeSettings.verify|verify} messages.
+     * @function encode
+     * @memberof MaxModeSettings
+     * @static
+     * @param {IMaxModeSettings} message MaxModeSettings message or plain object to encode
+     * @param {$protobuf.Writer} [writer] Writer to encode to
+     * @returns {$protobuf.Writer} Writer
+     */
+    MaxModeSettings.encode = function encode(message, writer) {
+        if (!writer)
+            writer = $Writer.create();
+        if (message.enabled != null && Object.hasOwnProperty.call(message, "enabled"))
+            writer.uint32(/* id 1, wireType 0 =*/8).bool(message.enabled);
+        if (message.agentCaps != null && Object.hasOwnProperty.call(message, "agentCaps"))
+            $root.AgentCapabilities.encode(message.agentCaps, writer.uint32(/* id 2, wireType 2 =*/18).fork()).ldelim();
+        if (message.thinkingConfig != null && Object.hasOwnProperty.call(message, "thinkingConfig"))
+            $root.ThinkingConfiguration.encode(message.thinkingConfig, writer.uint32(/* id 3, wireType 2 =*/26).fork()).ldelim();
+        if (message.contextConfig != null && Object.hasOwnProperty.call(message, "contextConfig"))
+            $root.ContextConfiguration.encode(message.contextConfig, writer.uint32(/* id 4, wireType 2 =*/34).fork()).ldelim();
+        if (message.toolConfig != null && Object.hasOwnProperty.call(message, "toolConfig"))
+            $root.ToolConfiguration.encode(message.toolConfig, writer.uint32(/* id 5, wireType 2 =*/42).fork()).ldelim();
+        return writer;
+    };
+
+    /**
+     * Encodes the specified MaxModeSettings message, length delimited. Does not implicitly {@link MaxModeSettings.verify|verify} messages.
+     * @function encodeDelimited
+     * @memberof MaxModeSettings
+     * @static
+     * @param {IMaxModeSettings} message MaxModeSettings message or plain object to encode
+     * @param {$protobuf.Writer} [writer] Writer to encode to
+     * @returns {$protobuf.Writer} Writer
+     */
+    MaxModeSettings.encodeDelimited = function encodeDelimited(message, writer) {
+        return this.encode(message, writer).ldelim();
+    };
+
+    /**
+     * Decodes a MaxModeSettings message from the specified reader or buffer.
+     * @function decode
+     * @memberof MaxModeSettings
+     * @static
+     * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+     * @param {number} [length] Message length if known beforehand
+     * @returns {MaxModeSettings} MaxModeSettings
+     * @throws {Error} If the payload is not a reader or valid buffer
+     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+     */
+    MaxModeSettings.decode = function decode(reader, length) {
+        if (!(reader instanceof $Reader))
+            reader = $Reader.create(reader);
+        var end = length === undefined ? reader.len : reader.pos + length, message = new $root.MaxModeSettings();
+        while (reader.pos < end) {
+            var tag = reader.uint32();
+            switch (tag >>> 3) {
+            case 1: {
+                    message.enabled = reader.bool();
+                    break;
+                }
+            case 2: {
+                    message.agentCaps = $root.AgentCapabilities.decode(reader, reader.uint32());
+                    break;
+                }
+            case 3: {
+                    message.thinkingConfig = $root.ThinkingConfiguration.decode(reader, reader.uint32());
+                    break;
+                }
+            case 4: {
+                    message.contextConfig = $root.ContextConfiguration.decode(reader, reader.uint32());
+                    break;
+                }
+            case 5: {
+                    message.toolConfig = $root.ToolConfiguration.decode(reader, reader.uint32());
+                    break;
+                }
+            default:
+                reader.skipType(tag & 7);
+                break;
+            }
+        }
+        return message;
+    };
+
+    /**
+     * Decodes a MaxModeSettings message from the specified reader or buffer, length delimited.
+     * @function decodeDelimited
+     * @memberof MaxModeSettings
+     * @static
+     * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+     * @returns {MaxModeSettings} MaxModeSettings
+     * @throws {Error} If the payload is not a reader or valid buffer
+     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+     */
+    MaxModeSettings.decodeDelimited = function decodeDelimited(reader) {
+        if (!(reader instanceof $Reader))
+            reader = new $Reader(reader);
+        return this.decode(reader, reader.uint32());
+    };
+
+    /**
+     * Verifies a MaxModeSettings message.
+     * @function verify
+     * @memberof MaxModeSettings
+     * @static
+     * @param {Object.<string,*>} message Plain object to verify
+     * @returns {string|null} `null` if valid, otherwise the reason why it is not
+     */
+    MaxModeSettings.verify = function verify(message) {
+        if (typeof message !== "object" || message === null)
+            return "object expected";
+        if (message.enabled != null && message.hasOwnProperty("enabled"))
+            if (typeof message.enabled !== "boolean")
+                return "enabled: boolean expected";
+        if (message.agentCaps != null && message.hasOwnProperty("agentCaps")) {
+            var error = $root.AgentCapabilities.verify(message.agentCaps);
+            if (error)
+                return "agentCaps." + error;
+        }
+        if (message.thinkingConfig != null && message.hasOwnProperty("thinkingConfig")) {
+            var error = $root.ThinkingConfiguration.verify(message.thinkingConfig);
+            if (error)
+                return "thinkingConfig." + error;
+        }
+        if (message.contextConfig != null && message.hasOwnProperty("contextConfig")) {
+            var error = $root.ContextConfiguration.verify(message.contextConfig);
+            if (error)
+                return "contextConfig." + error;
+        }
+        if (message.toolConfig != null && message.hasOwnProperty("toolConfig")) {
+            var error = $root.ToolConfiguration.verify(message.toolConfig);
+            if (error)
+                return "toolConfig." + error;
+        }
+        return null;
+    };
+
+    /**
+     * Creates a MaxModeSettings message from a plain object. Also converts values to their respective internal types.
+     * @function fromObject
+     * @memberof MaxModeSettings
+     * @static
+     * @param {Object.<string,*>} object Plain object
+     * @returns {MaxModeSettings} MaxModeSettings
+     */
+    MaxModeSettings.fromObject = function fromObject(object) {
+        if (object instanceof $root.MaxModeSettings)
+            return object;
+        var message = new $root.MaxModeSettings();
+        if (object.enabled != null)
+            message.enabled = Boolean(object.enabled);
+        if (object.agentCaps != null) {
+            if (typeof object.agentCaps !== "object")
+                throw TypeError(".MaxModeSettings.agentCaps: object expected");
+            message.agentCaps = $root.AgentCapabilities.fromObject(object.agentCaps);
+        }
+        if (object.thinkingConfig != null) {
+            if (typeof object.thinkingConfig !== "object")
+                throw TypeError(".MaxModeSettings.thinkingConfig: object expected");
+            message.thinkingConfig = $root.ThinkingConfiguration.fromObject(object.thinkingConfig);
+        }
+        if (object.contextConfig != null) {
+            if (typeof object.contextConfig !== "object")
+                throw TypeError(".MaxModeSettings.contextConfig: object expected");
+            message.contextConfig = $root.ContextConfiguration.fromObject(object.contextConfig);
+        }
+        if (object.toolConfig != null) {
+            if (typeof object.toolConfig !== "object")
+                throw TypeError(".MaxModeSettings.toolConfig: object expected");
+            message.toolConfig = $root.ToolConfiguration.fromObject(object.toolConfig);
+        }
+        return message;
+    };
+
+    /**
+     * Creates a plain object from a MaxModeSettings message. Also converts values to other types if specified.
+     * @function toObject
+     * @memberof MaxModeSettings
+     * @static
+     * @param {MaxModeSettings} message MaxModeSettings
+     * @param {$protobuf.IConversionOptions} [options] Conversion options
+     * @returns {Object.<string,*>} Plain object
+     */
+    MaxModeSettings.toObject = function toObject(message, options) {
+        if (!options)
+            options = {};
+        var object = {};
+        if (options.defaults) {
+            object.enabled = false;
+            object.agentCaps = null;
+            object.thinkingConfig = null;
+            object.contextConfig = null;
+            object.toolConfig = null;
+        }
+        if (message.enabled != null && message.hasOwnProperty("enabled"))
+            object.enabled = message.enabled;
+        if (message.agentCaps != null && message.hasOwnProperty("agentCaps"))
+            object.agentCaps = $root.AgentCapabilities.toObject(message.agentCaps, options);
+        if (message.thinkingConfig != null && message.hasOwnProperty("thinkingConfig"))
+            object.thinkingConfig = $root.ThinkingConfiguration.toObject(message.thinkingConfig, options);
+        if (message.contextConfig != null && message.hasOwnProperty("contextConfig"))
+            object.contextConfig = $root.ContextConfiguration.toObject(message.contextConfig, options);
+        if (message.toolConfig != null && message.hasOwnProperty("toolConfig"))
+            object.toolConfig = $root.ToolConfiguration.toObject(message.toolConfig, options);
+        return object;
+    };
+
+    /**
+     * Converts this MaxModeSettings to JSON.
+     * @function toJSON
+     * @memberof MaxModeSettings
+     * @instance
+     * @returns {Object.<string,*>} JSON object
+     */
+    MaxModeSettings.prototype.toJSON = function toJSON() {
+        return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+    };
+
+    /**
+     * Gets the default type url for MaxModeSettings
+     * @function getTypeUrl
+     * @memberof MaxModeSettings
+     * @static
+     * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+     * @returns {string} The default type url
+     */
+    MaxModeSettings.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+        if (typeUrlPrefix === undefined) {
+            typeUrlPrefix = "type.googleapis.com";
+        }
+        return typeUrlPrefix + "/MaxModeSettings";
+    };
+
+    return MaxModeSettings;
+})();
+
+$root.AgentCapabilities = (function() {
+
+    /**
+     * Properties of an AgentCapabilities.
+     * @exports IAgentCapabilities
+     * @interface IAgentCapabilities
+     * @property {boolean|null} [codeUnderstanding] AgentCapabilities codeUnderstanding
+     * @property {boolean|null} [codeGeneration] AgentCapabilities codeGeneration
+     * @property {boolean|null} [codeRefactoring] AgentCapabilities codeRefactoring
+     * @property {boolean|null} [fileReading] AgentCapabilities fileReading
+     * @property {boolean|null} [fileWriting] AgentCapabilities fileWriting
+     * @property {boolean|null} [fileSearch] AgentCapabilities fileSearch
+     * @property {boolean|null} [projectAnalysis] AgentCapabilities projectAnalysis
+     * @property {boolean|null} [dependencyAnalysis] AgentCapabilities dependencyAnalysis
+     * @property {boolean|null} [architectureAnalysis] AgentCapabilities architectureAnalysis
+     * @property {boolean|null} [debuggingAssistance] AgentCapabilities debuggingAssistance
+     * @property {boolean|null} [testGeneration] AgentCapabilities testGeneration
+     * @property {boolean|null} [errorAnalysis] AgentCapabilities errorAnalysis
+     * @property {boolean|null} [documentationGeneration] AgentCapabilities documentationGeneration
+     * @property {boolean|null} [commentGeneration] AgentCapabilities commentGeneration
+     * @property {boolean|null} [performanceOptimization] AgentCapabilities performanceOptimization
+     * @property {boolean|null} [securityAnalysis] AgentCapabilities securityAnalysis
+     */
+
+    /**
+     * Constructs a new AgentCapabilities.
+     * @exports AgentCapabilities
+     * @classdesc Represents an AgentCapabilities.
+     * @implements IAgentCapabilities
+     * @constructor
+     * @param {IAgentCapabilities=} [properties] Properties to set
+     */
+    function AgentCapabilities(properties) {
+        if (properties)
+            for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                if (properties[keys[i]] != null)
+                    this[keys[i]] = properties[keys[i]];
+    }
+
+    /**
+     * AgentCapabilities codeUnderstanding.
+     * @member {boolean} codeUnderstanding
+     * @memberof AgentCapabilities
+     * @instance
+     */
+    AgentCapabilities.prototype.codeUnderstanding = false;
+
+    /**
+     * AgentCapabilities codeGeneration.
+     * @member {boolean} codeGeneration
+     * @memberof AgentCapabilities
+     * @instance
+     */
+    AgentCapabilities.prototype.codeGeneration = false;
+
+    /**
+     * AgentCapabilities codeRefactoring.
+     * @member {boolean} codeRefactoring
+     * @memberof AgentCapabilities
+     * @instance
+     */
+    AgentCapabilities.prototype.codeRefactoring = false;
+
+    /**
+     * AgentCapabilities fileReading.
+     * @member {boolean} fileReading
+     * @memberof AgentCapabilities
+     * @instance
+     */
+    AgentCapabilities.prototype.fileReading = false;
+
+    /**
+     * AgentCapabilities fileWriting.
+     * @member {boolean} fileWriting
+     * @memberof AgentCapabilities
+     * @instance
+     */
+    AgentCapabilities.prototype.fileWriting = false;
+
+    /**
+     * AgentCapabilities fileSearch.
+     * @member {boolean} fileSearch
+     * @memberof AgentCapabilities
+     * @instance
+     */
+    AgentCapabilities.prototype.fileSearch = false;
+
+    /**
+     * AgentCapabilities projectAnalysis.
+     * @member {boolean} projectAnalysis
+     * @memberof AgentCapabilities
+     * @instance
+     */
+    AgentCapabilities.prototype.projectAnalysis = false;
+
+    /**
+     * AgentCapabilities dependencyAnalysis.
+     * @member {boolean} dependencyAnalysis
+     * @memberof AgentCapabilities
+     * @instance
+     */
+    AgentCapabilities.prototype.dependencyAnalysis = false;
+
+    /**
+     * AgentCapabilities architectureAnalysis.
+     * @member {boolean} architectureAnalysis
+     * @memberof AgentCapabilities
+     * @instance
+     */
+    AgentCapabilities.prototype.architectureAnalysis = false;
+
+    /**
+     * AgentCapabilities debuggingAssistance.
+     * @member {boolean} debuggingAssistance
+     * @memberof AgentCapabilities
+     * @instance
+     */
+    AgentCapabilities.prototype.debuggingAssistance = false;
+
+    /**
+     * AgentCapabilities testGeneration.
+     * @member {boolean} testGeneration
+     * @memberof AgentCapabilities
+     * @instance
+     */
+    AgentCapabilities.prototype.testGeneration = false;
+
+    /**
+     * AgentCapabilities errorAnalysis.
+     * @member {boolean} errorAnalysis
+     * @memberof AgentCapabilities
+     * @instance
+     */
+    AgentCapabilities.prototype.errorAnalysis = false;
+
+    /**
+     * AgentCapabilities documentationGeneration.
+     * @member {boolean} documentationGeneration
+     * @memberof AgentCapabilities
+     * @instance
+     */
+    AgentCapabilities.prototype.documentationGeneration = false;
+
+    /**
+     * AgentCapabilities commentGeneration.
+     * @member {boolean} commentGeneration
+     * @memberof AgentCapabilities
+     * @instance
+     */
+    AgentCapabilities.prototype.commentGeneration = false;
+
+    /**
+     * AgentCapabilities performanceOptimization.
+     * @member {boolean} performanceOptimization
+     * @memberof AgentCapabilities
+     * @instance
+     */
+    AgentCapabilities.prototype.performanceOptimization = false;
+
+    /**
+     * AgentCapabilities securityAnalysis.
+     * @member {boolean} securityAnalysis
+     * @memberof AgentCapabilities
+     * @instance
+     */
+    AgentCapabilities.prototype.securityAnalysis = false;
+
+    /**
+     * Creates a new AgentCapabilities instance using the specified properties.
+     * @function create
+     * @memberof AgentCapabilities
+     * @static
+     * @param {IAgentCapabilities=} [properties] Properties to set
+     * @returns {AgentCapabilities} AgentCapabilities instance
+     */
+    AgentCapabilities.create = function create(properties) {
+        return new AgentCapabilities(properties);
+    };
+
+    /**
+     * Encodes the specified AgentCapabilities message. Does not implicitly {@link AgentCapabilities.verify|verify} messages.
+     * @function encode
+     * @memberof AgentCapabilities
+     * @static
+     * @param {IAgentCapabilities} message AgentCapabilities message or plain object to encode
+     * @param {$protobuf.Writer} [writer] Writer to encode to
+     * @returns {$protobuf.Writer} Writer
+     */
+    AgentCapabilities.encode = function encode(message, writer) {
+        if (!writer)
+            writer = $Writer.create();
+        if (message.codeUnderstanding != null && Object.hasOwnProperty.call(message, "codeUnderstanding"))
+            writer.uint32(/* id 1, wireType 0 =*/8).bool(message.codeUnderstanding);
+        if (message.codeGeneration != null && Object.hasOwnProperty.call(message, "codeGeneration"))
+            writer.uint32(/* id 2, wireType 0 =*/16).bool(message.codeGeneration);
+        if (message.codeRefactoring != null && Object.hasOwnProperty.call(message, "codeRefactoring"))
+            writer.uint32(/* id 3, wireType 0 =*/24).bool(message.codeRefactoring);
+        if (message.fileReading != null && Object.hasOwnProperty.call(message, "fileReading"))
+            writer.uint32(/* id 4, wireType 0 =*/32).bool(message.fileReading);
+        if (message.fileWriting != null && Object.hasOwnProperty.call(message, "fileWriting"))
+            writer.uint32(/* id 5, wireType 0 =*/40).bool(message.fileWriting);
+        if (message.fileSearch != null && Object.hasOwnProperty.call(message, "fileSearch"))
+            writer.uint32(/* id 6, wireType 0 =*/48).bool(message.fileSearch);
+        if (message.projectAnalysis != null && Object.hasOwnProperty.call(message, "projectAnalysis"))
+            writer.uint32(/* id 7, wireType 0 =*/56).bool(message.projectAnalysis);
+        if (message.dependencyAnalysis != null && Object.hasOwnProperty.call(message, "dependencyAnalysis"))
+            writer.uint32(/* id 8, wireType 0 =*/64).bool(message.dependencyAnalysis);
+        if (message.architectureAnalysis != null && Object.hasOwnProperty.call(message, "architectureAnalysis"))
+            writer.uint32(/* id 9, wireType 0 =*/72).bool(message.architectureAnalysis);
+        if (message.debuggingAssistance != null && Object.hasOwnProperty.call(message, "debuggingAssistance"))
+            writer.uint32(/* id 10, wireType 0 =*/80).bool(message.debuggingAssistance);
+        if (message.testGeneration != null && Object.hasOwnProperty.call(message, "testGeneration"))
+            writer.uint32(/* id 11, wireType 0 =*/88).bool(message.testGeneration);
+        if (message.errorAnalysis != null && Object.hasOwnProperty.call(message, "errorAnalysis"))
+            writer.uint32(/* id 12, wireType 0 =*/96).bool(message.errorAnalysis);
+        if (message.documentationGeneration != null && Object.hasOwnProperty.call(message, "documentationGeneration"))
+            writer.uint32(/* id 13, wireType 0 =*/104).bool(message.documentationGeneration);
+        if (message.commentGeneration != null && Object.hasOwnProperty.call(message, "commentGeneration"))
+            writer.uint32(/* id 14, wireType 0 =*/112).bool(message.commentGeneration);
+        if (message.performanceOptimization != null && Object.hasOwnProperty.call(message, "performanceOptimization"))
+            writer.uint32(/* id 15, wireType 0 =*/120).bool(message.performanceOptimization);
+        if (message.securityAnalysis != null && Object.hasOwnProperty.call(message, "securityAnalysis"))
+            writer.uint32(/* id 16, wireType 0 =*/128).bool(message.securityAnalysis);
+        return writer;
+    };
+
+    /**
+     * Encodes the specified AgentCapabilities message, length delimited. Does not implicitly {@link AgentCapabilities.verify|verify} messages.
+     * @function encodeDelimited
+     * @memberof AgentCapabilities
+     * @static
+     * @param {IAgentCapabilities} message AgentCapabilities message or plain object to encode
+     * @param {$protobuf.Writer} [writer] Writer to encode to
+     * @returns {$protobuf.Writer} Writer
+     */
+    AgentCapabilities.encodeDelimited = function encodeDelimited(message, writer) {
+        return this.encode(message, writer).ldelim();
+    };
+
+    /**
+     * Decodes an AgentCapabilities message from the specified reader or buffer.
+     * @function decode
+     * @memberof AgentCapabilities
+     * @static
+     * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+     * @param {number} [length] Message length if known beforehand
+     * @returns {AgentCapabilities} AgentCapabilities
+     * @throws {Error} If the payload is not a reader or valid buffer
+     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+     */
+    AgentCapabilities.decode = function decode(reader, length) {
+        if (!(reader instanceof $Reader))
+            reader = $Reader.create(reader);
+        var end = length === undefined ? reader.len : reader.pos + length, message = new $root.AgentCapabilities();
+        while (reader.pos < end) {
+            var tag = reader.uint32();
+            switch (tag >>> 3) {
+            case 1: {
+                    message.codeUnderstanding = reader.bool();
+                    break;
+                }
+            case 2: {
+                    message.codeGeneration = reader.bool();
+                    break;
+                }
+            case 3: {
+                    message.codeRefactoring = reader.bool();
+                    break;
+                }
+            case 4: {
+                    message.fileReading = reader.bool();
+                    break;
+                }
+            case 5: {
+                    message.fileWriting = reader.bool();
+                    break;
+                }
+            case 6: {
+                    message.fileSearch = reader.bool();
+                    break;
+                }
+            case 7: {
+                    message.projectAnalysis = reader.bool();
+                    break;
+                }
+            case 8: {
+                    message.dependencyAnalysis = reader.bool();
+                    break;
+                }
+            case 9: {
+                    message.architectureAnalysis = reader.bool();
+                    break;
+                }
+            case 10: {
+                    message.debuggingAssistance = reader.bool();
+                    break;
+                }
+            case 11: {
+                    message.testGeneration = reader.bool();
+                    break;
+                }
+            case 12: {
+                    message.errorAnalysis = reader.bool();
+                    break;
+                }
+            case 13: {
+                    message.documentationGeneration = reader.bool();
+                    break;
+                }
+            case 14: {
+                    message.commentGeneration = reader.bool();
+                    break;
+                }
+            case 15: {
+                    message.performanceOptimization = reader.bool();
+                    break;
+                }
+            case 16: {
+                    message.securityAnalysis = reader.bool();
+                    break;
+                }
+            default:
+                reader.skipType(tag & 7);
+                break;
+            }
+        }
+        return message;
+    };
+
+    /**
+     * Decodes an AgentCapabilities message from the specified reader or buffer, length delimited.
+     * @function decodeDelimited
+     * @memberof AgentCapabilities
+     * @static
+     * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+     * @returns {AgentCapabilities} AgentCapabilities
+     * @throws {Error} If the payload is not a reader or valid buffer
+     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+     */
+    AgentCapabilities.decodeDelimited = function decodeDelimited(reader) {
+        if (!(reader instanceof $Reader))
+            reader = new $Reader(reader);
+        return this.decode(reader, reader.uint32());
+    };
+
+    /**
+     * Verifies an AgentCapabilities message.
+     * @function verify
+     * @memberof AgentCapabilities
+     * @static
+     * @param {Object.<string,*>} message Plain object to verify
+     * @returns {string|null} `null` if valid, otherwise the reason why it is not
+     */
+    AgentCapabilities.verify = function verify(message) {
+        if (typeof message !== "object" || message === null)
+            return "object expected";
+        if (message.codeUnderstanding != null && message.hasOwnProperty("codeUnderstanding"))
+            if (typeof message.codeUnderstanding !== "boolean")
+                return "codeUnderstanding: boolean expected";
+        if (message.codeGeneration != null && message.hasOwnProperty("codeGeneration"))
+            if (typeof message.codeGeneration !== "boolean")
+                return "codeGeneration: boolean expected";
+        if (message.codeRefactoring != null && message.hasOwnProperty("codeRefactoring"))
+            if (typeof message.codeRefactoring !== "boolean")
+                return "codeRefactoring: boolean expected";
+        if (message.fileReading != null && message.hasOwnProperty("fileReading"))
+            if (typeof message.fileReading !== "boolean")
+                return "fileReading: boolean expected";
+        if (message.fileWriting != null && message.hasOwnProperty("fileWriting"))
+            if (typeof message.fileWriting !== "boolean")
+                return "fileWriting: boolean expected";
+        if (message.fileSearch != null && message.hasOwnProperty("fileSearch"))
+            if (typeof message.fileSearch !== "boolean")
+                return "fileSearch: boolean expected";
+        if (message.projectAnalysis != null && message.hasOwnProperty("projectAnalysis"))
+            if (typeof message.projectAnalysis !== "boolean")
+                return "projectAnalysis: boolean expected";
+        if (message.dependencyAnalysis != null && message.hasOwnProperty("dependencyAnalysis"))
+            if (typeof message.dependencyAnalysis !== "boolean")
+                return "dependencyAnalysis: boolean expected";
+        if (message.architectureAnalysis != null && message.hasOwnProperty("architectureAnalysis"))
+            if (typeof message.architectureAnalysis !== "boolean")
+                return "architectureAnalysis: boolean expected";
+        if (message.debuggingAssistance != null && message.hasOwnProperty("debuggingAssistance"))
+            if (typeof message.debuggingAssistance !== "boolean")
+                return "debuggingAssistance: boolean expected";
+        if (message.testGeneration != null && message.hasOwnProperty("testGeneration"))
+            if (typeof message.testGeneration !== "boolean")
+                return "testGeneration: boolean expected";
+        if (message.errorAnalysis != null && message.hasOwnProperty("errorAnalysis"))
+            if (typeof message.errorAnalysis !== "boolean")
+                return "errorAnalysis: boolean expected";
+        if (message.documentationGeneration != null && message.hasOwnProperty("documentationGeneration"))
+            if (typeof message.documentationGeneration !== "boolean")
+                return "documentationGeneration: boolean expected";
+        if (message.commentGeneration != null && message.hasOwnProperty("commentGeneration"))
+            if (typeof message.commentGeneration !== "boolean")
+                return "commentGeneration: boolean expected";
+        if (message.performanceOptimization != null && message.hasOwnProperty("performanceOptimization"))
+            if (typeof message.performanceOptimization !== "boolean")
+                return "performanceOptimization: boolean expected";
+        if (message.securityAnalysis != null && message.hasOwnProperty("securityAnalysis"))
+            if (typeof message.securityAnalysis !== "boolean")
+                return "securityAnalysis: boolean expected";
+        return null;
+    };
+
+    /**
+     * Creates an AgentCapabilities message from a plain object. Also converts values to their respective internal types.
+     * @function fromObject
+     * @memberof AgentCapabilities
+     * @static
+     * @param {Object.<string,*>} object Plain object
+     * @returns {AgentCapabilities} AgentCapabilities
+     */
+    AgentCapabilities.fromObject = function fromObject(object) {
+        if (object instanceof $root.AgentCapabilities)
+            return object;
+        var message = new $root.AgentCapabilities();
+        if (object.codeUnderstanding != null)
+            message.codeUnderstanding = Boolean(object.codeUnderstanding);
+        if (object.codeGeneration != null)
+            message.codeGeneration = Boolean(object.codeGeneration);
+        if (object.codeRefactoring != null)
+            message.codeRefactoring = Boolean(object.codeRefactoring);
+        if (object.fileReading != null)
+            message.fileReading = Boolean(object.fileReading);
+        if (object.fileWriting != null)
+            message.fileWriting = Boolean(object.fileWriting);
+        if (object.fileSearch != null)
+            message.fileSearch = Boolean(object.fileSearch);
+        if (object.projectAnalysis != null)
+            message.projectAnalysis = Boolean(object.projectAnalysis);
+        if (object.dependencyAnalysis != null)
+            message.dependencyAnalysis = Boolean(object.dependencyAnalysis);
+        if (object.architectureAnalysis != null)
+            message.architectureAnalysis = Boolean(object.architectureAnalysis);
+        if (object.debuggingAssistance != null)
+            message.debuggingAssistance = Boolean(object.debuggingAssistance);
+        if (object.testGeneration != null)
+            message.testGeneration = Boolean(object.testGeneration);
+        if (object.errorAnalysis != null)
+            message.errorAnalysis = Boolean(object.errorAnalysis);
+        if (object.documentationGeneration != null)
+            message.documentationGeneration = Boolean(object.documentationGeneration);
+        if (object.commentGeneration != null)
+            message.commentGeneration = Boolean(object.commentGeneration);
+        if (object.performanceOptimization != null)
+            message.performanceOptimization = Boolean(object.performanceOptimization);
+        if (object.securityAnalysis != null)
+            message.securityAnalysis = Boolean(object.securityAnalysis);
+        return message;
+    };
+
+    /**
+     * Creates a plain object from an AgentCapabilities message. Also converts values to other types if specified.
+     * @function toObject
+     * @memberof AgentCapabilities
+     * @static
+     * @param {AgentCapabilities} message AgentCapabilities
+     * @param {$protobuf.IConversionOptions} [options] Conversion options
+     * @returns {Object.<string,*>} Plain object
+     */
+    AgentCapabilities.toObject = function toObject(message, options) {
+        if (!options)
+            options = {};
+        var object = {};
+        if (options.defaults) {
+            object.codeUnderstanding = false;
+            object.codeGeneration = false;
+            object.codeRefactoring = false;
+            object.fileReading = false;
+            object.fileWriting = false;
+            object.fileSearch = false;
+            object.projectAnalysis = false;
+            object.dependencyAnalysis = false;
+            object.architectureAnalysis = false;
+            object.debuggingAssistance = false;
+            object.testGeneration = false;
+            object.errorAnalysis = false;
+            object.documentationGeneration = false;
+            object.commentGeneration = false;
+            object.performanceOptimization = false;
+            object.securityAnalysis = false;
+        }
+        if (message.codeUnderstanding != null && message.hasOwnProperty("codeUnderstanding"))
+            object.codeUnderstanding = message.codeUnderstanding;
+        if (message.codeGeneration != null && message.hasOwnProperty("codeGeneration"))
+            object.codeGeneration = message.codeGeneration;
+        if (message.codeRefactoring != null && message.hasOwnProperty("codeRefactoring"))
+            object.codeRefactoring = message.codeRefactoring;
+        if (message.fileReading != null && message.hasOwnProperty("fileReading"))
+            object.fileReading = message.fileReading;
+        if (message.fileWriting != null && message.hasOwnProperty("fileWriting"))
+            object.fileWriting = message.fileWriting;
+        if (message.fileSearch != null && message.hasOwnProperty("fileSearch"))
+            object.fileSearch = message.fileSearch;
+        if (message.projectAnalysis != null && message.hasOwnProperty("projectAnalysis"))
+            object.projectAnalysis = message.projectAnalysis;
+        if (message.dependencyAnalysis != null && message.hasOwnProperty("dependencyAnalysis"))
+            object.dependencyAnalysis = message.dependencyAnalysis;
+        if (message.architectureAnalysis != null && message.hasOwnProperty("architectureAnalysis"))
+            object.architectureAnalysis = message.architectureAnalysis;
+        if (message.debuggingAssistance != null && message.hasOwnProperty("debuggingAssistance"))
+            object.debuggingAssistance = message.debuggingAssistance;
+        if (message.testGeneration != null && message.hasOwnProperty("testGeneration"))
+            object.testGeneration = message.testGeneration;
+        if (message.errorAnalysis != null && message.hasOwnProperty("errorAnalysis"))
+            object.errorAnalysis = message.errorAnalysis;
+        if (message.documentationGeneration != null && message.hasOwnProperty("documentationGeneration"))
+            object.documentationGeneration = message.documentationGeneration;
+        if (message.commentGeneration != null && message.hasOwnProperty("commentGeneration"))
+            object.commentGeneration = message.commentGeneration;
+        if (message.performanceOptimization != null && message.hasOwnProperty("performanceOptimization"))
+            object.performanceOptimization = message.performanceOptimization;
+        if (message.securityAnalysis != null && message.hasOwnProperty("securityAnalysis"))
+            object.securityAnalysis = message.securityAnalysis;
+        return object;
+    };
+
+    /**
+     * Converts this AgentCapabilities to JSON.
+     * @function toJSON
+     * @memberof AgentCapabilities
+     * @instance
+     * @returns {Object.<string,*>} JSON object
+     */
+    AgentCapabilities.prototype.toJSON = function toJSON() {
+        return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+    };
+
+    /**
+     * Gets the default type url for AgentCapabilities
+     * @function getTypeUrl
+     * @memberof AgentCapabilities
+     * @static
+     * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+     * @returns {string} The default type url
+     */
+    AgentCapabilities.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+        if (typeUrlPrefix === undefined) {
+            typeUrlPrefix = "type.googleapis.com";
+        }
+        return typeUrlPrefix + "/AgentCapabilities";
+    };
+
+    return AgentCapabilities;
+})();
+
+$root.ThinkingConfiguration = (function() {
+
+    /**
+     * Properties of a ThinkingConfiguration.
+     * @exports IThinkingConfiguration
+     * @interface IThinkingConfiguration
+     * @property {number|null} [depthLevel] ThinkingConfiguration depthLevel
+     * @property {boolean|null} [showThinking] ThinkingConfiguration showThinking
+     * @property {boolean|null} [stepByStep] ThinkingConfiguration stepByStep
+     * @property {boolean|null} [reasoningChains] ThinkingConfiguration reasoningChains
+     * @property {boolean|null} [selfVerification] ThinkingConfiguration selfVerification
+     * @property {boolean|null} [alternativeApproaches] ThinkingConfiguration alternativeApproaches
+     */
+
+    /**
+     * Constructs a new ThinkingConfiguration.
+     * @exports ThinkingConfiguration
+     * @classdesc Represents a ThinkingConfiguration.
+     * @implements IThinkingConfiguration
+     * @constructor
+     * @param {IThinkingConfiguration=} [properties] Properties to set
+     */
+    function ThinkingConfiguration(properties) {
+        if (properties)
+            for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                if (properties[keys[i]] != null)
+                    this[keys[i]] = properties[keys[i]];
+    }
+
+    /**
+     * ThinkingConfiguration depthLevel.
+     * @member {number} depthLevel
+     * @memberof ThinkingConfiguration
+     * @instance
+     */
+    ThinkingConfiguration.prototype.depthLevel = 0;
+
+    /**
+     * ThinkingConfiguration showThinking.
+     * @member {boolean} showThinking
+     * @memberof ThinkingConfiguration
+     * @instance
+     */
+    ThinkingConfiguration.prototype.showThinking = false;
+
+    /**
+     * ThinkingConfiguration stepByStep.
+     * @member {boolean} stepByStep
+     * @memberof ThinkingConfiguration
+     * @instance
+     */
+    ThinkingConfiguration.prototype.stepByStep = false;
+
+    /**
+     * ThinkingConfiguration reasoningChains.
+     * @member {boolean} reasoningChains
+     * @memberof ThinkingConfiguration
+     * @instance
+     */
+    ThinkingConfiguration.prototype.reasoningChains = false;
+
+    /**
+     * ThinkingConfiguration selfVerification.
+     * @member {boolean} selfVerification
+     * @memberof ThinkingConfiguration
+     * @instance
+     */
+    ThinkingConfiguration.prototype.selfVerification = false;
+
+    /**
+     * ThinkingConfiguration alternativeApproaches.
+     * @member {boolean} alternativeApproaches
+     * @memberof ThinkingConfiguration
+     * @instance
+     */
+    ThinkingConfiguration.prototype.alternativeApproaches = false;
+
+    /**
+     * Creates a new ThinkingConfiguration instance using the specified properties.
+     * @function create
+     * @memberof ThinkingConfiguration
+     * @static
+     * @param {IThinkingConfiguration=} [properties] Properties to set
+     * @returns {ThinkingConfiguration} ThinkingConfiguration instance
+     */
+    ThinkingConfiguration.create = function create(properties) {
+        return new ThinkingConfiguration(properties);
+    };
+
+    /**
+     * Encodes the specified ThinkingConfiguration message. Does not implicitly {@link ThinkingConfiguration.verify|verify} messages.
+     * @function encode
+     * @memberof ThinkingConfiguration
+     * @static
+     * @param {IThinkingConfiguration} message ThinkingConfiguration message or plain object to encode
+     * @param {$protobuf.Writer} [writer] Writer to encode to
+     * @returns {$protobuf.Writer} Writer
+     */
+    ThinkingConfiguration.encode = function encode(message, writer) {
+        if (!writer)
+            writer = $Writer.create();
+        if (message.depthLevel != null && Object.hasOwnProperty.call(message, "depthLevel"))
+            writer.uint32(/* id 1, wireType 0 =*/8).int32(message.depthLevel);
+        if (message.showThinking != null && Object.hasOwnProperty.call(message, "showThinking"))
+            writer.uint32(/* id 2, wireType 0 =*/16).bool(message.showThinking);
+        if (message.stepByStep != null && Object.hasOwnProperty.call(message, "stepByStep"))
+            writer.uint32(/* id 3, wireType 0 =*/24).bool(message.stepByStep);
+        if (message.reasoningChains != null && Object.hasOwnProperty.call(message, "reasoningChains"))
+            writer.uint32(/* id 4, wireType 0 =*/32).bool(message.reasoningChains);
+        if (message.selfVerification != null && Object.hasOwnProperty.call(message, "selfVerification"))
+            writer.uint32(/* id 5, wireType 0 =*/40).bool(message.selfVerification);
+        if (message.alternativeApproaches != null && Object.hasOwnProperty.call(message, "alternativeApproaches"))
+            writer.uint32(/* id 6, wireType 0 =*/48).bool(message.alternativeApproaches);
+        return writer;
+    };
+
+    /**
+     * Encodes the specified ThinkingConfiguration message, length delimited. Does not implicitly {@link ThinkingConfiguration.verify|verify} messages.
+     * @function encodeDelimited
+     * @memberof ThinkingConfiguration
+     * @static
+     * @param {IThinkingConfiguration} message ThinkingConfiguration message or plain object to encode
+     * @param {$protobuf.Writer} [writer] Writer to encode to
+     * @returns {$protobuf.Writer} Writer
+     */
+    ThinkingConfiguration.encodeDelimited = function encodeDelimited(message, writer) {
+        return this.encode(message, writer).ldelim();
+    };
+
+    /**
+     * Decodes a ThinkingConfiguration message from the specified reader or buffer.
+     * @function decode
+     * @memberof ThinkingConfiguration
+     * @static
+     * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+     * @param {number} [length] Message length if known beforehand
+     * @returns {ThinkingConfiguration} ThinkingConfiguration
+     * @throws {Error} If the payload is not a reader or valid buffer
+     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+     */
+    ThinkingConfiguration.decode = function decode(reader, length) {
+        if (!(reader instanceof $Reader))
+            reader = $Reader.create(reader);
+        var end = length === undefined ? reader.len : reader.pos + length, message = new $root.ThinkingConfiguration();
+        while (reader.pos < end) {
+            var tag = reader.uint32();
+            switch (tag >>> 3) {
+            case 1: {
+                    message.depthLevel = reader.int32();
+                    break;
+                }
+            case 2: {
+                    message.showThinking = reader.bool();
+                    break;
+                }
+            case 3: {
+                    message.stepByStep = reader.bool();
+                    break;
+                }
+            case 4: {
+                    message.reasoningChains = reader.bool();
+                    break;
+                }
+            case 5: {
+                    message.selfVerification = reader.bool();
+                    break;
+                }
+            case 6: {
+                    message.alternativeApproaches = reader.bool();
+                    break;
+                }
+            default:
+                reader.skipType(tag & 7);
+                break;
+            }
+        }
+        return message;
+    };
+
+    /**
+     * Decodes a ThinkingConfiguration message from the specified reader or buffer, length delimited.
+     * @function decodeDelimited
+     * @memberof ThinkingConfiguration
+     * @static
+     * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+     * @returns {ThinkingConfiguration} ThinkingConfiguration
+     * @throws {Error} If the payload is not a reader or valid buffer
+     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+     */
+    ThinkingConfiguration.decodeDelimited = function decodeDelimited(reader) {
+        if (!(reader instanceof $Reader))
+            reader = new $Reader(reader);
+        return this.decode(reader, reader.uint32());
+    };
+
+    /**
+     * Verifies a ThinkingConfiguration message.
+     * @function verify
+     * @memberof ThinkingConfiguration
+     * @static
+     * @param {Object.<string,*>} message Plain object to verify
+     * @returns {string|null} `null` if valid, otherwise the reason why it is not
+     */
+    ThinkingConfiguration.verify = function verify(message) {
+        if (typeof message !== "object" || message === null)
+            return "object expected";
+        if (message.depthLevel != null && message.hasOwnProperty("depthLevel"))
+            if (!$util.isInteger(message.depthLevel))
+                return "depthLevel: integer expected";
+        if (message.showThinking != null && message.hasOwnProperty("showThinking"))
+            if (typeof message.showThinking !== "boolean")
+                return "showThinking: boolean expected";
+        if (message.stepByStep != null && message.hasOwnProperty("stepByStep"))
+            if (typeof message.stepByStep !== "boolean")
+                return "stepByStep: boolean expected";
+        if (message.reasoningChains != null && message.hasOwnProperty("reasoningChains"))
+            if (typeof message.reasoningChains !== "boolean")
+                return "reasoningChains: boolean expected";
+        if (message.selfVerification != null && message.hasOwnProperty("selfVerification"))
+            if (typeof message.selfVerification !== "boolean")
+                return "selfVerification: boolean expected";
+        if (message.alternativeApproaches != null && message.hasOwnProperty("alternativeApproaches"))
+            if (typeof message.alternativeApproaches !== "boolean")
+                return "alternativeApproaches: boolean expected";
+        return null;
+    };
+
+    /**
+     * Creates a ThinkingConfiguration message from a plain object. Also converts values to their respective internal types.
+     * @function fromObject
+     * @memberof ThinkingConfiguration
+     * @static
+     * @param {Object.<string,*>} object Plain object
+     * @returns {ThinkingConfiguration} ThinkingConfiguration
+     */
+    ThinkingConfiguration.fromObject = function fromObject(object) {
+        if (object instanceof $root.ThinkingConfiguration)
+            return object;
+        var message = new $root.ThinkingConfiguration();
+        if (object.depthLevel != null)
+            message.depthLevel = object.depthLevel | 0;
+        if (object.showThinking != null)
+            message.showThinking = Boolean(object.showThinking);
+        if (object.stepByStep != null)
+            message.stepByStep = Boolean(object.stepByStep);
+        if (object.reasoningChains != null)
+            message.reasoningChains = Boolean(object.reasoningChains);
+        if (object.selfVerification != null)
+            message.selfVerification = Boolean(object.selfVerification);
+        if (object.alternativeApproaches != null)
+            message.alternativeApproaches = Boolean(object.alternativeApproaches);
+        return message;
+    };
+
+    /**
+     * Creates a plain object from a ThinkingConfiguration message. Also converts values to other types if specified.
+     * @function toObject
+     * @memberof ThinkingConfiguration
+     * @static
+     * @param {ThinkingConfiguration} message ThinkingConfiguration
+     * @param {$protobuf.IConversionOptions} [options] Conversion options
+     * @returns {Object.<string,*>} Plain object
+     */
+    ThinkingConfiguration.toObject = function toObject(message, options) {
+        if (!options)
+            options = {};
+        var object = {};
+        if (options.defaults) {
+            object.depthLevel = 0;
+            object.showThinking = false;
+            object.stepByStep = false;
+            object.reasoningChains = false;
+            object.selfVerification = false;
+            object.alternativeApproaches = false;
+        }
+        if (message.depthLevel != null && message.hasOwnProperty("depthLevel"))
+            object.depthLevel = message.depthLevel;
+        if (message.showThinking != null && message.hasOwnProperty("showThinking"))
+            object.showThinking = message.showThinking;
+        if (message.stepByStep != null && message.hasOwnProperty("stepByStep"))
+            object.stepByStep = message.stepByStep;
+        if (message.reasoningChains != null && message.hasOwnProperty("reasoningChains"))
+            object.reasoningChains = message.reasoningChains;
+        if (message.selfVerification != null && message.hasOwnProperty("selfVerification"))
+            object.selfVerification = message.selfVerification;
+        if (message.alternativeApproaches != null && message.hasOwnProperty("alternativeApproaches"))
+            object.alternativeApproaches = message.alternativeApproaches;
+        return object;
+    };
+
+    /**
+     * Converts this ThinkingConfiguration to JSON.
+     * @function toJSON
+     * @memberof ThinkingConfiguration
+     * @instance
+     * @returns {Object.<string,*>} JSON object
+     */
+    ThinkingConfiguration.prototype.toJSON = function toJSON() {
+        return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+    };
+
+    /**
+     * Gets the default type url for ThinkingConfiguration
+     * @function getTypeUrl
+     * @memberof ThinkingConfiguration
+     * @static
+     * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+     * @returns {string} The default type url
+     */
+    ThinkingConfiguration.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+        if (typeUrlPrefix === undefined) {
+            typeUrlPrefix = "type.googleapis.com";
+        }
+        return typeUrlPrefix + "/ThinkingConfiguration";
+    };
+
+    return ThinkingConfiguration;
+})();
+
+$root.ContextConfiguration = (function() {
+
+    /**
+     * Properties of a ContextConfiguration.
+     * @exports IContextConfiguration
+     * @interface IContextConfiguration
+     * @property {number|null} [maxContextTokens] ContextConfiguration maxContextTokens
+     * @property {number|null} [maxFiles] ContextConfiguration maxFiles
+     * @property {number|null} [maxFileSize] ContextConfiguration maxFileSize
+     * @property {number|null} [conversationHistory] ContextConfiguration conversationHistory
+     * @property {boolean|null} [includeEditHistory] ContextConfiguration includeEditHistory
+     * @property {boolean|null} [includeProjectStructure] ContextConfiguration includeProjectStructure
+     * @property {boolean|null} [includeDependencies] ContextConfiguration includeDependencies
+     */
+
+    /**
+     * Constructs a new ContextConfiguration.
+     * @exports ContextConfiguration
+     * @classdesc Represents a ContextConfiguration.
+     * @implements IContextConfiguration
+     * @constructor
+     * @param {IContextConfiguration=} [properties] Properties to set
+     */
+    function ContextConfiguration(properties) {
+        if (properties)
+            for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                if (properties[keys[i]] != null)
+                    this[keys[i]] = properties[keys[i]];
+    }
+
+    /**
+     * ContextConfiguration maxContextTokens.
+     * @member {number} maxContextTokens
+     * @memberof ContextConfiguration
+     * @instance
+     */
+    ContextConfiguration.prototype.maxContextTokens = 0;
+
+    /**
+     * ContextConfiguration maxFiles.
+     * @member {number} maxFiles
+     * @memberof ContextConfiguration
+     * @instance
+     */
+    ContextConfiguration.prototype.maxFiles = 0;
+
+    /**
+     * ContextConfiguration maxFileSize.
+     * @member {number} maxFileSize
+     * @memberof ContextConfiguration
+     * @instance
+     */
+    ContextConfiguration.prototype.maxFileSize = 0;
+
+    /**
+     * ContextConfiguration conversationHistory.
+     * @member {number} conversationHistory
+     * @memberof ContextConfiguration
+     * @instance
+     */
+    ContextConfiguration.prototype.conversationHistory = 0;
+
+    /**
+     * ContextConfiguration includeEditHistory.
+     * @member {boolean} includeEditHistory
+     * @memberof ContextConfiguration
+     * @instance
+     */
+    ContextConfiguration.prototype.includeEditHistory = false;
+
+    /**
+     * ContextConfiguration includeProjectStructure.
+     * @member {boolean} includeProjectStructure
+     * @memberof ContextConfiguration
+     * @instance
+     */
+    ContextConfiguration.prototype.includeProjectStructure = false;
+
+    /**
+     * ContextConfiguration includeDependencies.
+     * @member {boolean} includeDependencies
+     * @memberof ContextConfiguration
+     * @instance
+     */
+    ContextConfiguration.prototype.includeDependencies = false;
+
+    /**
+     * Creates a new ContextConfiguration instance using the specified properties.
+     * @function create
+     * @memberof ContextConfiguration
+     * @static
+     * @param {IContextConfiguration=} [properties] Properties to set
+     * @returns {ContextConfiguration} ContextConfiguration instance
+     */
+    ContextConfiguration.create = function create(properties) {
+        return new ContextConfiguration(properties);
+    };
+
+    /**
+     * Encodes the specified ContextConfiguration message. Does not implicitly {@link ContextConfiguration.verify|verify} messages.
+     * @function encode
+     * @memberof ContextConfiguration
+     * @static
+     * @param {IContextConfiguration} message ContextConfiguration message or plain object to encode
+     * @param {$protobuf.Writer} [writer] Writer to encode to
+     * @returns {$protobuf.Writer} Writer
+     */
+    ContextConfiguration.encode = function encode(message, writer) {
+        if (!writer)
+            writer = $Writer.create();
+        if (message.maxContextTokens != null && Object.hasOwnProperty.call(message, "maxContextTokens"))
+            writer.uint32(/* id 1, wireType 0 =*/8).int32(message.maxContextTokens);
+        if (message.maxFiles != null && Object.hasOwnProperty.call(message, "maxFiles"))
+            writer.uint32(/* id 2, wireType 0 =*/16).int32(message.maxFiles);
+        if (message.maxFileSize != null && Object.hasOwnProperty.call(message, "maxFileSize"))
+            writer.uint32(/* id 3, wireType 0 =*/24).int32(message.maxFileSize);
+        if (message.conversationHistory != null && Object.hasOwnProperty.call(message, "conversationHistory"))
+            writer.uint32(/* id 4, wireType 0 =*/32).int32(message.conversationHistory);
+        if (message.includeEditHistory != null && Object.hasOwnProperty.call(message, "includeEditHistory"))
+            writer.uint32(/* id 5, wireType 0 =*/40).bool(message.includeEditHistory);
+        if (message.includeProjectStructure != null && Object.hasOwnProperty.call(message, "includeProjectStructure"))
+            writer.uint32(/* id 6, wireType 0 =*/48).bool(message.includeProjectStructure);
+        if (message.includeDependencies != null && Object.hasOwnProperty.call(message, "includeDependencies"))
+            writer.uint32(/* id 7, wireType 0 =*/56).bool(message.includeDependencies);
+        return writer;
+    };
+
+    /**
+     * Encodes the specified ContextConfiguration message, length delimited. Does not implicitly {@link ContextConfiguration.verify|verify} messages.
+     * @function encodeDelimited
+     * @memberof ContextConfiguration
+     * @static
+     * @param {IContextConfiguration} message ContextConfiguration message or plain object to encode
+     * @param {$protobuf.Writer} [writer] Writer to encode to
+     * @returns {$protobuf.Writer} Writer
+     */
+    ContextConfiguration.encodeDelimited = function encodeDelimited(message, writer) {
+        return this.encode(message, writer).ldelim();
+    };
+
+    /**
+     * Decodes a ContextConfiguration message from the specified reader or buffer.
+     * @function decode
+     * @memberof ContextConfiguration
+     * @static
+     * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+     * @param {number} [length] Message length if known beforehand
+     * @returns {ContextConfiguration} ContextConfiguration
+     * @throws {Error} If the payload is not a reader or valid buffer
+     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+     */
+    ContextConfiguration.decode = function decode(reader, length) {
+        if (!(reader instanceof $Reader))
+            reader = $Reader.create(reader);
+        var end = length === undefined ? reader.len : reader.pos + length, message = new $root.ContextConfiguration();
+        while (reader.pos < end) {
+            var tag = reader.uint32();
+            switch (tag >>> 3) {
+            case 1: {
+                    message.maxContextTokens = reader.int32();
+                    break;
+                }
+            case 2: {
+                    message.maxFiles = reader.int32();
+                    break;
+                }
+            case 3: {
+                    message.maxFileSize = reader.int32();
+                    break;
+                }
+            case 4: {
+                    message.conversationHistory = reader.int32();
+                    break;
+                }
+            case 5: {
+                    message.includeEditHistory = reader.bool();
+                    break;
+                }
+            case 6: {
+                    message.includeProjectStructure = reader.bool();
+                    break;
+                }
+            case 7: {
+                    message.includeDependencies = reader.bool();
+                    break;
+                }
+            default:
+                reader.skipType(tag & 7);
+                break;
+            }
+        }
+        return message;
+    };
+
+    /**
+     * Decodes a ContextConfiguration message from the specified reader or buffer, length delimited.
+     * @function decodeDelimited
+     * @memberof ContextConfiguration
+     * @static
+     * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+     * @returns {ContextConfiguration} ContextConfiguration
+     * @throws {Error} If the payload is not a reader or valid buffer
+     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+     */
+    ContextConfiguration.decodeDelimited = function decodeDelimited(reader) {
+        if (!(reader instanceof $Reader))
+            reader = new $Reader(reader);
+        return this.decode(reader, reader.uint32());
+    };
+
+    /**
+     * Verifies a ContextConfiguration message.
+     * @function verify
+     * @memberof ContextConfiguration
+     * @static
+     * @param {Object.<string,*>} message Plain object to verify
+     * @returns {string|null} `null` if valid, otherwise the reason why it is not
+     */
+    ContextConfiguration.verify = function verify(message) {
+        if (typeof message !== "object" || message === null)
+            return "object expected";
+        if (message.maxContextTokens != null && message.hasOwnProperty("maxContextTokens"))
+            if (!$util.isInteger(message.maxContextTokens))
+                return "maxContextTokens: integer expected";
+        if (message.maxFiles != null && message.hasOwnProperty("maxFiles"))
+            if (!$util.isInteger(message.maxFiles))
+                return "maxFiles: integer expected";
+        if (message.maxFileSize != null && message.hasOwnProperty("maxFileSize"))
+            if (!$util.isInteger(message.maxFileSize))
+                return "maxFileSize: integer expected";
+        if (message.conversationHistory != null && message.hasOwnProperty("conversationHistory"))
+            if (!$util.isInteger(message.conversationHistory))
+                return "conversationHistory: integer expected";
+        if (message.includeEditHistory != null && message.hasOwnProperty("includeEditHistory"))
+            if (typeof message.includeEditHistory !== "boolean")
+                return "includeEditHistory: boolean expected";
+        if (message.includeProjectStructure != null && message.hasOwnProperty("includeProjectStructure"))
+            if (typeof message.includeProjectStructure !== "boolean")
+                return "includeProjectStructure: boolean expected";
+        if (message.includeDependencies != null && message.hasOwnProperty("includeDependencies"))
+            if (typeof message.includeDependencies !== "boolean")
+                return "includeDependencies: boolean expected";
+        return null;
+    };
+
+    /**
+     * Creates a ContextConfiguration message from a plain object. Also converts values to their respective internal types.
+     * @function fromObject
+     * @memberof ContextConfiguration
+     * @static
+     * @param {Object.<string,*>} object Plain object
+     * @returns {ContextConfiguration} ContextConfiguration
+     */
+    ContextConfiguration.fromObject = function fromObject(object) {
+        if (object instanceof $root.ContextConfiguration)
+            return object;
+        var message = new $root.ContextConfiguration();
+        if (object.maxContextTokens != null)
+            message.maxContextTokens = object.maxContextTokens | 0;
+        if (object.maxFiles != null)
+            message.maxFiles = object.maxFiles | 0;
+        if (object.maxFileSize != null)
+            message.maxFileSize = object.maxFileSize | 0;
+        if (object.conversationHistory != null)
+            message.conversationHistory = object.conversationHistory | 0;
+        if (object.includeEditHistory != null)
+            message.includeEditHistory = Boolean(object.includeEditHistory);
+        if (object.includeProjectStructure != null)
+            message.includeProjectStructure = Boolean(object.includeProjectStructure);
+        if (object.includeDependencies != null)
+            message.includeDependencies = Boolean(object.includeDependencies);
+        return message;
+    };
+
+    /**
+     * Creates a plain object from a ContextConfiguration message. Also converts values to other types if specified.
+     * @function toObject
+     * @memberof ContextConfiguration
+     * @static
+     * @param {ContextConfiguration} message ContextConfiguration
+     * @param {$protobuf.IConversionOptions} [options] Conversion options
+     * @returns {Object.<string,*>} Plain object
+     */
+    ContextConfiguration.toObject = function toObject(message, options) {
+        if (!options)
+            options = {};
+        var object = {};
+        if (options.defaults) {
+            object.maxContextTokens = 0;
+            object.maxFiles = 0;
+            object.maxFileSize = 0;
+            object.conversationHistory = 0;
+            object.includeEditHistory = false;
+            object.includeProjectStructure = false;
+            object.includeDependencies = false;
+        }
+        if (message.maxContextTokens != null && message.hasOwnProperty("maxContextTokens"))
+            object.maxContextTokens = message.maxContextTokens;
+        if (message.maxFiles != null && message.hasOwnProperty("maxFiles"))
+            object.maxFiles = message.maxFiles;
+        if (message.maxFileSize != null && message.hasOwnProperty("maxFileSize"))
+            object.maxFileSize = message.maxFileSize;
+        if (message.conversationHistory != null && message.hasOwnProperty("conversationHistory"))
+            object.conversationHistory = message.conversationHistory;
+        if (message.includeEditHistory != null && message.hasOwnProperty("includeEditHistory"))
+            object.includeEditHistory = message.includeEditHistory;
+        if (message.includeProjectStructure != null && message.hasOwnProperty("includeProjectStructure"))
+            object.includeProjectStructure = message.includeProjectStructure;
+        if (message.includeDependencies != null && message.hasOwnProperty("includeDependencies"))
+            object.includeDependencies = message.includeDependencies;
+        return object;
+    };
+
+    /**
+     * Converts this ContextConfiguration to JSON.
+     * @function toJSON
+     * @memberof ContextConfiguration
+     * @instance
+     * @returns {Object.<string,*>} JSON object
+     */
+    ContextConfiguration.prototype.toJSON = function toJSON() {
+        return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+    };
+
+    /**
+     * Gets the default type url for ContextConfiguration
+     * @function getTypeUrl
+     * @memberof ContextConfiguration
+     * @static
+     * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+     * @returns {string} The default type url
+     */
+    ContextConfiguration.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+        if (typeUrlPrefix === undefined) {
+            typeUrlPrefix = "type.googleapis.com";
+        }
+        return typeUrlPrefix + "/ContextConfiguration";
+    };
+
+    return ContextConfiguration;
+})();
+
+$root.ToolConfiguration = (function() {
+
+    /**
+     * Properties of a ToolConfiguration.
+     * @exports IToolConfiguration
+     * @interface IToolConfiguration
+     * @property {boolean|null} [webSearchEnabled] ToolConfiguration webSearchEnabled
+     * @property {boolean|null} [codeExecutionEnabled] ToolConfiguration codeExecutionEnabled
+     * @property {boolean|null} [filesystemAccess] ToolConfiguration filesystemAccess
+     * @property {boolean|null} [externalApiCalls] ToolConfiguration externalApiCalls
+     * @property {boolean|null} [databaseAccess] ToolConfiguration databaseAccess
+     */
+
+    /**
+     * Constructs a new ToolConfiguration.
+     * @exports ToolConfiguration
+     * @classdesc Represents a ToolConfiguration.
+     * @implements IToolConfiguration
+     * @constructor
+     * @param {IToolConfiguration=} [properties] Properties to set
+     */
+    function ToolConfiguration(properties) {
+        if (properties)
+            for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                if (properties[keys[i]] != null)
+                    this[keys[i]] = properties[keys[i]];
+    }
+
+    /**
+     * ToolConfiguration webSearchEnabled.
+     * @member {boolean} webSearchEnabled
+     * @memberof ToolConfiguration
+     * @instance
+     */
+    ToolConfiguration.prototype.webSearchEnabled = false;
+
+    /**
+     * ToolConfiguration codeExecutionEnabled.
+     * @member {boolean} codeExecutionEnabled
+     * @memberof ToolConfiguration
+     * @instance
+     */
+    ToolConfiguration.prototype.codeExecutionEnabled = false;
+
+    /**
+     * ToolConfiguration filesystemAccess.
+     * @member {boolean} filesystemAccess
+     * @memberof ToolConfiguration
+     * @instance
+     */
+    ToolConfiguration.prototype.filesystemAccess = false;
+
+    /**
+     * ToolConfiguration externalApiCalls.
+     * @member {boolean} externalApiCalls
+     * @memberof ToolConfiguration
+     * @instance
+     */
+    ToolConfiguration.prototype.externalApiCalls = false;
+
+    /**
+     * ToolConfiguration databaseAccess.
+     * @member {boolean} databaseAccess
+     * @memberof ToolConfiguration
+     * @instance
+     */
+    ToolConfiguration.prototype.databaseAccess = false;
+
+    /**
+     * Creates a new ToolConfiguration instance using the specified properties.
+     * @function create
+     * @memberof ToolConfiguration
+     * @static
+     * @param {IToolConfiguration=} [properties] Properties to set
+     * @returns {ToolConfiguration} ToolConfiguration instance
+     */
+    ToolConfiguration.create = function create(properties) {
+        return new ToolConfiguration(properties);
+    };
+
+    /**
+     * Encodes the specified ToolConfiguration message. Does not implicitly {@link ToolConfiguration.verify|verify} messages.
+     * @function encode
+     * @memberof ToolConfiguration
+     * @static
+     * @param {IToolConfiguration} message ToolConfiguration message or plain object to encode
+     * @param {$protobuf.Writer} [writer] Writer to encode to
+     * @returns {$protobuf.Writer} Writer
+     */
+    ToolConfiguration.encode = function encode(message, writer) {
+        if (!writer)
+            writer = $Writer.create();
+        if (message.webSearchEnabled != null && Object.hasOwnProperty.call(message, "webSearchEnabled"))
+            writer.uint32(/* id 1, wireType 0 =*/8).bool(message.webSearchEnabled);
+        if (message.codeExecutionEnabled != null && Object.hasOwnProperty.call(message, "codeExecutionEnabled"))
+            writer.uint32(/* id 2, wireType 0 =*/16).bool(message.codeExecutionEnabled);
+        if (message.filesystemAccess != null && Object.hasOwnProperty.call(message, "filesystemAccess"))
+            writer.uint32(/* id 3, wireType 0 =*/24).bool(message.filesystemAccess);
+        if (message.externalApiCalls != null && Object.hasOwnProperty.call(message, "externalApiCalls"))
+            writer.uint32(/* id 4, wireType 0 =*/32).bool(message.externalApiCalls);
+        if (message.databaseAccess != null && Object.hasOwnProperty.call(message, "databaseAccess"))
+            writer.uint32(/* id 5, wireType 0 =*/40).bool(message.databaseAccess);
+        return writer;
+    };
+
+    /**
+     * Encodes the specified ToolConfiguration message, length delimited. Does not implicitly {@link ToolConfiguration.verify|verify} messages.
+     * @function encodeDelimited
+     * @memberof ToolConfiguration
+     * @static
+     * @param {IToolConfiguration} message ToolConfiguration message or plain object to encode
+     * @param {$protobuf.Writer} [writer] Writer to encode to
+     * @returns {$protobuf.Writer} Writer
+     */
+    ToolConfiguration.encodeDelimited = function encodeDelimited(message, writer) {
+        return this.encode(message, writer).ldelim();
+    };
+
+    /**
+     * Decodes a ToolConfiguration message from the specified reader or buffer.
+     * @function decode
+     * @memberof ToolConfiguration
+     * @static
+     * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+     * @param {number} [length] Message length if known beforehand
+     * @returns {ToolConfiguration} ToolConfiguration
+     * @throws {Error} If the payload is not a reader or valid buffer
+     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+     */
+    ToolConfiguration.decode = function decode(reader, length) {
+        if (!(reader instanceof $Reader))
+            reader = $Reader.create(reader);
+        var end = length === undefined ? reader.len : reader.pos + length, message = new $root.ToolConfiguration();
+        while (reader.pos < end) {
+            var tag = reader.uint32();
+            switch (tag >>> 3) {
+            case 1: {
+                    message.webSearchEnabled = reader.bool();
+                    break;
+                }
+            case 2: {
+                    message.codeExecutionEnabled = reader.bool();
+                    break;
+                }
+            case 3: {
+                    message.filesystemAccess = reader.bool();
+                    break;
+                }
+            case 4: {
+                    message.externalApiCalls = reader.bool();
+                    break;
+                }
+            case 5: {
+                    message.databaseAccess = reader.bool();
+                    break;
+                }
+            default:
+                reader.skipType(tag & 7);
+                break;
+            }
+        }
+        return message;
+    };
+
+    /**
+     * Decodes a ToolConfiguration message from the specified reader or buffer, length delimited.
+     * @function decodeDelimited
+     * @memberof ToolConfiguration
+     * @static
+     * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+     * @returns {ToolConfiguration} ToolConfiguration
+     * @throws {Error} If the payload is not a reader or valid buffer
+     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+     */
+    ToolConfiguration.decodeDelimited = function decodeDelimited(reader) {
+        if (!(reader instanceof $Reader))
+            reader = new $Reader(reader);
+        return this.decode(reader, reader.uint32());
+    };
+
+    /**
+     * Verifies a ToolConfiguration message.
+     * @function verify
+     * @memberof ToolConfiguration
+     * @static
+     * @param {Object.<string,*>} message Plain object to verify
+     * @returns {string|null} `null` if valid, otherwise the reason why it is not
+     */
+    ToolConfiguration.verify = function verify(message) {
+        if (typeof message !== "object" || message === null)
+            return "object expected";
+        if (message.webSearchEnabled != null && message.hasOwnProperty("webSearchEnabled"))
+            if (typeof message.webSearchEnabled !== "boolean")
+                return "webSearchEnabled: boolean expected";
+        if (message.codeExecutionEnabled != null && message.hasOwnProperty("codeExecutionEnabled"))
+            if (typeof message.codeExecutionEnabled !== "boolean")
+                return "codeExecutionEnabled: boolean expected";
+        if (message.filesystemAccess != null && message.hasOwnProperty("filesystemAccess"))
+            if (typeof message.filesystemAccess !== "boolean")
+                return "filesystemAccess: boolean expected";
+        if (message.externalApiCalls != null && message.hasOwnProperty("externalApiCalls"))
+            if (typeof message.externalApiCalls !== "boolean")
+                return "externalApiCalls: boolean expected";
+        if (message.databaseAccess != null && message.hasOwnProperty("databaseAccess"))
+            if (typeof message.databaseAccess !== "boolean")
+                return "databaseAccess: boolean expected";
+        return null;
+    };
+
+    /**
+     * Creates a ToolConfiguration message from a plain object. Also converts values to their respective internal types.
+     * @function fromObject
+     * @memberof ToolConfiguration
+     * @static
+     * @param {Object.<string,*>} object Plain object
+     * @returns {ToolConfiguration} ToolConfiguration
+     */
+    ToolConfiguration.fromObject = function fromObject(object) {
+        if (object instanceof $root.ToolConfiguration)
+            return object;
+        var message = new $root.ToolConfiguration();
+        if (object.webSearchEnabled != null)
+            message.webSearchEnabled = Boolean(object.webSearchEnabled);
+        if (object.codeExecutionEnabled != null)
+            message.codeExecutionEnabled = Boolean(object.codeExecutionEnabled);
+        if (object.filesystemAccess != null)
+            message.filesystemAccess = Boolean(object.filesystemAccess);
+        if (object.externalApiCalls != null)
+            message.externalApiCalls = Boolean(object.externalApiCalls);
+        if (object.databaseAccess != null)
+            message.databaseAccess = Boolean(object.databaseAccess);
+        return message;
+    };
+
+    /**
+     * Creates a plain object from a ToolConfiguration message. Also converts values to other types if specified.
+     * @function toObject
+     * @memberof ToolConfiguration
+     * @static
+     * @param {ToolConfiguration} message ToolConfiguration
+     * @param {$protobuf.IConversionOptions} [options] Conversion options
+     * @returns {Object.<string,*>} Plain object
+     */
+    ToolConfiguration.toObject = function toObject(message, options) {
+        if (!options)
+            options = {};
+        var object = {};
+        if (options.defaults) {
+            object.webSearchEnabled = false;
+            object.codeExecutionEnabled = false;
+            object.filesystemAccess = false;
+            object.externalApiCalls = false;
+            object.databaseAccess = false;
+        }
+        if (message.webSearchEnabled != null && message.hasOwnProperty("webSearchEnabled"))
+            object.webSearchEnabled = message.webSearchEnabled;
+        if (message.codeExecutionEnabled != null && message.hasOwnProperty("codeExecutionEnabled"))
+            object.codeExecutionEnabled = message.codeExecutionEnabled;
+        if (message.filesystemAccess != null && message.hasOwnProperty("filesystemAccess"))
+            object.filesystemAccess = message.filesystemAccess;
+        if (message.externalApiCalls != null && message.hasOwnProperty("externalApiCalls"))
+            object.externalApiCalls = message.externalApiCalls;
+        if (message.databaseAccess != null && message.hasOwnProperty("databaseAccess"))
+            object.databaseAccess = message.databaseAccess;
+        return object;
+    };
+
+    /**
+     * Converts this ToolConfiguration to JSON.
+     * @function toJSON
+     * @memberof ToolConfiguration
+     * @instance
+     * @returns {Object.<string,*>} JSON object
+     */
+    ToolConfiguration.prototype.toJSON = function toJSON() {
+        return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+    };
+
+    /**
+     * Gets the default type url for ToolConfiguration
+     * @function getTypeUrl
+     * @memberof ToolConfiguration
+     * @static
+     * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+     * @returns {string} The default type url
+     */
+    ToolConfiguration.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+        if (typeUrlPrefix === undefined) {
+            typeUrlPrefix = "type.googleapis.com";
+        }
+        return typeUrlPrefix + "/ToolConfiguration";
+    };
+
+    return ToolConfiguration;
+})();
+
+$root.MaxModeResponse = (function() {
+
+    /**
+     * Properties of a MaxModeResponse.
+     * @exports IMaxModeResponse
+     * @interface IMaxModeResponse
+     * @property {string|null} [thinkingProcess] MaxModeResponse thinkingProcess
+     * @property {IAnalysisResult|null} [analysis] MaxModeResponse analysis
+     * @property {Array.<IActionSuggestion>|null} [actions] MaxModeResponse actions
+     * @property {Array.<ICodeSuggestion>|null} [codeSuggestions] MaxModeResponse codeSuggestions
+     * @property {Array.<string>|null} [relevantFiles] MaxModeResponse relevantFiles
+     */
+
+    /**
+     * Constructs a new MaxModeResponse.
+     * @exports MaxModeResponse
+     * @classdesc Represents a MaxModeResponse.
+     * @implements IMaxModeResponse
+     * @constructor
+     * @param {IMaxModeResponse=} [properties] Properties to set
+     */
+    function MaxModeResponse(properties) {
+        this.actions = [];
+        this.codeSuggestions = [];
+        this.relevantFiles = [];
+        if (properties)
+            for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                if (properties[keys[i]] != null)
+                    this[keys[i]] = properties[keys[i]];
+    }
+
+    /**
+     * MaxModeResponse thinkingProcess.
+     * @member {string} thinkingProcess
+     * @memberof MaxModeResponse
+     * @instance
+     */
+    MaxModeResponse.prototype.thinkingProcess = "";
+
+    /**
+     * MaxModeResponse analysis.
+     * @member {IAnalysisResult|null|undefined} analysis
+     * @memberof MaxModeResponse
+     * @instance
+     */
+    MaxModeResponse.prototype.analysis = null;
+
+    /**
+     * MaxModeResponse actions.
+     * @member {Array.<IActionSuggestion>} actions
+     * @memberof MaxModeResponse
+     * @instance
+     */
+    MaxModeResponse.prototype.actions = $util.emptyArray;
+
+    /**
+     * MaxModeResponse codeSuggestions.
+     * @member {Array.<ICodeSuggestion>} codeSuggestions
+     * @memberof MaxModeResponse
+     * @instance
+     */
+    MaxModeResponse.prototype.codeSuggestions = $util.emptyArray;
+
+    /**
+     * MaxModeResponse relevantFiles.
+     * @member {Array.<string>} relevantFiles
+     * @memberof MaxModeResponse
+     * @instance
+     */
+    MaxModeResponse.prototype.relevantFiles = $util.emptyArray;
+
+    /**
+     * Creates a new MaxModeResponse instance using the specified properties.
+     * @function create
+     * @memberof MaxModeResponse
+     * @static
+     * @param {IMaxModeResponse=} [properties] Properties to set
+     * @returns {MaxModeResponse} MaxModeResponse instance
+     */
+    MaxModeResponse.create = function create(properties) {
+        return new MaxModeResponse(properties);
+    };
+
+    /**
+     * Encodes the specified MaxModeResponse message. Does not implicitly {@link MaxModeResponse.verify|verify} messages.
+     * @function encode
+     * @memberof MaxModeResponse
+     * @static
+     * @param {IMaxModeResponse} message MaxModeResponse message or plain object to encode
+     * @param {$protobuf.Writer} [writer] Writer to encode to
+     * @returns {$protobuf.Writer} Writer
+     */
+    MaxModeResponse.encode = function encode(message, writer) {
+        if (!writer)
+            writer = $Writer.create();
+        if (message.thinkingProcess != null && Object.hasOwnProperty.call(message, "thinkingProcess"))
+            writer.uint32(/* id 1, wireType 2 =*/10).string(message.thinkingProcess);
+        if (message.analysis != null && Object.hasOwnProperty.call(message, "analysis"))
+            $root.AnalysisResult.encode(message.analysis, writer.uint32(/* id 2, wireType 2 =*/18).fork()).ldelim();
+        if (message.actions != null && message.actions.length)
+            for (var i = 0; i < message.actions.length; ++i)
+                $root.ActionSuggestion.encode(message.actions[i], writer.uint32(/* id 3, wireType 2 =*/26).fork()).ldelim();
+        if (message.codeSuggestions != null && message.codeSuggestions.length)
+            for (var i = 0; i < message.codeSuggestions.length; ++i)
+                $root.CodeSuggestion.encode(message.codeSuggestions[i], writer.uint32(/* id 4, wireType 2 =*/34).fork()).ldelim();
+        if (message.relevantFiles != null && message.relevantFiles.length)
+            for (var i = 0; i < message.relevantFiles.length; ++i)
+                writer.uint32(/* id 5, wireType 2 =*/42).string(message.relevantFiles[i]);
+        return writer;
+    };
+
+    /**
+     * Encodes the specified MaxModeResponse message, length delimited. Does not implicitly {@link MaxModeResponse.verify|verify} messages.
+     * @function encodeDelimited
+     * @memberof MaxModeResponse
+     * @static
+     * @param {IMaxModeResponse} message MaxModeResponse message or plain object to encode
+     * @param {$protobuf.Writer} [writer] Writer to encode to
+     * @returns {$protobuf.Writer} Writer
+     */
+    MaxModeResponse.encodeDelimited = function encodeDelimited(message, writer) {
+        return this.encode(message, writer).ldelim();
+    };
+
+    /**
+     * Decodes a MaxModeResponse message from the specified reader or buffer.
+     * @function decode
+     * @memberof MaxModeResponse
+     * @static
+     * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+     * @param {number} [length] Message length if known beforehand
+     * @returns {MaxModeResponse} MaxModeResponse
+     * @throws {Error} If the payload is not a reader or valid buffer
+     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+     */
+    MaxModeResponse.decode = function decode(reader, length) {
+        if (!(reader instanceof $Reader))
+            reader = $Reader.create(reader);
+        var end = length === undefined ? reader.len : reader.pos + length, message = new $root.MaxModeResponse();
+        while (reader.pos < end) {
+            var tag = reader.uint32();
+            switch (tag >>> 3) {
+            case 1: {
+                    message.thinkingProcess = reader.string();
+                    break;
+                }
+            case 2: {
+                    message.analysis = $root.AnalysisResult.decode(reader, reader.uint32());
+                    break;
+                }
+            case 3: {
+                    if (!(message.actions && message.actions.length))
+                        message.actions = [];
+                    message.actions.push($root.ActionSuggestion.decode(reader, reader.uint32()));
+                    break;
+                }
+            case 4: {
+                    if (!(message.codeSuggestions && message.codeSuggestions.length))
+                        message.codeSuggestions = [];
+                    message.codeSuggestions.push($root.CodeSuggestion.decode(reader, reader.uint32()));
+                    break;
+                }
+            case 5: {
+                    if (!(message.relevantFiles && message.relevantFiles.length))
+                        message.relevantFiles = [];
+                    message.relevantFiles.push(reader.string());
+                    break;
+                }
+            default:
+                reader.skipType(tag & 7);
+                break;
+            }
+        }
+        return message;
+    };
+
+    /**
+     * Decodes a MaxModeResponse message from the specified reader or buffer, length delimited.
+     * @function decodeDelimited
+     * @memberof MaxModeResponse
+     * @static
+     * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+     * @returns {MaxModeResponse} MaxModeResponse
+     * @throws {Error} If the payload is not a reader or valid buffer
+     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+     */
+    MaxModeResponse.decodeDelimited = function decodeDelimited(reader) {
+        if (!(reader instanceof $Reader))
+            reader = new $Reader(reader);
+        return this.decode(reader, reader.uint32());
+    };
+
+    /**
+     * Verifies a MaxModeResponse message.
+     * @function verify
+     * @memberof MaxModeResponse
+     * @static
+     * @param {Object.<string,*>} message Plain object to verify
+     * @returns {string|null} `null` if valid, otherwise the reason why it is not
+     */
+    MaxModeResponse.verify = function verify(message) {
+        if (typeof message !== "object" || message === null)
+            return "object expected";
+        if (message.thinkingProcess != null && message.hasOwnProperty("thinkingProcess"))
+            if (!$util.isString(message.thinkingProcess))
+                return "thinkingProcess: string expected";
+        if (message.analysis != null && message.hasOwnProperty("analysis")) {
+            var error = $root.AnalysisResult.verify(message.analysis);
+            if (error)
+                return "analysis." + error;
+        }
+        if (message.actions != null && message.hasOwnProperty("actions")) {
+            if (!Array.isArray(message.actions))
+                return "actions: array expected";
+            for (var i = 0; i < message.actions.length; ++i) {
+                var error = $root.ActionSuggestion.verify(message.actions[i]);
+                if (error)
+                    return "actions." + error;
+            }
+        }
+        if (message.codeSuggestions != null && message.hasOwnProperty("codeSuggestions")) {
+            if (!Array.isArray(message.codeSuggestions))
+                return "codeSuggestions: array expected";
+            for (var i = 0; i < message.codeSuggestions.length; ++i) {
+                var error = $root.CodeSuggestion.verify(message.codeSuggestions[i]);
+                if (error)
+                    return "codeSuggestions." + error;
+            }
+        }
+        if (message.relevantFiles != null && message.hasOwnProperty("relevantFiles")) {
+            if (!Array.isArray(message.relevantFiles))
+                return "relevantFiles: array expected";
+            for (var i = 0; i < message.relevantFiles.length; ++i)
+                if (!$util.isString(message.relevantFiles[i]))
+                    return "relevantFiles: string[] expected";
+        }
+        return null;
+    };
+
+    /**
+     * Creates a MaxModeResponse message from a plain object. Also converts values to their respective internal types.
+     * @function fromObject
+     * @memberof MaxModeResponse
+     * @static
+     * @param {Object.<string,*>} object Plain object
+     * @returns {MaxModeResponse} MaxModeResponse
+     */
+    MaxModeResponse.fromObject = function fromObject(object) {
+        if (object instanceof $root.MaxModeResponse)
+            return object;
+        var message = new $root.MaxModeResponse();
+        if (object.thinkingProcess != null)
+            message.thinkingProcess = String(object.thinkingProcess);
+        if (object.analysis != null) {
+            if (typeof object.analysis !== "object")
+                throw TypeError(".MaxModeResponse.analysis: object expected");
+            message.analysis = $root.AnalysisResult.fromObject(object.analysis);
+        }
+        if (object.actions) {
+            if (!Array.isArray(object.actions))
+                throw TypeError(".MaxModeResponse.actions: array expected");
+            message.actions = [];
+            for (var i = 0; i < object.actions.length; ++i) {
+                if (typeof object.actions[i] !== "object")
+                    throw TypeError(".MaxModeResponse.actions: object expected");
+                message.actions[i] = $root.ActionSuggestion.fromObject(object.actions[i]);
+            }
+        }
+        if (object.codeSuggestions) {
+            if (!Array.isArray(object.codeSuggestions))
+                throw TypeError(".MaxModeResponse.codeSuggestions: array expected");
+            message.codeSuggestions = [];
+            for (var i = 0; i < object.codeSuggestions.length; ++i) {
+                if (typeof object.codeSuggestions[i] !== "object")
+                    throw TypeError(".MaxModeResponse.codeSuggestions: object expected");
+                message.codeSuggestions[i] = $root.CodeSuggestion.fromObject(object.codeSuggestions[i]);
+            }
+        }
+        if (object.relevantFiles) {
+            if (!Array.isArray(object.relevantFiles))
+                throw TypeError(".MaxModeResponse.relevantFiles: array expected");
+            message.relevantFiles = [];
+            for (var i = 0; i < object.relevantFiles.length; ++i)
+                message.relevantFiles[i] = String(object.relevantFiles[i]);
+        }
+        return message;
+    };
+
+    /**
+     * Creates a plain object from a MaxModeResponse message. Also converts values to other types if specified.
+     * @function toObject
+     * @memberof MaxModeResponse
+     * @static
+     * @param {MaxModeResponse} message MaxModeResponse
+     * @param {$protobuf.IConversionOptions} [options] Conversion options
+     * @returns {Object.<string,*>} Plain object
+     */
+    MaxModeResponse.toObject = function toObject(message, options) {
+        if (!options)
+            options = {};
+        var object = {};
+        if (options.arrays || options.defaults) {
+            object.actions = [];
+            object.codeSuggestions = [];
+            object.relevantFiles = [];
+        }
+        if (options.defaults) {
+            object.thinkingProcess = "";
+            object.analysis = null;
+        }
+        if (message.thinkingProcess != null && message.hasOwnProperty("thinkingProcess"))
+            object.thinkingProcess = message.thinkingProcess;
+        if (message.analysis != null && message.hasOwnProperty("analysis"))
+            object.analysis = $root.AnalysisResult.toObject(message.analysis, options);
+        if (message.actions && message.actions.length) {
+            object.actions = [];
+            for (var j = 0; j < message.actions.length; ++j)
+                object.actions[j] = $root.ActionSuggestion.toObject(message.actions[j], options);
+        }
+        if (message.codeSuggestions && message.codeSuggestions.length) {
+            object.codeSuggestions = [];
+            for (var j = 0; j < message.codeSuggestions.length; ++j)
+                object.codeSuggestions[j] = $root.CodeSuggestion.toObject(message.codeSuggestions[j], options);
+        }
+        if (message.relevantFiles && message.relevantFiles.length) {
+            object.relevantFiles = [];
+            for (var j = 0; j < message.relevantFiles.length; ++j)
+                object.relevantFiles[j] = message.relevantFiles[j];
+        }
+        return object;
+    };
+
+    /**
+     * Converts this MaxModeResponse to JSON.
+     * @function toJSON
+     * @memberof MaxModeResponse
+     * @instance
+     * @returns {Object.<string,*>} JSON object
+     */
+    MaxModeResponse.prototype.toJSON = function toJSON() {
+        return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+    };
+
+    /**
+     * Gets the default type url for MaxModeResponse
+     * @function getTypeUrl
+     * @memberof MaxModeResponse
+     * @static
+     * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+     * @returns {string} The default type url
+     */
+    MaxModeResponse.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+        if (typeUrlPrefix === undefined) {
+            typeUrlPrefix = "type.googleapis.com";
+        }
+        return typeUrlPrefix + "/MaxModeResponse";
+    };
+
+    return MaxModeResponse;
+})();
+
+$root.AnalysisResult = (function() {
+
+    /**
+     * Properties of an AnalysisResult.
+     * @exports IAnalysisResult
+     * @interface IAnalysisResult
+     * @property {string|null} [problemAnalysis] AnalysisResult problemAnalysis
+     * @property {string|null} [solutionApproach] AnalysisResult solutionApproach
+     * @property {Array.<string>|null} [risks] AnalysisResult risks
+     * @property {Array.<string>|null} [dependencies] AnalysisResult dependencies
+     * @property {string|null} [complexityAssessment] AnalysisResult complexityAssessment
+     */
+
+    /**
+     * Constructs a new AnalysisResult.
+     * @exports AnalysisResult
+     * @classdesc Represents an AnalysisResult.
+     * @implements IAnalysisResult
+     * @constructor
+     * @param {IAnalysisResult=} [properties] Properties to set
+     */
+    function AnalysisResult(properties) {
+        this.risks = [];
+        this.dependencies = [];
+        if (properties)
+            for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                if (properties[keys[i]] != null)
+                    this[keys[i]] = properties[keys[i]];
+    }
+
+    /**
+     * AnalysisResult problemAnalysis.
+     * @member {string} problemAnalysis
+     * @memberof AnalysisResult
+     * @instance
+     */
+    AnalysisResult.prototype.problemAnalysis = "";
+
+    /**
+     * AnalysisResult solutionApproach.
+     * @member {string} solutionApproach
+     * @memberof AnalysisResult
+     * @instance
+     */
+    AnalysisResult.prototype.solutionApproach = "";
+
+    /**
+     * AnalysisResult risks.
+     * @member {Array.<string>} risks
+     * @memberof AnalysisResult
+     * @instance
+     */
+    AnalysisResult.prototype.risks = $util.emptyArray;
+
+    /**
+     * AnalysisResult dependencies.
+     * @member {Array.<string>} dependencies
+     * @memberof AnalysisResult
+     * @instance
+     */
+    AnalysisResult.prototype.dependencies = $util.emptyArray;
+
+    /**
+     * AnalysisResult complexityAssessment.
+     * @member {string} complexityAssessment
+     * @memberof AnalysisResult
+     * @instance
+     */
+    AnalysisResult.prototype.complexityAssessment = "";
+
+    /**
+     * Creates a new AnalysisResult instance using the specified properties.
+     * @function create
+     * @memberof AnalysisResult
+     * @static
+     * @param {IAnalysisResult=} [properties] Properties to set
+     * @returns {AnalysisResult} AnalysisResult instance
+     */
+    AnalysisResult.create = function create(properties) {
+        return new AnalysisResult(properties);
+    };
+
+    /**
+     * Encodes the specified AnalysisResult message. Does not implicitly {@link AnalysisResult.verify|verify} messages.
+     * @function encode
+     * @memberof AnalysisResult
+     * @static
+     * @param {IAnalysisResult} message AnalysisResult message or plain object to encode
+     * @param {$protobuf.Writer} [writer] Writer to encode to
+     * @returns {$protobuf.Writer} Writer
+     */
+    AnalysisResult.encode = function encode(message, writer) {
+        if (!writer)
+            writer = $Writer.create();
+        if (message.problemAnalysis != null && Object.hasOwnProperty.call(message, "problemAnalysis"))
+            writer.uint32(/* id 1, wireType 2 =*/10).string(message.problemAnalysis);
+        if (message.solutionApproach != null && Object.hasOwnProperty.call(message, "solutionApproach"))
+            writer.uint32(/* id 2, wireType 2 =*/18).string(message.solutionApproach);
+        if (message.risks != null && message.risks.length)
+            for (var i = 0; i < message.risks.length; ++i)
+                writer.uint32(/* id 3, wireType 2 =*/26).string(message.risks[i]);
+        if (message.dependencies != null && message.dependencies.length)
+            for (var i = 0; i < message.dependencies.length; ++i)
+                writer.uint32(/* id 4, wireType 2 =*/34).string(message.dependencies[i]);
+        if (message.complexityAssessment != null && Object.hasOwnProperty.call(message, "complexityAssessment"))
+            writer.uint32(/* id 5, wireType 2 =*/42).string(message.complexityAssessment);
+        return writer;
+    };
+
+    /**
+     * Encodes the specified AnalysisResult message, length delimited. Does not implicitly {@link AnalysisResult.verify|verify} messages.
+     * @function encodeDelimited
+     * @memberof AnalysisResult
+     * @static
+     * @param {IAnalysisResult} message AnalysisResult message or plain object to encode
+     * @param {$protobuf.Writer} [writer] Writer to encode to
+     * @returns {$protobuf.Writer} Writer
+     */
+    AnalysisResult.encodeDelimited = function encodeDelimited(message, writer) {
+        return this.encode(message, writer).ldelim();
+    };
+
+    /**
+     * Decodes an AnalysisResult message from the specified reader or buffer.
+     * @function decode
+     * @memberof AnalysisResult
+     * @static
+     * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+     * @param {number} [length] Message length if known beforehand
+     * @returns {AnalysisResult} AnalysisResult
+     * @throws {Error} If the payload is not a reader or valid buffer
+     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+     */
+    AnalysisResult.decode = function decode(reader, length) {
+        if (!(reader instanceof $Reader))
+            reader = $Reader.create(reader);
+        var end = length === undefined ? reader.len : reader.pos + length, message = new $root.AnalysisResult();
+        while (reader.pos < end) {
+            var tag = reader.uint32();
+            switch (tag >>> 3) {
+            case 1: {
+                    message.problemAnalysis = reader.string();
+                    break;
+                }
+            case 2: {
+                    message.solutionApproach = reader.string();
+                    break;
+                }
+            case 3: {
+                    if (!(message.risks && message.risks.length))
+                        message.risks = [];
+                    message.risks.push(reader.string());
+                    break;
+                }
+            case 4: {
+                    if (!(message.dependencies && message.dependencies.length))
+                        message.dependencies = [];
+                    message.dependencies.push(reader.string());
+                    break;
+                }
+            case 5: {
+                    message.complexityAssessment = reader.string();
+                    break;
+                }
+            default:
+                reader.skipType(tag & 7);
+                break;
+            }
+        }
+        return message;
+    };
+
+    /**
+     * Decodes an AnalysisResult message from the specified reader or buffer, length delimited.
+     * @function decodeDelimited
+     * @memberof AnalysisResult
+     * @static
+     * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+     * @returns {AnalysisResult} AnalysisResult
+     * @throws {Error} If the payload is not a reader or valid buffer
+     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+     */
+    AnalysisResult.decodeDelimited = function decodeDelimited(reader) {
+        if (!(reader instanceof $Reader))
+            reader = new $Reader(reader);
+        return this.decode(reader, reader.uint32());
+    };
+
+    /**
+     * Verifies an AnalysisResult message.
+     * @function verify
+     * @memberof AnalysisResult
+     * @static
+     * @param {Object.<string,*>} message Plain object to verify
+     * @returns {string|null} `null` if valid, otherwise the reason why it is not
+     */
+    AnalysisResult.verify = function verify(message) {
+        if (typeof message !== "object" || message === null)
+            return "object expected";
+        if (message.problemAnalysis != null && message.hasOwnProperty("problemAnalysis"))
+            if (!$util.isString(message.problemAnalysis))
+                return "problemAnalysis: string expected";
+        if (message.solutionApproach != null && message.hasOwnProperty("solutionApproach"))
+            if (!$util.isString(message.solutionApproach))
+                return "solutionApproach: string expected";
+        if (message.risks != null && message.hasOwnProperty("risks")) {
+            if (!Array.isArray(message.risks))
+                return "risks: array expected";
+            for (var i = 0; i < message.risks.length; ++i)
+                if (!$util.isString(message.risks[i]))
+                    return "risks: string[] expected";
+        }
+        if (message.dependencies != null && message.hasOwnProperty("dependencies")) {
+            if (!Array.isArray(message.dependencies))
+                return "dependencies: array expected";
+            for (var i = 0; i < message.dependencies.length; ++i)
+                if (!$util.isString(message.dependencies[i]))
+                    return "dependencies: string[] expected";
+        }
+        if (message.complexityAssessment != null && message.hasOwnProperty("complexityAssessment"))
+            if (!$util.isString(message.complexityAssessment))
+                return "complexityAssessment: string expected";
+        return null;
+    };
+
+    /**
+     * Creates an AnalysisResult message from a plain object. Also converts values to their respective internal types.
+     * @function fromObject
+     * @memberof AnalysisResult
+     * @static
+     * @param {Object.<string,*>} object Plain object
+     * @returns {AnalysisResult} AnalysisResult
+     */
+    AnalysisResult.fromObject = function fromObject(object) {
+        if (object instanceof $root.AnalysisResult)
+            return object;
+        var message = new $root.AnalysisResult();
+        if (object.problemAnalysis != null)
+            message.problemAnalysis = String(object.problemAnalysis);
+        if (object.solutionApproach != null)
+            message.solutionApproach = String(object.solutionApproach);
+        if (object.risks) {
+            if (!Array.isArray(object.risks))
+                throw TypeError(".AnalysisResult.risks: array expected");
+            message.risks = [];
+            for (var i = 0; i < object.risks.length; ++i)
+                message.risks[i] = String(object.risks[i]);
+        }
+        if (object.dependencies) {
+            if (!Array.isArray(object.dependencies))
+                throw TypeError(".AnalysisResult.dependencies: array expected");
+            message.dependencies = [];
+            for (var i = 0; i < object.dependencies.length; ++i)
+                message.dependencies[i] = String(object.dependencies[i]);
+        }
+        if (object.complexityAssessment != null)
+            message.complexityAssessment = String(object.complexityAssessment);
+        return message;
+    };
+
+    /**
+     * Creates a plain object from an AnalysisResult message. Also converts values to other types if specified.
+     * @function toObject
+     * @memberof AnalysisResult
+     * @static
+     * @param {AnalysisResult} message AnalysisResult
+     * @param {$protobuf.IConversionOptions} [options] Conversion options
+     * @returns {Object.<string,*>} Plain object
+     */
+    AnalysisResult.toObject = function toObject(message, options) {
+        if (!options)
+            options = {};
+        var object = {};
+        if (options.arrays || options.defaults) {
+            object.risks = [];
+            object.dependencies = [];
+        }
+        if (options.defaults) {
+            object.problemAnalysis = "";
+            object.solutionApproach = "";
+            object.complexityAssessment = "";
+        }
+        if (message.problemAnalysis != null && message.hasOwnProperty("problemAnalysis"))
+            object.problemAnalysis = message.problemAnalysis;
+        if (message.solutionApproach != null && message.hasOwnProperty("solutionApproach"))
+            object.solutionApproach = message.solutionApproach;
+        if (message.risks && message.risks.length) {
+            object.risks = [];
+            for (var j = 0; j < message.risks.length; ++j)
+                object.risks[j] = message.risks[j];
+        }
+        if (message.dependencies && message.dependencies.length) {
+            object.dependencies = [];
+            for (var j = 0; j < message.dependencies.length; ++j)
+                object.dependencies[j] = message.dependencies[j];
+        }
+        if (message.complexityAssessment != null && message.hasOwnProperty("complexityAssessment"))
+            object.complexityAssessment = message.complexityAssessment;
+        return object;
+    };
+
+    /**
+     * Converts this AnalysisResult to JSON.
+     * @function toJSON
+     * @memberof AnalysisResult
+     * @instance
+     * @returns {Object.<string,*>} JSON object
+     */
+    AnalysisResult.prototype.toJSON = function toJSON() {
+        return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+    };
+
+    /**
+     * Gets the default type url for AnalysisResult
+     * @function getTypeUrl
+     * @memberof AnalysisResult
+     * @static
+     * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+     * @returns {string} The default type url
+     */
+    AnalysisResult.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+        if (typeUrlPrefix === undefined) {
+            typeUrlPrefix = "type.googleapis.com";
+        }
+        return typeUrlPrefix + "/AnalysisResult";
+    };
+
+    return AnalysisResult;
+})();
+
+$root.ActionSuggestion = (function() {
+
+    /**
+     * Properties of an ActionSuggestion.
+     * @exports IActionSuggestion
+     * @interface IActionSuggestion
+     * @property {string|null} [actionType] ActionSuggestion actionType
+     * @property {string|null} [description] ActionSuggestion description
+     * @property {number|null} [priority] ActionSuggestion priority
+     * @property {Array.<string>|null} [affectedFiles] ActionSuggestion affectedFiles
+     * @property {string|null} [estimatedTime] ActionSuggestion estimatedTime
+     */
+
+    /**
+     * Constructs a new ActionSuggestion.
+     * @exports ActionSuggestion
+     * @classdesc Represents an ActionSuggestion.
+     * @implements IActionSuggestion
+     * @constructor
+     * @param {IActionSuggestion=} [properties] Properties to set
+     */
+    function ActionSuggestion(properties) {
+        this.affectedFiles = [];
+        if (properties)
+            for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                if (properties[keys[i]] != null)
+                    this[keys[i]] = properties[keys[i]];
+    }
+
+    /**
+     * ActionSuggestion actionType.
+     * @member {string} actionType
+     * @memberof ActionSuggestion
+     * @instance
+     */
+    ActionSuggestion.prototype.actionType = "";
+
+    /**
+     * ActionSuggestion description.
+     * @member {string} description
+     * @memberof ActionSuggestion
+     * @instance
+     */
+    ActionSuggestion.prototype.description = "";
+
+    /**
+     * ActionSuggestion priority.
+     * @member {number} priority
+     * @memberof ActionSuggestion
+     * @instance
+     */
+    ActionSuggestion.prototype.priority = 0;
+
+    /**
+     * ActionSuggestion affectedFiles.
+     * @member {Array.<string>} affectedFiles
+     * @memberof ActionSuggestion
+     * @instance
+     */
+    ActionSuggestion.prototype.affectedFiles = $util.emptyArray;
+
+    /**
+     * ActionSuggestion estimatedTime.
+     * @member {string} estimatedTime
+     * @memberof ActionSuggestion
+     * @instance
+     */
+    ActionSuggestion.prototype.estimatedTime = "";
+
+    /**
+     * Creates a new ActionSuggestion instance using the specified properties.
+     * @function create
+     * @memberof ActionSuggestion
+     * @static
+     * @param {IActionSuggestion=} [properties] Properties to set
+     * @returns {ActionSuggestion} ActionSuggestion instance
+     */
+    ActionSuggestion.create = function create(properties) {
+        return new ActionSuggestion(properties);
+    };
+
+    /**
+     * Encodes the specified ActionSuggestion message. Does not implicitly {@link ActionSuggestion.verify|verify} messages.
+     * @function encode
+     * @memberof ActionSuggestion
+     * @static
+     * @param {IActionSuggestion} message ActionSuggestion message or plain object to encode
+     * @param {$protobuf.Writer} [writer] Writer to encode to
+     * @returns {$protobuf.Writer} Writer
+     */
+    ActionSuggestion.encode = function encode(message, writer) {
+        if (!writer)
+            writer = $Writer.create();
+        if (message.actionType != null && Object.hasOwnProperty.call(message, "actionType"))
+            writer.uint32(/* id 1, wireType 2 =*/10).string(message.actionType);
+        if (message.description != null && Object.hasOwnProperty.call(message, "description"))
+            writer.uint32(/* id 2, wireType 2 =*/18).string(message.description);
+        if (message.priority != null && Object.hasOwnProperty.call(message, "priority"))
+            writer.uint32(/* id 3, wireType 0 =*/24).int32(message.priority);
+        if (message.affectedFiles != null && message.affectedFiles.length)
+            for (var i = 0; i < message.affectedFiles.length; ++i)
+                writer.uint32(/* id 4, wireType 2 =*/34).string(message.affectedFiles[i]);
+        if (message.estimatedTime != null && Object.hasOwnProperty.call(message, "estimatedTime"))
+            writer.uint32(/* id 5, wireType 2 =*/42).string(message.estimatedTime);
+        return writer;
+    };
+
+    /**
+     * Encodes the specified ActionSuggestion message, length delimited. Does not implicitly {@link ActionSuggestion.verify|verify} messages.
+     * @function encodeDelimited
+     * @memberof ActionSuggestion
+     * @static
+     * @param {IActionSuggestion} message ActionSuggestion message or plain object to encode
+     * @param {$protobuf.Writer} [writer] Writer to encode to
+     * @returns {$protobuf.Writer} Writer
+     */
+    ActionSuggestion.encodeDelimited = function encodeDelimited(message, writer) {
+        return this.encode(message, writer).ldelim();
+    };
+
+    /**
+     * Decodes an ActionSuggestion message from the specified reader or buffer.
+     * @function decode
+     * @memberof ActionSuggestion
+     * @static
+     * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+     * @param {number} [length] Message length if known beforehand
+     * @returns {ActionSuggestion} ActionSuggestion
+     * @throws {Error} If the payload is not a reader or valid buffer
+     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+     */
+    ActionSuggestion.decode = function decode(reader, length) {
+        if (!(reader instanceof $Reader))
+            reader = $Reader.create(reader);
+        var end = length === undefined ? reader.len : reader.pos + length, message = new $root.ActionSuggestion();
+        while (reader.pos < end) {
+            var tag = reader.uint32();
+            switch (tag >>> 3) {
+            case 1: {
+                    message.actionType = reader.string();
+                    break;
+                }
+            case 2: {
+                    message.description = reader.string();
+                    break;
+                }
+            case 3: {
+                    message.priority = reader.int32();
+                    break;
+                }
+            case 4: {
+                    if (!(message.affectedFiles && message.affectedFiles.length))
+                        message.affectedFiles = [];
+                    message.affectedFiles.push(reader.string());
+                    break;
+                }
+            case 5: {
+                    message.estimatedTime = reader.string();
+                    break;
+                }
+            default:
+                reader.skipType(tag & 7);
+                break;
+            }
+        }
+        return message;
+    };
+
+    /**
+     * Decodes an ActionSuggestion message from the specified reader or buffer, length delimited.
+     * @function decodeDelimited
+     * @memberof ActionSuggestion
+     * @static
+     * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+     * @returns {ActionSuggestion} ActionSuggestion
+     * @throws {Error} If the payload is not a reader or valid buffer
+     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+     */
+    ActionSuggestion.decodeDelimited = function decodeDelimited(reader) {
+        if (!(reader instanceof $Reader))
+            reader = new $Reader(reader);
+        return this.decode(reader, reader.uint32());
+    };
+
+    /**
+     * Verifies an ActionSuggestion message.
+     * @function verify
+     * @memberof ActionSuggestion
+     * @static
+     * @param {Object.<string,*>} message Plain object to verify
+     * @returns {string|null} `null` if valid, otherwise the reason why it is not
+     */
+    ActionSuggestion.verify = function verify(message) {
+        if (typeof message !== "object" || message === null)
+            return "object expected";
+        if (message.actionType != null && message.hasOwnProperty("actionType"))
+            if (!$util.isString(message.actionType))
+                return "actionType: string expected";
+        if (message.description != null && message.hasOwnProperty("description"))
+            if (!$util.isString(message.description))
+                return "description: string expected";
+        if (message.priority != null && message.hasOwnProperty("priority"))
+            if (!$util.isInteger(message.priority))
+                return "priority: integer expected";
+        if (message.affectedFiles != null && message.hasOwnProperty("affectedFiles")) {
+            if (!Array.isArray(message.affectedFiles))
+                return "affectedFiles: array expected";
+            for (var i = 0; i < message.affectedFiles.length; ++i)
+                if (!$util.isString(message.affectedFiles[i]))
+                    return "affectedFiles: string[] expected";
+        }
+        if (message.estimatedTime != null && message.hasOwnProperty("estimatedTime"))
+            if (!$util.isString(message.estimatedTime))
+                return "estimatedTime: string expected";
+        return null;
+    };
+
+    /**
+     * Creates an ActionSuggestion message from a plain object. Also converts values to their respective internal types.
+     * @function fromObject
+     * @memberof ActionSuggestion
+     * @static
+     * @param {Object.<string,*>} object Plain object
+     * @returns {ActionSuggestion} ActionSuggestion
+     */
+    ActionSuggestion.fromObject = function fromObject(object) {
+        if (object instanceof $root.ActionSuggestion)
+            return object;
+        var message = new $root.ActionSuggestion();
+        if (object.actionType != null)
+            message.actionType = String(object.actionType);
+        if (object.description != null)
+            message.description = String(object.description);
+        if (object.priority != null)
+            message.priority = object.priority | 0;
+        if (object.affectedFiles) {
+            if (!Array.isArray(object.affectedFiles))
+                throw TypeError(".ActionSuggestion.affectedFiles: array expected");
+            message.affectedFiles = [];
+            for (var i = 0; i < object.affectedFiles.length; ++i)
+                message.affectedFiles[i] = String(object.affectedFiles[i]);
+        }
+        if (object.estimatedTime != null)
+            message.estimatedTime = String(object.estimatedTime);
+        return message;
+    };
+
+    /**
+     * Creates a plain object from an ActionSuggestion message. Also converts values to other types if specified.
+     * @function toObject
+     * @memberof ActionSuggestion
+     * @static
+     * @param {ActionSuggestion} message ActionSuggestion
+     * @param {$protobuf.IConversionOptions} [options] Conversion options
+     * @returns {Object.<string,*>} Plain object
+     */
+    ActionSuggestion.toObject = function toObject(message, options) {
+        if (!options)
+            options = {};
+        var object = {};
+        if (options.arrays || options.defaults)
+            object.affectedFiles = [];
+        if (options.defaults) {
+            object.actionType = "";
+            object.description = "";
+            object.priority = 0;
+            object.estimatedTime = "";
+        }
+        if (message.actionType != null && message.hasOwnProperty("actionType"))
+            object.actionType = message.actionType;
+        if (message.description != null && message.hasOwnProperty("description"))
+            object.description = message.description;
+        if (message.priority != null && message.hasOwnProperty("priority"))
+            object.priority = message.priority;
+        if (message.affectedFiles && message.affectedFiles.length) {
+            object.affectedFiles = [];
+            for (var j = 0; j < message.affectedFiles.length; ++j)
+                object.affectedFiles[j] = message.affectedFiles[j];
+        }
+        if (message.estimatedTime != null && message.hasOwnProperty("estimatedTime"))
+            object.estimatedTime = message.estimatedTime;
+        return object;
+    };
+
+    /**
+     * Converts this ActionSuggestion to JSON.
+     * @function toJSON
+     * @memberof ActionSuggestion
+     * @instance
+     * @returns {Object.<string,*>} JSON object
+     */
+    ActionSuggestion.prototype.toJSON = function toJSON() {
+        return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+    };
+
+    /**
+     * Gets the default type url for ActionSuggestion
+     * @function getTypeUrl
+     * @memberof ActionSuggestion
+     * @static
+     * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+     * @returns {string} The default type url
+     */
+    ActionSuggestion.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+        if (typeUrlPrefix === undefined) {
+            typeUrlPrefix = "type.googleapis.com";
+        }
+        return typeUrlPrefix + "/ActionSuggestion";
+    };
+
+    return ActionSuggestion;
+})();
+
+$root.CodeSuggestion = (function() {
+
+    /**
+     * Properties of a CodeSuggestion.
+     * @exports ICodeSuggestion
+     * @interface ICodeSuggestion
+     * @property {string|null} [filePath] CodeSuggestion filePath
+     * @property {number|null} [startLine] CodeSuggestion startLine
+     * @property {number|null} [endLine] CodeSuggestion endLine
+     * @property {string|null} [originalCode] CodeSuggestion originalCode
+     * @property {string|null} [suggestedCode] CodeSuggestion suggestedCode
+     * @property {string|null} [explanation] CodeSuggestion explanation
+     * @property {string|null} [improvementType] CodeSuggestion improvementType
+     */
+
+    /**
+     * Constructs a new CodeSuggestion.
+     * @exports CodeSuggestion
+     * @classdesc Represents a CodeSuggestion.
+     * @implements ICodeSuggestion
+     * @constructor
+     * @param {ICodeSuggestion=} [properties] Properties to set
+     */
+    function CodeSuggestion(properties) {
+        if (properties)
+            for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                if (properties[keys[i]] != null)
+                    this[keys[i]] = properties[keys[i]];
+    }
+
+    /**
+     * CodeSuggestion filePath.
+     * @member {string} filePath
+     * @memberof CodeSuggestion
+     * @instance
+     */
+    CodeSuggestion.prototype.filePath = "";
+
+    /**
+     * CodeSuggestion startLine.
+     * @member {number} startLine
+     * @memberof CodeSuggestion
+     * @instance
+     */
+    CodeSuggestion.prototype.startLine = 0;
+
+    /**
+     * CodeSuggestion endLine.
+     * @member {number} endLine
+     * @memberof CodeSuggestion
+     * @instance
+     */
+    CodeSuggestion.prototype.endLine = 0;
+
+    /**
+     * CodeSuggestion originalCode.
+     * @member {string} originalCode
+     * @memberof CodeSuggestion
+     * @instance
+     */
+    CodeSuggestion.prototype.originalCode = "";
+
+    /**
+     * CodeSuggestion suggestedCode.
+     * @member {string} suggestedCode
+     * @memberof CodeSuggestion
+     * @instance
+     */
+    CodeSuggestion.prototype.suggestedCode = "";
+
+    /**
+     * CodeSuggestion explanation.
+     * @member {string} explanation
+     * @memberof CodeSuggestion
+     * @instance
+     */
+    CodeSuggestion.prototype.explanation = "";
+
+    /**
+     * CodeSuggestion improvementType.
+     * @member {string} improvementType
+     * @memberof CodeSuggestion
+     * @instance
+     */
+    CodeSuggestion.prototype.improvementType = "";
+
+    /**
+     * Creates a new CodeSuggestion instance using the specified properties.
+     * @function create
+     * @memberof CodeSuggestion
+     * @static
+     * @param {ICodeSuggestion=} [properties] Properties to set
+     * @returns {CodeSuggestion} CodeSuggestion instance
+     */
+    CodeSuggestion.create = function create(properties) {
+        return new CodeSuggestion(properties);
+    };
+
+    /**
+     * Encodes the specified CodeSuggestion message. Does not implicitly {@link CodeSuggestion.verify|verify} messages.
+     * @function encode
+     * @memberof CodeSuggestion
+     * @static
+     * @param {ICodeSuggestion} message CodeSuggestion message or plain object to encode
+     * @param {$protobuf.Writer} [writer] Writer to encode to
+     * @returns {$protobuf.Writer} Writer
+     */
+    CodeSuggestion.encode = function encode(message, writer) {
+        if (!writer)
+            writer = $Writer.create();
+        if (message.filePath != null && Object.hasOwnProperty.call(message, "filePath"))
+            writer.uint32(/* id 1, wireType 2 =*/10).string(message.filePath);
+        if (message.startLine != null && Object.hasOwnProperty.call(message, "startLine"))
+            writer.uint32(/* id 2, wireType 0 =*/16).int32(message.startLine);
+        if (message.endLine != null && Object.hasOwnProperty.call(message, "endLine"))
+            writer.uint32(/* id 3, wireType 0 =*/24).int32(message.endLine);
+        if (message.originalCode != null && Object.hasOwnProperty.call(message, "originalCode"))
+            writer.uint32(/* id 4, wireType 2 =*/34).string(message.originalCode);
+        if (message.suggestedCode != null && Object.hasOwnProperty.call(message, "suggestedCode"))
+            writer.uint32(/* id 5, wireType 2 =*/42).string(message.suggestedCode);
+        if (message.explanation != null && Object.hasOwnProperty.call(message, "explanation"))
+            writer.uint32(/* id 6, wireType 2 =*/50).string(message.explanation);
+        if (message.improvementType != null && Object.hasOwnProperty.call(message, "improvementType"))
+            writer.uint32(/* id 7, wireType 2 =*/58).string(message.improvementType);
+        return writer;
+    };
+
+    /**
+     * Encodes the specified CodeSuggestion message, length delimited. Does not implicitly {@link CodeSuggestion.verify|verify} messages.
+     * @function encodeDelimited
+     * @memberof CodeSuggestion
+     * @static
+     * @param {ICodeSuggestion} message CodeSuggestion message or plain object to encode
+     * @param {$protobuf.Writer} [writer] Writer to encode to
+     * @returns {$protobuf.Writer} Writer
+     */
+    CodeSuggestion.encodeDelimited = function encodeDelimited(message, writer) {
+        return this.encode(message, writer).ldelim();
+    };
+
+    /**
+     * Decodes a CodeSuggestion message from the specified reader or buffer.
+     * @function decode
+     * @memberof CodeSuggestion
+     * @static
+     * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+     * @param {number} [length] Message length if known beforehand
+     * @returns {CodeSuggestion} CodeSuggestion
+     * @throws {Error} If the payload is not a reader or valid buffer
+     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+     */
+    CodeSuggestion.decode = function decode(reader, length) {
+        if (!(reader instanceof $Reader))
+            reader = $Reader.create(reader);
+        var end = length === undefined ? reader.len : reader.pos + length, message = new $root.CodeSuggestion();
+        while (reader.pos < end) {
+            var tag = reader.uint32();
+            switch (tag >>> 3) {
+            case 1: {
+                    message.filePath = reader.string();
+                    break;
+                }
+            case 2: {
+                    message.startLine = reader.int32();
+                    break;
+                }
+            case 3: {
+                    message.endLine = reader.int32();
+                    break;
+                }
+            case 4: {
+                    message.originalCode = reader.string();
+                    break;
+                }
+            case 5: {
+                    message.suggestedCode = reader.string();
+                    break;
+                }
+            case 6: {
+                    message.explanation = reader.string();
+                    break;
+                }
+            case 7: {
+                    message.improvementType = reader.string();
+                    break;
+                }
+            default:
+                reader.skipType(tag & 7);
+                break;
+            }
+        }
+        return message;
+    };
+
+    /**
+     * Decodes a CodeSuggestion message from the specified reader or buffer, length delimited.
+     * @function decodeDelimited
+     * @memberof CodeSuggestion
+     * @static
+     * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+     * @returns {CodeSuggestion} CodeSuggestion
+     * @throws {Error} If the payload is not a reader or valid buffer
+     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+     */
+    CodeSuggestion.decodeDelimited = function decodeDelimited(reader) {
+        if (!(reader instanceof $Reader))
+            reader = new $Reader(reader);
+        return this.decode(reader, reader.uint32());
+    };
+
+    /**
+     * Verifies a CodeSuggestion message.
+     * @function verify
+     * @memberof CodeSuggestion
+     * @static
+     * @param {Object.<string,*>} message Plain object to verify
+     * @returns {string|null} `null` if valid, otherwise the reason why it is not
+     */
+    CodeSuggestion.verify = function verify(message) {
+        if (typeof message !== "object" || message === null)
+            return "object expected";
+        if (message.filePath != null && message.hasOwnProperty("filePath"))
+            if (!$util.isString(message.filePath))
+                return "filePath: string expected";
+        if (message.startLine != null && message.hasOwnProperty("startLine"))
+            if (!$util.isInteger(message.startLine))
+                return "startLine: integer expected";
+        if (message.endLine != null && message.hasOwnProperty("endLine"))
+            if (!$util.isInteger(message.endLine))
+                return "endLine: integer expected";
+        if (message.originalCode != null && message.hasOwnProperty("originalCode"))
+            if (!$util.isString(message.originalCode))
+                return "originalCode: string expected";
+        if (message.suggestedCode != null && message.hasOwnProperty("suggestedCode"))
+            if (!$util.isString(message.suggestedCode))
+                return "suggestedCode: string expected";
+        if (message.explanation != null && message.hasOwnProperty("explanation"))
+            if (!$util.isString(message.explanation))
+                return "explanation: string expected";
+        if (message.improvementType != null && message.hasOwnProperty("improvementType"))
+            if (!$util.isString(message.improvementType))
+                return "improvementType: string expected";
+        return null;
+    };
+
+    /**
+     * Creates a CodeSuggestion message from a plain object. Also converts values to their respective internal types.
+     * @function fromObject
+     * @memberof CodeSuggestion
+     * @static
+     * @param {Object.<string,*>} object Plain object
+     * @returns {CodeSuggestion} CodeSuggestion
+     */
+    CodeSuggestion.fromObject = function fromObject(object) {
+        if (object instanceof $root.CodeSuggestion)
+            return object;
+        var message = new $root.CodeSuggestion();
+        if (object.filePath != null)
+            message.filePath = String(object.filePath);
+        if (object.startLine != null)
+            message.startLine = object.startLine | 0;
+        if (object.endLine != null)
+            message.endLine = object.endLine | 0;
+        if (object.originalCode != null)
+            message.originalCode = String(object.originalCode);
+        if (object.suggestedCode != null)
+            message.suggestedCode = String(object.suggestedCode);
+        if (object.explanation != null)
+            message.explanation = String(object.explanation);
+        if (object.improvementType != null)
+            message.improvementType = String(object.improvementType);
+        return message;
+    };
+
+    /**
+     * Creates a plain object from a CodeSuggestion message. Also converts values to other types if specified.
+     * @function toObject
+     * @memberof CodeSuggestion
+     * @static
+     * @param {CodeSuggestion} message CodeSuggestion
+     * @param {$protobuf.IConversionOptions} [options] Conversion options
+     * @returns {Object.<string,*>} Plain object
+     */
+    CodeSuggestion.toObject = function toObject(message, options) {
+        if (!options)
+            options = {};
+        var object = {};
+        if (options.defaults) {
+            object.filePath = "";
+            object.startLine = 0;
+            object.endLine = 0;
+            object.originalCode = "";
+            object.suggestedCode = "";
+            object.explanation = "";
+            object.improvementType = "";
+        }
+        if (message.filePath != null && message.hasOwnProperty("filePath"))
+            object.filePath = message.filePath;
+        if (message.startLine != null && message.hasOwnProperty("startLine"))
+            object.startLine = message.startLine;
+        if (message.endLine != null && message.hasOwnProperty("endLine"))
+            object.endLine = message.endLine;
+        if (message.originalCode != null && message.hasOwnProperty("originalCode"))
+            object.originalCode = message.originalCode;
+        if (message.suggestedCode != null && message.hasOwnProperty("suggestedCode"))
+            object.suggestedCode = message.suggestedCode;
+        if (message.explanation != null && message.hasOwnProperty("explanation"))
+            object.explanation = message.explanation;
+        if (message.improvementType != null && message.hasOwnProperty("improvementType"))
+            object.improvementType = message.improvementType;
+        return object;
+    };
+
+    /**
+     * Converts this CodeSuggestion to JSON.
+     * @function toJSON
+     * @memberof CodeSuggestion
+     * @instance
+     * @returns {Object.<string,*>} JSON object
+     */
+    CodeSuggestion.prototype.toJSON = function toJSON() {
+        return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+    };
+
+    /**
+     * Gets the default type url for CodeSuggestion
+     * @function getTypeUrl
+     * @memberof CodeSuggestion
+     * @static
+     * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+     * @returns {string} The default type url
+     */
+    CodeSuggestion.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+        if (typeUrlPrefix === undefined) {
+            typeUrlPrefix = "type.googleapis.com";
+        }
+        return typeUrlPrefix + "/CodeSuggestion";
+    };
+
+    return CodeSuggestion;
+})();
+
 $root.AvailableModelsResponse = (function() {
 
     /**
@@ -1046,6 +6335,265 @@ $root.MessageThinking = (function() {
     return MessageThinking;
 })();
 
+$root.FileReference = (function() {
+
+    /**
+     * Properties of a FileReference.
+     * @exports IFileReference
+     * @interface IFileReference
+     * @property {string|null} [filepath] FileReference filepath
+     * @property {number|null} [fileLength] FileReference fileLength
+     * @property {Uint8Array|null} [fileContent] FileReference fileContent
+     */
+
+    /**
+     * Constructs a new FileReference.
+     * @exports FileReference
+     * @classdesc Represents a FileReference.
+     * @implements IFileReference
+     * @constructor
+     * @param {IFileReference=} [properties] Properties to set
+     */
+    function FileReference(properties) {
+        if (properties)
+            for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                if (properties[keys[i]] != null)
+                    this[keys[i]] = properties[keys[i]];
+    }
+
+    /**
+     * FileReference filepath.
+     * @member {string} filepath
+     * @memberof FileReference
+     * @instance
+     */
+    FileReference.prototype.filepath = "";
+
+    /**
+     * FileReference fileLength.
+     * @member {number} fileLength
+     * @memberof FileReference
+     * @instance
+     */
+    FileReference.prototype.fileLength = 0;
+
+    /**
+     * FileReference fileContent.
+     * @member {Uint8Array} fileContent
+     * @memberof FileReference
+     * @instance
+     */
+    FileReference.prototype.fileContent = $util.newBuffer([]);
+
+    /**
+     * Creates a new FileReference instance using the specified properties.
+     * @function create
+     * @memberof FileReference
+     * @static
+     * @param {IFileReference=} [properties] Properties to set
+     * @returns {FileReference} FileReference instance
+     */
+    FileReference.create = function create(properties) {
+        return new FileReference(properties);
+    };
+
+    /**
+     * Encodes the specified FileReference message. Does not implicitly {@link FileReference.verify|verify} messages.
+     * @function encode
+     * @memberof FileReference
+     * @static
+     * @param {IFileReference} message FileReference message or plain object to encode
+     * @param {$protobuf.Writer} [writer] Writer to encode to
+     * @returns {$protobuf.Writer} Writer
+     */
+    FileReference.encode = function encode(message, writer) {
+        if (!writer)
+            writer = $Writer.create();
+        if (message.filepath != null && Object.hasOwnProperty.call(message, "filepath"))
+            writer.uint32(/* id 1, wireType 2 =*/10).string(message.filepath);
+        if (message.fileLength != null && Object.hasOwnProperty.call(message, "fileLength"))
+            writer.uint32(/* id 2, wireType 0 =*/16).int32(message.fileLength);
+        if (message.fileContent != null && Object.hasOwnProperty.call(message, "fileContent"))
+            writer.uint32(/* id 3, wireType 2 =*/26).bytes(message.fileContent);
+        return writer;
+    };
+
+    /**
+     * Encodes the specified FileReference message, length delimited. Does not implicitly {@link FileReference.verify|verify} messages.
+     * @function encodeDelimited
+     * @memberof FileReference
+     * @static
+     * @param {IFileReference} message FileReference message or plain object to encode
+     * @param {$protobuf.Writer} [writer] Writer to encode to
+     * @returns {$protobuf.Writer} Writer
+     */
+    FileReference.encodeDelimited = function encodeDelimited(message, writer) {
+        return this.encode(message, writer).ldelim();
+    };
+
+    /**
+     * Decodes a FileReference message from the specified reader or buffer.
+     * @function decode
+     * @memberof FileReference
+     * @static
+     * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+     * @param {number} [length] Message length if known beforehand
+     * @returns {FileReference} FileReference
+     * @throws {Error} If the payload is not a reader or valid buffer
+     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+     */
+    FileReference.decode = function decode(reader, length) {
+        if (!(reader instanceof $Reader))
+            reader = $Reader.create(reader);
+        var end = length === undefined ? reader.len : reader.pos + length, message = new $root.FileReference();
+        while (reader.pos < end) {
+            var tag = reader.uint32();
+            switch (tag >>> 3) {
+            case 1: {
+                    message.filepath = reader.string();
+                    break;
+                }
+            case 2: {
+                    message.fileLength = reader.int32();
+                    break;
+                }
+            case 3: {
+                    message.fileContent = reader.bytes();
+                    break;
+                }
+            default:
+                reader.skipType(tag & 7);
+                break;
+            }
+        }
+        return message;
+    };
+
+    /**
+     * Decodes a FileReference message from the specified reader or buffer, length delimited.
+     * @function decodeDelimited
+     * @memberof FileReference
+     * @static
+     * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+     * @returns {FileReference} FileReference
+     * @throws {Error} If the payload is not a reader or valid buffer
+     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+     */
+    FileReference.decodeDelimited = function decodeDelimited(reader) {
+        if (!(reader instanceof $Reader))
+            reader = new $Reader(reader);
+        return this.decode(reader, reader.uint32());
+    };
+
+    /**
+     * Verifies a FileReference message.
+     * @function verify
+     * @memberof FileReference
+     * @static
+     * @param {Object.<string,*>} message Plain object to verify
+     * @returns {string|null} `null` if valid, otherwise the reason why it is not
+     */
+    FileReference.verify = function verify(message) {
+        if (typeof message !== "object" || message === null)
+            return "object expected";
+        if (message.filepath != null && message.hasOwnProperty("filepath"))
+            if (!$util.isString(message.filepath))
+                return "filepath: string expected";
+        if (message.fileLength != null && message.hasOwnProperty("fileLength"))
+            if (!$util.isInteger(message.fileLength))
+                return "fileLength: integer expected";
+        if (message.fileContent != null && message.hasOwnProperty("fileContent"))
+            if (!(message.fileContent && typeof message.fileContent.length === "number" || $util.isString(message.fileContent)))
+                return "fileContent: buffer expected";
+        return null;
+    };
+
+    /**
+     * Creates a FileReference message from a plain object. Also converts values to their respective internal types.
+     * @function fromObject
+     * @memberof FileReference
+     * @static
+     * @param {Object.<string,*>} object Plain object
+     * @returns {FileReference} FileReference
+     */
+    FileReference.fromObject = function fromObject(object) {
+        if (object instanceof $root.FileReference)
+            return object;
+        var message = new $root.FileReference();
+        if (object.filepath != null)
+            message.filepath = String(object.filepath);
+        if (object.fileLength != null)
+            message.fileLength = object.fileLength | 0;
+        if (object.fileContent != null)
+            if (typeof object.fileContent === "string")
+                $util.base64.decode(object.fileContent, message.fileContent = $util.newBuffer($util.base64.length(object.fileContent)), 0);
+            else if (object.fileContent.length >= 0)
+                message.fileContent = object.fileContent;
+        return message;
+    };
+
+    /**
+     * Creates a plain object from a FileReference message. Also converts values to other types if specified.
+     * @function toObject
+     * @memberof FileReference
+     * @static
+     * @param {FileReference} message FileReference
+     * @param {$protobuf.IConversionOptions} [options] Conversion options
+     * @returns {Object.<string,*>} Plain object
+     */
+    FileReference.toObject = function toObject(message, options) {
+        if (!options)
+            options = {};
+        var object = {};
+        if (options.defaults) {
+            object.filepath = "";
+            object.fileLength = 0;
+            if (options.bytes === String)
+                object.fileContent = "";
+            else {
+                object.fileContent = [];
+                if (options.bytes !== Array)
+                    object.fileContent = $util.newBuffer(object.fileContent);
+            }
+        }
+        if (message.filepath != null && message.hasOwnProperty("filepath"))
+            object.filepath = message.filepath;
+        if (message.fileLength != null && message.hasOwnProperty("fileLength"))
+            object.fileLength = message.fileLength;
+        if (message.fileContent != null && message.hasOwnProperty("fileContent"))
+            object.fileContent = options.bytes === String ? $util.base64.encode(message.fileContent, 0, message.fileContent.length) : options.bytes === Array ? Array.prototype.slice.call(message.fileContent) : message.fileContent;
+        return object;
+    };
+
+    /**
+     * Converts this FileReference to JSON.
+     * @function toJSON
+     * @memberof FileReference
+     * @instance
+     * @returns {Object.<string,*>} JSON object
+     */
+    FileReference.prototype.toJSON = function toJSON() {
+        return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+    };
+
+    /**
+     * Gets the default type url for FileReference
+     * @function getTypeUrl
+     * @memberof FileReference
+     * @static
+     * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+     * @returns {string} The default type url
+     */
+    FileReference.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+        if (typeUrlPrefix === undefined) {
+            typeUrlPrefix = "type.googleapis.com";
+        }
+        return typeUrlPrefix + "/FileReference";
+    };
+
+    return FileReference;
+})();
+
 $root.StreamUnifiedChatWithToolsRequest = (function() {
 
     /**
@@ -1258,30 +6806,36 @@ $root.StreamUnifiedChatWithToolsRequest = (function() {
          * @memberof StreamUnifiedChatWithToolsRequest
          * @interface IRequest
          * @property {Array.<StreamUnifiedChatWithToolsRequest.Request.IMessage>|null} [messages] Request messages
-         * @property {number|null} [unknown2] Request unknown2
+         * @property {number|null} [instructionFlag] Request instructionFlag
          * @property {StreamUnifiedChatWithToolsRequest.Request.IInstruction|null} [instruction] Request instruction
-         * @property {number|null} [unknown4] Request unknown4
+         * @property {number|null} [modelFlag] Request modelFlag
          * @property {StreamUnifiedChatWithToolsRequest.Request.IModel|null} [model] Request model
          * @property {Array.<string>|null} [wikiTool] Request wikiTool
          * @property {string|null} [webTool] Request webTool
-         * @property {number|null} [unknown13] Request unknown13
+         * @property {number|null} [requestFlag] Request requestFlag
          * @property {StreamUnifiedChatWithToolsRequest.Request.ICursorSetting|null} [cursorSetting] Request cursorSetting
-         * @property {number|null} [unknown19] Request unknown19
-         * @property {number|null} [unknown22] Request unknown22
+         * @property {number|null} [unifiedMode] Request unifiedMode
+         * @property {number|null} [thinkingLevel] Request thinkingLevel
          * @property {string|null} [conversationId] Request conversationId
          * @property {StreamUnifiedChatWithToolsRequest.Request.IMetadata|null} [metadata] Request metadata
          * @property {number|null} [unknown27] Request unknown27
-         * @property {string|null} [unknown29] Request unknown29
+         * @property {string|null} [clientVersion] Request clientVersion
          * @property {Array.<StreamUnifiedChatWithToolsRequest.Request.IMessageId>|null} [messageIds] Request messageIds
          * @property {number|null} [largeContext] Request largeContext
-         * @property {number|null} [unknown38] Request unknown38
+         * @property {number|null} [streamMode] Request streamMode
          * @property {number|null} [chatModeEnum] Request chatModeEnum
-         * @property {string|null} [unknown47] Request unknown47
-         * @property {number|null} [unknown48] Request unknown48
-         * @property {number|null} [unknown49] Request unknown49
-         * @property {number|null} [unknown51] Request unknown51
+         * @property {string|null} [toolsConfig] Request toolsConfig
+         * @property {number|null} [feedbackFlag] Request feedbackFlag
+         * @property {number|null} [desiredMaxTokens] Request desiredMaxTokens
+         * @property {IFileReference|null} [fileReference] Request fileReference
          * @property {number|null} [unknown53] Request unknown53
          * @property {string|null} [chatMode] Request chatMode
+         * @property {number|null} [streamControlFlag] Request streamControlFlag
+         * @property {number|null} [tokenStartFlag] Request tokenStartFlag
+         * @property {number|null} [tokenControlFlag] Request tokenControlFlag
+         * @property {string|null} [contentFormat] Request contentFormat
+         * @property {number|null} [enableMaxFeatures] Request enableMaxFeatures
+         * @property {number|null} [sessionTrackingFlag] Request sessionTrackingFlag
          */
 
         /**
@@ -1311,12 +6865,12 @@ $root.StreamUnifiedChatWithToolsRequest = (function() {
         Request.prototype.messages = $util.emptyArray;
 
         /**
-         * Request unknown2.
-         * @member {number} unknown2
+         * Request instructionFlag.
+         * @member {number} instructionFlag
          * @memberof StreamUnifiedChatWithToolsRequest.Request
          * @instance
          */
-        Request.prototype.unknown2 = 0;
+        Request.prototype.instructionFlag = 0;
 
         /**
          * Request instruction.
@@ -1327,12 +6881,12 @@ $root.StreamUnifiedChatWithToolsRequest = (function() {
         Request.prototype.instruction = null;
 
         /**
-         * Request unknown4.
-         * @member {number} unknown4
+         * Request modelFlag.
+         * @member {number} modelFlag
          * @memberof StreamUnifiedChatWithToolsRequest.Request
          * @instance
          */
-        Request.prototype.unknown4 = 0;
+        Request.prototype.modelFlag = 0;
 
         /**
          * Request model.
@@ -1359,12 +6913,12 @@ $root.StreamUnifiedChatWithToolsRequest = (function() {
         Request.prototype.webTool = "";
 
         /**
-         * Request unknown13.
-         * @member {number} unknown13
+         * Request requestFlag.
+         * @member {number} requestFlag
          * @memberof StreamUnifiedChatWithToolsRequest.Request
          * @instance
          */
-        Request.prototype.unknown13 = 0;
+        Request.prototype.requestFlag = 0;
 
         /**
          * Request cursorSetting.
@@ -1375,20 +6929,20 @@ $root.StreamUnifiedChatWithToolsRequest = (function() {
         Request.prototype.cursorSetting = null;
 
         /**
-         * Request unknown19.
-         * @member {number} unknown19
+         * Request unifiedMode.
+         * @member {number} unifiedMode
          * @memberof StreamUnifiedChatWithToolsRequest.Request
          * @instance
          */
-        Request.prototype.unknown19 = 0;
+        Request.prototype.unifiedMode = 0;
 
         /**
-         * Request unknown22.
-         * @member {number} unknown22
+         * Request thinkingLevel.
+         * @member {number} thinkingLevel
          * @memberof StreamUnifiedChatWithToolsRequest.Request
          * @instance
          */
-        Request.prototype.unknown22 = 0;
+        Request.prototype.thinkingLevel = 0;
 
         /**
          * Request conversationId.
@@ -1415,12 +6969,12 @@ $root.StreamUnifiedChatWithToolsRequest = (function() {
         Request.prototype.unknown27 = 0;
 
         /**
-         * Request unknown29.
-         * @member {string} unknown29
+         * Request clientVersion.
+         * @member {string} clientVersion
          * @memberof StreamUnifiedChatWithToolsRequest.Request
          * @instance
          */
-        Request.prototype.unknown29 = "";
+        Request.prototype.clientVersion = "";
 
         /**
          * Request messageIds.
@@ -1439,12 +6993,12 @@ $root.StreamUnifiedChatWithToolsRequest = (function() {
         Request.prototype.largeContext = 0;
 
         /**
-         * Request unknown38.
-         * @member {number} unknown38
+         * Request streamMode.
+         * @member {number} streamMode
          * @memberof StreamUnifiedChatWithToolsRequest.Request
          * @instance
          */
-        Request.prototype.unknown38 = 0;
+        Request.prototype.streamMode = 0;
 
         /**
          * Request chatModeEnum.
@@ -1455,36 +7009,36 @@ $root.StreamUnifiedChatWithToolsRequest = (function() {
         Request.prototype.chatModeEnum = 0;
 
         /**
-         * Request unknown47.
-         * @member {string} unknown47
+         * Request toolsConfig.
+         * @member {string} toolsConfig
          * @memberof StreamUnifiedChatWithToolsRequest.Request
          * @instance
          */
-        Request.prototype.unknown47 = "";
+        Request.prototype.toolsConfig = "";
 
         /**
-         * Request unknown48.
-         * @member {number} unknown48
+         * Request feedbackFlag.
+         * @member {number} feedbackFlag
          * @memberof StreamUnifiedChatWithToolsRequest.Request
          * @instance
          */
-        Request.prototype.unknown48 = 0;
+        Request.prototype.feedbackFlag = 0;
 
         /**
-         * Request unknown49.
-         * @member {number} unknown49
+         * Request desiredMaxTokens.
+         * @member {number} desiredMaxTokens
          * @memberof StreamUnifiedChatWithToolsRequest.Request
          * @instance
          */
-        Request.prototype.unknown49 = 0;
+        Request.prototype.desiredMaxTokens = 0;
 
         /**
-         * Request unknown51.
-         * @member {number} unknown51
+         * Request fileReference.
+         * @member {IFileReference|null|undefined} fileReference
          * @memberof StreamUnifiedChatWithToolsRequest.Request
          * @instance
          */
-        Request.prototype.unknown51 = 0;
+        Request.prototype.fileReference = null;
 
         /**
          * Request unknown53.
@@ -1501,6 +7055,54 @@ $root.StreamUnifiedChatWithToolsRequest = (function() {
          * @instance
          */
         Request.prototype.chatMode = "";
+
+        /**
+         * Request streamControlFlag.
+         * @member {number} streamControlFlag
+         * @memberof StreamUnifiedChatWithToolsRequest.Request
+         * @instance
+         */
+        Request.prototype.streamControlFlag = 0;
+
+        /**
+         * Request tokenStartFlag.
+         * @member {number} tokenStartFlag
+         * @memberof StreamUnifiedChatWithToolsRequest.Request
+         * @instance
+         */
+        Request.prototype.tokenStartFlag = 0;
+
+        /**
+         * Request tokenControlFlag.
+         * @member {number} tokenControlFlag
+         * @memberof StreamUnifiedChatWithToolsRequest.Request
+         * @instance
+         */
+        Request.prototype.tokenControlFlag = 0;
+
+        /**
+         * Request contentFormat.
+         * @member {string} contentFormat
+         * @memberof StreamUnifiedChatWithToolsRequest.Request
+         * @instance
+         */
+        Request.prototype.contentFormat = "";
+
+        /**
+         * Request enableMaxFeatures.
+         * @member {number} enableMaxFeatures
+         * @memberof StreamUnifiedChatWithToolsRequest.Request
+         * @instance
+         */
+        Request.prototype.enableMaxFeatures = 0;
+
+        /**
+         * Request sessionTrackingFlag.
+         * @member {number} sessionTrackingFlag
+         * @memberof StreamUnifiedChatWithToolsRequest.Request
+         * @instance
+         */
+        Request.prototype.sessionTrackingFlag = 0;
 
         /**
          * Creates a new Request instance using the specified properties.
@@ -1529,12 +7131,12 @@ $root.StreamUnifiedChatWithToolsRequest = (function() {
             if (message.messages != null && message.messages.length)
                 for (var i = 0; i < message.messages.length; ++i)
                     $root.StreamUnifiedChatWithToolsRequest.Request.Message.encode(message.messages[i], writer.uint32(/* id 1, wireType 2 =*/10).fork()).ldelim();
-            if (message.unknown2 != null && Object.hasOwnProperty.call(message, "unknown2"))
-                writer.uint32(/* id 2, wireType 0 =*/16).int32(message.unknown2);
+            if (message.instructionFlag != null && Object.hasOwnProperty.call(message, "instructionFlag"))
+                writer.uint32(/* id 2, wireType 0 =*/16).int32(message.instructionFlag);
             if (message.instruction != null && Object.hasOwnProperty.call(message, "instruction"))
                 $root.StreamUnifiedChatWithToolsRequest.Request.Instruction.encode(message.instruction, writer.uint32(/* id 3, wireType 2 =*/26).fork()).ldelim();
-            if (message.unknown4 != null && Object.hasOwnProperty.call(message, "unknown4"))
-                writer.uint32(/* id 4, wireType 0 =*/32).int32(message.unknown4);
+            if (message.modelFlag != null && Object.hasOwnProperty.call(message, "modelFlag"))
+                writer.uint32(/* id 4, wireType 0 =*/32).int32(message.modelFlag);
             if (message.model != null && Object.hasOwnProperty.call(message, "model"))
                 $root.StreamUnifiedChatWithToolsRequest.Request.Model.encode(message.model, writer.uint32(/* id 5, wireType 2 =*/42).fork()).ldelim();
             if (message.wikiTool != null && message.wikiTool.length)
@@ -1542,43 +7144,55 @@ $root.StreamUnifiedChatWithToolsRequest = (function() {
                     writer.uint32(/* id 7, wireType 2 =*/58).string(message.wikiTool[i]);
             if (message.webTool != null && Object.hasOwnProperty.call(message, "webTool"))
                 writer.uint32(/* id 8, wireType 2 =*/66).string(message.webTool);
-            if (message.unknown13 != null && Object.hasOwnProperty.call(message, "unknown13"))
-                writer.uint32(/* id 13, wireType 0 =*/104).int32(message.unknown13);
+            if (message.requestFlag != null && Object.hasOwnProperty.call(message, "requestFlag"))
+                writer.uint32(/* id 13, wireType 0 =*/104).int32(message.requestFlag);
             if (message.cursorSetting != null && Object.hasOwnProperty.call(message, "cursorSetting"))
                 $root.StreamUnifiedChatWithToolsRequest.Request.CursorSetting.encode(message.cursorSetting, writer.uint32(/* id 15, wireType 2 =*/122).fork()).ldelim();
-            if (message.unknown19 != null && Object.hasOwnProperty.call(message, "unknown19"))
-                writer.uint32(/* id 19, wireType 0 =*/152).int32(message.unknown19);
-            if (message.unknown22 != null && Object.hasOwnProperty.call(message, "unknown22"))
-                writer.uint32(/* id 22, wireType 0 =*/176).int32(message.unknown22);
+            if (message.unifiedMode != null && Object.hasOwnProperty.call(message, "unifiedMode"))
+                writer.uint32(/* id 19, wireType 0 =*/152).int32(message.unifiedMode);
+            if (message.thinkingLevel != null && Object.hasOwnProperty.call(message, "thinkingLevel"))
+                writer.uint32(/* id 22, wireType 0 =*/176).int32(message.thinkingLevel);
             if (message.conversationId != null && Object.hasOwnProperty.call(message, "conversationId"))
                 writer.uint32(/* id 23, wireType 2 =*/186).string(message.conversationId);
             if (message.metadata != null && Object.hasOwnProperty.call(message, "metadata"))
                 $root.StreamUnifiedChatWithToolsRequest.Request.Metadata.encode(message.metadata, writer.uint32(/* id 26, wireType 2 =*/210).fork()).ldelim();
             if (message.unknown27 != null && Object.hasOwnProperty.call(message, "unknown27"))
                 writer.uint32(/* id 27, wireType 0 =*/216).int32(message.unknown27);
-            if (message.unknown29 != null && Object.hasOwnProperty.call(message, "unknown29"))
-                writer.uint32(/* id 29, wireType 2 =*/234).string(message.unknown29);
+            if (message.clientVersion != null && Object.hasOwnProperty.call(message, "clientVersion"))
+                writer.uint32(/* id 29, wireType 2 =*/234).string(message.clientVersion);
             if (message.messageIds != null && message.messageIds.length)
                 for (var i = 0; i < message.messageIds.length; ++i)
                     $root.StreamUnifiedChatWithToolsRequest.Request.MessageId.encode(message.messageIds[i], writer.uint32(/* id 30, wireType 2 =*/242).fork()).ldelim();
             if (message.largeContext != null && Object.hasOwnProperty.call(message, "largeContext"))
                 writer.uint32(/* id 35, wireType 0 =*/280).int32(message.largeContext);
-            if (message.unknown38 != null && Object.hasOwnProperty.call(message, "unknown38"))
-                writer.uint32(/* id 38, wireType 0 =*/304).int32(message.unknown38);
+            if (message.streamMode != null && Object.hasOwnProperty.call(message, "streamMode"))
+                writer.uint32(/* id 38, wireType 0 =*/304).int32(message.streamMode);
             if (message.chatModeEnum != null && Object.hasOwnProperty.call(message, "chatModeEnum"))
                 writer.uint32(/* id 46, wireType 0 =*/368).int32(message.chatModeEnum);
-            if (message.unknown47 != null && Object.hasOwnProperty.call(message, "unknown47"))
-                writer.uint32(/* id 47, wireType 2 =*/378).string(message.unknown47);
-            if (message.unknown48 != null && Object.hasOwnProperty.call(message, "unknown48"))
-                writer.uint32(/* id 48, wireType 0 =*/384).int32(message.unknown48);
-            if (message.unknown49 != null && Object.hasOwnProperty.call(message, "unknown49"))
-                writer.uint32(/* id 49, wireType 0 =*/392).int32(message.unknown49);
-            if (message.unknown51 != null && Object.hasOwnProperty.call(message, "unknown51"))
-                writer.uint32(/* id 51, wireType 0 =*/408).int32(message.unknown51);
+            if (message.toolsConfig != null && Object.hasOwnProperty.call(message, "toolsConfig"))
+                writer.uint32(/* id 47, wireType 2 =*/378).string(message.toolsConfig);
+            if (message.feedbackFlag != null && Object.hasOwnProperty.call(message, "feedbackFlag"))
+                writer.uint32(/* id 48, wireType 0 =*/384).int32(message.feedbackFlag);
+            if (message.desiredMaxTokens != null && Object.hasOwnProperty.call(message, "desiredMaxTokens"))
+                writer.uint32(/* id 49, wireType 0 =*/392).int32(message.desiredMaxTokens);
+            if (message.fileReference != null && Object.hasOwnProperty.call(message, "fileReference"))
+                $root.FileReference.encode(message.fileReference, writer.uint32(/* id 51, wireType 2 =*/410).fork()).ldelim();
             if (message.unknown53 != null && Object.hasOwnProperty.call(message, "unknown53"))
                 writer.uint32(/* id 53, wireType 0 =*/424).int32(message.unknown53);
             if (message.chatMode != null && Object.hasOwnProperty.call(message, "chatMode"))
                 writer.uint32(/* id 54, wireType 2 =*/434).string(message.chatMode);
+            if (message.streamControlFlag != null && Object.hasOwnProperty.call(message, "streamControlFlag"))
+                writer.uint32(/* id 58, wireType 0 =*/464).int32(message.streamControlFlag);
+            if (message.tokenStartFlag != null && Object.hasOwnProperty.call(message, "tokenStartFlag"))
+                writer.uint32(/* id 60, wireType 0 =*/480).int32(message.tokenStartFlag);
+            if (message.tokenControlFlag != null && Object.hasOwnProperty.call(message, "tokenControlFlag"))
+                writer.uint32(/* id 61, wireType 0 =*/488).int32(message.tokenControlFlag);
+            if (message.contentFormat != null && Object.hasOwnProperty.call(message, "contentFormat"))
+                writer.uint32(/* id 62, wireType 2 =*/498).string(message.contentFormat);
+            if (message.enableMaxFeatures != null && Object.hasOwnProperty.call(message, "enableMaxFeatures"))
+                writer.uint32(/* id 63, wireType 0 =*/504).int32(message.enableMaxFeatures);
+            if (message.sessionTrackingFlag != null && Object.hasOwnProperty.call(message, "sessionTrackingFlag"))
+                writer.uint32(/* id 100, wireType 0 =*/800).int32(message.sessionTrackingFlag);
             return writer;
         };
 
@@ -1620,7 +7234,7 @@ $root.StreamUnifiedChatWithToolsRequest = (function() {
                         break;
                     }
                 case 2: {
-                        message.unknown2 = reader.int32();
+                        message.instructionFlag = reader.int32();
                         break;
                     }
                 case 3: {
@@ -1628,7 +7242,7 @@ $root.StreamUnifiedChatWithToolsRequest = (function() {
                         break;
                     }
                 case 4: {
-                        message.unknown4 = reader.int32();
+                        message.modelFlag = reader.int32();
                         break;
                     }
                 case 5: {
@@ -1646,7 +7260,7 @@ $root.StreamUnifiedChatWithToolsRequest = (function() {
                         break;
                     }
                 case 13: {
-                        message.unknown13 = reader.int32();
+                        message.requestFlag = reader.int32();
                         break;
                     }
                 case 15: {
@@ -1654,11 +7268,11 @@ $root.StreamUnifiedChatWithToolsRequest = (function() {
                         break;
                     }
                 case 19: {
-                        message.unknown19 = reader.int32();
+                        message.unifiedMode = reader.int32();
                         break;
                     }
                 case 22: {
-                        message.unknown22 = reader.int32();
+                        message.thinkingLevel = reader.int32();
                         break;
                     }
                 case 23: {
@@ -1674,7 +7288,7 @@ $root.StreamUnifiedChatWithToolsRequest = (function() {
                         break;
                     }
                 case 29: {
-                        message.unknown29 = reader.string();
+                        message.clientVersion = reader.string();
                         break;
                     }
                 case 30: {
@@ -1688,7 +7302,7 @@ $root.StreamUnifiedChatWithToolsRequest = (function() {
                         break;
                     }
                 case 38: {
-                        message.unknown38 = reader.int32();
+                        message.streamMode = reader.int32();
                         break;
                     }
                 case 46: {
@@ -1696,19 +7310,19 @@ $root.StreamUnifiedChatWithToolsRequest = (function() {
                         break;
                     }
                 case 47: {
-                        message.unknown47 = reader.string();
+                        message.toolsConfig = reader.string();
                         break;
                     }
                 case 48: {
-                        message.unknown48 = reader.int32();
+                        message.feedbackFlag = reader.int32();
                         break;
                     }
                 case 49: {
-                        message.unknown49 = reader.int32();
+                        message.desiredMaxTokens = reader.int32();
                         break;
                     }
                 case 51: {
-                        message.unknown51 = reader.int32();
+                        message.fileReference = $root.FileReference.decode(reader, reader.uint32());
                         break;
                     }
                 case 53: {
@@ -1717,6 +7331,30 @@ $root.StreamUnifiedChatWithToolsRequest = (function() {
                     }
                 case 54: {
                         message.chatMode = reader.string();
+                        break;
+                    }
+                case 58: {
+                        message.streamControlFlag = reader.int32();
+                        break;
+                    }
+                case 60: {
+                        message.tokenStartFlag = reader.int32();
+                        break;
+                    }
+                case 61: {
+                        message.tokenControlFlag = reader.int32();
+                        break;
+                    }
+                case 62: {
+                        message.contentFormat = reader.string();
+                        break;
+                    }
+                case 63: {
+                        message.enableMaxFeatures = reader.int32();
+                        break;
+                    }
+                case 100: {
+                        message.sessionTrackingFlag = reader.int32();
                         break;
                     }
                 default:
@@ -1763,17 +7401,17 @@ $root.StreamUnifiedChatWithToolsRequest = (function() {
                         return "messages." + error;
                 }
             }
-            if (message.unknown2 != null && message.hasOwnProperty("unknown2"))
-                if (!$util.isInteger(message.unknown2))
-                    return "unknown2: integer expected";
+            if (message.instructionFlag != null && message.hasOwnProperty("instructionFlag"))
+                if (!$util.isInteger(message.instructionFlag))
+                    return "instructionFlag: integer expected";
             if (message.instruction != null && message.hasOwnProperty("instruction")) {
                 var error = $root.StreamUnifiedChatWithToolsRequest.Request.Instruction.verify(message.instruction);
                 if (error)
                     return "instruction." + error;
             }
-            if (message.unknown4 != null && message.hasOwnProperty("unknown4"))
-                if (!$util.isInteger(message.unknown4))
-                    return "unknown4: integer expected";
+            if (message.modelFlag != null && message.hasOwnProperty("modelFlag"))
+                if (!$util.isInteger(message.modelFlag))
+                    return "modelFlag: integer expected";
             if (message.model != null && message.hasOwnProperty("model")) {
                 var error = $root.StreamUnifiedChatWithToolsRequest.Request.Model.verify(message.model);
                 if (error)
@@ -1789,20 +7427,20 @@ $root.StreamUnifiedChatWithToolsRequest = (function() {
             if (message.webTool != null && message.hasOwnProperty("webTool"))
                 if (!$util.isString(message.webTool))
                     return "webTool: string expected";
-            if (message.unknown13 != null && message.hasOwnProperty("unknown13"))
-                if (!$util.isInteger(message.unknown13))
-                    return "unknown13: integer expected";
+            if (message.requestFlag != null && message.hasOwnProperty("requestFlag"))
+                if (!$util.isInteger(message.requestFlag))
+                    return "requestFlag: integer expected";
             if (message.cursorSetting != null && message.hasOwnProperty("cursorSetting")) {
                 var error = $root.StreamUnifiedChatWithToolsRequest.Request.CursorSetting.verify(message.cursorSetting);
                 if (error)
                     return "cursorSetting." + error;
             }
-            if (message.unknown19 != null && message.hasOwnProperty("unknown19"))
-                if (!$util.isInteger(message.unknown19))
-                    return "unknown19: integer expected";
-            if (message.unknown22 != null && message.hasOwnProperty("unknown22"))
-                if (!$util.isInteger(message.unknown22))
-                    return "unknown22: integer expected";
+            if (message.unifiedMode != null && message.hasOwnProperty("unifiedMode"))
+                if (!$util.isInteger(message.unifiedMode))
+                    return "unifiedMode: integer expected";
+            if (message.thinkingLevel != null && message.hasOwnProperty("thinkingLevel"))
+                if (!$util.isInteger(message.thinkingLevel))
+                    return "thinkingLevel: integer expected";
             if (message.conversationId != null && message.hasOwnProperty("conversationId"))
                 if (!$util.isString(message.conversationId))
                     return "conversationId: string expected";
@@ -1814,9 +7452,9 @@ $root.StreamUnifiedChatWithToolsRequest = (function() {
             if (message.unknown27 != null && message.hasOwnProperty("unknown27"))
                 if (!$util.isInteger(message.unknown27))
                     return "unknown27: integer expected";
-            if (message.unknown29 != null && message.hasOwnProperty("unknown29"))
-                if (!$util.isString(message.unknown29))
-                    return "unknown29: string expected";
+            if (message.clientVersion != null && message.hasOwnProperty("clientVersion"))
+                if (!$util.isString(message.clientVersion))
+                    return "clientVersion: string expected";
             if (message.messageIds != null && message.hasOwnProperty("messageIds")) {
                 if (!Array.isArray(message.messageIds))
                     return "messageIds: array expected";
@@ -1829,30 +7467,50 @@ $root.StreamUnifiedChatWithToolsRequest = (function() {
             if (message.largeContext != null && message.hasOwnProperty("largeContext"))
                 if (!$util.isInteger(message.largeContext))
                     return "largeContext: integer expected";
-            if (message.unknown38 != null && message.hasOwnProperty("unknown38"))
-                if (!$util.isInteger(message.unknown38))
-                    return "unknown38: integer expected";
+            if (message.streamMode != null && message.hasOwnProperty("streamMode"))
+                if (!$util.isInteger(message.streamMode))
+                    return "streamMode: integer expected";
             if (message.chatModeEnum != null && message.hasOwnProperty("chatModeEnum"))
                 if (!$util.isInteger(message.chatModeEnum))
                     return "chatModeEnum: integer expected";
-            if (message.unknown47 != null && message.hasOwnProperty("unknown47"))
-                if (!$util.isString(message.unknown47))
-                    return "unknown47: string expected";
-            if (message.unknown48 != null && message.hasOwnProperty("unknown48"))
-                if (!$util.isInteger(message.unknown48))
-                    return "unknown48: integer expected";
-            if (message.unknown49 != null && message.hasOwnProperty("unknown49"))
-                if (!$util.isInteger(message.unknown49))
-                    return "unknown49: integer expected";
-            if (message.unknown51 != null && message.hasOwnProperty("unknown51"))
-                if (!$util.isInteger(message.unknown51))
-                    return "unknown51: integer expected";
+            if (message.toolsConfig != null && message.hasOwnProperty("toolsConfig"))
+                if (!$util.isString(message.toolsConfig))
+                    return "toolsConfig: string expected";
+            if (message.feedbackFlag != null && message.hasOwnProperty("feedbackFlag"))
+                if (!$util.isInteger(message.feedbackFlag))
+                    return "feedbackFlag: integer expected";
+            if (message.desiredMaxTokens != null && message.hasOwnProperty("desiredMaxTokens"))
+                if (!$util.isInteger(message.desiredMaxTokens))
+                    return "desiredMaxTokens: integer expected";
+            if (message.fileReference != null && message.hasOwnProperty("fileReference")) {
+                var error = $root.FileReference.verify(message.fileReference);
+                if (error)
+                    return "fileReference." + error;
+            }
             if (message.unknown53 != null && message.hasOwnProperty("unknown53"))
                 if (!$util.isInteger(message.unknown53))
                     return "unknown53: integer expected";
             if (message.chatMode != null && message.hasOwnProperty("chatMode"))
                 if (!$util.isString(message.chatMode))
                     return "chatMode: string expected";
+            if (message.streamControlFlag != null && message.hasOwnProperty("streamControlFlag"))
+                if (!$util.isInteger(message.streamControlFlag))
+                    return "streamControlFlag: integer expected";
+            if (message.tokenStartFlag != null && message.hasOwnProperty("tokenStartFlag"))
+                if (!$util.isInteger(message.tokenStartFlag))
+                    return "tokenStartFlag: integer expected";
+            if (message.tokenControlFlag != null && message.hasOwnProperty("tokenControlFlag"))
+                if (!$util.isInteger(message.tokenControlFlag))
+                    return "tokenControlFlag: integer expected";
+            if (message.contentFormat != null && message.hasOwnProperty("contentFormat"))
+                if (!$util.isString(message.contentFormat))
+                    return "contentFormat: string expected";
+            if (message.enableMaxFeatures != null && message.hasOwnProperty("enableMaxFeatures"))
+                if (!$util.isInteger(message.enableMaxFeatures))
+                    return "enableMaxFeatures: integer expected";
+            if (message.sessionTrackingFlag != null && message.hasOwnProperty("sessionTrackingFlag"))
+                if (!$util.isInteger(message.sessionTrackingFlag))
+                    return "sessionTrackingFlag: integer expected";
             return null;
         };
 
@@ -1878,15 +7536,15 @@ $root.StreamUnifiedChatWithToolsRequest = (function() {
                     message.messages[i] = $root.StreamUnifiedChatWithToolsRequest.Request.Message.fromObject(object.messages[i]);
                 }
             }
-            if (object.unknown2 != null)
-                message.unknown2 = object.unknown2 | 0;
+            if (object.instructionFlag != null)
+                message.instructionFlag = object.instructionFlag | 0;
             if (object.instruction != null) {
                 if (typeof object.instruction !== "object")
                     throw TypeError(".StreamUnifiedChatWithToolsRequest.Request.instruction: object expected");
                 message.instruction = $root.StreamUnifiedChatWithToolsRequest.Request.Instruction.fromObject(object.instruction);
             }
-            if (object.unknown4 != null)
-                message.unknown4 = object.unknown4 | 0;
+            if (object.modelFlag != null)
+                message.modelFlag = object.modelFlag | 0;
             if (object.model != null) {
                 if (typeof object.model !== "object")
                     throw TypeError(".StreamUnifiedChatWithToolsRequest.Request.model: object expected");
@@ -1901,17 +7559,17 @@ $root.StreamUnifiedChatWithToolsRequest = (function() {
             }
             if (object.webTool != null)
                 message.webTool = String(object.webTool);
-            if (object.unknown13 != null)
-                message.unknown13 = object.unknown13 | 0;
+            if (object.requestFlag != null)
+                message.requestFlag = object.requestFlag | 0;
             if (object.cursorSetting != null) {
                 if (typeof object.cursorSetting !== "object")
                     throw TypeError(".StreamUnifiedChatWithToolsRequest.Request.cursorSetting: object expected");
                 message.cursorSetting = $root.StreamUnifiedChatWithToolsRequest.Request.CursorSetting.fromObject(object.cursorSetting);
             }
-            if (object.unknown19 != null)
-                message.unknown19 = object.unknown19 | 0;
-            if (object.unknown22 != null)
-                message.unknown22 = object.unknown22 | 0;
+            if (object.unifiedMode != null)
+                message.unifiedMode = object.unifiedMode | 0;
+            if (object.thinkingLevel != null)
+                message.thinkingLevel = object.thinkingLevel | 0;
             if (object.conversationId != null)
                 message.conversationId = String(object.conversationId);
             if (object.metadata != null) {
@@ -1921,8 +7579,8 @@ $root.StreamUnifiedChatWithToolsRequest = (function() {
             }
             if (object.unknown27 != null)
                 message.unknown27 = object.unknown27 | 0;
-            if (object.unknown29 != null)
-                message.unknown29 = String(object.unknown29);
+            if (object.clientVersion != null)
+                message.clientVersion = String(object.clientVersion);
             if (object.messageIds) {
                 if (!Array.isArray(object.messageIds))
                     throw TypeError(".StreamUnifiedChatWithToolsRequest.Request.messageIds: array expected");
@@ -1935,22 +7593,37 @@ $root.StreamUnifiedChatWithToolsRequest = (function() {
             }
             if (object.largeContext != null)
                 message.largeContext = object.largeContext | 0;
-            if (object.unknown38 != null)
-                message.unknown38 = object.unknown38 | 0;
+            if (object.streamMode != null)
+                message.streamMode = object.streamMode | 0;
             if (object.chatModeEnum != null)
                 message.chatModeEnum = object.chatModeEnum | 0;
-            if (object.unknown47 != null)
-                message.unknown47 = String(object.unknown47);
-            if (object.unknown48 != null)
-                message.unknown48 = object.unknown48 | 0;
-            if (object.unknown49 != null)
-                message.unknown49 = object.unknown49 | 0;
-            if (object.unknown51 != null)
-                message.unknown51 = object.unknown51 | 0;
+            if (object.toolsConfig != null)
+                message.toolsConfig = String(object.toolsConfig);
+            if (object.feedbackFlag != null)
+                message.feedbackFlag = object.feedbackFlag | 0;
+            if (object.desiredMaxTokens != null)
+                message.desiredMaxTokens = object.desiredMaxTokens | 0;
+            if (object.fileReference != null) {
+                if (typeof object.fileReference !== "object")
+                    throw TypeError(".StreamUnifiedChatWithToolsRequest.Request.fileReference: object expected");
+                message.fileReference = $root.FileReference.fromObject(object.fileReference);
+            }
             if (object.unknown53 != null)
                 message.unknown53 = object.unknown53 | 0;
             if (object.chatMode != null)
                 message.chatMode = String(object.chatMode);
+            if (object.streamControlFlag != null)
+                message.streamControlFlag = object.streamControlFlag | 0;
+            if (object.tokenStartFlag != null)
+                message.tokenStartFlag = object.tokenStartFlag | 0;
+            if (object.tokenControlFlag != null)
+                message.tokenControlFlag = object.tokenControlFlag | 0;
+            if (object.contentFormat != null)
+                message.contentFormat = String(object.contentFormat);
+            if (object.enableMaxFeatures != null)
+                message.enableMaxFeatures = object.enableMaxFeatures | 0;
+            if (object.sessionTrackingFlag != null)
+                message.sessionTrackingFlag = object.sessionTrackingFlag | 0;
             return message;
         };
 
@@ -1973,40 +7646,46 @@ $root.StreamUnifiedChatWithToolsRequest = (function() {
                 object.messageIds = [];
             }
             if (options.defaults) {
-                object.unknown2 = 0;
+                object.instructionFlag = 0;
                 object.instruction = null;
-                object.unknown4 = 0;
+                object.modelFlag = 0;
                 object.model = null;
                 object.webTool = "";
-                object.unknown13 = 0;
+                object.requestFlag = 0;
                 object.cursorSetting = null;
-                object.unknown19 = 0;
-                object.unknown22 = 0;
+                object.unifiedMode = 0;
+                object.thinkingLevel = 0;
                 object.conversationId = "";
                 object.metadata = null;
                 object.unknown27 = 0;
-                object.unknown29 = "";
+                object.clientVersion = "";
                 object.largeContext = 0;
-                object.unknown38 = 0;
+                object.streamMode = 0;
                 object.chatModeEnum = 0;
-                object.unknown47 = "";
-                object.unknown48 = 0;
-                object.unknown49 = 0;
-                object.unknown51 = 0;
+                object.toolsConfig = "";
+                object.feedbackFlag = 0;
+                object.desiredMaxTokens = 0;
+                object.fileReference = null;
                 object.unknown53 = 0;
                 object.chatMode = "";
+                object.streamControlFlag = 0;
+                object.tokenStartFlag = 0;
+                object.tokenControlFlag = 0;
+                object.contentFormat = "";
+                object.enableMaxFeatures = 0;
+                object.sessionTrackingFlag = 0;
             }
             if (message.messages && message.messages.length) {
                 object.messages = [];
                 for (var j = 0; j < message.messages.length; ++j)
                     object.messages[j] = $root.StreamUnifiedChatWithToolsRequest.Request.Message.toObject(message.messages[j], options);
             }
-            if (message.unknown2 != null && message.hasOwnProperty("unknown2"))
-                object.unknown2 = message.unknown2;
+            if (message.instructionFlag != null && message.hasOwnProperty("instructionFlag"))
+                object.instructionFlag = message.instructionFlag;
             if (message.instruction != null && message.hasOwnProperty("instruction"))
                 object.instruction = $root.StreamUnifiedChatWithToolsRequest.Request.Instruction.toObject(message.instruction, options);
-            if (message.unknown4 != null && message.hasOwnProperty("unknown4"))
-                object.unknown4 = message.unknown4;
+            if (message.modelFlag != null && message.hasOwnProperty("modelFlag"))
+                object.modelFlag = message.modelFlag;
             if (message.model != null && message.hasOwnProperty("model"))
                 object.model = $root.StreamUnifiedChatWithToolsRequest.Request.Model.toObject(message.model, options);
             if (message.wikiTool && message.wikiTool.length) {
@@ -2016,22 +7695,22 @@ $root.StreamUnifiedChatWithToolsRequest = (function() {
             }
             if (message.webTool != null && message.hasOwnProperty("webTool"))
                 object.webTool = message.webTool;
-            if (message.unknown13 != null && message.hasOwnProperty("unknown13"))
-                object.unknown13 = message.unknown13;
+            if (message.requestFlag != null && message.hasOwnProperty("requestFlag"))
+                object.requestFlag = message.requestFlag;
             if (message.cursorSetting != null && message.hasOwnProperty("cursorSetting"))
                 object.cursorSetting = $root.StreamUnifiedChatWithToolsRequest.Request.CursorSetting.toObject(message.cursorSetting, options);
-            if (message.unknown19 != null && message.hasOwnProperty("unknown19"))
-                object.unknown19 = message.unknown19;
-            if (message.unknown22 != null && message.hasOwnProperty("unknown22"))
-                object.unknown22 = message.unknown22;
+            if (message.unifiedMode != null && message.hasOwnProperty("unifiedMode"))
+                object.unifiedMode = message.unifiedMode;
+            if (message.thinkingLevel != null && message.hasOwnProperty("thinkingLevel"))
+                object.thinkingLevel = message.thinkingLevel;
             if (message.conversationId != null && message.hasOwnProperty("conversationId"))
                 object.conversationId = message.conversationId;
             if (message.metadata != null && message.hasOwnProperty("metadata"))
                 object.metadata = $root.StreamUnifiedChatWithToolsRequest.Request.Metadata.toObject(message.metadata, options);
             if (message.unknown27 != null && message.hasOwnProperty("unknown27"))
                 object.unknown27 = message.unknown27;
-            if (message.unknown29 != null && message.hasOwnProperty("unknown29"))
-                object.unknown29 = message.unknown29;
+            if (message.clientVersion != null && message.hasOwnProperty("clientVersion"))
+                object.clientVersion = message.clientVersion;
             if (message.messageIds && message.messageIds.length) {
                 object.messageIds = [];
                 for (var j = 0; j < message.messageIds.length; ++j)
@@ -2039,22 +7718,34 @@ $root.StreamUnifiedChatWithToolsRequest = (function() {
             }
             if (message.largeContext != null && message.hasOwnProperty("largeContext"))
                 object.largeContext = message.largeContext;
-            if (message.unknown38 != null && message.hasOwnProperty("unknown38"))
-                object.unknown38 = message.unknown38;
+            if (message.streamMode != null && message.hasOwnProperty("streamMode"))
+                object.streamMode = message.streamMode;
             if (message.chatModeEnum != null && message.hasOwnProperty("chatModeEnum"))
                 object.chatModeEnum = message.chatModeEnum;
-            if (message.unknown47 != null && message.hasOwnProperty("unknown47"))
-                object.unknown47 = message.unknown47;
-            if (message.unknown48 != null && message.hasOwnProperty("unknown48"))
-                object.unknown48 = message.unknown48;
-            if (message.unknown49 != null && message.hasOwnProperty("unknown49"))
-                object.unknown49 = message.unknown49;
-            if (message.unknown51 != null && message.hasOwnProperty("unknown51"))
-                object.unknown51 = message.unknown51;
+            if (message.toolsConfig != null && message.hasOwnProperty("toolsConfig"))
+                object.toolsConfig = message.toolsConfig;
+            if (message.feedbackFlag != null && message.hasOwnProperty("feedbackFlag"))
+                object.feedbackFlag = message.feedbackFlag;
+            if (message.desiredMaxTokens != null && message.hasOwnProperty("desiredMaxTokens"))
+                object.desiredMaxTokens = message.desiredMaxTokens;
+            if (message.fileReference != null && message.hasOwnProperty("fileReference"))
+                object.fileReference = $root.FileReference.toObject(message.fileReference, options);
             if (message.unknown53 != null && message.hasOwnProperty("unknown53"))
                 object.unknown53 = message.unknown53;
             if (message.chatMode != null && message.hasOwnProperty("chatMode"))
                 object.chatMode = message.chatMode;
+            if (message.streamControlFlag != null && message.hasOwnProperty("streamControlFlag"))
+                object.streamControlFlag = message.streamControlFlag;
+            if (message.tokenStartFlag != null && message.hasOwnProperty("tokenStartFlag"))
+                object.tokenStartFlag = message.tokenStartFlag;
+            if (message.tokenControlFlag != null && message.hasOwnProperty("tokenControlFlag"))
+                object.tokenControlFlag = message.tokenControlFlag;
+            if (message.contentFormat != null && message.hasOwnProperty("contentFormat"))
+                object.contentFormat = message.contentFormat;
+            if (message.enableMaxFeatures != null && message.hasOwnProperty("enableMaxFeatures"))
+                object.enableMaxFeatures = message.enableMaxFeatures;
+            if (message.sessionTrackingFlag != null && message.hasOwnProperty("sessionTrackingFlag"))
+                object.sessionTrackingFlag = message.sessionTrackingFlag;
             return object;
         };
 
@@ -2094,11 +7785,14 @@ $root.StreamUnifiedChatWithToolsRequest = (function() {
              * @property {number|null} [role] Message role
              * @property {StreamUnifiedChatWithToolsRequest.Request.Message.IImage|null} [image] Message image
              * @property {string|null} [messageId] Message messageId
-             * @property {string|null} [unknown29] Message unknown29
+             * @property {Array.<string>|null} [fileReferences] Message fileReferences
+             * @property {string|null} [clientVersion] Message clientVersion
              * @property {string|null} [summaryId] Message summaryId
              * @property {IMessageSummary|null} [summary] Message summary
              * @property {IMessageThinking|null} [thinking] Message thinking
              * @property {number|null} [chatModeEnum] Message chatModeEnum
+             * @property {number|null} [fileDescriptor] Message fileDescriptor
+             * @property {number|null} [unknown63] Message unknown63
              */
 
             /**
@@ -2110,6 +7804,7 @@ $root.StreamUnifiedChatWithToolsRequest = (function() {
              * @param {StreamUnifiedChatWithToolsRequest.Request.IMessage=} [properties] Properties to set
              */
             function Message(properties) {
+                this.fileReferences = [];
                 if (properties)
                     for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
                         if (properties[keys[i]] != null)
@@ -2149,12 +7844,20 @@ $root.StreamUnifiedChatWithToolsRequest = (function() {
             Message.prototype.messageId = "";
 
             /**
-             * Message unknown29.
-             * @member {string} unknown29
+             * Message fileReferences.
+             * @member {Array.<string>} fileReferences
              * @memberof StreamUnifiedChatWithToolsRequest.Request.Message
              * @instance
              */
-            Message.prototype.unknown29 = "";
+            Message.prototype.fileReferences = $util.emptyArray;
+
+            /**
+             * Message clientVersion.
+             * @member {string} clientVersion
+             * @memberof StreamUnifiedChatWithToolsRequest.Request.Message
+             * @instance
+             */
+            Message.prototype.clientVersion = "";
 
             /**
              * Message summaryId.
@@ -2189,6 +7892,22 @@ $root.StreamUnifiedChatWithToolsRequest = (function() {
             Message.prototype.chatModeEnum = 0;
 
             /**
+             * Message fileDescriptor.
+             * @member {number} fileDescriptor
+             * @memberof StreamUnifiedChatWithToolsRequest.Request.Message
+             * @instance
+             */
+            Message.prototype.fileDescriptor = 0;
+
+            /**
+             * Message unknown63.
+             * @member {number} unknown63
+             * @memberof StreamUnifiedChatWithToolsRequest.Request.Message
+             * @instance
+             */
+            Message.prototype.unknown63 = 0;
+
+            /**
              * Creates a new Message instance using the specified properties.
              * @function create
              * @memberof StreamUnifiedChatWithToolsRequest.Request.Message
@@ -2220,8 +7939,11 @@ $root.StreamUnifiedChatWithToolsRequest = (function() {
                     $root.StreamUnifiedChatWithToolsRequest.Request.Message.Image.encode(message.image, writer.uint32(/* id 10, wireType 2 =*/82).fork()).ldelim();
                 if (message.messageId != null && Object.hasOwnProperty.call(message, "messageId"))
                     writer.uint32(/* id 13, wireType 2 =*/106).string(message.messageId);
-                if (message.unknown29 != null && Object.hasOwnProperty.call(message, "unknown29"))
-                    writer.uint32(/* id 29, wireType 2 =*/234).string(message.unknown29);
+                if (message.fileReferences != null && message.fileReferences.length)
+                    for (var i = 0; i < message.fileReferences.length; ++i)
+                        writer.uint32(/* id 17, wireType 2 =*/138).string(message.fileReferences[i]);
+                if (message.clientVersion != null && Object.hasOwnProperty.call(message, "clientVersion"))
+                    writer.uint32(/* id 29, wireType 2 =*/234).string(message.clientVersion);
                 if (message.summaryId != null && Object.hasOwnProperty.call(message, "summaryId"))
                     writer.uint32(/* id 32, wireType 2 =*/258).string(message.summaryId);
                 if (message.summary != null && Object.hasOwnProperty.call(message, "summary"))
@@ -2230,6 +7952,10 @@ $root.StreamUnifiedChatWithToolsRequest = (function() {
                     $root.MessageThinking.encode(message.thinking, writer.uint32(/* id 45, wireType 2 =*/362).fork()).ldelim();
                 if (message.chatModeEnum != null && Object.hasOwnProperty.call(message, "chatModeEnum"))
                     writer.uint32(/* id 47, wireType 0 =*/376).int32(message.chatModeEnum);
+                if (message.fileDescriptor != null && Object.hasOwnProperty.call(message, "fileDescriptor"))
+                    writer.uint32(/* id 50, wireType 0 =*/400).int32(message.fileDescriptor);
+                if (message.unknown63 != null && Object.hasOwnProperty.call(message, "unknown63"))
+                    writer.uint32(/* id 63, wireType 0 =*/504).int32(message.unknown63);
                 return writer;
             };
 
@@ -2280,8 +8006,14 @@ $root.StreamUnifiedChatWithToolsRequest = (function() {
                             message.messageId = reader.string();
                             break;
                         }
+                    case 17: {
+                            if (!(message.fileReferences && message.fileReferences.length))
+                                message.fileReferences = [];
+                            message.fileReferences.push(reader.string());
+                            break;
+                        }
                     case 29: {
-                            message.unknown29 = reader.string();
+                            message.clientVersion = reader.string();
                             break;
                         }
                     case 32: {
@@ -2298,6 +8030,14 @@ $root.StreamUnifiedChatWithToolsRequest = (function() {
                         }
                     case 47: {
                             message.chatModeEnum = reader.int32();
+                            break;
+                        }
+                    case 50: {
+                            message.fileDescriptor = reader.int32();
+                            break;
+                        }
+                    case 63: {
+                            message.unknown63 = reader.int32();
                             break;
                         }
                     default:
@@ -2349,9 +8089,16 @@ $root.StreamUnifiedChatWithToolsRequest = (function() {
                 if (message.messageId != null && message.hasOwnProperty("messageId"))
                     if (!$util.isString(message.messageId))
                         return "messageId: string expected";
-                if (message.unknown29 != null && message.hasOwnProperty("unknown29"))
-                    if (!$util.isString(message.unknown29))
-                        return "unknown29: string expected";
+                if (message.fileReferences != null && message.hasOwnProperty("fileReferences")) {
+                    if (!Array.isArray(message.fileReferences))
+                        return "fileReferences: array expected";
+                    for (var i = 0; i < message.fileReferences.length; ++i)
+                        if (!$util.isString(message.fileReferences[i]))
+                            return "fileReferences: string[] expected";
+                }
+                if (message.clientVersion != null && message.hasOwnProperty("clientVersion"))
+                    if (!$util.isString(message.clientVersion))
+                        return "clientVersion: string expected";
                 if (message.summaryId != null && message.hasOwnProperty("summaryId"))
                     if (!$util.isString(message.summaryId))
                         return "summaryId: string expected";
@@ -2368,6 +8115,12 @@ $root.StreamUnifiedChatWithToolsRequest = (function() {
                 if (message.chatModeEnum != null && message.hasOwnProperty("chatModeEnum"))
                     if (!$util.isInteger(message.chatModeEnum))
                         return "chatModeEnum: integer expected";
+                if (message.fileDescriptor != null && message.hasOwnProperty("fileDescriptor"))
+                    if (!$util.isInteger(message.fileDescriptor))
+                        return "fileDescriptor: integer expected";
+                if (message.unknown63 != null && message.hasOwnProperty("unknown63"))
+                    if (!$util.isInteger(message.unknown63))
+                        return "unknown63: integer expected";
                 return null;
             };
 
@@ -2394,8 +8147,15 @@ $root.StreamUnifiedChatWithToolsRequest = (function() {
                 }
                 if (object.messageId != null)
                     message.messageId = String(object.messageId);
-                if (object.unknown29 != null)
-                    message.unknown29 = String(object.unknown29);
+                if (object.fileReferences) {
+                    if (!Array.isArray(object.fileReferences))
+                        throw TypeError(".StreamUnifiedChatWithToolsRequest.Request.Message.fileReferences: array expected");
+                    message.fileReferences = [];
+                    for (var i = 0; i < object.fileReferences.length; ++i)
+                        message.fileReferences[i] = String(object.fileReferences[i]);
+                }
+                if (object.clientVersion != null)
+                    message.clientVersion = String(object.clientVersion);
                 if (object.summaryId != null)
                     message.summaryId = String(object.summaryId);
                 if (object.summary != null) {
@@ -2410,6 +8170,10 @@ $root.StreamUnifiedChatWithToolsRequest = (function() {
                 }
                 if (object.chatModeEnum != null)
                     message.chatModeEnum = object.chatModeEnum | 0;
+                if (object.fileDescriptor != null)
+                    message.fileDescriptor = object.fileDescriptor | 0;
+                if (object.unknown63 != null)
+                    message.unknown63 = object.unknown63 | 0;
                 return message;
             };
 
@@ -2426,16 +8190,20 @@ $root.StreamUnifiedChatWithToolsRequest = (function() {
                 if (!options)
                     options = {};
                 var object = {};
+                if (options.arrays || options.defaults)
+                    object.fileReferences = [];
                 if (options.defaults) {
                     object.content = "";
                     object.role = 0;
                     object.image = null;
                     object.messageId = "";
-                    object.unknown29 = "";
+                    object.clientVersion = "";
                     object.summaryId = "";
                     object.summary = null;
                     object.thinking = null;
                     object.chatModeEnum = 0;
+                    object.fileDescriptor = 0;
+                    object.unknown63 = 0;
                 }
                 if (message.content != null && message.hasOwnProperty("content"))
                     object.content = message.content;
@@ -2445,8 +8213,13 @@ $root.StreamUnifiedChatWithToolsRequest = (function() {
                     object.image = $root.StreamUnifiedChatWithToolsRequest.Request.Message.Image.toObject(message.image, options);
                 if (message.messageId != null && message.hasOwnProperty("messageId"))
                     object.messageId = message.messageId;
-                if (message.unknown29 != null && message.hasOwnProperty("unknown29"))
-                    object.unknown29 = message.unknown29;
+                if (message.fileReferences && message.fileReferences.length) {
+                    object.fileReferences = [];
+                    for (var j = 0; j < message.fileReferences.length; ++j)
+                        object.fileReferences[j] = message.fileReferences[j];
+                }
+                if (message.clientVersion != null && message.hasOwnProperty("clientVersion"))
+                    object.clientVersion = message.clientVersion;
                 if (message.summaryId != null && message.hasOwnProperty("summaryId"))
                     object.summaryId = message.summaryId;
                 if (message.summary != null && message.hasOwnProperty("summary"))
@@ -2455,6 +8228,10 @@ $root.StreamUnifiedChatWithToolsRequest = (function() {
                     object.thinking = $root.MessageThinking.toObject(message.thinking, options);
                 if (message.chatModeEnum != null && message.hasOwnProperty("chatModeEnum"))
                     object.chatModeEnum = message.chatModeEnum;
+                if (message.fileDescriptor != null && message.hasOwnProperty("fileDescriptor"))
+                    object.fileDescriptor = message.fileDescriptor;
+                if (message.unknown63 != null && message.hasOwnProperty("unknown63"))
+                    object.unknown63 = message.unknown63;
                 return object;
             };
 
@@ -3401,10 +9178,10 @@ $root.StreamUnifiedChatWithToolsRequest = (function() {
              * @memberof StreamUnifiedChatWithToolsRequest.Request
              * @interface ICursorSetting
              * @property {string|null} [name] CursorSetting name
-             * @property {Uint8Array|null} [unknown3] CursorSetting unknown3
-             * @property {StreamUnifiedChatWithToolsRequest.Request.CursorSetting.IUnknown6|null} [unknown6] CursorSetting unknown6
-             * @property {number|null} [unknown8] CursorSetting unknown8
-             * @property {number|null} [unknown9] CursorSetting unknown9
+             * @property {Uint8Array|null} [settingsData] CursorSetting settingsData
+             * @property {StreamUnifiedChatWithToolsRequest.Request.CursorSetting.IClientSettings|null} [clientSettings] CursorSetting clientSettings
+             * @property {number|null} [settingsFlag] CursorSetting settingsFlag
+             * @property {number|null} [settingsMode] CursorSetting settingsMode
              */
 
             /**
@@ -3431,36 +9208,36 @@ $root.StreamUnifiedChatWithToolsRequest = (function() {
             CursorSetting.prototype.name = "";
 
             /**
-             * CursorSetting unknown3.
-             * @member {Uint8Array} unknown3
+             * CursorSetting settingsData.
+             * @member {Uint8Array} settingsData
              * @memberof StreamUnifiedChatWithToolsRequest.Request.CursorSetting
              * @instance
              */
-            CursorSetting.prototype.unknown3 = $util.newBuffer([]);
+            CursorSetting.prototype.settingsData = $util.newBuffer([]);
 
             /**
-             * CursorSetting unknown6.
-             * @member {StreamUnifiedChatWithToolsRequest.Request.CursorSetting.IUnknown6|null|undefined} unknown6
+             * CursorSetting clientSettings.
+             * @member {StreamUnifiedChatWithToolsRequest.Request.CursorSetting.IClientSettings|null|undefined} clientSettings
              * @memberof StreamUnifiedChatWithToolsRequest.Request.CursorSetting
              * @instance
              */
-            CursorSetting.prototype.unknown6 = null;
+            CursorSetting.prototype.clientSettings = null;
 
             /**
-             * CursorSetting unknown8.
-             * @member {number} unknown8
+             * CursorSetting settingsFlag.
+             * @member {number} settingsFlag
              * @memberof StreamUnifiedChatWithToolsRequest.Request.CursorSetting
              * @instance
              */
-            CursorSetting.prototype.unknown8 = 0;
+            CursorSetting.prototype.settingsFlag = 0;
 
             /**
-             * CursorSetting unknown9.
-             * @member {number} unknown9
+             * CursorSetting settingsMode.
+             * @member {number} settingsMode
              * @memberof StreamUnifiedChatWithToolsRequest.Request.CursorSetting
              * @instance
              */
-            CursorSetting.prototype.unknown9 = 0;
+            CursorSetting.prototype.settingsMode = 0;
 
             /**
              * Creates a new CursorSetting instance using the specified properties.
@@ -3488,14 +9265,14 @@ $root.StreamUnifiedChatWithToolsRequest = (function() {
                     writer = $Writer.create();
                 if (message.name != null && Object.hasOwnProperty.call(message, "name"))
                     writer.uint32(/* id 1, wireType 2 =*/10).string(message.name);
-                if (message.unknown3 != null && Object.hasOwnProperty.call(message, "unknown3"))
-                    writer.uint32(/* id 3, wireType 2 =*/26).bytes(message.unknown3);
-                if (message.unknown6 != null && Object.hasOwnProperty.call(message, "unknown6"))
-                    $root.StreamUnifiedChatWithToolsRequest.Request.CursorSetting.Unknown6.encode(message.unknown6, writer.uint32(/* id 6, wireType 2 =*/50).fork()).ldelim();
-                if (message.unknown8 != null && Object.hasOwnProperty.call(message, "unknown8"))
-                    writer.uint32(/* id 8, wireType 0 =*/64).int32(message.unknown8);
-                if (message.unknown9 != null && Object.hasOwnProperty.call(message, "unknown9"))
-                    writer.uint32(/* id 9, wireType 0 =*/72).int32(message.unknown9);
+                if (message.settingsData != null && Object.hasOwnProperty.call(message, "settingsData"))
+                    writer.uint32(/* id 3, wireType 2 =*/26).bytes(message.settingsData);
+                if (message.clientSettings != null && Object.hasOwnProperty.call(message, "clientSettings"))
+                    $root.StreamUnifiedChatWithToolsRequest.Request.CursorSetting.ClientSettings.encode(message.clientSettings, writer.uint32(/* id 6, wireType 2 =*/50).fork()).ldelim();
+                if (message.settingsFlag != null && Object.hasOwnProperty.call(message, "settingsFlag"))
+                    writer.uint32(/* id 8, wireType 0 =*/64).int32(message.settingsFlag);
+                if (message.settingsMode != null && Object.hasOwnProperty.call(message, "settingsMode"))
+                    writer.uint32(/* id 9, wireType 0 =*/72).int32(message.settingsMode);
                 return writer;
             };
 
@@ -3535,19 +9312,19 @@ $root.StreamUnifiedChatWithToolsRequest = (function() {
                             break;
                         }
                     case 3: {
-                            message.unknown3 = reader.bytes();
+                            message.settingsData = reader.bytes();
                             break;
                         }
                     case 6: {
-                            message.unknown6 = $root.StreamUnifiedChatWithToolsRequest.Request.CursorSetting.Unknown6.decode(reader, reader.uint32());
+                            message.clientSettings = $root.StreamUnifiedChatWithToolsRequest.Request.CursorSetting.ClientSettings.decode(reader, reader.uint32());
                             break;
                         }
                     case 8: {
-                            message.unknown8 = reader.int32();
+                            message.settingsFlag = reader.int32();
                             break;
                         }
                     case 9: {
-                            message.unknown9 = reader.int32();
+                            message.settingsMode = reader.int32();
                             break;
                         }
                     default:
@@ -3588,20 +9365,20 @@ $root.StreamUnifiedChatWithToolsRequest = (function() {
                 if (message.name != null && message.hasOwnProperty("name"))
                     if (!$util.isString(message.name))
                         return "name: string expected";
-                if (message.unknown3 != null && message.hasOwnProperty("unknown3"))
-                    if (!(message.unknown3 && typeof message.unknown3.length === "number" || $util.isString(message.unknown3)))
-                        return "unknown3: buffer expected";
-                if (message.unknown6 != null && message.hasOwnProperty("unknown6")) {
-                    var error = $root.StreamUnifiedChatWithToolsRequest.Request.CursorSetting.Unknown6.verify(message.unknown6);
+                if (message.settingsData != null && message.hasOwnProperty("settingsData"))
+                    if (!(message.settingsData && typeof message.settingsData.length === "number" || $util.isString(message.settingsData)))
+                        return "settingsData: buffer expected";
+                if (message.clientSettings != null && message.hasOwnProperty("clientSettings")) {
+                    var error = $root.StreamUnifiedChatWithToolsRequest.Request.CursorSetting.ClientSettings.verify(message.clientSettings);
                     if (error)
-                        return "unknown6." + error;
+                        return "clientSettings." + error;
                 }
-                if (message.unknown8 != null && message.hasOwnProperty("unknown8"))
-                    if (!$util.isInteger(message.unknown8))
-                        return "unknown8: integer expected";
-                if (message.unknown9 != null && message.hasOwnProperty("unknown9"))
-                    if (!$util.isInteger(message.unknown9))
-                        return "unknown9: integer expected";
+                if (message.settingsFlag != null && message.hasOwnProperty("settingsFlag"))
+                    if (!$util.isInteger(message.settingsFlag))
+                        return "settingsFlag: integer expected";
+                if (message.settingsMode != null && message.hasOwnProperty("settingsMode"))
+                    if (!$util.isInteger(message.settingsMode))
+                        return "settingsMode: integer expected";
                 return null;
             };
 
@@ -3619,20 +9396,20 @@ $root.StreamUnifiedChatWithToolsRequest = (function() {
                 var message = new $root.StreamUnifiedChatWithToolsRequest.Request.CursorSetting();
                 if (object.name != null)
                     message.name = String(object.name);
-                if (object.unknown3 != null)
-                    if (typeof object.unknown3 === "string")
-                        $util.base64.decode(object.unknown3, message.unknown3 = $util.newBuffer($util.base64.length(object.unknown3)), 0);
-                    else if (object.unknown3.length >= 0)
-                        message.unknown3 = object.unknown3;
-                if (object.unknown6 != null) {
-                    if (typeof object.unknown6 !== "object")
-                        throw TypeError(".StreamUnifiedChatWithToolsRequest.Request.CursorSetting.unknown6: object expected");
-                    message.unknown6 = $root.StreamUnifiedChatWithToolsRequest.Request.CursorSetting.Unknown6.fromObject(object.unknown6);
+                if (object.settingsData != null)
+                    if (typeof object.settingsData === "string")
+                        $util.base64.decode(object.settingsData, message.settingsData = $util.newBuffer($util.base64.length(object.settingsData)), 0);
+                    else if (object.settingsData.length >= 0)
+                        message.settingsData = object.settingsData;
+                if (object.clientSettings != null) {
+                    if (typeof object.clientSettings !== "object")
+                        throw TypeError(".StreamUnifiedChatWithToolsRequest.Request.CursorSetting.clientSettings: object expected");
+                    message.clientSettings = $root.StreamUnifiedChatWithToolsRequest.Request.CursorSetting.ClientSettings.fromObject(object.clientSettings);
                 }
-                if (object.unknown8 != null)
-                    message.unknown8 = object.unknown8 | 0;
-                if (object.unknown9 != null)
-                    message.unknown9 = object.unknown9 | 0;
+                if (object.settingsFlag != null)
+                    message.settingsFlag = object.settingsFlag | 0;
+                if (object.settingsMode != null)
+                    message.settingsMode = object.settingsMode | 0;
                 return message;
             };
 
@@ -3652,26 +9429,26 @@ $root.StreamUnifiedChatWithToolsRequest = (function() {
                 if (options.defaults) {
                     object.name = "";
                     if (options.bytes === String)
-                        object.unknown3 = "";
+                        object.settingsData = "";
                     else {
-                        object.unknown3 = [];
+                        object.settingsData = [];
                         if (options.bytes !== Array)
-                            object.unknown3 = $util.newBuffer(object.unknown3);
+                            object.settingsData = $util.newBuffer(object.settingsData);
                     }
-                    object.unknown6 = null;
-                    object.unknown8 = 0;
-                    object.unknown9 = 0;
+                    object.clientSettings = null;
+                    object.settingsFlag = 0;
+                    object.settingsMode = 0;
                 }
                 if (message.name != null && message.hasOwnProperty("name"))
                     object.name = message.name;
-                if (message.unknown3 != null && message.hasOwnProperty("unknown3"))
-                    object.unknown3 = options.bytes === String ? $util.base64.encode(message.unknown3, 0, message.unknown3.length) : options.bytes === Array ? Array.prototype.slice.call(message.unknown3) : message.unknown3;
-                if (message.unknown6 != null && message.hasOwnProperty("unknown6"))
-                    object.unknown6 = $root.StreamUnifiedChatWithToolsRequest.Request.CursorSetting.Unknown6.toObject(message.unknown6, options);
-                if (message.unknown8 != null && message.hasOwnProperty("unknown8"))
-                    object.unknown8 = message.unknown8;
-                if (message.unknown9 != null && message.hasOwnProperty("unknown9"))
-                    object.unknown9 = message.unknown9;
+                if (message.settingsData != null && message.hasOwnProperty("settingsData"))
+                    object.settingsData = options.bytes === String ? $util.base64.encode(message.settingsData, 0, message.settingsData.length) : options.bytes === Array ? Array.prototype.slice.call(message.settingsData) : message.settingsData;
+                if (message.clientSettings != null && message.hasOwnProperty("clientSettings"))
+                    object.clientSettings = $root.StreamUnifiedChatWithToolsRequest.Request.CursorSetting.ClientSettings.toObject(message.clientSettings, options);
+                if (message.settingsFlag != null && message.hasOwnProperty("settingsFlag"))
+                    object.settingsFlag = message.settingsFlag;
+                if (message.settingsMode != null && message.hasOwnProperty("settingsMode"))
+                    object.settingsMode = message.settingsMode;
                 return object;
             };
 
@@ -3701,25 +9478,25 @@ $root.StreamUnifiedChatWithToolsRequest = (function() {
                 return typeUrlPrefix + "/StreamUnifiedChatWithToolsRequest.Request.CursorSetting";
             };
 
-            CursorSetting.Unknown6 = (function() {
+            CursorSetting.ClientSettings = (function() {
 
                 /**
-                 * Properties of an Unknown6.
+                 * Properties of a ClientSettings.
                  * @memberof StreamUnifiedChatWithToolsRequest.Request.CursorSetting
-                 * @interface IUnknown6
-                 * @property {Uint8Array|null} [unknown1] Unknown6 unknown1
-                 * @property {Uint8Array|null} [unknown2] Unknown6 unknown2
+                 * @interface IClientSettings
+                 * @property {Uint8Array|null} [settings] ClientSettings settings
+                 * @property {Uint8Array|null} [configuration] ClientSettings configuration
                  */
 
                 /**
-                 * Constructs a new Unknown6.
+                 * Constructs a new ClientSettings.
                  * @memberof StreamUnifiedChatWithToolsRequest.Request.CursorSetting
-                 * @classdesc Represents an Unknown6.
-                 * @implements IUnknown6
+                 * @classdesc Represents a ClientSettings.
+                 * @implements IClientSettings
                  * @constructor
-                 * @param {StreamUnifiedChatWithToolsRequest.Request.CursorSetting.IUnknown6=} [properties] Properties to set
+                 * @param {StreamUnifiedChatWithToolsRequest.Request.CursorSetting.IClientSettings=} [properties] Properties to set
                  */
-                function Unknown6(properties) {
+                function ClientSettings(properties) {
                     if (properties)
                         for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
                             if (properties[keys[i]] != null)
@@ -3727,89 +9504,89 @@ $root.StreamUnifiedChatWithToolsRequest = (function() {
                 }
 
                 /**
-                 * Unknown6 unknown1.
-                 * @member {Uint8Array} unknown1
-                 * @memberof StreamUnifiedChatWithToolsRequest.Request.CursorSetting.Unknown6
+                 * ClientSettings settings.
+                 * @member {Uint8Array} settings
+                 * @memberof StreamUnifiedChatWithToolsRequest.Request.CursorSetting.ClientSettings
                  * @instance
                  */
-                Unknown6.prototype.unknown1 = $util.newBuffer([]);
+                ClientSettings.prototype.settings = $util.newBuffer([]);
 
                 /**
-                 * Unknown6 unknown2.
-                 * @member {Uint8Array} unknown2
-                 * @memberof StreamUnifiedChatWithToolsRequest.Request.CursorSetting.Unknown6
+                 * ClientSettings configuration.
+                 * @member {Uint8Array} configuration
+                 * @memberof StreamUnifiedChatWithToolsRequest.Request.CursorSetting.ClientSettings
                  * @instance
                  */
-                Unknown6.prototype.unknown2 = $util.newBuffer([]);
+                ClientSettings.prototype.configuration = $util.newBuffer([]);
 
                 /**
-                 * Creates a new Unknown6 instance using the specified properties.
+                 * Creates a new ClientSettings instance using the specified properties.
                  * @function create
-                 * @memberof StreamUnifiedChatWithToolsRequest.Request.CursorSetting.Unknown6
+                 * @memberof StreamUnifiedChatWithToolsRequest.Request.CursorSetting.ClientSettings
                  * @static
-                 * @param {StreamUnifiedChatWithToolsRequest.Request.CursorSetting.IUnknown6=} [properties] Properties to set
-                 * @returns {StreamUnifiedChatWithToolsRequest.Request.CursorSetting.Unknown6} Unknown6 instance
+                 * @param {StreamUnifiedChatWithToolsRequest.Request.CursorSetting.IClientSettings=} [properties] Properties to set
+                 * @returns {StreamUnifiedChatWithToolsRequest.Request.CursorSetting.ClientSettings} ClientSettings instance
                  */
-                Unknown6.create = function create(properties) {
-                    return new Unknown6(properties);
+                ClientSettings.create = function create(properties) {
+                    return new ClientSettings(properties);
                 };
 
                 /**
-                 * Encodes the specified Unknown6 message. Does not implicitly {@link StreamUnifiedChatWithToolsRequest.Request.CursorSetting.Unknown6.verify|verify} messages.
+                 * Encodes the specified ClientSettings message. Does not implicitly {@link StreamUnifiedChatWithToolsRequest.Request.CursorSetting.ClientSettings.verify|verify} messages.
                  * @function encode
-                 * @memberof StreamUnifiedChatWithToolsRequest.Request.CursorSetting.Unknown6
+                 * @memberof StreamUnifiedChatWithToolsRequest.Request.CursorSetting.ClientSettings
                  * @static
-                 * @param {StreamUnifiedChatWithToolsRequest.Request.CursorSetting.IUnknown6} message Unknown6 message or plain object to encode
+                 * @param {StreamUnifiedChatWithToolsRequest.Request.CursorSetting.IClientSettings} message ClientSettings message or plain object to encode
                  * @param {$protobuf.Writer} [writer] Writer to encode to
                  * @returns {$protobuf.Writer} Writer
                  */
-                Unknown6.encode = function encode(message, writer) {
+                ClientSettings.encode = function encode(message, writer) {
                     if (!writer)
                         writer = $Writer.create();
-                    if (message.unknown1 != null && Object.hasOwnProperty.call(message, "unknown1"))
-                        writer.uint32(/* id 1, wireType 2 =*/10).bytes(message.unknown1);
-                    if (message.unknown2 != null && Object.hasOwnProperty.call(message, "unknown2"))
-                        writer.uint32(/* id 2, wireType 2 =*/18).bytes(message.unknown2);
+                    if (message.settings != null && Object.hasOwnProperty.call(message, "settings"))
+                        writer.uint32(/* id 1, wireType 2 =*/10).bytes(message.settings);
+                    if (message.configuration != null && Object.hasOwnProperty.call(message, "configuration"))
+                        writer.uint32(/* id 2, wireType 2 =*/18).bytes(message.configuration);
                     return writer;
                 };
 
                 /**
-                 * Encodes the specified Unknown6 message, length delimited. Does not implicitly {@link StreamUnifiedChatWithToolsRequest.Request.CursorSetting.Unknown6.verify|verify} messages.
+                 * Encodes the specified ClientSettings message, length delimited. Does not implicitly {@link StreamUnifiedChatWithToolsRequest.Request.CursorSetting.ClientSettings.verify|verify} messages.
                  * @function encodeDelimited
-                 * @memberof StreamUnifiedChatWithToolsRequest.Request.CursorSetting.Unknown6
+                 * @memberof StreamUnifiedChatWithToolsRequest.Request.CursorSetting.ClientSettings
                  * @static
-                 * @param {StreamUnifiedChatWithToolsRequest.Request.CursorSetting.IUnknown6} message Unknown6 message or plain object to encode
+                 * @param {StreamUnifiedChatWithToolsRequest.Request.CursorSetting.IClientSettings} message ClientSettings message or plain object to encode
                  * @param {$protobuf.Writer} [writer] Writer to encode to
                  * @returns {$protobuf.Writer} Writer
                  */
-                Unknown6.encodeDelimited = function encodeDelimited(message, writer) {
+                ClientSettings.encodeDelimited = function encodeDelimited(message, writer) {
                     return this.encode(message, writer).ldelim();
                 };
 
                 /**
-                 * Decodes an Unknown6 message from the specified reader or buffer.
+                 * Decodes a ClientSettings message from the specified reader or buffer.
                  * @function decode
-                 * @memberof StreamUnifiedChatWithToolsRequest.Request.CursorSetting.Unknown6
+                 * @memberof StreamUnifiedChatWithToolsRequest.Request.CursorSetting.ClientSettings
                  * @static
                  * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
                  * @param {number} [length] Message length if known beforehand
-                 * @returns {StreamUnifiedChatWithToolsRequest.Request.CursorSetting.Unknown6} Unknown6
+                 * @returns {StreamUnifiedChatWithToolsRequest.Request.CursorSetting.ClientSettings} ClientSettings
                  * @throws {Error} If the payload is not a reader or valid buffer
                  * @throws {$protobuf.util.ProtocolError} If required fields are missing
                  */
-                Unknown6.decode = function decode(reader, length) {
+                ClientSettings.decode = function decode(reader, length) {
                     if (!(reader instanceof $Reader))
                         reader = $Reader.create(reader);
-                    var end = length === undefined ? reader.len : reader.pos + length, message = new $root.StreamUnifiedChatWithToolsRequest.Request.CursorSetting.Unknown6();
+                    var end = length === undefined ? reader.len : reader.pos + length, message = new $root.StreamUnifiedChatWithToolsRequest.Request.CursorSetting.ClientSettings();
                     while (reader.pos < end) {
                         var tag = reader.uint32();
                         switch (tag >>> 3) {
                         case 1: {
-                                message.unknown1 = reader.bytes();
+                                message.settings = reader.bytes();
                                 break;
                             }
                         case 2: {
-                                message.unknown2 = reader.bytes();
+                                message.configuration = reader.bytes();
                                 break;
                             }
                         default:
@@ -3821,129 +9598,129 @@ $root.StreamUnifiedChatWithToolsRequest = (function() {
                 };
 
                 /**
-                 * Decodes an Unknown6 message from the specified reader or buffer, length delimited.
+                 * Decodes a ClientSettings message from the specified reader or buffer, length delimited.
                  * @function decodeDelimited
-                 * @memberof StreamUnifiedChatWithToolsRequest.Request.CursorSetting.Unknown6
+                 * @memberof StreamUnifiedChatWithToolsRequest.Request.CursorSetting.ClientSettings
                  * @static
                  * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
-                 * @returns {StreamUnifiedChatWithToolsRequest.Request.CursorSetting.Unknown6} Unknown6
+                 * @returns {StreamUnifiedChatWithToolsRequest.Request.CursorSetting.ClientSettings} ClientSettings
                  * @throws {Error} If the payload is not a reader or valid buffer
                  * @throws {$protobuf.util.ProtocolError} If required fields are missing
                  */
-                Unknown6.decodeDelimited = function decodeDelimited(reader) {
+                ClientSettings.decodeDelimited = function decodeDelimited(reader) {
                     if (!(reader instanceof $Reader))
                         reader = new $Reader(reader);
                     return this.decode(reader, reader.uint32());
                 };
 
                 /**
-                 * Verifies an Unknown6 message.
+                 * Verifies a ClientSettings message.
                  * @function verify
-                 * @memberof StreamUnifiedChatWithToolsRequest.Request.CursorSetting.Unknown6
+                 * @memberof StreamUnifiedChatWithToolsRequest.Request.CursorSetting.ClientSettings
                  * @static
                  * @param {Object.<string,*>} message Plain object to verify
                  * @returns {string|null} `null` if valid, otherwise the reason why it is not
                  */
-                Unknown6.verify = function verify(message) {
+                ClientSettings.verify = function verify(message) {
                     if (typeof message !== "object" || message === null)
                         return "object expected";
-                    if (message.unknown1 != null && message.hasOwnProperty("unknown1"))
-                        if (!(message.unknown1 && typeof message.unknown1.length === "number" || $util.isString(message.unknown1)))
-                            return "unknown1: buffer expected";
-                    if (message.unknown2 != null && message.hasOwnProperty("unknown2"))
-                        if (!(message.unknown2 && typeof message.unknown2.length === "number" || $util.isString(message.unknown2)))
-                            return "unknown2: buffer expected";
+                    if (message.settings != null && message.hasOwnProperty("settings"))
+                        if (!(message.settings && typeof message.settings.length === "number" || $util.isString(message.settings)))
+                            return "settings: buffer expected";
+                    if (message.configuration != null && message.hasOwnProperty("configuration"))
+                        if (!(message.configuration && typeof message.configuration.length === "number" || $util.isString(message.configuration)))
+                            return "configuration: buffer expected";
                     return null;
                 };
 
                 /**
-                 * Creates an Unknown6 message from a plain object. Also converts values to their respective internal types.
+                 * Creates a ClientSettings message from a plain object. Also converts values to their respective internal types.
                  * @function fromObject
-                 * @memberof StreamUnifiedChatWithToolsRequest.Request.CursorSetting.Unknown6
+                 * @memberof StreamUnifiedChatWithToolsRequest.Request.CursorSetting.ClientSettings
                  * @static
                  * @param {Object.<string,*>} object Plain object
-                 * @returns {StreamUnifiedChatWithToolsRequest.Request.CursorSetting.Unknown6} Unknown6
+                 * @returns {StreamUnifiedChatWithToolsRequest.Request.CursorSetting.ClientSettings} ClientSettings
                  */
-                Unknown6.fromObject = function fromObject(object) {
-                    if (object instanceof $root.StreamUnifiedChatWithToolsRequest.Request.CursorSetting.Unknown6)
+                ClientSettings.fromObject = function fromObject(object) {
+                    if (object instanceof $root.StreamUnifiedChatWithToolsRequest.Request.CursorSetting.ClientSettings)
                         return object;
-                    var message = new $root.StreamUnifiedChatWithToolsRequest.Request.CursorSetting.Unknown6();
-                    if (object.unknown1 != null)
-                        if (typeof object.unknown1 === "string")
-                            $util.base64.decode(object.unknown1, message.unknown1 = $util.newBuffer($util.base64.length(object.unknown1)), 0);
-                        else if (object.unknown1.length >= 0)
-                            message.unknown1 = object.unknown1;
-                    if (object.unknown2 != null)
-                        if (typeof object.unknown2 === "string")
-                            $util.base64.decode(object.unknown2, message.unknown2 = $util.newBuffer($util.base64.length(object.unknown2)), 0);
-                        else if (object.unknown2.length >= 0)
-                            message.unknown2 = object.unknown2;
+                    var message = new $root.StreamUnifiedChatWithToolsRequest.Request.CursorSetting.ClientSettings();
+                    if (object.settings != null)
+                        if (typeof object.settings === "string")
+                            $util.base64.decode(object.settings, message.settings = $util.newBuffer($util.base64.length(object.settings)), 0);
+                        else if (object.settings.length >= 0)
+                            message.settings = object.settings;
+                    if (object.configuration != null)
+                        if (typeof object.configuration === "string")
+                            $util.base64.decode(object.configuration, message.configuration = $util.newBuffer($util.base64.length(object.configuration)), 0);
+                        else if (object.configuration.length >= 0)
+                            message.configuration = object.configuration;
                     return message;
                 };
 
                 /**
-                 * Creates a plain object from an Unknown6 message. Also converts values to other types if specified.
+                 * Creates a plain object from a ClientSettings message. Also converts values to other types if specified.
                  * @function toObject
-                 * @memberof StreamUnifiedChatWithToolsRequest.Request.CursorSetting.Unknown6
+                 * @memberof StreamUnifiedChatWithToolsRequest.Request.CursorSetting.ClientSettings
                  * @static
-                 * @param {StreamUnifiedChatWithToolsRequest.Request.CursorSetting.Unknown6} message Unknown6
+                 * @param {StreamUnifiedChatWithToolsRequest.Request.CursorSetting.ClientSettings} message ClientSettings
                  * @param {$protobuf.IConversionOptions} [options] Conversion options
                  * @returns {Object.<string,*>} Plain object
                  */
-                Unknown6.toObject = function toObject(message, options) {
+                ClientSettings.toObject = function toObject(message, options) {
                     if (!options)
                         options = {};
                     var object = {};
                     if (options.defaults) {
                         if (options.bytes === String)
-                            object.unknown1 = "";
+                            object.settings = "";
                         else {
-                            object.unknown1 = [];
+                            object.settings = [];
                             if (options.bytes !== Array)
-                                object.unknown1 = $util.newBuffer(object.unknown1);
+                                object.settings = $util.newBuffer(object.settings);
                         }
                         if (options.bytes === String)
-                            object.unknown2 = "";
+                            object.configuration = "";
                         else {
-                            object.unknown2 = [];
+                            object.configuration = [];
                             if (options.bytes !== Array)
-                                object.unknown2 = $util.newBuffer(object.unknown2);
+                                object.configuration = $util.newBuffer(object.configuration);
                         }
                     }
-                    if (message.unknown1 != null && message.hasOwnProperty("unknown1"))
-                        object.unknown1 = options.bytes === String ? $util.base64.encode(message.unknown1, 0, message.unknown1.length) : options.bytes === Array ? Array.prototype.slice.call(message.unknown1) : message.unknown1;
-                    if (message.unknown2 != null && message.hasOwnProperty("unknown2"))
-                        object.unknown2 = options.bytes === String ? $util.base64.encode(message.unknown2, 0, message.unknown2.length) : options.bytes === Array ? Array.prototype.slice.call(message.unknown2) : message.unknown2;
+                    if (message.settings != null && message.hasOwnProperty("settings"))
+                        object.settings = options.bytes === String ? $util.base64.encode(message.settings, 0, message.settings.length) : options.bytes === Array ? Array.prototype.slice.call(message.settings) : message.settings;
+                    if (message.configuration != null && message.hasOwnProperty("configuration"))
+                        object.configuration = options.bytes === String ? $util.base64.encode(message.configuration, 0, message.configuration.length) : options.bytes === Array ? Array.prototype.slice.call(message.configuration) : message.configuration;
                     return object;
                 };
 
                 /**
-                 * Converts this Unknown6 to JSON.
+                 * Converts this ClientSettings to JSON.
                  * @function toJSON
-                 * @memberof StreamUnifiedChatWithToolsRequest.Request.CursorSetting.Unknown6
+                 * @memberof StreamUnifiedChatWithToolsRequest.Request.CursorSetting.ClientSettings
                  * @instance
                  * @returns {Object.<string,*>} JSON object
                  */
-                Unknown6.prototype.toJSON = function toJSON() {
+                ClientSettings.prototype.toJSON = function toJSON() {
                     return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
                 };
 
                 /**
-                 * Gets the default type url for Unknown6
+                 * Gets the default type url for ClientSettings
                  * @function getTypeUrl
-                 * @memberof StreamUnifiedChatWithToolsRequest.Request.CursorSetting.Unknown6
+                 * @memberof StreamUnifiedChatWithToolsRequest.Request.CursorSetting.ClientSettings
                  * @static
                  * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
                  * @returns {string} The default type url
                  */
-                Unknown6.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+                ClientSettings.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
                     if (typeUrlPrefix === undefined) {
                         typeUrlPrefix = "type.googleapis.com";
                     }
-                    return typeUrlPrefix + "/StreamUnifiedChatWithToolsRequest.Request.CursorSetting.Unknown6";
+                    return typeUrlPrefix + "/StreamUnifiedChatWithToolsRequest.Request.CursorSetting.ClientSettings";
                 };
 
-                return Unknown6;
+                return ClientSettings;
             })();
 
             return CursorSetting;
@@ -3960,6 +9737,7 @@ $root.StreamUnifiedChatWithToolsRequest = (function() {
              * @property {string|null} [version] Metadata version
              * @property {string|null} [path] Metadata path
              * @property {string|null} [timestamp] Metadata timestamp
+             * @property {string|null} [workspacePath] Metadata workspacePath
              */
 
             /**
@@ -4018,6 +9796,14 @@ $root.StreamUnifiedChatWithToolsRequest = (function() {
             Metadata.prototype.timestamp = "";
 
             /**
+             * Metadata workspacePath.
+             * @member {string} workspacePath
+             * @memberof StreamUnifiedChatWithToolsRequest.Request.Metadata
+             * @instance
+             */
+            Metadata.prototype.workspacePath = "";
+
+            /**
              * Creates a new Metadata instance using the specified properties.
              * @function create
              * @memberof StreamUnifiedChatWithToolsRequest.Request.Metadata
@@ -4051,6 +9837,8 @@ $root.StreamUnifiedChatWithToolsRequest = (function() {
                     writer.uint32(/* id 4, wireType 2 =*/34).string(message.path);
                 if (message.timestamp != null && Object.hasOwnProperty.call(message, "timestamp"))
                     writer.uint32(/* id 5, wireType 2 =*/42).string(message.timestamp);
+                if (message.workspacePath != null && Object.hasOwnProperty.call(message, "workspacePath"))
+                    writer.uint32(/* id 6, wireType 2 =*/50).string(message.workspacePath);
                 return writer;
             };
 
@@ -4105,6 +9893,10 @@ $root.StreamUnifiedChatWithToolsRequest = (function() {
                             message.timestamp = reader.string();
                             break;
                         }
+                    case 6: {
+                            message.workspacePath = reader.string();
+                            break;
+                        }
                     default:
                         reader.skipType(tag & 7);
                         break;
@@ -4155,6 +9947,9 @@ $root.StreamUnifiedChatWithToolsRequest = (function() {
                 if (message.timestamp != null && message.hasOwnProperty("timestamp"))
                     if (!$util.isString(message.timestamp))
                         return "timestamp: string expected";
+                if (message.workspacePath != null && message.hasOwnProperty("workspacePath"))
+                    if (!$util.isString(message.workspacePath))
+                        return "workspacePath: string expected";
                 return null;
             };
 
@@ -4180,6 +9975,8 @@ $root.StreamUnifiedChatWithToolsRequest = (function() {
                     message.path = String(object.path);
                 if (object.timestamp != null)
                     message.timestamp = String(object.timestamp);
+                if (object.workspacePath != null)
+                    message.workspacePath = String(object.workspacePath);
                 return message;
             };
 
@@ -4202,6 +9999,7 @@ $root.StreamUnifiedChatWithToolsRequest = (function() {
                     object.version = "";
                     object.path = "";
                     object.timestamp = "";
+                    object.workspacePath = "";
                 }
                 if (message.os != null && message.hasOwnProperty("os"))
                     object.os = message.os;
@@ -4213,6 +10011,8 @@ $root.StreamUnifiedChatWithToolsRequest = (function() {
                     object.path = message.path;
                 if (message.timestamp != null && message.hasOwnProperty("timestamp"))
                     object.timestamp = message.timestamp;
+                if (message.workspacePath != null && message.hasOwnProperty("workspacePath"))
+                    object.workspacePath = message.workspacePath;
                 return object;
             };
 
@@ -4744,10 +10544,10 @@ $root.StreamUnifiedChatWithToolsResponse = (function() {
          * @property {string|null} [content] Message content
          * @property {StreamUnifiedChatWithToolsResponse.Message.IWebTool|null} [webtool] Message webtool
          * @property {StreamUnifiedChatWithToolsResponse.Message.IUnknown12|null} [unknown12] Message unknown12
-         * @property {string|null} [unknown22] Message unknown22
+         * @property {string|null} [messageId] Message messageId
          * @property {string|null} [unknown23] Message unknown23
-         * @property {string|null} [unknown27] Message unknown27
          * @property {IMessageThinking|null} [thinking] Message thinking
+         * @property {string|null} [unknown27] Message unknown27
          */
 
         /**
@@ -4790,12 +10590,12 @@ $root.StreamUnifiedChatWithToolsResponse = (function() {
         Message.prototype.unknown12 = null;
 
         /**
-         * Message unknown22.
-         * @member {string} unknown22
+         * Message messageId.
+         * @member {string} messageId
          * @memberof StreamUnifiedChatWithToolsResponse.Message
          * @instance
          */
-        Message.prototype.unknown22 = "";
+        Message.prototype.messageId = "";
 
         /**
          * Message unknown23.
@@ -4806,20 +10606,20 @@ $root.StreamUnifiedChatWithToolsResponse = (function() {
         Message.prototype.unknown23 = "";
 
         /**
-         * Message unknown27.
-         * @member {string} unknown27
-         * @memberof StreamUnifiedChatWithToolsResponse.Message
-         * @instance
-         */
-        Message.prototype.unknown27 = "";
-
-        /**
          * Message thinking.
          * @member {IMessageThinking|null|undefined} thinking
          * @memberof StreamUnifiedChatWithToolsResponse.Message
          * @instance
          */
         Message.prototype.thinking = null;
+
+        /**
+         * Message unknown27.
+         * @member {string} unknown27
+         * @memberof StreamUnifiedChatWithToolsResponse.Message
+         * @instance
+         */
+        Message.prototype.unknown27 = "";
 
         /**
          * Creates a new Message instance using the specified properties.
@@ -4851,8 +10651,8 @@ $root.StreamUnifiedChatWithToolsResponse = (function() {
                 $root.StreamUnifiedChatWithToolsResponse.Message.WebTool.encode(message.webtool, writer.uint32(/* id 11, wireType 2 =*/90).fork()).ldelim();
             if (message.unknown12 != null && Object.hasOwnProperty.call(message, "unknown12"))
                 $root.StreamUnifiedChatWithToolsResponse.Message.Unknown12.encode(message.unknown12, writer.uint32(/* id 12, wireType 2 =*/98).fork()).ldelim();
-            if (message.unknown22 != null && Object.hasOwnProperty.call(message, "unknown22"))
-                writer.uint32(/* id 22, wireType 2 =*/178).string(message.unknown22);
+            if (message.messageId != null && Object.hasOwnProperty.call(message, "messageId"))
+                writer.uint32(/* id 22, wireType 2 =*/178).string(message.messageId);
             if (message.unknown23 != null && Object.hasOwnProperty.call(message, "unknown23"))
                 writer.uint32(/* id 23, wireType 2 =*/186).string(message.unknown23);
             if (message.thinking != null && Object.hasOwnProperty.call(message, "thinking"))
@@ -4906,19 +10706,19 @@ $root.StreamUnifiedChatWithToolsResponse = (function() {
                         break;
                     }
                 case 22: {
-                        message.unknown22 = reader.string();
+                        message.messageId = reader.string();
                         break;
                     }
                 case 23: {
                         message.unknown23 = reader.string();
                         break;
                     }
-                case 27: {
-                        message.unknown27 = reader.string();
-                        break;
-                    }
                 case 25: {
                         message.thinking = $root.MessageThinking.decode(reader, reader.uint32());
+                        break;
+                    }
+                case 27: {
+                        message.unknown27 = reader.string();
                         break;
                     }
                 default:
@@ -4969,20 +10769,20 @@ $root.StreamUnifiedChatWithToolsResponse = (function() {
                 if (error)
                     return "unknown12." + error;
             }
-            if (message.unknown22 != null && message.hasOwnProperty("unknown22"))
-                if (!$util.isString(message.unknown22))
-                    return "unknown22: string expected";
+            if (message.messageId != null && message.hasOwnProperty("messageId"))
+                if (!$util.isString(message.messageId))
+                    return "messageId: string expected";
             if (message.unknown23 != null && message.hasOwnProperty("unknown23"))
                 if (!$util.isString(message.unknown23))
                     return "unknown23: string expected";
-            if (message.unknown27 != null && message.hasOwnProperty("unknown27"))
-                if (!$util.isString(message.unknown27))
-                    return "unknown27: string expected";
             if (message.thinking != null && message.hasOwnProperty("thinking")) {
                 var error = $root.MessageThinking.verify(message.thinking);
                 if (error)
                     return "thinking." + error;
             }
+            if (message.unknown27 != null && message.hasOwnProperty("unknown27"))
+                if (!$util.isString(message.unknown27))
+                    return "unknown27: string expected";
             return null;
         };
 
@@ -5010,17 +10810,17 @@ $root.StreamUnifiedChatWithToolsResponse = (function() {
                     throw TypeError(".StreamUnifiedChatWithToolsResponse.Message.unknown12: object expected");
                 message.unknown12 = $root.StreamUnifiedChatWithToolsResponse.Message.Unknown12.fromObject(object.unknown12);
             }
-            if (object.unknown22 != null)
-                message.unknown22 = String(object.unknown22);
+            if (object.messageId != null)
+                message.messageId = String(object.messageId);
             if (object.unknown23 != null)
                 message.unknown23 = String(object.unknown23);
-            if (object.unknown27 != null)
-                message.unknown27 = String(object.unknown27);
             if (object.thinking != null) {
                 if (typeof object.thinking !== "object")
                     throw TypeError(".StreamUnifiedChatWithToolsResponse.Message.thinking: object expected");
                 message.thinking = $root.MessageThinking.fromObject(object.thinking);
             }
+            if (object.unknown27 != null)
+                message.unknown27 = String(object.unknown27);
             return message;
         };
 
@@ -5041,7 +10841,7 @@ $root.StreamUnifiedChatWithToolsResponse = (function() {
                 object.content = "";
                 object.webtool = null;
                 object.unknown12 = null;
-                object.unknown22 = "";
+                object.messageId = "";
                 object.unknown23 = "";
                 object.thinking = null;
                 object.unknown27 = "";
@@ -5052,8 +10852,8 @@ $root.StreamUnifiedChatWithToolsResponse = (function() {
                 object.webtool = $root.StreamUnifiedChatWithToolsResponse.Message.WebTool.toObject(message.webtool, options);
             if (message.unknown12 != null && message.hasOwnProperty("unknown12"))
                 object.unknown12 = $root.StreamUnifiedChatWithToolsResponse.Message.Unknown12.toObject(message.unknown12, options);
-            if (message.unknown22 != null && message.hasOwnProperty("unknown22"))
-                object.unknown22 = message.unknown22;
+            if (message.messageId != null && message.hasOwnProperty("messageId"))
+                object.messageId = message.messageId;
             if (message.unknown23 != null && message.hasOwnProperty("unknown23"))
                 object.unknown23 = message.unknown23;
             if (message.thinking != null && message.hasOwnProperty("thinking"))

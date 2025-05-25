@@ -38,7 +38,7 @@ function generateCursorBody(messages, modelName) {
         name: modelName,
         empty: '',
       },
-      webTool: "",
+      webTool: "full search",
       unknown13: 1,
       cursorSetting: {
         name: "cursor\\aisettings",

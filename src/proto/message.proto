@@ -1,5 +1,151 @@
 syntax = "proto3";
 
+message GetPromptDryRunRequest {
+  optional string userInput = 1;
+  bool preprocessingFlag = 2;
+  string conversationId = 13;
+  repeated int32 capabilities = 19;
+  bool maxModeEnabled = 21;
+  bool agentMode = 42;
+  optional string prompt = 50;
+  bool controlFlag = 63;
+  FileContext fileContext = 15;
+  SystemEnvironment systemInfo = 26;
+  WorkspaceContext workspaceContext = 30;
+  MaxModeSettings maxSettings = 35;
+}
+
+message GetPromptDryRunResponse {
+  string content = 1;
+  bool success = 2;
+  string errorMessage = 3;
+  MaxModeResponse maxResponse = 10;
+  MessageThinking thinking = 25;
+}
+
+message FileContext {
+  string workspacePath = 1;
+  string currentFile = 2;
+  bytes fileContent = 3;
+  repeated FileReference fileReferences = 4;
+  string projectType = 5;
+}
+
+message SystemEnvironment {
+  string platform = 1;
+  string architecture = 2;
+  string osVersion = 3;
+  string executablePath = 4;
+  string shellPath = 5;
+  string timestamp = 6;
+  string timezone = 7;
+  string clientVersion = 8;
+  string configVersion = 9;
+}
+
+message WorkspaceContext {
+  string workspaceId = 1;
+  string rootPath = 2;
+  string currentDirectory = 3;
+  string projectConfig = 4;
+  GitInfo gitInfo = 5;
+}
+
+message GitInfo {
+  string branch = 1;
+  string commitHash = 2;
+  bool hasUncommittedChanges = 3;
+  string remoteUrl = 4;
+}
+
+message MaxModeSettings {
+  bool enabled = 1;
+  AgentCapabilities agentCaps = 2;
+  ThinkingConfiguration thinkingConfig = 3;
+  ContextConfiguration contextConfig = 4;
+  ToolConfiguration toolConfig = 5;
+}
+
+message AgentCapabilities {
+  bool codeUnderstanding = 1;
+  bool codeGeneration = 2;
+  bool codeRefactoring = 3;
+  bool fileReading = 4;
+  bool fileWriting = 5;
+  bool fileSearch = 6;
+  bool projectAnalysis = 7;
+  bool dependencyAnalysis = 8;
+  bool architectureAnalysis = 9;
+  bool debuggingAssistance = 10;
+  bool testGeneration = 11;
+  bool errorAnalysis = 12;
+  bool documentationGeneration = 13;
+  bool commentGeneration = 14;
+  bool performanceOptimization = 15;
+  bool securityAnalysis = 16;
+}
+
+message ThinkingConfiguration {
+  int32 depthLevel = 1;
+  bool showThinking = 2;
+  bool stepByStep = 3;
+  bool reasoningChains = 4;
+  bool selfVerification = 5;
+  bool alternativeApproaches = 6;
+}
+
+message ContextConfiguration {
+  int32 maxContextTokens = 1;
+  int32 maxFiles = 2;
+  int32 maxFileSize = 3;
+  int32 conversationHistory = 4;
+  bool includeEditHistory = 5;
+  bool includeProjectStructure = 6;
+  bool includeDependencies = 7;
+}
+
+message ToolConfiguration {
+  bool webSearchEnabled = 1;
+  bool codeExecutionEnabled = 2;
+  bool filesystemAccess = 3;
+  bool externalApiCalls = 4;
+  bool databaseAccess = 5;
+}
+
+message MaxModeResponse {
+  string thinkingProcess = 1;
+  AnalysisResult analysis = 2;
+  repeated ActionSuggestion actions = 3;
+  repeated CodeSuggestion codeSuggestions = 4;
+  repeated string relevantFiles = 5;
+}
+
+message AnalysisResult {
+  string problemAnalysis = 1;
+  string solutionApproach = 2;
+  repeated string risks = 3;
+  repeated string dependencies = 4;
+  string complexityAssessment = 5;
+}
+
+message ActionSuggestion {
+  string actionType = 1;
+  string description = 2;
+  int32 priority = 3;
+  repeated string affectedFiles = 4;
+  string estimatedTime = 5;
+}
+
+message CodeSuggestion {
+  string filePath = 1;
+  int32 startLine = 2;
+  int32 endLine = 3;
+  string originalCode = 4;
+  string suggestedCode = 5;
+  string explanation = 6;
+  string improvementType = 7;
+}
+
 message AvailableModelsResponse { 
   message AvailableModel {
     string name = 1;
@@ -21,6 +167,13 @@ message MessageSummary {
 message MessageThinking {
   string content = 1;
 }
+
+message FileReference {
+  string filepath = 1;
+  int32 fileLength = 2;
+  bytes fileContent = 3;
+}
+
 message StreamUnifiedChatWithToolsRequest {
   message Request {
     message Message {
@@ -36,11 +189,14 @@ message StreamUnifiedChatWithToolsRequest {
       int32 role = 2;
       Image image = 10;
       string messageId = 13;
-      string unknown29 = 29; // 1, only for user message
+      repeated string fileReferences = 17;
+      string clientVersion = 29;
       string summaryId = 32;
       MessageSummary summary = 39;
       MessageThinking thinking = 45;
-      int32 chatModeEnum = 47; // 1 for ask, 2 for agent, 3 for edit
+      int32 chatModeEnum = 47;
+      int32 fileDescriptor = 50;
+      int32 unknown63 = 63;
     }
     message Instruction {
       string instruction = 1;
@@ -50,15 +206,15 @@ message StreamUnifiedChatWithToolsRequest {
       bytes empty = 4;
     }
     message CursorSetting {
-      message Unknown6 {
-        bytes unknown1 = 1;
-        bytes unknown2 = 2;
+      message ClientSettings {
+        bytes settings = 1;
+        bytes configuration = 2;
       }
       string name = 1;
-      bytes unknown3 = 3;
-      Unknown6 unknown6 = 6;
-      int32 unknown8 = 8;
-      int32 unknown9 = 9;
+      bytes settingsData = 3;
+      ClientSettings clientSettings = 6;
+      int32 settingsFlag = 8;
+      int32 settingsMode = 9;
     }
     message Metadata {
       string os = 1; // win32
@@ -66,6 +222,7 @@ message StreamUnifiedChatWithToolsRequest {
       string version = 3; // 10.0.22631
       string path = 4; // C:\Program Files\PowerShell\7\pwsh.exe
       string timestamp = 5; // 2025-03-03T13:10:08.590Z
+      string workspacePath = 6;
     }
     message MessageId {
       string messageId = 1;
@@ -74,30 +231,36 @@ message StreamUnifiedChatWithToolsRequest {
     }
 
     repeated Message messages = 1;
-    int32 unknown2 = 2; // 1
+    int32 instructionFlag = 2; // 1
     Instruction instruction = 3;
-    int32 unknown4 = 4; // 1
+    int32 modelFlag = 4; // 1
     Model model = 5;
     repeated string wikiTool = 7; // one url one item
     string webTool = 8; // "full search"
-    int32 unknown13 = 13;
+    int32 requestFlag = 13;
     CursorSetting cursorSetting = 15;
-    int32 unknown19 = 19; // 1
-    int32 unknown22 = 22; // 1
+    int32 unifiedMode = 19; // 1
+    int32 thinkingLevel = 22; // 1
     string conversationId = 23; // uuid
     Metadata metadata = 26;
     int32 unknown27 = 27; // 1
-    string unknown29 = 29;
+    string clientVersion = 29;
     repeated MessageId messageIds = 30;
     int32 largeContext = 35; // 1
-    int32 unknown38 = 38; // 0
+    int32 streamMode = 38; // 0
     int32 chatModeEnum = 46; // 1 for ask, 2 for agent, 3 for edit
-    string unknown47 = 47; 
-    int32 unknown48 = 48; // 0
-    int32 unknown49 = 49; // 0
-    int32 unknown51 = 51; // 0
+    string toolsConfig = 47; 
+    int32 feedbackFlag = 48; // 0
+    int32 desiredMaxTokens = 49; // 0
+    FileReference fileReference = 51;
     int32 unknown53 = 53; // 0
     string chatMode = 54;
+    int32 streamControlFlag = 58;
+    int32 tokenStartFlag = 60;
+    int32 tokenControlFlag = 61;
+    string contentFormat = 62;
+    int32 enableMaxFeatures = 63;
+    int32 sessionTrackingFlag = 100;
   }
   
   Request request = 1;
@@ -122,10 +285,10 @@ message StreamUnifiedChatWithToolsResponse {
     string content = 1;
     WebTool webtool = 11;
     Unknown12 unknown12 = 12;
-    string unknown22 = 22; // uuid
+    string messageId = 22; // uuid
     string unknown23 = 23;
-    string unknown27 = 27; // uuid
     MessageThinking thinking = 25;
+    string unknown27 = 27; // uuid
   }
 
   Message message = 2;
