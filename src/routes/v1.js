@@ -1,1 +1,1634 @@
-const a0_0x4a143b=a0_0x320e;(function(_0x4526e8,_0x46bd86){const _0x19a2d8=a0_0x320e,_0x29c78a=_0x4526e8();while(!![]){try{const _0x3c0058=parseInt(_0x19a2d8(0x133))/0x1+parseInt(_0x19a2d8(0x20e))/0x2+parseInt(_0x19a2d8(0x190))/0x3+-parseInt(_0x19a2d8(0x1a2))/0x4+parseInt(_0x19a2d8(0x1f1))/0x5*(parseInt(_0x19a2d8(0x1bc))/0x6)+parseInt(_0x19a2d8(0x193))/0x7*(parseInt(_0x19a2d8(0x165))/0x8)+-parseInt(_0x19a2d8(0x128))/0x9;if(_0x3c0058===_0x46bd86)break;else _0x29c78a['push'](_0x29c78a['shift']());}catch(_0x447b66){_0x29c78a['push'](_0x29c78a['shift']());}}}(a0_0x1a52,0x56aae));const a0_0x3e4405=(function(){let _0x35082c=!![];return function(_0x1587c0,_0x2fe418){const _0x1805d4=_0x35082c?function(){const _0x248352=a0_0x320e;if(_0x2fe418){const _0x532ed9=_0x2fe418[_0x248352(0x15a)](_0x1587c0,arguments);return _0x2fe418=null,_0x532ed9;}}:function(){};return _0x35082c=![],_0x1805d4;};}()),a0_0x4fc34e=a0_0x3e4405(this,function(){const _0x29b9b8=a0_0x320e;return a0_0x4fc34e[_0x29b9b8(0x180)]()[_0x29b9b8(0x1d5)](_0x29b9b8(0x239))[_0x29b9b8(0x180)]()[_0x29b9b8(0x18d)](a0_0x4fc34e)[_0x29b9b8(0x1d5)](_0x29b9b8(0x239));});function a0_0x320e(_0x229a88,_0x645646){const _0x2cc7c8=a0_0x1a52();return a0_0x320e=function(_0x4fc34e,_0x3e4405){_0x4fc34e=_0x4fc34e-0x11f;let _0x1a52ab=_0x2cc7c8[_0x4fc34e];if(a0_0x320e['MPzAcW']===undefined){var _0x320e65=function(_0x4708e0){const _0x2f61f4='abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789+/=';let _0x3b67e8='',_0x35082c='',_0x1587c0=_0x3b67e8+_0x320e65;for(let _0x2fe418=0x0,_0x1805d4,_0x532ed9,_0xb374f7=0x0;_0x532ed9=_0x4708e0['charAt'](_0xb374f7++);~_0x532ed9&&(_0x1805d4=_0x2fe418%0x4?_0x1805d4*0x40+_0x532ed9:_0x532ed9,_0x2fe418++%0x4)?_0x3b67e8+=_0x1587c0['charCodeAt'](_0xb374f7+0xa)-0xa!==0x0?String['fromCharCode'](0xff&_0x1805d4>>(-0x2*_0x2fe418&0x6)):_0x2fe418:0x0){_0x532ed9=_0x2f61f4['indexOf'](_0x532ed9);}for(let _0x1f60c4=0x0,_0x478996=_0x3b67e8['length'];_0x1f60c4<_0x478996;_0x1f60c4++){_0x35082c+='%'+('00'+_0x3b67e8['charCodeAt'](_0x1f60c4)['toString'](0x10))['slice'](-0x2);}return decodeURIComponent(_0x35082c);};a0_0x320e['ZPHxdQ']=_0x320e65,_0x229a88=arguments,a0_0x320e['MPzAcW']=!![];}const _0x51e65b=_0x2cc7c8[0x0],_0x317e2e=_0x4fc34e+_0x51e65b,_0x16f562=_0x229a88[_0x317e2e];if(!_0x16f562){const _0x4a5375=function(_0x59fa91){this['DgOAft']=_0x59fa91,this['aILGfT']=[0x1,0x0,0x0],this['kqdkUE']=function(){return'newState';},this['wjbvcR']='\x5cw+\x20*\x5c(\x5c)\x20*{\x5cw+\x20*',this['enrNLp']='[\x27|\x22].+[\x27|\x22];?\x20*}';};_0x4a5375['prototype']['KVAQDu']=function(){const _0x4804e3=new RegExp(this['wjbvcR']+this['enrNLp']),_0x7245fc=_0x4804e3['test'](this['kqdkUE']['toString']())?--this['aILGfT'][0x1]:--this['aILGfT'][0x0];return this['QkzdBS'](_0x7245fc);},_0x4a5375['prototype']['QkzdBS']=function(_0x397427){if(!Boolean(~_0x397427))return _0x397427;return this['PIMrPN'](this['DgOAft']);},_0x4a5375['prototype']['PIMrPN']=function(_0x25a61b){for(let _0x5462c1=0x0,_0x566cab=this['aILGfT']['length'];_0x5462c1<_0x566cab;_0x5462c1++){this['aILGfT']['push'](Math['round'](Math['random']())),_0x566cab=this['aILGfT']['length'];}return _0x25a61b(this['aILGfT'][0x0]);},new _0x4a5375(a0_0x320e)['KVAQDu'](),_0x1a52ab=a0_0x320e['ZPHxdQ'](_0x1a52ab),_0x229a88[_0x317e2e]=_0x1a52ab;}else _0x1a52ab=_0x16f562;return _0x1a52ab;},a0_0x320e(_0x229a88,_0x645646);}a0_0x4fc34e();const express=require(a0_0x4a143b(0x13d)),router=express['Router'](),{fetch,ProxyAgent,Agent}=require(a0_0x4a143b(0x241)),$root=require(a0_0x4a143b(0x231)),{v4:uuidv4,v5:uuidv5}=require('uuid'),{generateCursorBody,chunkToUtf8String,generateHashed64Hex,generateCursorChecksum}=require(a0_0x4a143b(0x1c8)),keyManager=require('../utils/keyManager.js'),{spawn}=require(a0_0x4a143b(0x20a)),path=require(a0_0x4a143b(0x221)),admin=require(a0_0x4a143b(0x185)),config=require('../config/config'),crypto=require(a0_0x4a143b(0x217)),logger=require(a0_0x4a143b(0x120));let refreshStatus={'isRunning':![],'status':a0_0x4a143b(0x137),'message':'','startTime':null,'endTime':null,'error':null};function a0_0x1a52(){const _0x1783e9=['lI4VDxrPBhmVA2v5twfUywDLCG','AgfZ','Ec1JDxjZB3iTy2HLy2TZDw0','DgHLBG','C2HVDwXKuMvTB3zLq29VA2LL','yMfZzty0DxjS','CMvTB3zLq29VA2LLrNjVBufWAuTLEq','ntCXnJfHtK9HrLy','C2HHmJu2','z2v0tg9NCW','l2fWAs1RzxLZlZPHCgLlzxK','AwrSzq','q2fJAguTq29UDhjVBa','zgvSzxrL','5BEY5RE75yQG','5RIf6zMK5PEL5B+x5AsX6lsLoG','qvbjigTLEsbHzgrLzcbVCIb1CgrHDgvKihn1y2nLC3nMDwXSEq','zxHWCMvZCW','Ahr0CdOVl2XVy2fSAg9ZDdOXmdy1nc9WCM94Eq','5PYQ5OM+5yIW5OYh5A6A55Qe5PEG5Pwiy29VA2LL','C3rKzxjY','zw5HyMXLza','z2v0q29VA2LLrM9YqxbPs2v5','zNvSzMLSBgvK','6AQm6k+bDg9Rzw7LPlhOTku6','y29TCgXLDgvK','sw50zxjUywWGC2vYDMvYigvYCM9Y','q29VA2LL56E76zMK','4PQG77IpioIVT+AXGUwKSEI0PsdIMQdVUi8kcUMuMEIVR++8MG','55Qeq29VA2LL5yc86k+35Rgc','55Qeq29VA2LL5yc8oG','z2v0','qMvHCMvYia','5yI35PAW6k+35Rgc5BEY5O6L5y+x77Ym5Q2J5zYO5zco5y+W5Ase55cg','AxnbCNjHEq','Bwv0Ag9K','DMvYAwz5vg9Rzw4','qvbjieTLEsa','l21VzgvSCW','5l2/55sO6l6f5yQP5lUJ55cg5PYn5yQH5zMO6k+35RgcoIa','Aw5PDgLHBgL6zufWAuTLExm','zNjVBq','ChjVEhK','re5t','q29VA2LL5BEY5RE75yQG5yIWqvbjieTLEtOG','6k+35Rgc6lAf5PE2','yxbWBhK','Ahr0Chm6lY9HCgKYlMn1CNnVCI5ZAc9HAxnLCNzLCI52ms5bAvnLCNzPy2uVqxzHAwXHyMXLrg9JCW','Ahr0Chm6lY9HCgKYlMn1CNnVCI5ZAc9HAxnLCNzLCI52ms5eyxnOyM9HCMrtzxj2AwnLl0DLDfrLyw1Z','l2LUDMfSAwqTy29VA2LLCY86y29VA2LL','B2jQzwn0','mc41mc40','q29VA2LL5BEY5RE75yQG5yIW5OMa5PYjqvbjieTLEE+8JowfSq','tg9NAw4GzxHWAxjLza','C2f2zuLUDMfSAwrdB29RAwvZvg9gAwXL','57Y65Bcr5B+f6kAb5y+c5PwWoIbTB2rLBa','55M75B2v5AsX6lsLoG','ohrbDxrLwa','5Ps25yIW6i635y+wqvbjieTLExpOR7FMSyi','y29UBMvJDc1LCY8XlJyUmq','ww91CIbYzxf1zxn0igHHCYbIzwvUigjSB2nRzwqGyxmGB3vYihn5C3rLBsbOyxmGzgv0zwn0zwqGC3vZCgLJAw91CYbHy3rPDML0EsbMCM9TihLVDxiGywnJB3vUDa','BM93','CxvLCNK','qxzHAwXHyMXLtw9KzwXZuMvZCg9UC2u','C2v0sgvHzgvY','5OMa5PYj5PEG5Pwiy29VA2LL5BEY5RIf6zMK','C2v0','BM8Ty2fJAgu','yxnZAxn0yw50','vgLTzw91DevYCM9Y','BgvUz3rO','l3jLzNjLC2GTC3rHDhvZ','D3jPDgfIBgvfBMrLza','y2f1C2u','5BEY5PYj5yI35PAW6l+B56Il5zYO6l+q6kgm77Ym6k+3562j5B6f5A6m5OIq5zco5yAn6k+v','5A2q6l+B56Il5yI35PAWq29VA2LL5A6m5OIq77Ym6yEn5PAW5yID5AEl5yYw5lI76l+B56Il5lIT55QeqvbjieTLExmUlI4','Ahr0Chm6lY9HCgKYlMn1CNnVCI5ZAc9HAxnLCNzLCI52ms5eyxnOyM9HCMrtzxj2AwnLl0DLDfvZywDLqMfZzwrqCMvTAxvTuMvXDwvZDhm','5yI35PAW57Ut5P6CoG','tw9KzwWGBM90ihn1ChbVCNrLzcbZDhjLyw0','jNzLCMLMAwvYpq','ANnVBG','zMLSDgvY','DxrMltG','tM9Ulxn0CMvHBsbLCNjVCJO','Dg9tDhjPBMC','zw5K','5PEL5B+x5BEY5RIf6zMK','jNv1Awq9','55U05O6L6k+35RgcoIa','lI4VBw9KzwXZl2fKBwLU','CMvWBgfJzq','AwDUB3jL','Ew91CIbYzxf1zxn0igHHCYbIzwvUigjSB2nRzwqGzhvLihrVihrOzsb1C2uGB2yGysb0zw1WB3jHCNKGzw1HAwWGC2vYDMLJzsbMB3iGDgHPCYbHy2nVDw50','6zsz6k+V77YAq29VA2LL5BEY6kkR5Bcb56Ab5OIw5AsX5Pwi77Ym6k+35PU05O2Iq29VA2LL44cccGROR6BNU4BKV6hMGA/VVjO','CNvUBMLUzW','tw96AwXSys81lJaGkfDPBMrVD3mGtLqGmtaUmdSGv2LUnJq7ihG2ncKGqxbWBgvxzwjlAxqVntm3lJm2icHlsfrntcWGBgLRzsbhzwnRBYKGq3vYC29YlZaUndKUncbdAhjVBwuVmtmYlJaUnJGZnc4YmtaGrwXLy3rYB24VmZqUmY40ifnHzMfYAs81mZCUmZy','l3jLzNjLC2GTy29VA2LLCW','y29UC3rYDwn0B3i','CMvZB2X2zq','4PQG77IpioIVT+AXGUI2HEAxTIdIMQdVUi8kcUMuMEIVR++8MUACJEwkOEwzQowtJEw6LoI2HEAxTU+8JoIVT+EOJEwqJUMhJEIVLEoaGG','mtG0otGXoe1PqKrJva','D3jPDgu','l2fKBwLUl3zLCMLMEq','mZqWodK3oxfdvM94ta','6zsz6k+V77YA6lsM5OI35zUG5zYO5AsA5y+W6k6+5Ash55M75B2v6icm5PQc5PE26kkR5Bcb56Ab77Ym6k+356In5zco5yAn6k+v5OIw5PU05O2I6lsM5OI344cccGROR6BNU4BKV6hMGA/VVjO','6i635y+w5yI35PAW54Q25Ocb5AsX6lsLoIa','y3jVC3mTC2L0zq','y2HHDc5JB21WBgv0Aw9U','yxv0Ag9YAxPHDgLVBG','C3bSAxq','5Qoa5Rwl5yIWsvdPU5hLKi3LJzu6','5Q2J5zYO5yI35PAWq29VA2LLlI4U','5l2/55sOveXt5lUJ55cg5PYn5yQH5zMO','5RoO5yAm566H55cg5zgy5AsX6lsLoG','vvnfx1rmu19quK9ywq','6yEn5PAW5yID5AEl5yYwqvbjieTLExpLPlhOTku6','yxbWBgLJyxrPB24Vy29UBMvJDcTWCM90BW','y2HHDgnTCgWT','mtyYmtyZmLb4wvHVzW','Ahr0Chm6lY9HCgKYlMn1CNnVCI5ZAc9HDxrOl2z1BgXFC3rYAxbLx3bYB2zPBgu','Cg9ZDa','BM9Kzq','BgfZDenOzwnR','4PQG77IpioIVT+AXGUwKSEI0PsdIMQdVUi8kcUMuMEIVRZOG','C2XPy2u','6i635y+w5yIW55QeqvbjieTLExm6','DgLTzw91Da','4PQG77IpioI/NUAoPEI2HEAxTIdIMQdVUi8kcUAxOoAZLEI/NUAoPEwiSefqsEACJEwkOEwzQcHHCgKYlMn1CNnVCI5ZAcNVViZOR7FMO4dMN6xMGQJNMOtNVzhNU5ZOV57MJQxMIjBLSj3OR5xKVB/NLkJKU6pNKiBJGii','5RIf6zMK5PEL5B+x5AsX6lsLoIa','5Qoa5Rwl5yIW6lsM5OI35BYc5BI4oG','tw96AwXSys81lJaGkfDPBMrVD3mGtLqGmtaUmdSGv2LUnJq7ihG2ncKGqxbWBgvxzwjlAxqVntm3lJm2icHlsfrntcWGBgLRzsbhzwnRBYKGq2HYB21LlZeZmI4WlJy4mZqUmJeWifnHzMfYAs81mZCUmZy','5Qoa5Rwl5yIW5PYQ5O6i5P2dy29VA2LLoG','zMfPBgvK','jtnbjtnb','CMfUzg9T','BwvZC2fNzq','z2v0qwXSq29VA2LLC0zVCKfWAuTLEq','5yI35PAW6l+B56Il6zsz6k+VoIa','Ahr0Chm6lY9HCgKYlMn1CNnVCI5ZAc9HAxnLCNzLCI52ms5bAvnLCNzPy2uVq2HLy2Tgzwf0DxjLu3rHDhvZ','Bg9NAw4GzxHWAxjLza','6k6K6k+b5AsX6lsL','4PQG77IpioEBRUwjJunVB2TPzEw3SUs7JKfqssblzxNKUk3NP7VPMAqG4PQG77IpcGO','5y+r55sF6zsz6k+VoIa','5RIf6zMK5PEG5Pwiy29VA2LL5AsX6lsLoG','mtaYBgTYv0Xj','CMvNAxn0zxi','q29VA2LL5BEY5RE75yQG5yIW5OMa5PYjqvbjieTLEq','qxnPys9uB2T5BW','zgf0yq','6zsz6k+V77YAq29VA2LL55M75B2v5BEY6l+h5PYF77Ym6k+35PU05PAWq29VA2LL44cccGROR6BNU4BKV6hMGA/VVjO','zw52','BgLZDa','Bw9KzwXZ','z2v0qwXSqxbPs2v5CW','5yI35PAW5A6m5OIq','6i635y+wqvbjieTLEsa','lI4VDxrPBhmVDxrPBhmUANm','l2LUDMfSAwqTy29VA2LLCW','C3rYAw5N','5Qoa5Rwl5yIW6AkD5BQM55sO5Bc9y29VA2LLoG','B3rOzxjZ5yE95PwW5OMN6kgm5yE66zszoIa','Ahr0CdOVl2XVy2fSAg9ZDdO4mdGWl3bYB3H5','uM9VDd0','C3rYAw5NAwz5','u3rYzwfTigvYCM9YoG','y2HHDc5JB21WBgv0Aw9UlMnODw5R','6zsz6k+V77YAq29VA2LL5l2/55sO6AkD5BQM5BEY55sO5A6m77Ym6k+35PU05O2Iq29VA2LL5OIw562j5B6f5yI35PAW44cccGROR6BNU4BKV6hMGA/VVjO','BwfW','5yI35PAW6l+B56Il6l6t5yE6oIa','C2vHCMnO','DhjPBq','DxjS','5Qoa5P+L566H55cg5zgy6lsM5y+35AsX6lsLoG','q29UDgvUDc1uExbL','Aw5MBW','6i635y+w5PEG5Pwiy29VA2LL5AsX6lsLoG','6kEM5y+r5yI35PAW5AsX6lsLoIa','Bw9KzwW','D2fPDgLUzW','ywnJzxnZvg9Rzw4','zw5KvgLTzq','CgLWzq','z2v0sw52ywXPzenVB2TPzxm','qvbjigTLEsbYzw1VDMvKihn1y2nLC3nMDwXSEq','5yw25A6dqvbj6lcd55sO5AsX6lsLicG','zMfSC2u','y2XLyxjnzw1VCNLmB2DZ','C3rYzwfT','l2fKBwLUl3jLz2LZDgvY','vvnfx09usevsuW','6zsz6k+V77YAq29VA2LL5PEG5Pwi5OIw5BEY6l+h5PYF77Ym6k+35PU05PAWq29VA2LL44cccGROR6BNU4BKV6hMGA/VVjO','y29UDgvUDa','55Qeq29VA2LL5yc85AsX6lsLoG','Ahr0Chm6lY9HCgKYlMn1CNnVCI5ZAc9HDxrOl3bVBgW/DxvPzd0','6zsz6k+V77YA6k+35Rgc6kkR6zI75Q2I77Ym5Qoa5Rwl5yIW5lI05PE26ykU566X5PYn5yQH77Ym6k+35PU05O2I6ykU566X44cccGROR6BNU4BKV6hMGA/VVjO','5Qoa5Rwl5yIW6lsM5OI35PQc5PE26kkR5Bcb56AboG','zMXVB3i','mtaWnZe1z2XQyuDt','5RE75yQG5PEG5Pwiy29VA2LL5AsX6lsLoG','CMfUzg9TqNL0zxm','6i635y+w5PEL5B+x5AsX6lsLoIa','yxbWBgLJyxrPB24VChjVDg8','zgvIDwC','zgf0ytOG','6l+u5zUE57Ut5P6CoG','ios4QKfqssblzxNNMOrdB29RAwu','AgvHzgvYCW','DxbKyxrL','l2fKBwLUl2XVz2LU','y3vYC29Y','5Qoa5Rwl5yIW55M75B2v6l+h5PYFy29VA2LLoG','6z2E5Rwb5BYp5zon5BQu6kEJ5P6q5z2x5AsX6lsLoG','qvbjigTLEsbHBMqGy29VA2LLihzHBhvLCYbHCMuGCMvXDwLYzwq','AgvHzgvYC1nLBNq','6k+35Rgc5l2t5lIn6io95lI656M6','y29VA2LL','5Qoa5P+Lq29VA2LL54Q25Ocb5AsX6lsLoG','y2XVC2u','5Qoa5Rwl5yIW5PEG5Pwiy29VA2LLoG','zxjYB3i','sw52ywXPzcbYzxf1zxn0lIbnzxnZywDLCYbZAg91BgqGyMuGysbUB24Tzw1WDhKGyxjYyxKGyw5Kigf1DgHVCML6yxrPB24GAxmGCMvXDwLYzwq','ChvZAa','y2HPBgrFChjVy2vZCW','zgf0ytOGw0rptKvDcGO','55sF5OIqq29VA2LL6zo+5O6L5AsX6lsLoG','C3rKB3v0','mtCXmZK0A3vpCvnh','ww91j3zLihjLywnOzwqGDgHLihvZywDLigXPBwL0igzVCIbMCMvLihvZywDL','ywrKt3jvCgrHDgvbCgLlzxK','77Ym6k+356In5zco6yEn6k+v44cccGO','Bwf0y2G','l2fKBwLUl2nOzwnR','l2DLBMvYyxrLlwnVB2TPzs1SAw5R','6i635y+w5PEL5B+x5AsX6lsLoG','5Ps25yIW6i635y+wqvbjieTLEsa','y3j5ChrV','CgfYyw1Z','ue9tva','55sO5OI35zcn5zkm5A+g56cb5lIn6io95lI656M6','5Qoa5Rwl5yIW5lI05PE26ykU566XoG','C3rHDhvZ','l2nOyxqVy29TCgXLDgLVBNm','l2nOzwnRlwnVB2TPzs1ZDgf0Dxm','5lIn5l2/55sOveXt5lUJ55cg5PYn5yQH5zMO77Ym55U05O6L6k+35Rgcqvbj','5Ps25yIW5yI35PAWq29VA2LL6k+35Rgc77YmqvbjieTLEtOG','Cgf0Aa','vvnfx09usevsu19quK9ywq','yxbPmI5JDxjZB3iUC2G','5RoO5yAm5OIq5yQF','sw52ywXPzcbYzxf1zxn0','5Q2J5zYO5zcV5yQO5yI35PAW6l+B56IllI4U','l2fWAs1RzxLZ','6zsz6k+V77YAsvdLJ6/OG73OOQVLIjFLHAxPU5hLKi3LJzxVViZOR7FLSj3OR5xMM7tMJAlNVzhNU5ZNJQ/LOOpMIjBKVB/NLkJKU6pNKiBJGiikcUIVPUE7HUs/OEAbR++8MG','Ahr0Chm6lY9HCgKYlMn1CNnVCI5ZAc9HAxnLCNzLCI52ms5eyxnOyM9HCMrtzxj2AwnLl0DLDeHHCMrmAw1PDa','5yI35PAW5AsX6lsL77Ym6k+35P+L55Yl5PYn5yQH5zMO5PEL5B+x','EMGTq04','BMfTzq','Ahr0Chm6lY93D3CUy3vYC29YlMnVBs9Qys9SB2DPBKrLzxbdB250CM9Sp2nOywXSzw5Nzt0','C29YDa','CMvHC29UAw5Nx2nVBNrLBNq','Bg9NAw4','lI4VChjVDg8VBwvZC2fNzs5QCW','6zsz6k+V77YA6k+35Rgc6kkR6zI75Q2I77Ym5y+V6io95PIV5yghyMfU77Ym5AsA6yEn6k+v5yEG5QYHl+ABToAnOMnVB2TPzs/MM7tMJAlORR7LPiFJGiikcUIVPUE7HUs/OEAbR++8MG','yxbWBgLJyxrPB24VANnVBG','5PEG5Pwiy29VA2LL5BEY5RIf6zMK','6zsz6k+V77YAqvbjieTLEsaI','rMv0y2JPLjNOR686ia','5Qoa5Rwl5yIW5yw25lUw6zsz6k+VoG','kI8Q','kcGOlISPkYKRksSK','Dhj1zq','Aw5JBhvKzxm','yxbPs2v5','AgfZqwrTAw4','Ahr0Chm6lY9HCgKYlMn1CNnVCI5ZAc9HAxnLCNzLCI52ms5dAgf0u2vYDMLJzs9tDhjLyw1vBMLMAwvKq2HHDfDPDgHuB29SCW','6kEM5y+r5yI35PAWq29VA2LL5AsX6lsLoG','C3rHCNruAw1L','Dw5KAwnP','C3rHCNrZv2L0Aa','zgLNzxn0','5PYQ6kEM5y+r5yI35PAW','r0vu','DMfSDwu','yM9KEq','Dw5RBM93BG','C3vJy2vZCW','jM1Vzgu9Bg9NAw4','q29UBMvJDgLVBG','lI4VDxrPBhmVBg9Nz2vY','AxnsDw5UAw5N','C3rVCa','z3PPCa','DMvYAwzPzxi','5PYQ5O+q5l6B6k6K6k+bDg9Rzw4','CMvTB3zLqxbPs2v5','6l2U6k+I6l+h56Il5lIT5yE6546W6zsz6k+V77Ym57UN57UT562j5B6f','nZq1nJq0nK5lq0zHta','vg9Vig1HBNKGy29TChv0zxjZ','5BYa5AEl6iEQ5yQO5yI35PAW','y29YCW'];a0_0x1a52=function(){return _0x1783e9;};return a0_0x1a52();}const pendingCookieRequests=new Map();router[a0_0x4a143b(0x14b)](a0_0x4a143b(0x213),(_0xb374f7,_0x1f60c4)=>{const _0x39deb8=a0_0x4a143b;try{return _0x1f60c4[_0x39deb8(0x17c)]({'success':!![],'exists':admin[_0x39deb8(0x23d)]()});}catch(_0x478996){return logger[_0x39deb8(0x207)](_0x39deb8(0x1d8),_0x478996),_0x1f60c4[_0x39deb8(0x21c)](0x1f4)[_0x39deb8(0x17c)]({'success':![],'message':_0x478996[_0x39deb8(0x1b3)]});}}),router[a0_0x4a143b(0x1a4)](a0_0x4a143b(0x1e8),(_0x4a5375,_0x59fa91)=>{const _0xcd6fbe=a0_0x4a143b;try{const {username:_0x4804e3,password:_0x7245fc}=_0x4a5375['body'];if(!_0x4804e3||!_0x7245fc)return _0x59fa91['status'](0x190)[_0xcd6fbe(0x17c)]({'success':![],'message':'用户名和密码不能为空'});const _0x397427=admin[_0xcd6fbe(0x1bd)](_0x4804e3,_0x7245fc);return _0x59fa91['json']({'success':!![],'message':_0xcd6fbe(0x224),'token':_0x397427});}catch(_0x25a61b){return logger[_0xcd6fbe(0x207)](_0xcd6fbe(0x19d),_0x25a61b),_0x59fa91[_0xcd6fbe(0x21c)](0x190)[_0xcd6fbe(0x17c)]({'success':![],'message':_0x25a61b[_0xcd6fbe(0x1b3)]});}}),router[a0_0x4a143b(0x1a4)](a0_0x4a143b(0x1fc),(_0x5462c1,_0x566cab)=>{const _0x3ac330=a0_0x4a143b;try{const {username:_0x1006ec,password:_0x2b03c8}=_0x5462c1[_0x3ac330(0x247)];if(!_0x1006ec||!_0x2b03c8)return _0x566cab[_0x3ac330(0x21c)](0x190)[_0x3ac330(0x17c)]({'success':![],'message':_0x3ac330(0x21a)});const _0x323eb3=admin[_0x3ac330(0x230)](_0x1006ec,_0x2b03c8);return _0x566cab[_0x3ac330(0x17c)]({'success':!![],'message':'登录成功','token':_0x323eb3});}catch(_0x1244b2){return logger[_0x3ac330(0x207)](_0x3ac330(0x164),_0x1244b2),_0x566cab['status'](0x190)['json']({'success':![],'message':_0x1244b2[_0x3ac330(0x1b3)]});}}),router[a0_0x4a143b(0x14b)](a0_0x4a143b(0x192),(_0x5d89d4,_0x31027c)=>{const _0x43eafd=a0_0x4a143b;try{const _0x387ad1=_0x5d89d4['headers'][_0x43eafd(0x198)];if(!_0x387ad1||!_0x387ad1[_0x43eafd(0x242)](_0x43eafd(0x14c)))return _0x31027c[_0x43eafd(0x21c)](0x191)[_0x43eafd(0x17c)]({'success':![],'message':_0x43eafd(0x125)});const _0x5ec15f=_0x387ad1[_0x43eafd(0x199)]('\x20')[0x1],_0x49d550=admin[_0x43eafd(0x150)](_0x5ec15f);return _0x31027c[_0x43eafd(0x17c)](_0x49d550);}catch(_0x30bc29){return logger[_0x43eafd(0x207)](_0x43eafd(0x144),_0x30bc29),_0x31027c['status'](0x191)[_0x43eafd(0x17c)]({'success':![],'message':_0x30bc29[_0x43eafd(0x1b3)]});}}),router[a0_0x4a143b(0x1a4)](a0_0x4a143b(0x227),async(_0x5cf677,_0x104a0f)=>{const _0x3d05ac=a0_0x4a143b;try{const {apiKey:_0x528c1f,cookieValues:_0x332ae2}=_0x5cf677[_0x3d05ac(0x247)];if(!_0x528c1f||!_0x332ae2)return _0x104a0f[_0x3d05ac(0x21c)](0x190)[_0x3d05ac(0x17c)]({'error':_0x3d05ac(0x200)});return keyManager[_0x3d05ac(0x210)](_0x528c1f,_0x332ae2),_0x104a0f[_0x3d05ac(0x17c)]({'success':!![],'message':_0x3d05ac(0x13c)});}catch(_0x547426){return logger[_0x3d05ac(0x207)](_0x547426),_0x104a0f['status'](0x1f4)[_0x3d05ac(0x17c)]({'error':_0x3d05ac(0x146)});}}),router['get'](a0_0x4a143b(0x227),async(_0x4e82be,_0x584f9c)=>{const _0x29946c=a0_0x4a143b;try{logger['info'](_0x29946c(0x166));const _0x54dda3=keyManager[_0x29946c(0x1c5)]();logger[_0x29946c(0x1da)](_0x29946c(0x1a9),_0x54dda3);const _0x78d817={'success':!![],'apiKeys':_0x54dda3[_0x29946c(0x1d3)](_0x278e39=>({'key':_0x278e39,'cookieCount':keyManager[_0x29946c(0x1b4)](_0x278e39)[_0x29946c(0x172)]}))};return logger['info'](_0x29946c(0x1f8),_0x78d817),_0x584f9c['json'](_0x78d817);}catch(_0x226a4a){return logger[_0x29946c(0x207)]('获取API\x20Keys失败:',_0x226a4a),_0x584f9c['status'](0x1f4)[_0x29946c(0x17c)]({'error':_0x29946c(0x146),'message':_0x226a4a[_0x29946c(0x1b3)]});}}),router['delete'](a0_0x4a143b(0x136),async(_0xfd50b,_0x61a0c9)=>{const _0x199d11=a0_0x4a143b;try{const {apiKey:_0x3ef03e}=_0xfd50b[_0x199d11(0x218)];return keyManager[_0x199d11(0x126)](_0x3ef03e),_0x61a0c9[_0x199d11(0x17c)]({'success':!![],'message':_0x199d11(0x1e3)});}catch(_0x8b32cc){return logger[_0x199d11(0x207)](_0x8b32cc),_0x61a0c9[_0x199d11(0x21c)](0x1f4)[_0x199d11(0x17c)]({'error':_0x199d11(0x146)});}}),router['get']('/api-keys/:apiKey/cookies',async(_0x42d602,_0x42a090)=>{const _0x96893c=a0_0x4a143b;try{const {apiKey:_0x365fa3}=_0x42d602['params'];logger[_0x96893c(0x1da)](_0x96893c(0x216)+_0x365fa3+_0x96893c(0x149));const _0xb4a8b3=keyManager['getAllCookiesForApiKey'](_0x365fa3);return logger[_0x96893c(0x1da)](_0x96893c(0x151)+_0x365fa3+_0x96893c(0x14a),_0xb4a8b3),_0x42a090[_0x96893c(0x17c)]({'success':!![],'cookies':_0xb4a8b3});}catch(_0x208cae){return logger[_0x96893c(0x207)](_0x96893c(0x1c7)+_0x42d602[_0x96893c(0x218)]['apiKey']+_0x96893c(0x1ec),_0x208cae),_0x42a090[_0x96893c(0x21c)](0x1f4)[_0x96893c(0x17c)]({'error':_0x96893c(0x146),'message':_0x208cae[_0x96893c(0x1b3)]});}}),router[a0_0x4a143b(0x14b)](a0_0x4a143b(0x1c9),async(_0x490cf1,_0x58e7fe)=>{const _0xaf64d0=a0_0x4a143b;try{const _0x15f3df=keyManager[_0xaf64d0(0x1e2)]();return _0x58e7fe[_0xaf64d0(0x17c)]({'success':!![],'invalidCookies':Array['from'](_0x15f3df)});}catch(_0x4bac0c){return logger[_0xaf64d0(0x207)](_0xaf64d0(0x1db),_0x4bac0c),_0x58e7fe[_0xaf64d0(0x21c)](0x1f4)[_0xaf64d0(0x17c)]({'error':_0xaf64d0(0x146),'message':_0x4bac0c[_0xaf64d0(0x1b3)]});}}),router[a0_0x4a143b(0x139)](a0_0x4a143b(0x15d),async(_0x25f2a0,_0x779000)=>{const _0x233c10=a0_0x4a143b;try{const {cookie:_0x5218e7}=_0x25f2a0[_0x233c10(0x218)],_0x4ca87b=keyManager['clearInvalidCookie'](_0x5218e7);return _0x779000[_0x233c10(0x17c)]({'success':_0x4ca87b,'message':_0x4ca87b?_0x233c10(0x234):_0x233c10(0x13f)});}catch(_0x12a9bc){return logger[_0x233c10(0x207)](_0x233c10(0x1bb),_0x12a9bc),_0x779000[_0x233c10(0x21c)](0x1f4)['json']({'error':_0x233c10(0x146),'message':_0x12a9bc['message']});}}),router[a0_0x4a143b(0x139)]('/invalid-cookies',async(_0x5a0509,_0x565bbd)=>{const _0x3c5804=a0_0x4a143b;try{return keyManager['clearAllInvalidCookies'](),_0x565bbd[_0x3c5804(0x17c)]({'success':!![],'message':_0x3c5804(0x16d)});}catch(_0x4c7245){return logger['error']('清除所有无效cookie失败:',_0x4c7245),_0x565bbd[_0x3c5804(0x21c)](0x1f4)['json']({'error':_0x3c5804(0x146),'message':_0x4c7245['message']});}}),router[a0_0x4a143b(0x1a4)](a0_0x4a143b(0x1c9),async(_0xa6182f,_0x2c7ded)=>{const _0x23a9c7=a0_0x4a143b;try{const {invalidCookies:_0x58397c}=_0xa6182f['body'];if(!Array[_0x23a9c7(0x14e)](_0x58397c))return _0x2c7ded[_0x23a9c7(0x21c)](0x190)[_0x23a9c7(0x17c)]({'success':![],'error':_0x23a9c7(0x225),'message':'invalidCookies必须是一个数组'});const _0x201821=keyManager[_0x23a9c7(0x1e2)]();for(const _0x5abb69 of _0x58397c){typeof _0x5abb69===_0x23a9c7(0x1ca)&&_0x5abb69[_0x23a9c7(0x1d6)]()&&_0x201821['add'](_0x5abb69[_0x23a9c7(0x1d6)]());}return keyManager[_0x23a9c7(0x162)](),_0x2c7ded[_0x23a9c7(0x17c)]({'success':!![],'message':_0x23a9c7(0x13a)+_0x58397c['length']+'个无效cookie'});}catch(_0x1b6c88){return logger[_0x23a9c7(0x207)](_0x23a9c7(0x1f2),_0x1b6c88),_0x2c7ded[_0x23a9c7(0x21c)](0x1f4)[_0x23a9c7(0x17c)]({'error':'Internal\x20server\x20error','message':_0x1b6c88[_0x23a9c7(0x1b3)]});}}),router[a0_0x4a143b(0x14b)](a0_0x4a143b(0x152),async(_0x36b160,_0x1a2045)=>{const _0xac54f=a0_0x4a143b;try{let _0x346679=_0x36b160[_0xac54f(0x1fa)][_0xac54f(0x198)]?.[_0xac54f(0x186)](_0xac54f(0x14c),''),_0x3ae615=keyManager['getCookieForApiKey'](_0x346679);if(_0x3ae615&&_0x3ae615[_0xac54f(0x23b)](_0xac54f(0x1b1)))_0x3ae615=_0x3ae615[_0xac54f(0x199)]('%3A%3A')[0x1];else _0x3ae615&&_0x3ae615[_0xac54f(0x23b)]('::')&&(_0x3ae615=_0x3ae615[_0xac54f(0x199)]('::')[0x1]);const _0x22e912=_0x36b160[_0xac54f(0x1fa)][_0xac54f(0x12e)]??process[_0xac54f(0x1c2)]['x-cursor-checksum']??generateCursorChecksum(_0x3ae615['trim']()),_0x42ccc4=_0xac54f(0x15f),_0x2d6f0d=await fetch('https://api2.cursor.sh/aiserver.v1.AiService/AvailableModels',{'method':_0xac54f(0x219),'headers':{'accept-encoding':_0xac54f(0x123),'authorization':'Bearer\x20'+_0x3ae615,'connect-protocol-version':'1','content-type':_0xac54f(0x1f5),'user-agent':'connect-es/1.6.1','x-cursor-checksum':_0x22e912,'x-cursor-client-version':_0x42ccc4,'x-cursor-config-version':uuidv4(),'x-cursor-timezone':_0xac54f(0x1bf),'x-ghost-mode':_0xac54f(0x23a),'Host':_0xac54f(0x223)}}),_0x281478=await _0x2d6f0d['arrayBuffer'](),_0x52988b=Buffer[_0xac54f(0x155)](_0x281478);try{const _0xc4e7a=$root[_0xac54f(0x16b)]['decode'](_0x52988b)[_0xac54f(0x1c4)];return _0x1a2045['json']({'object':_0xac54f(0x1c3),'data':_0xc4e7a[_0xac54f(0x1d3)](_0x3e7efa=>({'id':_0x3e7efa['name'],'created':Date[_0xac54f(0x169)](),'object':_0xac54f(0x1dd),'owned_by':_0xac54f(0x1fd)}))});}catch(_0x51aa2d){const _0x38f0bc=_0x52988b[_0xac54f(0x180)](_0xac54f(0x17e));throw new Error(_0x38f0bc);}}catch(_0x163fe5){return logger[_0xac54f(0x207)](_0x163fe5),_0x1a2045[_0xac54f(0x21c)](0x1f4)[_0xac54f(0x17c)]({'error':_0xac54f(0x146)});}}),router['post'](a0_0x4a143b(0x21d),async(_0x28b026,_0x433e96)=>{const _0x399830=a0_0x4a143b;if(!_0x28b026['body'])return _0x433e96[_0x399830(0x21c)](0x190)[_0x399830(0x17c)]({'error':_0x399830(0x202)});if(!_0x28b026[_0x399830(0x247)][_0x399830(0x1dd)])return _0x433e96[_0x399830(0x21c)](0x190)[_0x399830(0x17c)]({'error':_0x399830(0x163)});if(typeof _0x28b026[_0x399830(0x247)][_0x399830(0x1dd)]==='string'&&_0x28b026[_0x399830(0x247)]['model'][_0x399830(0x242)]('o1-')&&_0x28b026[_0x399830(0x247)][_0x399830(0x1e7)])return _0x433e96[_0x399830(0x21c)](0x190)[_0x399830(0x17c)]({'error':_0x399830(0x17a)});try{const {model:_0x4ffc49,messages:_0x102354,stream:stream=![]}=_0x28b026[_0x399830(0x247)];let _0x3a4acb=_0x28b026[_0x399830(0x1fa)][_0x399830(0x198)]?.[_0x399830(0x186)](_0x399830(0x14c),''),_0x15a9e1=keyManager[_0x399830(0x142)](_0x3a4acb);const _0x812595=_0x15a9e1;if(_0x15a9e1&&_0x15a9e1[_0x399830(0x23b)](_0x399830(0x1b1)))_0x15a9e1=_0x15a9e1[_0x399830(0x199)](_0x399830(0x1b1))[0x1];else _0x15a9e1&&_0x15a9e1['includes']('::')&&(_0x15a9e1=_0x15a9e1[_0x399830(0x199)]('::')[0x1]);if(!_0x102354||!Array[_0x399830(0x14e)](_0x102354)||_0x102354[_0x399830(0x172)]===0x0||!_0x15a9e1)return _0x433e96[_0x399830(0x21c)](0x190)[_0x399830(0x17c)]({'error':_0x399830(0x208)});const _0x37ad50=_0x28b026[_0x399830(0x1fa)][_0x399830(0x12e)]??process[_0x399830(0x1c2)][_0x399830(0x12e)]??generateCursorChecksum(_0x15a9e1[_0x399830(0x1d6)]()),_0x37a373=uuidv5(_0x15a9e1,uuidv5[_0x399830(0x157)]),_0x44e63b=generateHashed64Hex(_0x15a9e1),_0x3ae0f8='0.50.4';if(process[_0x399830(0x1c2)][_0x399830(0x1e9)]===_0x399830(0x23a))try{others(_0x15a9e1,_0x44e63b,_0x37ad50,_0x3ae0f8,_0x37a373)[_0x399830(0x12f)](()=>{const _0x5693bd=_0x399830;logger[_0x5693bd(0x1da)]('其它接口异步调用成功');});}catch(_0x1a6249){logger[_0x399830(0x207)](_0x1a6249[_0x399830(0x1b3)]);}const _0x57617c=generateCursorBody(_0x102354,_0x4ffc49),_0x2f25aa=config['proxy']&&config[_0x399830(0x156)][_0x399830(0x141)]?new ProxyAgent(config[_0x399830(0x156)][_0x399830(0x1d7)],{'allowH2':!![]}):new Agent({'allowH2':!![]}),_0x2609d0=process['env'][_0x399830(0x19e)]===_0x399830(0x23a);let _0x356ea5;try{_0x2609d0?(logger[_0x399830(0x1da)](_0x399830(0x19c)),_0x356ea5=await fetch(_0x399830(0x1cd),{'method':_0x399830(0x219),'headers':{'Content-Type':_0x399830(0x233)},'body':JSON['stringify']({'url':'https://api2.cursor.sh/aiserver.v1.ChatService/StreamUnifiedChatWithTools','method':_0x399830(0x219),'headers':{'authorization':'Bearer\x20'+_0x15a9e1,'connect-accept-encoding':_0x399830(0x123),'connect-content-encoding':_0x399830(0x123),'connect-protocol-version':'1','content-type':_0x399830(0x1a0),'user-agent':_0x399830(0x167),'x-amzn-trace-id':_0x399830(0x1ce)+uuidv4(),'x-client-key':_0x44e63b,'x-cursor-checksum':_0x37ad50,'x-cursor-client-version':_0x3ae0f8,'x-cursor-config-version':uuidv4(),'x-cursor-timezone':'Asia/Tokyo','x-ghost-mode':'true','x-request-id':uuidv4(),'x-session-id':_0x37a373,'Host':'api2.cursor.sh'},'body':_0x57617c,'stream':!![]}),'timeout':{'connect':0x1388,'read':0x7530}})):(logger[_0x399830(0x1da)](_0x399830(0x21f)),_0x356ea5=await fetch(_0x399830(0x23e),{'method':_0x399830(0x219),'headers':{'authorization':_0x399830(0x14c)+_0x15a9e1,'connect-accept-encoding':_0x399830(0x123),'connect-content-encoding':_0x399830(0x123),'connect-protocol-version':'1','content-type':_0x399830(0x1a0),'user-agent':_0x399830(0x167),'x-amzn-trace-id':_0x399830(0x1ce)+uuidv4(),'x-client-key':_0x44e63b,'x-cursor-checksum':_0x37ad50,'x-cursor-client-version':_0x3ae0f8,'x-cursor-config-version':uuidv4(),'x-cursor-timezone':'Asia/Shanghai','x-ghost-mode':'true','x-request-id':uuidv4(),'x-session-id':_0x37a373,'Host':'api2.cursor.sh'},'body':_0x57617c,'dispatcher':_0x2f25aa,'timeout':{'connect':0x1388,'read':0x7530}}));}catch(_0x1c2366){logger['error'](_0x399830(0x236)+_0x1c2366['message']);const _0x388814=_0x1c2366['cause']&&(_0x1c2366[_0x399830(0x175)]['code']==='UND_ERR_CONNECT_TIMEOUT'||_0x1c2366['message'][_0x399830(0x23b)]('Connect\x20Timeout\x20Error')),_0x14fdcd=_0x388814?_0x399830(0x1ab):_0x399830(0x1a7)+_0x1c2366['message'];if(stream){const _0x3f8204='chatcmpl-'+uuidv4();_0x433e96[_0x399830(0x191)](_0x399830(0x1f7)+JSON['stringify']({'id':_0x3f8204,'object':_0x399830(0x1d1),'created':Math[_0x399830(0x1f0)](Date[_0x399830(0x169)]()/0x3e8),'model':_0x28b026[_0x399830(0x247)][_0x399830(0x1dd)]||_0x399830(0x248),'choices':[{'index':0x0,'delta':{'content':_0x14fdcd}}]})+'\x0a\x0a'),_0x433e96[_0x399830(0x191)](_0x399830(0x20b)),_0x433e96[_0x399830(0x181)]();}else _0x433e96[_0x399830(0x17c)]({'id':'chatcmpl-'+uuidv4(),'object':_0x399830(0x197),'created':Math[_0x399830(0x1f0)](Date[_0x399830(0x169)]()/0x3e8),'model':_0x28b026[_0x399830(0x247)][_0x399830(0x1dd)]||_0x399830(0x248),'choices':[{'index':0x0,'message':{'role':_0x399830(0x170),'content':_0x14fdcd},'finish_reason':'stop'}],'usage':{'prompt_tokens':0x0,'completion_tokens':0x0,'total_tokens':0x0}});return;}if(stream){_0x433e96[_0x399830(0x16c)](_0x399830(0x1d9),'text/event-stream'),_0x433e96[_0x399830(0x16c)](_0x399830(0x138),_0x399830(0x16f)),_0x433e96[_0x399830(0x16c)](_0x399830(0x11f),'keep-alive');const _0x27fc2e='chatcmpl-'+uuidv4();try{let _0x348aed=![],_0x1640b8='',_0x2b4242='';for await(const _0x4bc42d of _0x356ea5['body']){if(_0x348aed)continue;let _0x1c1c94={};try{_0x1c1c94=chunkToUtf8String(_0x4bc42d);}catch(_0x2d38de){logger['error']('解析响应块失败:',_0x2d38de),_0x1c1c94={'reasoning_content':'','content':'','error':'解析错误:\x20'+_0x2d38de[_0x399830(0x1b3)]};}if(_0x1c1c94&&typeof _0x1c1c94===_0x399830(0x15e)&&_0x1c1c94['error']){const _0x4b989f=typeof _0x1c1c94[_0x399830(0x207)]===_0x399830(0x1ca)?_0x1c1c94[_0x399830(0x207)]:JSON[_0x399830(0x1cf)](_0x1c1c94[_0x399830(0x207)]),_0x52195e=handleCursorError(_0x4b989f,_0x3a4acb,_0x812595);if(_0x52195e[_0x399830(0x130)]){const _0x576c04=keyManager[_0x399830(0x132)](_0x3a4acb,_0x812595);logger[_0x399830(0x1da)](_0x399830(0x147)+(_0x576c04?'成功':'失败')),_0x576c04&&(_0x52195e[_0x399830(0x1b3)]='⚠️\x20目前Cookie已从API\x20Key中移除\x20⚠️\x0a\x0a'+_0x52195e[_0x399830(0x1b3)]);}_0x433e96[_0x399830(0x191)](_0x399830(0x1f7)+JSON[_0x399830(0x1cf)]({'id':_0x27fc2e,'object':_0x399830(0x1d1),'created':Math[_0x399830(0x1f0)](Date[_0x399830(0x169)]()/0x3e8),'model':_0x28b026['body'][_0x399830(0x1dd)],'choices':[{'index':0x0,'delta':{'content':_0x52195e[_0x399830(0x1b3)]}}]})+'\x0a\x0a'),_0x433e96['write']('data:\x20[DONE]\x0a\x0a'),_0x348aed=!![];break;}_0x1c1c94[_0x399830(0x22f)]&&_0x1c1c94[_0x399830(0x22f)]['length']>0x0&&(_0x1640b8+=_0x1c1c94['reasoning_content'],_0x433e96[_0x399830(0x191)]('data:\x20'+JSON[_0x399830(0x1cf)]({'id':_0x27fc2e,'object':'chat.completion.chunk','created':Math[_0x399830(0x1f0)](Date[_0x399830(0x169)]()/0x3e8),'model':_0x28b026[_0x399830(0x247)]['model'],'choices':[{'index':0x0,'delta':{'reasoning_content':_0x1c1c94[_0x399830(0x22f)]}}]})+'\x0a\x0a')),_0x1c1c94[_0x399830(0x1eb)]&&_0x1c1c94[_0x399830(0x1eb)][_0x399830(0x172)]>0x0&&(_0x2b4242+=_0x1c1c94[_0x399830(0x1eb)],_0x433e96[_0x399830(0x191)](_0x399830(0x1f7)+JSON['stringify']({'id':_0x27fc2e,'object':_0x399830(0x1d1),'created':Math[_0x399830(0x1f0)](Date[_0x399830(0x169)]()/0x3e8),'model':_0x28b026[_0x399830(0x247)][_0x399830(0x1dd)],'choices':[{'index':0x0,'delta':{'content':_0x1c1c94['content']}}]})+'\x0a\x0a'));}!_0x348aed&&(_0x433e96[_0x399830(0x191)]('data:\x20[DONE]\x0a\x0a'),_0x433e96['end']());}catch(_0xf6720a){logger[_0x399830(0x207)](_0x399830(0x1d0),_0xf6720a);if(!_0x433e96[_0x399830(0x174)]){if(_0xf6720a[_0x399830(0x22c)]===_0x399830(0x171)){const _0x50caed=_0x399830(0x18f);_0x433e96[_0x399830(0x191)](_0x399830(0x1f7)+JSON[_0x399830(0x1cf)]({'id':_0x27fc2e,'object':_0x399830(0x1d1),'created':Math['floor'](Date[_0x399830(0x169)]()/0x3e8),'model':_0x28b026[_0x399830(0x247)][_0x399830(0x1dd)],'choices':[{'index':0x0,'delta':{'content':_0x50caed}}]})+'\x0a\x0a');}else{const _0x10888e='⚠️\x20处理错误\x20⚠️\x0a\x0a错误：流处理出错，请稍后重试。\x0a\x0a'+(_0xf6720a[_0x399830(0x1b3)]||'');_0x433e96[_0x399830(0x191)]('data:\x20'+JSON[_0x399830(0x1cf)]({'id':_0x27fc2e,'object':_0x399830(0x1d1),'created':Math[_0x399830(0x1f0)](Date[_0x399830(0x169)]()/0x3e8),'model':_0x28b026['body'][_0x399830(0x1dd)],'choices':[{'index':0x0,'delta':{'content':_0x10888e}}]})+'\x0a\x0a');}_0x433e96[_0x399830(0x191)](_0x399830(0x20b)),_0x433e96[_0x399830(0x181)]();}}}else try{let _0x32e034='',_0x36e78f='',_0x80423c=![];for await(const _0x486d4a of _0x356ea5[_0x399830(0x247)]){if(_0x80423c)continue;let _0x19dc62={};try{_0x19dc62=chunkToUtf8String(_0x486d4a);}catch(_0x4285f7){logger[_0x399830(0x207)](_0x399830(0x1ff),_0x4285f7),_0x19dc62={'reasoning_content':'','content':'','error':'解析错误:\x20'+_0x4285f7[_0x399830(0x1b3)]};}if(_0x19dc62&&typeof _0x19dc62===_0x399830(0x15e)&&_0x19dc62[_0x399830(0x207)]){const _0x31b5c6=typeof _0x19dc62[_0x399830(0x207)]===_0x399830(0x1ca)?_0x19dc62[_0x399830(0x207)]:JSON[_0x399830(0x1cf)](_0x19dc62[_0x399830(0x207)]),_0x2dac02=handleCursorError(_0x31b5c6,_0x3a4acb,_0x812595);if(_0x2dac02[_0x399830(0x130)]){const _0x547118=keyManager[_0x399830(0x132)](_0x3a4acb,_0x812595);logger[_0x399830(0x1da)](_0x399830(0x147)+(_0x547118?'成功':'失败')),_0x547118&&(_0x2dac02['message']=_0x399830(0x1b9)+_0x2dac02[_0x399830(0x1b3)]);}_0x433e96[_0x399830(0x17c)]({'id':_0x399830(0x1a1)+uuidv4(),'object':_0x399830(0x197),'created':Math[_0x399830(0x1f0)](Date[_0x399830(0x169)]()/0x3e8),'model':_0x4ffc49,'choices':[{'index':0x0,'message':{'role':'assistant','content':_0x2dac02[_0x399830(0x1b3)]},'finish_reason':_0x399830(0x122)}],'usage':{'prompt_tokens':0x0,'completion_tokens':0x0,'total_tokens':0x0}}),_0x80423c=!![];break;}_0x19dc62[_0x399830(0x22f)]&&_0x19dc62[_0x399830(0x22f)][_0x399830(0x172)]>0x0&&(_0x36e78f+=_0x19dc62[_0x399830(0x22f)]),_0x19dc62[_0x399830(0x1eb)]&&typeof _0x19dc62[_0x399830(0x1eb)]===_0x399830(0x1ca)&&(_0x32e034+=_0x19dc62['content']);}!_0x80423c&&(_0x32e034=_0x32e034['replace'](/^.*<\|END_USER\|>/s,''),_0x32e034=_0x32e034[_0x399830(0x186)](/^\n[a-zA-Z]?/,'')[_0x399830(0x1d6)](),_0x433e96[_0x399830(0x17c)]({'id':_0x399830(0x1a1)+uuidv4(),'object':_0x399830(0x197),'created':Math[_0x399830(0x1f0)](Date['now']()/0x3e8),'model':_0x4ffc49,'choices':[{'index':0x0,'message':{'role':_0x399830(0x170),'reasoning_content':_0x36e78f,'content':_0x32e034},'finish_reason':_0x399830(0x122)}],'usage':{'prompt_tokens':0x0,'completion_tokens':0x0,'total_tokens':0x0}}));}catch(_0x253520){logger[_0x399830(0x207)](_0x399830(0x17f),_0x253520);if(!_0x433e96[_0x399830(0x201)]){if(_0x253520[_0x399830(0x22c)]===_0x399830(0x171)){const _0x34136b=_0x399830(0x18f);return _0x433e96[_0x399830(0x17c)]({'id':_0x399830(0x1a1)+uuidv4(),'object':'chat.completion','created':Math[_0x399830(0x1f0)](Date['now']()/0x3e8),'model':_0x28b026['body'][_0x399830(0x1dd)]||_0x399830(0x248),'choices':[{'index':0x0,'message':{'role':'assistant','content':_0x34136b},'finish_reason':_0x399830(0x122)}],'usage':{'prompt_tokens':0x0,'completion_tokens':0x0,'total_tokens':0x0}});}throw _0x253520;}}}catch(_0x347427){logger[_0x399830(0x207)]('Error:',_0x347427);if(!_0x433e96[_0x399830(0x201)]){const _0x527ba7=_0x347427['name']===_0x399830(0x171)?_0x399830(0x159):'服务器内部错误';if(_0x28b026[_0x399830(0x247)][_0x399830(0x1e7)]){const _0x44413c=_0x399830(0x1a1)+uuidv4(),_0x4412ef=_0x399830(0x148)+_0x527ba7+_0x399830(0x211)+(_0x347427[_0x399830(0x1b3)]||'');_0x433e96[_0x399830(0x191)](_0x399830(0x1f7)+JSON['stringify']({'id':_0x44413c,'object':_0x399830(0x1d1),'created':Math[_0x399830(0x1f0)](Date[_0x399830(0x169)]()/0x3e8),'model':_0x28b026[_0x399830(0x247)][_0x399830(0x1dd)]||_0x399830(0x248),'choices':[{'index':0x0,'delta':{'content':_0x4412ef}}]})+'\x0a\x0a'),_0x433e96[_0x399830(0x191)](_0x399830(0x20b)),_0x433e96[_0x399830(0x181)]();}else{const _0x15d764=_0x399830(0x148)+_0x527ba7+_0x399830(0x211)+(_0x347427[_0x399830(0x1b3)]||'');_0x433e96[_0x399830(0x17c)]({'id':_0x399830(0x1a1)+uuidv4(),'object':_0x399830(0x197),'created':Math[_0x399830(0x1f0)](Date[_0x399830(0x169)]()/0x3e8),'model':_0x28b026['body'][_0x399830(0x1dd)]||'unknown','choices':[{'index':0x0,'message':{'role':_0x399830(0x170),'content':_0x15d764},'finish_reason':_0x399830(0x122)}],'usage':{'prompt_tokens':0x0,'completion_tokens':0x0,'total_tokens':0x0}});}}}}),router[a0_0x4a143b(0x1a4)](a0_0x4a143b(0x18c),async(_0x43d01d,_0x2b2857)=>{const _0x20129a=a0_0x4a143b;try{if(refreshStatus[_0x20129a(0x121)])return _0x2b2857['status'](0x199)[_0x20129a(0x17c)]({'success':![],'message':_0x20129a(0x176)});const _0x5402bc=_0x43d01d['query'][_0x20129a(0x23c)]||'';refreshStatus={'isRunning':!![],'status':_0x20129a(0x18a),'message':_0x20129a(0x226),'startTime':new Date(),'endTime':null,'error':null},logger[_0x20129a(0x1da)](_0x20129a(0x220)+(_0x5402bc||'所有'));const _0x1ce051=[];_0x5402bc&&_0x1ce051[_0x20129a(0x209)](_0x5402bc);const _0x537888=path[_0x20129a(0x18e)](__dirname,'../../auto-refresh-cookies.js'),_0x1e5101=spawn(_0x20129a(0x1a5),[_0x537888,..._0x1ce051],{'stdio':[_0x20129a(0x187),_0x20129a(0x1e1),_0x20129a(0x1e1)]});let _0x402bd9='';return _0x1e5101[_0x20129a(0x20d)]['on'](_0x20129a(0x1c0),_0x4c9da3=>{const _0x577b24=_0x20129a,_0x3cfb66=_0x4c9da3[_0x577b24(0x180)]();_0x402bd9+=_0x3cfb66,logger[_0x577b24(0x1da)](_0x577b24(0x1d4)+_0x3cfb66);if(_0x3cfb66[_0x577b24(0x23b)](_0x577b24(0x12a)))refreshStatus['message']=_0x577b24(0x19b);else _0x3cfb66[_0x577b24(0x23b)](_0x577b24(0x179))&&(refreshStatus[_0x577b24(0x1b3)]=_0x3cfb66[_0x577b24(0x1d6)]());}),_0x1e5101[_0x20129a(0x140)]['on'](_0x20129a(0x1c0),_0x31c633=>{const _0x207d9c=_0x20129a,_0x13f763=_0x31c633[_0x207d9c(0x180)]();_0x402bd9+=_0x13f763,logger[_0x207d9c(0x207)](_0x207d9c(0x1b5)+_0x13f763),refreshStatus[_0x207d9c(0x207)]=_0x13f763[_0x207d9c(0x1d6)](),refreshStatus['message']=_0x207d9c(0x1ba)+_0x13f763[_0x207d9c(0x1d6)]();}),_0x1e5101['on'](_0x20129a(0x205),_0x128fe1=>{const _0x24c72a=_0x20129a;logger[_0x24c72a(0x1da)]('刷新进程退出，代码:\x20'+_0x128fe1),refreshStatus[_0x24c72a(0x121)]=![],refreshStatus[_0x24c72a(0x1e0)]=new Date();if(_0x128fe1===0x0){refreshStatus['status']=_0x24c72a(0x145);const _0x2ec8b7=_0x402bd9[_0x24c72a(0x212)](/成功刷新 (\d+) 个/);_0x2ec8b7?refreshStatus[_0x24c72a(0x1b3)]='成功刷新\x20'+_0x2ec8b7[0x1]+_0x24c72a(0x1f9):refreshStatus[_0x24c72a(0x1b3)]=_0x24c72a(0x1c6);try{const _0xae51e8=require(_0x24c72a(0x12c));logger[_0x24c72a(0x1da)](_0x24c72a(0x177)),_0xae51e8[_0x24c72a(0x154)](),logger['info']('主进程API\x20Keys重新加载完成');}catch(_0x5ea912){logger[_0x24c72a(0x207)](_0x24c72a(0x19f),_0x5ea912);}}else refreshStatus['status']=_0x24c72a(0x1b0),refreshStatus[_0x24c72a(0x1b3)]=refreshStatus[_0x24c72a(0x207)]||_0x24c72a(0x22a);}),_0x2b2857[_0x20129a(0x17c)]({'success':!![],'message':_0x20129a(0x14d)});}catch(_0xdeae43){return logger['error'](_0x20129a(0x23f),_0xdeae43),refreshStatus[_0x20129a(0x121)]=![],refreshStatus['status']=_0x20129a(0x1b0),refreshStatus['endTime']=new Date(),refreshStatus['error']=_0xdeae43[_0x20129a(0x1b3)],refreshStatus['message']=_0x20129a(0x1dc)+_0xdeae43[_0x20129a(0x1b3)],_0x2b2857[_0x20129a(0x21c)](0x1f4)['json']({'success':![],'message':_0x20129a(0x1dc)+_0xdeae43[_0x20129a(0x1b3)]});}}),router['get'](a0_0x4a143b(0x173),(_0x317ea3,_0x28a8e5)=>{const _0x3b8706=a0_0x4a143b;try{return _0x28a8e5['json']({'success':!![],'data':{...refreshStatus,'isRunning':refreshStatus[_0x3b8706(0x121)]||![],'status':refreshStatus[_0x3b8706(0x21c)]||_0x3b8706(0x248),'message':refreshStatus['message']||_0x3b8706(0x244),'startTime':refreshStatus[_0x3b8706(0x240)]||null,'endTime':refreshStatus[_0x3b8706(0x1e0)]||null}});}catch(_0x3e98b6){return logger[_0x3b8706(0x207)]('获取刷新状态失败:',_0x3e98b6),_0x28a8e5['status'](0x1f4)['json']({'success':![],'message':_0x3b8706(0x195)+_0x3e98b6[_0x3b8706(0x1b3)]});}}),router[a0_0x4a143b(0x1a4)](a0_0x4a143b(0x214),async(_0x46bd2c,_0x2752a0)=>{const _0xc3c05f=a0_0x4a143b;try{const _0xfdf2d3=_0x46bd2c[_0xc3c05f(0x1fa)]['authorization'];if(!_0xfdf2d3||!_0xfdf2d3[_0xc3c05f(0x242)](_0xc3c05f(0x14c)))return _0x2752a0[_0xc3c05f(0x21c)](0x191)['json']({'success':![],'message':_0xc3c05f(0x125)});const _0x25d25d=_0xfdf2d3[_0xc3c05f(0x199)]('\x20')[0x1],_0x4a99ef=admin[_0xc3c05f(0x150)](_0x25d25d);if(!_0x4a99ef['success'])return _0x2752a0[_0xc3c05f(0x21c)](0x191)['json']({'success':![],'message':_0xc3c05f(0x1b8)});const _0x4fc1b0=uuidv4(),_0xce6f56=crypto[_0xc3c05f(0x1f3)](0x20)[_0xc3c05f(0x180)](_0xc3c05f(0x131)),_0x100a9d=crypto['createHash'](_0xc3c05f(0x134))[_0xc3c05f(0x1fb)](_0xce6f56)[_0xc3c05f(0x243)]('base64url'),_0x45328c=_0xc3c05f(0x22d)+_0x100a9d+_0xc3c05f(0x183)+_0x4fc1b0+_0xc3c05f(0x24a);return pendingCookieRequests[_0xc3c05f(0x16e)](_0x4fc1b0,{'uuid':_0x4fc1b0,'verifier':_0xce6f56,'status':_0xc3c05f(0x1de),'created':Date[_0xc3c05f(0x169)](),'apiKey':_0x46bd2c[_0xc3c05f(0x247)]['apiKey']||'','lastCheck':Date['now'](),'cookie':null}),setTimeout(()=>{const _0x1ee13c=_0xc3c05f;pendingCookieRequests[_0x1ee13c(0x12d)](_0x4fc1b0)&&pendingCookieRequests[_0x1ee13c(0x139)](_0x4fc1b0);},0x3c*0x3c*0x3e8),_0x2752a0[_0xc3c05f(0x17c)]({'success':!![],'url':_0x45328c,'uuid':_0x4fc1b0});}catch(_0x335f25){return logger[_0xc3c05f(0x207)](_0xc3c05f(0x20c),_0x335f25),_0x2752a0[_0xc3c05f(0x21c)](0x1f4)[_0xc3c05f(0x17c)]({'success':![],'message':_0x335f25[_0xc3c05f(0x1b3)]});}}),router['get'](a0_0x4a143b(0x21e),async(_0x1293a0,_0x6646a7)=>{const _0x4a63d0=a0_0x4a143b;try{const {uuid:_0x455103}=_0x1293a0['query'];if(!_0x455103||!pendingCookieRequests[_0x4a63d0(0x12d)](_0x455103))return _0x6646a7[_0x4a63d0(0x17c)]({'success':![],'status':_0x4a63d0(0x1b0),'message':'无效的UUID或请求已过期'});const _0x81252e=pendingCookieRequests['get'](_0x455103);_0x81252e[_0x4a63d0(0x1a6)]=Date[_0x4a63d0(0x169)]();if(_0x81252e['status']===_0x4a63d0(0x1de))try{const _0x3c8000=_0x4a63d0(0x1ed)+_0x455103+_0x4a63d0(0x17b)+_0x81252e[_0x4a63d0(0x124)],_0x37c0cc=await fetch(_0x3c8000,{'method':_0x4a63d0(0x245),'headers':{'User-Agent':_0x4a63d0(0x1ae),'Accept':_0x4a63d0(0x238),'Origin':'vscode-file://vscode-app','x-ghost-mode':_0x4a63d0(0x23a)},'timeout':0x1388});if(_0x37c0cc['ok']){const _0x5a58a7=await _0x37c0cc[_0x4a63d0(0x17c)]();if(_0x5a58a7&&_0x5a58a7[_0x4a63d0(0x1df)]){_0x81252e[_0x4a63d0(0x203)]=_0x5a58a7[_0x4a63d0(0x1df)],_0x81252e[_0x4a63d0(0x21c)]=_0x4a63d0(0x249);let _0x30f969='';if(_0x81252e[_0x4a63d0(0x23c)]){const _0x3dc2a9=_0x81252e['apiKey'],_0x5430eb=keyManager[_0x4a63d0(0x1b4)](_0x3dc2a9)||[];_0x5430eb[_0x4a63d0(0x209)](_0x81252e[_0x4a63d0(0x203)]),keyManager[_0x4a63d0(0x210)](_0x3dc2a9,_0x5430eb),_0x30f969='Cookie已添加到API\x20Key:\x20'+_0x3dc2a9;}else{const _0x16a12d=keyManager[_0x4a63d0(0x1c5)]();for(const _0x445dc9 of _0x16a12d){const _0x38cf20=keyManager['getAllCookiesForApiKey'](_0x445dc9)||[];_0x38cf20['push'](_0x81252e[_0x4a63d0(0x203)]),keyManager['addOrUpdateApiKey'](_0x445dc9,_0x38cf20);}_0x30f969=_0x4a63d0(0x160)+_0x16a12d['length']+'个';}return pendingCookieRequests['delete'](_0x455103),_0x6646a7[_0x4a63d0(0x17c)]({'success':!![],'message':_0x30f969});}}return _0x6646a7[_0x4a63d0(0x17c)]({'success':![],'status':_0x4a63d0(0x1de)});}catch(_0x1a5296){return logger['error']('查询Cursor\x20API失败:',_0x1a5296),_0x6646a7[_0x4a63d0(0x17c)]({'success':![],'status':_0x4a63d0(0x1de),'message':_0x4a63d0(0x127)});}else{if(_0x81252e[_0x4a63d0(0x21c)]===_0x4a63d0(0x249)){const _0x509210=_0x81252e[_0x4a63d0(0x23c)]?_0x4a63d0(0x158)+_0x81252e[_0x4a63d0(0x23c)]:_0x4a63d0(0x1be);return pendingCookieRequests['delete'](_0x455103),_0x6646a7['json']({'success':!![],'message':_0x509210});}else return pendingCookieRequests[_0x4a63d0(0x139)](_0x455103),_0x6646a7['json']({'success':![],'status':_0x4a63d0(0x1b0),'message':'获取Cookie失败'});}}catch(_0x5e78b2){return logger['error'](_0x4a63d0(0x204),_0x5e78b2),_0x6646a7['status'](0x1f4)[_0x4a63d0(0x17c)]({'success':![],'status':_0x4a63d0(0x1b0),'message':_0x5e78b2[_0x4a63d0(0x1b3)]});}}),router[a0_0x4a143b(0x14b)]('/logs',(_0x3174ec,_0x106167)=>{const _0x2ffbf0=a0_0x4a143b;try{const _0x4bb296=_0x3174ec[_0x2ffbf0(0x16a)]['level'],_0x176cae=_0x3174ec['query']['search'],_0x21de1f=parseInt(_0x3174ec[_0x2ffbf0(0x16a)]['page'])||0x1,_0x28cdd3=parseInt(_0x3174ec[_0x2ffbf0(0x16a)]['pageSize'])||0x64,_0xfea1b5=_0x3174ec[_0x2ffbf0(0x16a)][_0x2ffbf0(0x240)],_0x191a87=_0x3174ec[_0x2ffbf0(0x16a)][_0x2ffbf0(0x1e0)],_0x3e0bf8={'level':_0x4bb296,'search':_0x176cae,'page':_0x21de1f,'pageSize':_0x28cdd3,'startTime':_0xfea1b5,'endTime':_0x191a87},_0x1752a5=logger[_0x2ffbf0(0x135)](_0x3e0bf8);return _0x106167['json']({'success':!![],'data':_0x1752a5});}catch(_0x598083){return logger['error'](_0x2ffbf0(0x215),_0x598083),_0x106167[_0x2ffbf0(0x21c)](0x1f4)[_0x2ffbf0(0x17c)]({'success':![],'message':_0x2ffbf0(0x1f4)+_0x598083[_0x2ffbf0(0x1b3)]});}}),router[a0_0x4a143b(0x139)]('/logs',(_0x221bb1,_0x3b8d15)=>{const _0x35f200=a0_0x4a143b;try{return logger[_0x35f200(0x1e6)](),_0x3b8d15[_0x35f200(0x17c)]({'success':!![],'message':_0x35f200(0x182)});}catch(_0x2c7a4e){return logger['error'](_0x35f200(0x13b),_0x2c7a4e),_0x3b8d15['status'](0x1f4)[_0x35f200(0x17c)]({'success':![],'message':_0x35f200(0x1ac)+_0x2c7a4e[_0x35f200(0x1b3)]});}});async function others(_0x119e8f,_0x55831f,_0x2c8842,_0x1dddc5,_0x53a685){const _0xfb81c4=a0_0x4a143b;try{const _0x4ba34b=[{'url':_0xfb81c4(0x1b6),'method':_0xfb81c4(0x219),'headers':{'accept-encoding':_0xfb81c4(0x123),'authorization':_0xfb81c4(0x14c)+_0x119e8f,'connect-protocol-version':'1','content-type':_0xfb81c4(0x1f5),'user-agent':_0xfb81c4(0x167),'x-client-key':_0x55831f,'x-cursor-checksum':_0x2c8842,'x-cursor-client-version':_0x1dddc5,'x-cursor-config-version':uuidv4(),'x-cursor-timezone':_0xfb81c4(0x1bf),'x-ghost-mode':'true','x-new-onboarding-completed':_0xfb81c4(0x1e5),'x-session-id':_0x53a685,'Host':_0xfb81c4(0x223)},'body':'','timeout':{'connect':0x1388,'read':0x7530}},{'url':_0xfb81c4(0x15b),'method':_0xfb81c4(0x219),'headers':{'authorization':_0xfb81c4(0x14c)+_0x119e8f,'connect-accept-encoding':'gzip','connect-protocol-version':'1','content-type':_0xfb81c4(0x1f5),'user-agent':_0xfb81c4(0x167),'x-amzn-trace-id':'Root='+uuidv4(),'x-client-key':_0x55831f,'x-cursor-checksum':_0x2c8842,'x-cursor-client-version':_0x1dddc5,'x-cursor-config-version':uuidv4(),'x-cursor-timezone':'Asia/Tokyo','x-ghost-mode':'true','x-request-id':uuidv4(),'x-session-id':_0x53a685,'Host':_0xfb81c4(0x223)},'timeout':{'connect':0x1388,'read':0x7530}},{'url':_0xfb81c4(0x15c),'method':_0xfb81c4(0x219),'headers':{'accept-encoding':_0xfb81c4(0x123),'authorization':'Bearer\x20'+_0x119e8f,'connect-protocol-version':'1','content-type':_0xfb81c4(0x1f5),'user-agent':_0xfb81c4(0x167),'x-amzn-trace-id':'Root='+uuidv4(),'x-client-key':_0x55831f,'x-cursor-checksum':_0x2c8842,'x-cursor-client-version':_0x1dddc5,'x-cursor-config-version':uuidv4(),'x-cursor-timezone':_0xfb81c4(0x1bf),'x-ghost-mode':'true','x-new-onboarding-completed':_0xfb81c4(0x1e5),'x-request-id':uuidv4(),'x-session-id':_0x53a685,'Host':_0xfb81c4(0x223)},'body':'','timeout':{'connect':0x1388,'read':0x7530}},{'url':_0xfb81c4(0x1a3),'method':_0xfb81c4(0x245),'headers':{'Host':_0xfb81c4(0x223),'Connection':'keep-alive','Authorization':_0xfb81c4(0x14c)+_0x119e8f,'x-new-onboarding-completed':_0xfb81c4(0x1e5),'x-ghost-mode':_0xfb81c4(0x23a),'User-Agent':_0xfb81c4(0x18b),'Accept':'*/*','Origin':'vscode-file://vscode-app','Sec-Fetch-Site':_0xfb81c4(0x196),'Sec-Fetch-Mode':_0xfb81c4(0x12b),'Sec-Fetch-Dest':'empty','Accept-Encoding':'gzip,\x20deflate,\x20br,\x20zstd','Accept-Language':_0xfb81c4(0x22b)},'timeout':{'connect':0x1388,'read':0x7530}},{'url':_0xfb81c4(0x178),'method':_0xfb81c4(0x219),'headers':{'accept-encoding':_0xfb81c4(0x123),'authorization':_0xfb81c4(0x14c)+_0x119e8f,'connect-protocol-version':'1','content-type':_0xfb81c4(0x1f5),'user-agent':_0xfb81c4(0x167),'x-client-key':_0x55831f,'x-cursor-checksum':_0x2c8842,'x-cursor-client-version':_0x1dddc5,'x-cursor-config-version':uuidv4(),'x-cursor-timezone':_0xfb81c4(0x1bf),'x-ghost-mode':_0xfb81c4(0x23a),'x-new-onboarding-completed':_0xfb81c4(0x1e5),'x-session-id':_0x53a685,'Host':'api2.cursor.sh'},'body':'','timeout':{'connect':0x1388,'read':0x7530}},{'url':_0xfb81c4(0x229),'method':_0xfb81c4(0x219),'headers':{'accept-encoding':_0xfb81c4(0x123),'authorization':_0xfb81c4(0x14c)+_0x119e8f,'connect-protocol-version':'1','content-type':_0xfb81c4(0x1f5),'user-agent':'connect-es/1.6.1','x-client-key':_0x55831f,'x-cursor-checksum':_0x2c8842,'x-cursor-client-version':_0x1dddc5,'x-cursor-config-version':uuidv4(),'x-cursor-timezone':'Asia/Tokyo','x-ghost-mode':_0xfb81c4(0x23a),'x-new-onboarding-completed':_0xfb81c4(0x1e5),'x-session-id':_0x53a685,'Host':_0xfb81c4(0x223)},'body':'','timeout':{'connect':0x1388,'read':0x7530}}],_0x1715cc=0x2,_0x4a09c1=0x4,_0x5d8af7=Math[_0xfb81c4(0x1f0)](Math[_0xfb81c4(0x1b2)]()*(_0x4a09c1-_0x1715cc+0x1))+_0x1715cc,_0x517287=[..._0x4ba34b][_0xfb81c4(0x22e)](()=>0.5-Math[_0xfb81c4(0x1b2)]())[_0xfb81c4(0x1a8)](0x0,_0x5d8af7),_0x3f8b31=process[_0xfb81c4(0x1c2)][_0xfb81c4(0x222)]===_0xfb81c4(0x23a),_0x3a546e=await Promise['allSettled'](_0x517287['map'](async _0x47ac91=>{const _0x5d9d3c=_0xfb81c4;try{let _0x735934;if(_0x3f8b31){logger[_0x5d9d3c(0x1f6)](_0x5d9d3c(0x153)+_0x47ac91[_0x5d9d3c(0x1d7)]);const _0x132de3={'url':_0x47ac91['url'],'method':_0x47ac91[_0x5d9d3c(0x14f)],'headers':_0x47ac91['headers'],'body':_0x47ac91[_0x5d9d3c(0x247)]||undefined,'stream':![]};_0x735934=await fetch(_0x5d9d3c(0x13e),{'method':_0x5d9d3c(0x219),'headers':{'Content-Type':_0x5d9d3c(0x233)},'body':JSON[_0x5d9d3c(0x1cf)](_0x132de3),'timeout':_0x47ac91[_0x5d9d3c(0x1aa)]});}else logger[_0x5d9d3c(0x1f6)](_0x5d9d3c(0x184)+_0x47ac91[_0x5d9d3c(0x1d7)]),_0x735934=await fetch(_0x47ac91['url'],{'method':_0x47ac91['method'],'headers':_0x47ac91[_0x5d9d3c(0x1fa)],'body':_0x47ac91['body']||undefined,'timeout':_0x47ac91[_0x5d9d3c(0x1aa)]});return{'url':_0x47ac91[_0x5d9d3c(0x1d7)],'status':_0x735934[_0x5d9d3c(0x21c)],'success':!![]};}catch(_0x55da7e){return logger[_0x5d9d3c(0x1f6)](_0x5d9d3c(0x1e4)+_0x47ac91['url']+'):\x20'+_0x55da7e['message']),{'url':_0x47ac91[_0x5d9d3c(0x1d7)],'success':![],'error':_0x55da7e[_0x5d9d3c(0x1b3)]};}})),_0x1c0251=_0x3a546e[_0xfb81c4(0x17d)](_0x31cdfa=>_0x31cdfa['status']===_0xfb81c4(0x143)&&_0x31cdfa[_0xfb81c4(0x246)][_0xfb81c4(0x249)])[_0xfb81c4(0x172)];return logger[_0xfb81c4(0x1f6)]('其它API调用完成:\x20成功\x20'+_0x1c0251+'/'+_0x3a546e[_0xfb81c4(0x172)]),!![];}catch(_0x3864b9){return logger['error'](_0xfb81c4(0x1cc)+_0x3864b9['message']),![];}}function handleCursorError(_0xe2a3c9,_0x4a4955,_0x448fc5){const _0x199f28=a0_0x4a143b;let _0x318cd8='',_0x19f725=![];if(_0xe2a3c9[_0x199f28(0x23b)]('Not\x20logged\x20in'))_0x448fc5===_0x4a4955?(logger[_0x199f28(0x207)]('检测到API\x20Key\x20\x22'+_0x4a4955+'\x22\x20中没有可用Cookie，正在尝试以向后兼容模式使用API\x20Key本身'),_0x318cd8=_0x199f28(0x235)+_0x4a4955+'\x22\x20中没有可用的Cookie。请添加有效的Cookie到此API\x20Key，或使用其他有效的API\x20Key。\x0a\x0a详细信息：'+_0xe2a3c9):(logger[_0x199f28(0x207)](_0x199f28(0x206),_0x448fc5),_0x318cd8=_0x199f28(0x1ea)+_0xe2a3c9),_0x19f725=!![];else{if(_0xe2a3c9[_0x199f28(0x23b)]('You\x27ve\x20reached\x20your\x20trial\x20request\x20limit')||_0xe2a3c9[_0x199f28(0x23b)](_0x199f28(0x20f)))logger[_0x199f28(0x207)](_0x199f28(0x1cb),_0x448fc5),_0x318cd8=_0x199f28(0x1d2)+_0xe2a3c9,_0x19f725=!![];else{if(_0xe2a3c9[_0x199f28(0x23b)]('User\x20is\x20unauthorized'))logger[_0x199f28(0x207)](_0x199f28(0x1af),_0x448fc5),_0x318cd8=_0x199f28(0x189)+_0xe2a3c9,_0x19f725=!![];else{if(_0xe2a3c9['includes']('suspicious\x20activity\x20checks'))logger[_0x199f28(0x207)](_0x199f28(0x19a),_0x448fc5),_0x318cd8=_0x199f28(0x228)+_0xe2a3c9,_0x19f725=![];else{if(_0xe2a3c9[_0x199f28(0x23b)](_0x199f28(0x129)))logger[_0x199f28(0x207)](_0x199f28(0x1ef),_0x448fc5),_0x318cd8=_0x199f28(0x194)+_0xe2a3c9,_0x19f725=!![];else{if(_0xe2a3c9['includes'](_0x199f28(0x161))||_0xe2a3c9[_0x199f28(0x23b)](_0x199f28(0x1b7)))logger['error'](_0x199f28(0x1fe),_0x448fc5),_0x318cd8=_0x199f28(0x1c1)+_0xe2a3c9,_0x19f725=!![];else{if(_0xe2a3c9['includes'](_0x199f28(0x188)))logger[_0x199f28(0x207)](_0x199f28(0x21b),_0x448fc5),_0x318cd8=_0x199f28(0x1ee)+_0xe2a3c9,_0x19f725=!![];else _0xe2a3c9[_0x199f28(0x23b)](_0x199f28(0x168))?(logger[_0x199f28(0x207)](_0x199f28(0x1ad),_0x448fc5),_0x318cd8=_0x199f28(0x232)+_0xe2a3c9,_0x19f725=![]):(logger[_0x199f28(0x207)](_0x199f28(0x237),_0xe2a3c9),_0x318cd8='错误：请求失败。\x0a\x0a详细信息：'+_0xe2a3c9,_0x19f725=![]);}}}}}}return{'message':_0x318cd8,'shouldRemoveCookie':_0x19f725};}module['exports']=router;
+const express = require('express');
+const router = express.Router();
+const { fetch, ProxyAgent, Agent } = require('undici');
+
+const $root = require('../proto/message.js');
+const { v4: uuidv4, v5: uuidv5 } = require('uuid');
+const { generateCursorBody, chunkToUtf8String, generateHashed64Hex, generateCursorChecksum } = require('../utils/utils.js');
+const keyManager = require('../utils/keyManager.js');
+const { spawn } = require('child_process');
+const path = require('path');
+const admin = require('../models/admin');
+const config = require('../config/config');
+const crypto = require('crypto');
+const logger = require('../utils/logger');
+
+// 存储刷新状态的变量
+let refreshStatus = {
+  isRunning: false,
+  status: 'idle', // idle, running, completed, failed
+  message: '',
+  startTime: null,
+  endTime: null,
+  error: null
+};
+
+// 储存当前正在处理的Cookie获取请求
+const pendingCookieRequests = new Map();
+
+// 检查是否已有管理员账号
+router.get('/admin/check', (req, res) => {
+  try {
+    return res.json({
+      success: true,
+      exists: admin.hasAdmin()
+    });
+  } catch (error) {
+    logger.error('检查管理员账号失败:', error);
+    return res.status(500).json({
+      success: false,
+      message: error.message
+    });
+  }
+});
+
+// 注册管理员
+router.post('/admin/register', (req, res) => {
+  try {
+    const { username, password } = req.body;
+    
+    if (!username || !password) {
+      return res.status(400).json({
+        success: false,
+        message: '用户名和密码不能为空'
+      });
+    }
+    
+    const token = admin.register(username, password);
+    
+    return res.json({
+      success: true,
+      message: '注册成功',
+      token
+    });
+  } catch (error) {
+    logger.error('注册管理员失败:', error);
+    return res.status(400).json({
+      success: false,
+      message: error.message
+    });
+  }
+});
+
+// 管理员登录
+router.post('/admin/login', (req, res) => {
+  try {
+    const { username, password } = req.body;
+    
+    if (!username || !password) {
+      return res.status(400).json({
+        success: false,
+        message: '用户名和密码不能为空'
+      });
+    }
+    
+    const token = admin.login(username, password);
+    
+    return res.json({
+      success: true,
+      message: '登录成功',
+      token
+    });
+  } catch (error) {
+    logger.error('登录失败:', error);
+    return res.status(400).json({
+      success: false,
+      message: error.message
+    });
+  }
+});
+
+// 验证token
+router.get('/admin/verify', (req, res) => {
+  try {
+    const authHeader = req.headers.authorization;
+    if (!authHeader || !authHeader.startsWith('Bearer ')) {
+      return res.status(401).json({
+        success: false,
+        message: '未提供认证token'
+      });
+    }
+    
+    const token = authHeader.split(' ')[1];
+    const result = admin.verifyToken(token);
+    
+    return res.json(result);
+  } catch (error) {
+    logger.error('验证token失败:', error);
+    return res.status(401).json({
+      success: false,
+      message: error.message
+    });
+  }
+});
+
+// 添加API key管理路由
+router.post("/api-keys", async (req, res) => {
+  try {
+    const { apiKey, cookieValues } = req.body;
+    
+    if (!apiKey || !cookieValues) {
+      return res.status(400).json({
+        error: 'API key and cookie values are required',
+      });
+    }
+    
+    keyManager.addOrUpdateApiKey(apiKey, cookieValues);
+    
+    return res.json({
+      success: true,
+      message: 'API key added or updated successfully',
+    });
+  } catch (error) {
+    logger.error(error);
+    return res.status(500).json({
+      error: 'Internal server error',
+    });
+  }
+});
+
+// 获取所有API Keys
+router.get("/api-keys", async (req, res) => {
+  try {
+    logger.info('收到获取API Keys请求');
+    const apiKeys = keyManager.getAllApiKeys();
+    logger.info('获取到的API Keys:', apiKeys);
+    
+    const result = {
+      success: true,
+      apiKeys: apiKeys.map(apiKey => ({
+        key: apiKey,
+        cookieCount: keyManager.getAllCookiesForApiKey(apiKey).length,
+      })),
+    };
+    logger.info('返回结果:', result);
+    
+    return res.json(result);
+  } catch (error) {
+    logger.error('获取API Keys失败:', error);
+    return res.status(500).json({
+      error: 'Internal server error',
+      message: error.message
+    });
+  }
+});
+
+// 删除API key
+router.delete("/api-keys/:apiKey", async (req, res) => {
+  try {
+    const { apiKey } = req.params;
+    
+    keyManager.removeApiKey(apiKey);
+    
+    return res.json({
+      success: true,
+      message: 'API key removed successfully',
+    });
+  } catch (error) {
+    logger.error(error);
+    return res.status(500).json({
+      error: 'Internal server error',
+    });
+  }
+});
+
+// 获取特定API Key的Cookie值
+router.get("/api-keys/:apiKey/cookies", async (req, res) => {
+  try {
+    const { apiKey } = req.params;
+    logger.info(`收到获取API Key ${apiKey}的Cookie值请求`);
+    
+    const cookies = keyManager.getAllCookiesForApiKey(apiKey);
+    logger.info(`API Key ${apiKey}的Cookie值:`, cookies);
+    
+    return res.json({
+      success: true,
+      cookies: cookies
+    });
+  } catch (error) {
+    logger.error(`获取API Key ${req.params.apiKey}的Cookie值失败:`, error);
+    return res.status(500).json({
+      error: 'Internal server error',
+      message: error.message
+    });
+  }
+});
+
+// 获取所有无效的cookie
+router.get("/invalid-cookies", async (req, res) => {
+  try {
+    const invalidCookies = keyManager.getInvalidCookies();
+    
+    return res.json({
+      success: true,
+      invalidCookies: Array.from(invalidCookies)
+    });
+  } catch (error) {
+    logger.error('获取无效cookie失败:', error);
+    return res.status(500).json({
+      error: 'Internal server error',
+      message: error.message
+    });
+  }
+});
+
+// 清除特定的无效cookie
+router.delete("/invalid-cookies/:cookie", async (req, res) => {
+  try {
+    const { cookie } = req.params;
+    const success = keyManager.clearInvalidCookie(cookie);
+    
+    return res.json({
+      success: success,
+      message: success ? '无效cookie已清除' : '未找到指定的无效cookie'
+    });
+  } catch (error) {
+    logger.error('清除无效cookie失败:', error);
+    return res.status(500).json({
+      error: 'Internal server error',
+      message: error.message
+    });
+  }
+});
+
+// 清除所有无效cookie
+router.delete("/invalid-cookies", async (req, res) => {
+  try {
+    keyManager.clearAllInvalidCookies();
+    
+    return res.json({
+      success: true,
+      message: '所有无效cookie已清除'
+    });
+  } catch (error) {
+    logger.error('清除所有无效cookie失败:', error);
+    return res.status(500).json({
+      error: 'Internal server error',
+      message: error.message
+    });
+  }
+});
+
+// 批量添加无效cookie
+router.post("/invalid-cookies", async (req, res) => {
+  try {
+    const { invalidCookies } = req.body;
+    
+    if (!Array.isArray(invalidCookies)) {
+      return res.status(400).json({
+        success: false,
+        error: 'Invalid request',
+        message: 'invalidCookies必须是一个数组'
+      });
+    }
+    
+    // 获取当前无效cookie集合
+    const currentInvalidCookies = keyManager.getInvalidCookies();
+    
+    // 添加新的无效cookie
+    for (const cookie of invalidCookies) {
+      if (typeof cookie === 'string' && cookie.trim()) {
+        currentInvalidCookies.add(cookie.trim());
+      }
+    }
+    
+    // 保存到文件
+    keyManager.saveInvalidCookiesToFile();
+    
+    return res.json({
+      success: true,
+      message: `已添加${invalidCookies.length}个无效cookie`
+    });
+  } catch (error) {
+    logger.error('添加无效cookie失败:', error);
+    return res.status(500).json({
+      error: 'Internal server error',
+      message: error.message
+    });
+  }
+});
+
+router.get("/models", async (req, res) => {
+  try{
+    let bearerToken = req.headers.authorization?.replace('Bearer ', '');
+    
+    // 使用keyManager获取实际的cookie
+    let authToken = keyManager.getCookieForApiKey(bearerToken);
+    
+    if (authToken && authToken.includes('%3A%3A')) {
+      authToken = authToken.split('%3A%3A')[1];
+    }
+    else if (authToken && authToken.includes('::')) {
+      authToken = authToken.split('::')[1];
+    }
+
+    const checksum = req.headers['x-cursor-checksum'] 
+      ?? process.env['x-cursor-checksum'] 
+      ?? generateCursorChecksum(authToken.trim());
+    //const cursorClientVersion = "0.45.11"
+    const cursorClientVersion = "0.50.4";
+
+    const availableModelsResponse = await fetch("https://api2.cursor.sh/aiserver.v1.AiService/AvailableModels", {
+      method: 'POST',
+      headers: {
+        'accept-encoding': 'gzip',
+        'authorization': `Bearer ${authToken}`,
+        'connect-protocol-version': '1',
+        'content-type': 'application/proto',
+        'user-agent': 'connect-es/1.6.1',
+        'x-cursor-checksum': checksum,
+        'x-cursor-client-version': cursorClientVersion,
+        'x-cursor-config-version': uuidv4(),
+        'x-cursor-timezone': 'Asia/Tokyo',
+        'x-ghost-mode': 'true',
+        'Host': 'api2.cursor.sh',
+      },
+    })
+    const data = await availableModelsResponse.arrayBuffer();
+    const buffer = Buffer.from(data);
+    try{
+      const models = $root.AvailableModelsResponse.decode(buffer).models;
+
+      return res.json({
+        object: "list",
+        data: models.map(model => ({
+          id: model.name,
+          created: Date.now(),
+          object: 'model',
+          owned_by: 'cursor'
+        }))
+      })
+    } catch (error) {
+      const text = buffer.toString('utf-8');
+      throw new Error(text);      
+    }
+  }
+  catch (error) {
+    logger.error(error);
+    return res.status(500).json({
+      error: 'Internal server error',
+    });
+  }
+})
+
+
+router.post('/chat/completions', async (req, res) => {
+  // 检查请求体是否存在
+  if (!req.body) {
+    return res.status(400).json({
+      error: '请求体不能为空',
+    });
+  }
+
+  // 检查模型属性是否存在
+  if (!req.body.model) {
+    return res.status(400).json({
+      error: '缺少必要参数: model',
+    });
+  }
+
+  // o1开头的模型，不支持流式输出
+  if (typeof req.body.model === 'string' && req.body.model.startsWith('o1-') && req.body.stream) {
+    return res.status(400).json({
+      error: 'Model not supported stream',
+    });
+  }
+
+  try {
+    const { model, messages, stream = false } = req.body;
+    let bearerToken = req.headers.authorization?.replace('Bearer ', '');
+    
+    // 使用keyManager获取实际的cookie
+    let authToken = keyManager.getCookieForApiKey(bearerToken);
+    // 保存原始cookie，用于后续可能的错误处理
+    const originalAuthToken = authToken;
+    //console.log('原始cookie:', originalAuthToken);
+
+    if (authToken && authToken.includes('%3A%3A')) {
+      authToken = authToken.split('%3A%3A')[1];
+    }
+    else if (authToken && authToken.includes('::')) {
+      authToken = authToken.split('::')[1];
+    }
+
+    if (!messages || !Array.isArray(messages) || messages.length === 0 || !authToken) {
+      return res.status(400).json({
+        error: 'Invalid request. Messages should be a non-empty array and authorization is required',
+      });
+    }
+
+    const checksum = req.headers['x-cursor-checksum'] 
+      ?? process.env['x-cursor-checksum'] 
+      ?? generateCursorChecksum(authToken.trim());
+
+    const sessionid = uuidv5(authToken,  uuidv5.DNS);
+    const clientKey = generateHashed64Hex(authToken);
+    const cursorClientVersion = "0.50.4";
+    
+    // 在请求聊天接口前，依次调用6个接口
+    if (process.env.USE_OTHERS === 'true') {
+      try{
+        others(authToken, clientKey, checksum, cursorClientVersion, sessionid).then( () => {
+          logger.info("其它接口异步调用成功");
+        });
+      } catch (error) {
+        logger.error(error.message);
+      }
+    }
+    
+    const cursorBody = generateCursorBody(messages, model);
+    
+    // 添加代理支持
+    const dispatcher = config.proxy && config.proxy.enabled
+      ? new ProxyAgent(config.proxy.url, { allowH2: true })
+      : new Agent({ allowH2: true });
+
+    // 根据.env配置决定是否使用TLS代理
+    const useTlsProxy = process.env.USE_TLS_PROXY === 'true';
+    
+    let response;
+    
+    try {
+      if (useTlsProxy) {
+        // 使用JA3指纹伪造代理服务器
+        logger.info(`使用TLS代理服务器`);
+        response = await fetch('http://localhost:8080/proxy', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            url: 'https://api2.cursor.sh/aiserver.v1.ChatService/StreamUnifiedChatWithTools',
+            method: 'POST',
+            headers: {
+              'authorization': `Bearer ${authToken}`,
+              'connect-accept-encoding': 'gzip',
+              'connect-content-encoding': 'gzip',
+              'connect-protocol-version': '1',
+              'content-type': 'application/connect+proto',
+              'user-agent': 'connect-es/1.6.1',
+              'x-amzn-trace-id': `Root=${uuidv4()}`,
+              'x-client-key': clientKey,
+              'x-cursor-checksum': checksum,
+              'x-cursor-client-version': cursorClientVersion,
+              'x-cursor-config-version': uuidv4(),
+              'x-cursor-timezone': 'Asia/Tokyo',
+              'x-ghost-mode': 'true',
+              'x-request-id': uuidv4(),
+              'x-session-id': sessionid,
+              'Host': 'api2.cursor.sh',
+            },
+            body: cursorBody,
+            stream: true // 启用流式响应
+          }),
+          timeout: {
+            connect: 5000,
+            read: 30000
+          }
+        });
+      } else {
+        // 直接调用API，不使用TLS代理
+        logger.info('不使用TLS代理服务器，直接请求API');
+        response = await fetch('https://api2.cursor.sh/aiserver.v1.ChatService/StreamUnifiedChatWithTools', {
+          method: 'POST',
+          headers: {
+            'authorization': `Bearer ${authToken}`,
+            'connect-accept-encoding': 'gzip',
+            'connect-content-encoding': 'gzip',
+            'connect-protocol-version': '1',
+            'content-type': 'application/connect+proto',
+            'user-agent': 'connect-es/1.6.1',
+            'x-amzn-trace-id': `Root=${uuidv4()}`,
+            'x-client-key': clientKey,
+            'x-cursor-checksum': checksum,
+            'x-cursor-client-version': cursorClientVersion,
+            'x-cursor-config-version': uuidv4(),
+            'x-cursor-timezone': 'Asia/Shanghai',
+            'x-ghost-mode': 'true',
+            'x-request-id': uuidv4(),
+            'x-session-id': sessionid,
+            'Host': 'api2.cursor.sh',
+          },
+          body: cursorBody,
+          dispatcher: dispatcher,
+          timeout: {
+            connect: 5000,
+            read: 30000
+          }
+        });
+      }
+    } catch (fetchError) {
+      logger.error(`Fetch错误: ${fetchError.message}`);
+      
+      // 处理连接超时错误
+      const isConnectTimeout = fetchError.cause && 
+                             (fetchError.cause.code === 'UND_ERR_CONNECT_TIMEOUT' || 
+                              fetchError.message.includes('Connect Timeout Error'));
+      
+      // 构建错误响应
+      const errorMessage = isConnectTimeout 
+        ? `⚠️ 连接超时 ⚠️\n\n无法连接到API服务器(api2.cursor.sh)，请检查您的网络连接或尝试使用代理。`
+        : `⚠️ 请求失败 ⚠️\n\n错误: ${fetchError.message}`;
+
+      if (stream) {
+        // 流式响应格式的错误
+        const responseId = `chatcmpl-${uuidv4()}`;
+        res.write(
+          `data: ${JSON.stringify({
+            id: responseId,
+            object: 'chat.completion.chunk',
+            created: Math.floor(Date.now() / 1000),
+            model: req.body.model || 'unknown',
+            choices: [
+              {
+                index: 0,
+                delta: {
+                  content: errorMessage,
+                },
+              },
+            ],
+          })}\n\n`
+        );
+        res.write('data: [DONE]\n\n');
+        res.end();
+      } else {
+        // 非流式响应格式的错误
+        res.json({
+          id: `chatcmpl-${uuidv4()}`,
+          object: 'chat.completion',
+          created: Math.floor(Date.now() / 1000),
+          model: req.body.model || 'unknown',
+          choices: [
+            {
+              index: 0,
+              message: {
+                role: 'assistant',
+                content: errorMessage,
+              },
+              finish_reason: 'stop',
+            },
+          ],
+          usage: {
+            prompt_tokens: 0,
+            completion_tokens: 0,
+            total_tokens: 0,
+          },
+        });
+      }
+      return; // 重要：提前返回
+    }
+
+    // 处理响应
+    if (stream) {
+      res.setHeader('Content-Type', 'text/event-stream');
+      res.setHeader('Cache-Control', 'no-cache');
+      res.setHeader('Connection', 'keep-alive');
+
+      const responseId = `chatcmpl-${uuidv4()}`;
+      
+      try {
+        let responseEnded = false; // 添加标志，标记响应是否已结束
+        let accumulatedThinking = ''; // 累积thinking内容
+        let accumulatedContent = ''; // 累积content内容
+        
+        for await (const chunk of response.body) {
+          // 如果响应已结束，不再处理后续数据
+          if (responseEnded) {
+            continue;
+          }
+          
+          let result = {};
+          try {
+            result = chunkToUtf8String(chunk);
+          } catch (error) {
+            logger.error('解析响应块失败:', error);
+            // 提供默认的空结果，避免后续处理出错
+            result = {
+              reasoning_content: '', 
+              content: '',
+              error: `解析错误: ${error.message}`
+            };
+          }
+          
+          // 检查是否返回了错误对象
+          if (result && typeof result === 'object' && result.error) {
+            // 检查是否包含特定的无效cookie错误信息
+            const errorStr = typeof result.error === 'string' ? result.error : JSON.stringify(result.error);
+            
+            // 处理错误并获取结果
+            const errorResult = handleCursorError(errorStr, bearerToken, originalAuthToken);
+            
+            // 如果是需要移除的cookie，从API Key中移除
+            if (errorResult.shouldRemoveCookie) {
+              const removed = keyManager.removeCookieFromApiKey(bearerToken, originalAuthToken);
+              logger.info(`Cookie移除${removed ? '成功' : '失败'}`);
+              
+              // 如果成功移除，在错误消息中添加明确提示
+              if (removed) {
+                errorResult.message = `⚠️ 目前Cookie已从API Key中移除 ⚠️\n\n${errorResult.message}`;
+              }
+            }
+            
+            // 返回错误信息给客户端，作为assistant消息
+            res.write(
+              `data: ${JSON.stringify({
+                id: responseId,
+                object: 'chat.completion.chunk',
+                created: Math.floor(Date.now() / 1000),
+                model: req.body.model,
+                choices: [
+                  {
+                    index: 0,
+                    delta: {
+                      content: errorResult.message,
+                    },
+                  },
+                ],
+              })}\n\n`
+            );
+            
+            res.write('data: [DONE]\n\n');
+            responseEnded = true; // 标记响应已结束
+            break; // 跳出循环，不再处理后续数据
+          }
+
+          // 处理thinking内容
+          if (result.reasoning_content && result.reasoning_content.length > 0) {
+            // 累积thinking内容
+            accumulatedThinking += result.reasoning_content;
+            
+            // 发送accumulated thinking内容片段
+            res.write(
+              `data: ${JSON.stringify({
+                id: responseId,
+                object: 'chat.completion.chunk',
+                created: Math.floor(Date.now() / 1000),
+                model: req.body.model,
+                choices: [
+                  {
+                    index: 0,
+                    delta: {
+                      reasoning_content: result.reasoning_content,
+                    },
+                  },
+                ],
+              })}\n\n`
+            );
+          }
+
+          // 处理常规内容
+          if (result.content && result.content.length > 0) {
+            // 累积content内容
+            accumulatedContent += result.content;
+
+            // 发送content内容
+            res.write(
+              `data: ${JSON.stringify({
+                id: responseId,
+                object: 'chat.completion.chunk',
+                created: Math.floor(Date.now() / 1000),
+                model: req.body.model,
+                choices: [
+                  {
+                    index: 0,
+                    delta: {
+                      content: result.content,
+                    },
+                  },
+                ],
+              })}\n\n`
+            );
+          }
+        }
+        
+        // 在循环结束后，如果响应尚未结束，发送[DONE]信号并结束响应
+        if (!responseEnded) {
+          res.write('data: [DONE]\n\n');
+          res.end();
+        }
+      } catch (streamError) {
+        logger.error('Stream error:', streamError);
+        // 确保在发送错误信息前检查响应是否已结束
+        if (!res.writableEnded) {
+          if (streamError.name === 'TimeoutError') {
+            // 将超时错误作为assistant消息发送
+            const errorMessage = `⚠️ 请求超时 ⚠️\n\n错误：服务器响应超时，请稍后重试。`;
+            res.write(
+              `data: ${JSON.stringify({
+                id: responseId,
+                object: 'chat.completion.chunk',
+                created: Math.floor(Date.now() / 1000),
+                model: req.body.model,
+                choices: [
+                  {
+                    index: 0,
+                    delta: {
+                      content: errorMessage,
+                    },
+                  },
+                ],
+              })}\n\n`
+            );
+          } else {
+            // 将处理错误作为assistant消息发送
+            const errorMessage = `⚠️ 处理错误 ⚠️\n\n错误：流处理出错，请稍后重试。\n\n${streamError.message || ''}`;
+            res.write(
+              `data: ${JSON.stringify({
+                id: responseId,
+                object: 'chat.completion.chunk',
+                created: Math.floor(Date.now() / 1000),
+                model: req.body.model,
+                choices: [
+                  {
+                    index: 0,
+                    delta: {
+                      content: errorMessage,
+                    },
+                  },
+                ],
+              })}\n\n`
+            );
+          }
+          res.write('data: [DONE]\n\n');
+          res.end();
+        }
+      }
+    } else {
+      try {
+        let text = '';
+        let thinkingText = '';
+        let responseEnded = false; // 添加标志，标记响应是否已结束
+        
+        for await (const chunk of response.body) {
+          // 如果响应已结束，不再处理后续数据
+          if (responseEnded) {
+            continue;
+          }
+          
+          let result = {};
+          try {
+            result = chunkToUtf8String(chunk);
+          } catch (error) {
+            logger.error('非流式响应解析块失败:', error);
+            // 提供默认的空结果，避免后续处理出错
+            result = {
+              reasoning_content: '', 
+              content: '',
+              error: `解析错误: ${error.message}`
+            };
+          }
+          // 输出完整的result内容和类型，便于调试
+          //console.log("收到的非流式响应:", typeof result, result && typeof result === 'object' ? JSON.stringify(result) : result);
+          
+          // 检查是否返回了错误对象
+          if (result && typeof result === 'object' && result.error) {
+            //console.error('检测到错误响应:', result.error);
+            
+            // 检查是否包含特定的无效cookie错误信息
+            const errorStr = typeof result.error === 'string' ? result.error : JSON.stringify(result.error);
+            
+            // 处理错误并获取结果
+            const errorResult = handleCursorError(errorStr, bearerToken, originalAuthToken);
+            
+            // 如果是需要移除的cookie，从API Key中移除
+            if (errorResult.shouldRemoveCookie) {
+              const removed = keyManager.removeCookieFromApiKey(bearerToken, originalAuthToken);
+              logger.info(`Cookie移除${removed ? '成功' : '失败'}`);
+              
+              // 如果成功移除，在错误消息中添加明确提示
+              if (removed) {
+                errorResult.message = `⚠️ 目前Cookie已从API Key中移除 ⚠️\n\n${errorResult.message}`;
+              }
+            }
+            
+            // 无效cookie错误，格式化为assistant消息
+            res.json({
+              id: `chatcmpl-${uuidv4()}`,
+              object: 'chat.completion',
+              created: Math.floor(Date.now() / 1000),
+              model,
+              choices: [
+                {
+                  index: 0,
+                  message: {
+                    role: 'assistant',
+                    content: errorResult.message,
+                  },
+                  finish_reason: 'stop',
+                },
+              ],
+              usage: {
+                prompt_tokens: 0,
+                completion_tokens: 0,
+                total_tokens: 0,
+              },
+            });
+            
+            responseEnded = true; // 标记响应已结束
+            break; // 跳出循环，不再处理后续数据
+          }
+          
+          // 处理thinking内容
+          if (result.reasoning_content && result.reasoning_content.length > 0) {
+            thinkingText += result.reasoning_content;
+          }
+          
+          // 处理正常文本内容
+          if (result.content && typeof result.content === 'string') {
+            text += result.content;
+          }
+        }
+        
+        // 只有在响应尚未结束的情况下，才处理和返回结果
+        if (!responseEnded) {
+          // 对解析后的字符串进行进一步处理
+          text = text.replace(/^.*<\|END_USER\|>/s, '');
+          text = text.replace(/^\n[a-zA-Z]?/, '').trim();
+          
+          // 用于非酒馆想要显示的思维链的如果存在thinking内容，添加标签
+          // let finalContent = text;
+          // if (thinkingText.length > 0) {
+          //   finalContent = `<think>\n${thinkingText}\n</think>\n${text}`;
+          //   logger.info("finalContent:", finalContent);
+          // }
+
+          res.json({
+            id: `chatcmpl-${uuidv4()}`,
+            object: 'chat.completion',
+            created: Math.floor(Date.now() / 1000),
+            model,
+            choices: [
+              {
+                index: 0,
+                message: {
+                  role: 'assistant',
+                  reasoning_content: thinkingText,
+                  content: text,
+                },
+                finish_reason: 'stop',
+              },
+            ],
+            usage: {
+              prompt_tokens: 0,
+              completion_tokens: 0,
+              total_tokens: 0,
+            },
+          });
+        }
+      } catch (error) {
+        logger.error('Non-stream error:', error);
+        // 确保在发送错误信息前检查响应是否已结束
+        if (!res.headersSent) {
+          if (error.name === 'TimeoutError') {
+            // 使用统一的错误格式
+            const errorMessage = `⚠️ 请求超时 ⚠️\n\n错误：服务器响应超时，请稍后重试。`;
+            return res.json({
+              id: `chatcmpl-${uuidv4()}`,
+              object: 'chat.completion',
+              created: Math.floor(Date.now() / 1000),
+              model: req.body.model || 'unknown',
+              choices: [
+                {
+                  index: 0,
+                  message: {
+                    role: 'assistant',
+                    content: errorMessage,
+                  },
+                  finish_reason: 'stop',
+                },
+              ],
+              usage: {
+                prompt_tokens: 0,
+                completion_tokens: 0,
+                total_tokens: 0,
+              },
+            });
+          }
+          throw error;
+        }
+      }
+    }
+  } catch (error) {
+    logger.error('Error:', error);
+    if (!res.headersSent) {
+      const errorText = error.name === 'TimeoutError' ? '请求超时' : '服务器内部错误';
+      
+      if (req.body.stream) {
+        // 流式响应格式的错误
+        const responseId = `chatcmpl-${uuidv4()}`;
+        // 添加清晰的错误提示
+        const errorMessage = `⚠️ 请求失败 ⚠️\n\n错误：${errorText}，请稍后重试。\n\n${error.message || ''}`;
+        res.write(
+          `data: ${JSON.stringify({
+            id: responseId,
+            object: 'chat.completion.chunk',
+            created: Math.floor(Date.now() / 1000),
+            model: req.body.model || 'unknown',
+            choices: [
+              {
+                index: 0,
+                delta: {
+                  content: errorMessage,
+                },
+              },
+            ],
+          })}\n\n`
+        );
+        res.write('data: [DONE]\n\n');
+        res.end();
+      } else {
+        // 非流式响应格式的错误
+        // 添加清晰的错误提示
+        const errorMessage = `⚠️ 请求失败 ⚠️\n\n错误：${errorText}，请稍后重试。\n\n${error.message || ''}`;
+        res.json({
+          id: `chatcmpl-${uuidv4()}`,
+          object: 'chat.completion',
+          created: Math.floor(Date.now() / 1000),
+          model: req.body.model || 'unknown',
+          choices: [
+            {
+              index: 0,
+              message: {
+                role: 'assistant',
+                content: errorMessage,
+              },
+              finish_reason: 'stop',
+            },
+          ],
+          usage: {
+            prompt_tokens: 0,
+            completion_tokens: 0,
+            total_tokens: 0,
+          },
+        });
+      }
+    }
+  }
+});
+
+// 触发Cookie刷新
+router.post("/refresh-cookies", async (req, res) => {
+  try {
+    // 如果已经有刷新进程在运行，则返回错误
+    if (refreshStatus.isRunning) {
+      return res.status(409).json({
+        success: false,
+        message: '已有刷新进程在运行，请等待完成后再试'
+      });
+    }
+    
+    // 获取请求参数
+    const apiKey = req.query.apiKey || '';
+    
+    // 重置刷新状态
+    refreshStatus = {
+      isRunning: true,
+      status: 'running',
+      message: '正在启动刷新进程...',
+      startTime: new Date(),
+      endTime: null,
+      error: null
+    };
+    
+    logger.info(`收到刷新Cookie请求，API Key: ${apiKey || '所有'}`);
+    
+    // 构建命令行参数
+    const args = [];
+    if (apiKey) {
+      args.push(apiKey);
+    }
+    
+    // 获取auto-refresh-cookies.js的绝对路径
+    const scriptPath = path.resolve(__dirname, '../../auto-refresh-cookies.js');
+    
+    // 启动子进程执行刷新脚本
+    const refreshProcess = spawn('node', [scriptPath, ...args], {
+      stdio: ['ignore', 'pipe', 'pipe']
+    });
+    
+    // 收集输出
+    let output = '';
+    
+    refreshProcess.stdout.on('data', (data) => {
+      const text = data.toString();
+      output += text;
+      logger.info(`刷新进程输出: ${text}`);
+      
+      // 更新状态消息
+      if (text.includes('开始自动刷新')) {
+        refreshStatus.message = '正在刷新Cookie...';
+      } else if (text.includes('刷新结果:')) {
+        refreshStatus.message = text.trim();
+      }
+    });
+    
+    refreshProcess.stderr.on('data', (data) => {
+      const text = data.toString();
+      output += text;
+      logger.error(`刷新进程错误: ${text}`);
+      
+      // 更新错误信息
+      refreshStatus.error = text.trim();
+      refreshStatus.message = `发生错误: ${text.trim()}`;
+    });
+    
+    refreshProcess.on('close', (code) => {
+      logger.info(`刷新进程退出，代码: ${code}`);
+      
+      refreshStatus.isRunning = false;
+      refreshStatus.endTime = new Date();
+      
+      if (code === 0) {
+        refreshStatus.status = 'completed';
+        
+        // 提取成功信息
+        const successMatch = output.match(/成功刷新 (\d+) 个/);
+        if (successMatch) {
+          refreshStatus.message = `成功刷新 ${successMatch[1]} 个API Key的Cookie`;
+        } else {
+          refreshStatus.message = '刷新完成';
+        }
+        
+        // 子进程执行完成后，重新初始化API Keys来加载新的Cookie
+        try {
+          const keyManager = require('../utils/keyManager');
+          logger.info('子进程刷新Cookie完成，重新初始化主进程中的API Keys...');
+          keyManager.initializeApiKeys();
+          logger.info('主进程API Keys重新加载完成');
+        } catch (initError) {
+          logger.error('重新初始化API Keys失败:', initError);
+        }
+      } else {
+        refreshStatus.status = 'failed';
+        refreshStatus.message = refreshStatus.error || '刷新失败，请查看服务器日志';
+      }
+    });
+    
+    // 立即返回响应，不等待刷新完成
+    return res.json({
+      success: true,
+      message: '刷新请求已接受，正在后台处理'
+    });
+  } catch (error) {
+    logger.error('触发刷新Cookie失败:', error);
+    
+    // 更新刷新状态
+    refreshStatus.isRunning = false;
+    refreshStatus.status = 'failed';
+    refreshStatus.endTime = new Date();
+    refreshStatus.error = error.message;
+    refreshStatus.message = `触发刷新失败: ${error.message}`;
+    
+    return res.status(500).json({
+      success: false,
+      message: `触发刷新失败: ${error.message}`
+    });
+  }
+});
+
+// 查询Cookie刷新状态
+router.get("/refresh-status", (req, res) => {
+  try {
+    // 返回当前刷新状态
+    return res.json({
+      success: true,
+      data: {
+        ...refreshStatus,
+        isRunning: refreshStatus.isRunning || false,
+        status: refreshStatus.status || 'unknown',
+        message: refreshStatus.message || '未触发刷新',
+        startTime: refreshStatus.startTime || null,
+        endTime: refreshStatus.endTime || null
+      }
+    });
+  } catch (error) {
+    logger.error('获取刷新状态失败:', error);
+    return res.status(500).json({
+      success: false,
+      message: `获取刷新状态失败: ${error.message}`
+    });
+  }
+});
+
+// 生成获取Cookie的链接
+router.post('/generate-cookie-link', async (req, res) => {
+  try {
+    // 验证管理员权限
+    const authHeader = req.headers.authorization;
+    if (!authHeader || !authHeader.startsWith('Bearer ')) {
+      return res.status(401).json({
+        success: false,
+        message: '未提供认证token'
+      });
+    }
+    
+    const token = authHeader.split(' ')[1];
+    const authResult = admin.verifyToken(token);
+    
+    if (!authResult.success) {
+      return res.status(401).json({
+        success: false,
+        message: '认证失败'
+      });
+    }
+    
+    // 生成UUID和PKCE验证器
+    const uuid = uuidv4();
+    const verifier = crypto.randomBytes(32).toString('base64url');
+    const challenge = crypto.createHash('sha256').update(verifier).digest('base64url');
+
+    // 生成登录链接
+    const loginUrl = `https://www.cursor.com/ja/loginDeepControl?challenge=${challenge}&uuid=${uuid}&mode=login`;
+    
+    // 记录请求信息
+    pendingCookieRequests.set(uuid, {
+      uuid,
+      verifier,
+      status: 'waiting',
+      created: Date.now(),
+      apiKey: req.body.apiKey || '', // 目标API Key，空字符串表示所有API Key
+      lastCheck: Date.now(),
+      cookie: null
+    });
+    
+    // 设置60分钟后自动清理
+    setTimeout(() => {
+      if (pendingCookieRequests.has(uuid)) {
+        pendingCookieRequests.delete(uuid);
+      }
+    }, 60 * 60 * 1000);
+    
+    return res.json({
+      success: true,
+      url: loginUrl,
+      uuid: uuid
+    });
+  } catch (error) {
+    logger.error('生成Cookie链接失败:', error);
+    return res.status(500).json({
+      success: false,
+      message: error.message
+    });
+  }
+});
+
+// 查询Cookie获取状态
+router.get('/check-cookie-status', async (req, res) => {
+  try {
+    const { uuid } = req.query;
+    
+    if (!uuid || !pendingCookieRequests.has(uuid)) {
+      return res.json({
+        success: false,
+        status: 'failed',
+        message: '无效的UUID或请求已过期'
+      });
+    }
+    
+    const request = pendingCookieRequests.get(uuid);
+    request.lastCheck = Date.now();
+    
+    // 检查状态
+    if (request.status === 'waiting') {
+      // 检查Cursor API获取token
+      try {
+        const apiUrl = `https://api2.cursor.sh/auth/poll?uuid=${uuid}&verifier=${request.verifier}`;
+        const response = await fetch(apiUrl, {
+          method: 'GET',
+          headers: {
+            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.6834.210 Safari/537.36',
+            'Accept': '*/*',
+            'Origin': 'vscode-file://vscode-app',
+            'x-ghost-mode': 'true'
+          },
+          timeout: 5000
+        });
+        
+        if (response.ok) {
+          const data = await response.json();
+          
+          if (data && data.accessToken) {
+            // 获取到了Cookie
+            request.cookie = data.accessToken;
+            request.status = 'success';
+            
+            // 将Cookie添加到目标API Key
+            let message = '';
+            
+            if (request.apiKey) {
+              // 添加到特定API Key
+              const apiKey = request.apiKey;
+              const cookies = keyManager.getAllCookiesForApiKey(apiKey) || [];
+              cookies.push(request.cookie);
+              keyManager.addOrUpdateApiKey(apiKey, cookies);
+              message = `Cookie已添加到API Key: ${apiKey}`;
+            } else {
+              // 添加到所有API Key
+              const apiKeys = keyManager.getAllApiKeys();
+              for (const apiKey of apiKeys) {
+                const cookies = keyManager.getAllCookiesForApiKey(apiKey) || [];
+                cookies.push(request.cookie);
+                keyManager.addOrUpdateApiKey(apiKey, cookies);
+              }
+              message = `Cookie已添加到所有API Key，共${apiKeys.length}个`;
+            }
+            
+            // 完成后从等待列表中移除
+            pendingCookieRequests.delete(uuid);
+            
+            return res.json({
+              success: true,
+              message: message
+            });
+          }
+        }
+        
+        // 如果没有获取到Cookie，继续等待
+        return res.json({
+          success: false,
+          status: 'waiting'
+        });
+        
+      } catch (error) {
+        logger.error('查询Cursor API失败:', error);
+        // 发生错误但继续等待，不改变状态
+        return res.json({
+          success: false,
+          status: 'waiting',
+          message: '轮询过程中出现错误，继续等待'
+        });
+      }
+    } else if (request.status === 'success') {
+      // 已成功，返回结果
+      const message = request.apiKey 
+        ? `Cookie已添加到API Key: ${request.apiKey}`
+        : `Cookie已添加到所有API Key`;
+      
+      // 完成后从等待列表中移除
+      pendingCookieRequests.delete(uuid);
+      
+      return res.json({
+        success: true,
+        message: message
+      });
+    } else {
+      // 失败
+      pendingCookieRequests.delete(uuid);
+      return res.json({
+        success: false,
+        status: 'failed',
+        message: '获取Cookie失败'
+      });
+    }
+  } catch (error) {
+    logger.error('检查Cookie状态失败:', error);
+    return res.status(500).json({
+      success: false,
+      status: 'failed',
+      message: error.message
+    });
+  }
+});
+
+// 获取日志API
+router.get("/logs", (req, res) => {
+  try {
+    // 获取查询参数
+    const level = req.query.level;
+    const search = req.query.search;
+    const page = parseInt(req.query.page) || 1;
+    const pageSize = parseInt(req.query.pageSize) || 100;
+    const startTime = req.query.startTime;
+    const endTime = req.query.endTime;
+    
+    // 过滤参数
+    const filter = {
+      level,
+      search,
+      page,
+      pageSize,
+      startTime,
+      endTime
+    };
+    
+    // 获取日志
+    const logs = logger.getLogs(filter);
+    
+    return res.json({
+      success: true,
+      data: logs
+    });
+  } catch (error) {
+    logger.error('获取日志失败:', error);
+    return res.status(500).json({
+      success: false,
+      message: `获取日志失败: ${error.message}`
+    });
+  }
+});
+
+// 清除内存日志
+router.delete("/logs", (req, res) => {
+  try {
+    logger.clearMemoryLogs();
+    return res.json({
+      success: true,
+      message: '日志已清除'
+    });
+  } catch (error) {
+    logger.error('清除日志失败:', error);
+    return res.status(500).json({
+      success: false,
+      message: `清除日志失败: ${error.message}`
+    });
+  }
+});
+async function others(authToken, clientKey, checksum, cursorClientVersion, sessionid){
+  try {
+    // 定义所有API端点配置
+    const endpoints = [
+      {
+        url: 'https://api2.cursor.sh/aiserver.v1.AiService/CheckFeatureStatus',
+        method: 'POST',
+        headers: {
+          'accept-encoding': 'gzip',
+          'authorization': `Bearer ${authToken}`,
+          'connect-protocol-version': '1',
+          'content-type': 'application/proto',
+          'user-agent': 'connect-es/1.6.1',
+          'x-client-key': clientKey,
+          'x-cursor-checksum': checksum,
+          'x-cursor-client-version': cursorClientVersion,
+          'x-cursor-config-version': uuidv4(),
+          'x-cursor-timezone': 'Asia/Tokyo',
+          'x-ghost-mode': 'true',
+          'x-new-onboarding-completed': 'false',
+          'x-session-id': sessionid,
+          'Host': 'api2.cursor.sh',
+        },
+        body: '', // 实际长度为23字节
+        timeout: {
+          connect: 5000,
+          read: 30000
+        }
+      },
+      {
+        url: 'https://api2.cursor.sh/aiserver.v1.AiService/AvailableDocs',
+        method: 'POST',
+        headers: {
+          'authorization': `Bearer ${authToken}`,
+          'connect-accept-encoding': 'gzip',
+          'connect-protocol-version': '1',
+          'content-type': 'application/proto',
+          'user-agent': 'connect-es/1.6.1',
+          'x-amzn-trace-id': `Root=${uuidv4()}`,
+          'x-client-key': clientKey,
+          'x-cursor-checksum': checksum,
+          'x-cursor-client-version': cursorClientVersion,
+          'x-cursor-config-version': uuidv4(),
+          'x-cursor-timezone': 'Asia/Tokyo',
+          'x-ghost-mode': 'true',
+          'x-request-id': uuidv4(),
+          'x-session-id': sessionid,
+          'Host': 'api2.cursor.sh',
+        },
+        timeout: {
+          connect: 5000,
+          read: 30000
+        }
+      },
+      {
+        url: 'https://api2.cursor.sh/aiserver.v1.DashboardService/GetTeams',
+        method: 'POST',
+        headers: {
+          'accept-encoding': 'gzip',
+          'authorization': `Bearer ${authToken}`,
+          'connect-protocol-version': '1',
+          'content-type': 'application/proto',
+          'user-agent': 'connect-es/1.6.1',
+          'x-amzn-trace-id': `Root=${uuidv4()}`,
+          'x-client-key': clientKey,
+          'x-cursor-checksum': checksum,
+          'x-cursor-client-version': cursorClientVersion,
+          'x-cursor-config-version': uuidv4(),
+          'x-cursor-timezone': 'Asia/Tokyo',
+          'x-ghost-mode': 'true',
+          'x-new-onboarding-completed': 'false',
+          'x-request-id': uuidv4(),
+          'x-session-id': sessionid,
+          'Host': 'api2.cursor.sh',
+        },
+        body: '',
+        timeout: {
+          connect: 5000,
+          read: 30000
+        }
+      },
+      {
+        url: 'https://api2.cursor.sh/auth/full_stripe_profile',
+        method: 'GET',
+        headers: {
+          'Host': 'api2.cursor.sh',
+          'Connection': 'keep-alive',
+          'Authorization': `Bearer ${authToken}`,
+          'x-new-onboarding-completed': 'false',
+          'x-ghost-mode': 'true',
+          'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Cursor/0.49.4 Chrome/132.0.6834.210 Electron/34.3.4 Safari/537.36',
+          'Accept': '*/*',
+          'Origin': 'vscode-file://vscode-app',
+          'Sec-Fetch-Site': 'cross-site',
+          'Sec-Fetch-Mode': 'cors',
+          'Sec-Fetch-Dest': 'empty',
+          'Accept-Encoding': 'gzip, deflate, br, zstd',
+          'Accept-Language': 'zh-CN'
+        },
+        timeout: {
+          connect: 5000,
+          read: 30000
+        }
+      },
+      {
+        url: 'https://api2.cursor.sh/aiserver.v1.DashboardService/GetUsageBasedPremiumRequests',
+        method: 'POST',
+        headers: {
+          'accept-encoding': 'gzip',
+          'authorization': `Bearer ${authToken}`,
+          'connect-protocol-version': '1',
+          'content-type': 'application/proto',
+          'user-agent': 'connect-es/1.6.1',
+          'x-client-key': clientKey,
+          'x-cursor-checksum': checksum,
+          'x-cursor-client-version': cursorClientVersion,
+          'x-cursor-config-version': uuidv4(),
+          'x-cursor-timezone': 'Asia/Tokyo',
+          'x-ghost-mode': 'true',
+          'x-new-onboarding-completed': 'false',
+          'x-session-id': sessionid,
+          'Host': 'api2.cursor.sh',
+        },
+        body: '',
+        timeout: {
+          connect: 5000,
+          read: 30000
+        }
+      },
+      {
+        url: 'https://api2.cursor.sh/aiserver.v1.DashboardService/GetHardLimit',
+        method: 'POST',
+        headers: {
+          'accept-encoding': 'gzip',
+          'authorization': `Bearer ${authToken}`,
+          'connect-protocol-version': '1',
+          'content-type': 'application/proto',
+          'user-agent': 'connect-es/1.6.1',
+          'x-client-key': clientKey,
+          'x-cursor-checksum': checksum,
+          'x-cursor-client-version': cursorClientVersion,
+          'x-cursor-config-version': uuidv4(),
+          'x-cursor-timezone': 'Asia/Tokyo',
+          'x-ghost-mode': 'true',
+          'x-new-onboarding-completed': 'false',
+          'x-session-id': sessionid,
+          'Host': 'api2.cursor.sh',
+        },
+        body: '',
+        timeout: {
+          connect: 5000,
+          read: 30000
+        }
+      }
+    ];
+
+    // 随机选择2-4个接口调用
+    const minApis = 2;
+    const maxApis = 4;
+    const numApisToCall = Math.floor(Math.random() * (maxApis - minApis + 1)) + minApis;
+    
+    // 随机打乱数组并取前几个元素
+    const shuffledEndpoints = [...endpoints].sort(() => 0.5 - Math.random()).slice(0, numApisToCall);
+    
+    // 检查是否使用辅助代理服务器
+    const useOthersProxy = process.env.USE_OTHERS_PROXY === 'true';
+    
+    // 使用Promise.allSettled确保即使一个请求失败也不会影响其他请求
+    const results = await Promise.allSettled(shuffledEndpoints.map(async (endpoint) => {
+      try {
+        let response;
+        
+        if (useOthersProxy) {
+          // 使用代理服务器方式
+          logger.debug(`使用辅助代理服务器请求: ${endpoint.url}`);
+          // 构造代理请求对象
+          const proxyPayload = {
+            url: endpoint.url,
+            method: endpoint.method,
+            headers: endpoint.headers,
+            body: endpoint.body || undefined,
+            stream: false
+          };
+          
+          // 使用代理服务器
+          response = await fetch('http://localhost:10654/proxy', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(proxyPayload),
+            // 保留原超时设置
+            timeout: endpoint.timeout
+          });
+        } else {
+          // 直接请求方式
+          logger.debug(`直接请求: ${endpoint.url}`);
+          response = await fetch(endpoint.url, {
+            method: endpoint.method,
+            headers: endpoint.headers,
+            body: endpoint.body || undefined,
+            timeout: endpoint.timeout
+          });
+        }
+        
+        return {
+          url: endpoint.url,
+          status: response.status,
+          success: true
+        };
+      } catch (error) {
+        // 记录单个请求的错误，但不中断整体流程
+        logger.debug(`其它API调用失败 (${endpoint.url}): ${error.message}`);
+        return {
+          url: endpoint.url,
+          success: false,
+          error: error.message
+        };
+      }
+    }));
+    
+    // 记录请求结果统计
+    const successCount = results.filter(r => r.status === 'fulfilled' && r.value.success).length;
+    logger.debug(`其它API调用完成: 成功 ${successCount}/${results.length}`);
+    
+    return true;
+  } catch (error) {
+    // 记录整体错误，但不影响主流程
+    logger.error(`others函数执行出错: ${error.message}`);
+    return false;
+  }
+}
+// 在文件末尾添加错误处理函数
+function handleCursorError(errorStr, bearerToken, originalAuthToken) {
+  let message = '';
+  let shouldRemoveCookie = false;
+  
+  if (errorStr.includes('Not logged in')) {
+    // 更明确的错误日志
+    if (originalAuthToken === bearerToken) {
+      logger.error(`检测到API Key "${bearerToken}" 中没有可用Cookie，正在尝试以向后兼容模式使用API Key本身`);
+      message = `错误：API Key "${bearerToken}" 中没有可用的Cookie。请添加有效的Cookie到此API Key，或使用其他有效的API Key。\n\n详细信息：${errorStr}`;
+    } else {
+      logger.error('检测到无效cookie:', originalAuthToken);
+      message = `错误：Cookie无效或已过期，请更新Cookie。\n\n详细信息：${errorStr}`;
+    }
+    shouldRemoveCookie = true;
+  } else if (errorStr.includes('You\'ve reached your trial request limit') || errorStr.includes('You\'ve reached the usage limit for free usage')) {
+    logger.error('检测到额度用尽cookie:', originalAuthToken);
+    message = `错误：Cookie使用额度已用完，请更换Cookie或等待刷新。\n\n详细信息：${errorStr}`;
+    shouldRemoveCookie = true;
+  } else if (errorStr.includes('User is unauthorized')) {
+    logger.error('检测到未授权cookie:', originalAuthToken);
+    message = `错误：Cookie已被封禁或失效，请更换Cookie。\n\n详细信息：${errorStr}`;
+    shouldRemoveCookie = true;
+  } else if (errorStr.includes('suspicious activity checks')) {
+    logger.error('检测到IP黑名单:', originalAuthToken);
+    message = `错误：IP可能被列入黑名单，请尝试更换网络环境或使用代理。\n\n详细信息：${errorStr}`;
+    shouldRemoveCookie = false;
+  } else if (errorStr.includes('Too many computers')) {
+    logger.error('检测到账户暂时被封禁:', originalAuthToken);
+    message = `错误：账户因在多台设备登录而暂时被封禁，请稍后再试或更换账户。\n\n详细信息：${errorStr}`;
+    shouldRemoveCookie = true;
+  } else if (errorStr.includes('Login expired') || errorStr.includes('login expired')) {
+    logger.error('检测到登录过期cookie:', originalAuthToken);
+    message = `错误：Cookie登录已过期，请更新Cookie。\n\n详细信息：${errorStr}`;
+    shouldRemoveCookie = true;
+  } else if(errorStr.includes('your request has been blocked due to the use of a temporary email service for this account')) {
+    logger.error('检测到临时邮箱:', originalAuthToken);
+    message = `错误：请求被阻止，检测到临时邮箱服务，请更换邮箱。\n\n详细信息：${errorStr}`;
+    shouldRemoveCookie = true;
+  } else if (errorStr.includes('Your request has been blocked as our system has detected suspicious activity from your account')) {
+    logger.error('检测到账户异常:', originalAuthToken);
+    message = `错误：请求被阻止，可能是假ban，多重试几次/更换cookie/更换设备。\n\n详细信息：${errorStr}`;
+    shouldRemoveCookie = false;
+  } else {
+    // 非Cookie相关错误
+    logger.error('检测到其他错误:', errorStr);
+    message = `错误：请求失败。\n\n详细信息：${errorStr}`;
+    shouldRemoveCookie = false;
+  }
+  
+  return {
+    message,
+    shouldRemoveCookie
+  };
+}
+
+module.exports = router;

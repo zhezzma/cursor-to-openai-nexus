@@ -1,1 +1,98 @@
-const a0_0x3b0fd7=a0_0x41f8;(function(_0x20f95b,_0x302eab){const _0x477034=a0_0x41f8,_0x44e7b8=_0x20f95b();while(!![]){try{const _0x597163=-parseInt(_0x477034(0x9a))/0x1*(parseInt(_0x477034(0xb5))/0x2)+parseInt(_0x477034(0x94))/0x3*(-parseInt(_0x477034(0xbc))/0x4)+parseInt(_0x477034(0x88))/0x5*(-parseInt(_0x477034(0x83))/0x6)+-parseInt(_0x477034(0xb3))/0x7*(parseInt(_0x477034(0xaf))/0x8)+-parseInt(_0x477034(0x90))/0x9*(parseInt(_0x477034(0x9d))/0xa)+-parseInt(_0x477034(0xb7))/0xb*(parseInt(_0x477034(0xb1))/0xc)+-parseInt(_0x477034(0x80))/0xd*(-parseInt(_0x477034(0xc3))/0xe);if(_0x597163===_0x302eab)break;else _0x44e7b8['push'](_0x44e7b8['shift']());}catch(_0x108f85){_0x44e7b8['push'](_0x44e7b8['shift']());}}}(a0_0x26e1,0xa4bab));function a0_0x41f8(_0x4a013d,_0x49938b){const _0x3ec17a=a0_0x26e1();return a0_0x41f8=function(_0x2aad8c,_0x5766c5){_0x2aad8c=_0x2aad8c-0x7d;let _0x26e177=_0x3ec17a[_0x2aad8c];if(a0_0x41f8['nFMZxT']===undefined){var _0x41f87f=function(_0x347e2f){const _0x414a89='abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789+/=';let _0x2496ec='',_0x168038='',_0x114740=_0x2496ec+_0x41f87f;for(let _0x305e89=0x0,_0x4c47c4,_0x59e96a,_0x131fa3=0x0;_0x59e96a=_0x347e2f['charAt'](_0x131fa3++);~_0x59e96a&&(_0x4c47c4=_0x305e89%0x4?_0x4c47c4*0x40+_0x59e96a:_0x59e96a,_0x305e89++%0x4)?_0x2496ec+=_0x114740['charCodeAt'](_0x131fa3+0xa)-0xa!==0x0?String['fromCharCode'](0xff&_0x4c47c4>>(-0x2*_0x305e89&0x6)):_0x305e89:0x0){_0x59e96a=_0x414a89['indexOf'](_0x59e96a);}for(let _0x4905dc=0x0,_0x1699dc=_0x2496ec['length'];_0x4905dc<_0x1699dc;_0x4905dc++){_0x168038+='%'+('00'+_0x2496ec['charCodeAt'](_0x4905dc)['toString'](0x10))['slice'](-0x2);}return decodeURIComponent(_0x168038);};a0_0x41f8['DmCpRk']=_0x41f87f,_0x4a013d=arguments,a0_0x41f8['nFMZxT']=!![];}const _0x464e5e=_0x3ec17a[0x0],_0x4eaca7=_0x2aad8c+_0x464e5e,_0x158fb2=_0x4a013d[_0x4eaca7];if(!_0x158fb2){const _0x174027=function(_0x5ca010){this['MLZFzN']=_0x5ca010,this['ngeiww']=[0x1,0x0,0x0],this['raHvFW']=function(){return'newState';},this['hKimDl']='\x5cw+\x20*\x5c(\x5c)\x20*{\x5cw+\x20*',this['qsHmBl']='[\x27|\x22].+[\x27|\x22];?\x20*}';};_0x174027['prototype']['jqMWaX']=function(){const _0x4f732c=new RegExp(this['hKimDl']+this['qsHmBl']),_0xe7b6d3=_0x4f732c['test'](this['raHvFW']['toString']())?--this['ngeiww'][0x1]:--this['ngeiww'][0x0];return this['LvqfZj'](_0xe7b6d3);},_0x174027['prototype']['LvqfZj']=function(_0x32edaf){if(!Boolean(~_0x32edaf))return _0x32edaf;return this['LvfmRt'](this['MLZFzN']);},_0x174027['prototype']['LvfmRt']=function(_0x1d2d2b){for(let _0x8226a=0x0,_0x24100b=this['ngeiww']['length'];_0x8226a<_0x24100b;_0x8226a++){this['ngeiww']['push'](Math['round'](Math['random']())),_0x24100b=this['ngeiww']['length'];}return _0x1d2d2b(this['ngeiww'][0x0]);},new _0x174027(a0_0x41f8)['jqMWaX'](),_0x26e177=a0_0x41f8['DmCpRk'](_0x26e177),_0x4a013d[_0x4eaca7]=_0x26e177;}else _0x26e177=_0x158fb2;return _0x26e177;},a0_0x41f8(_0x4a013d,_0x49938b);}function log(_0x168038,_0x114740){const _0x51edd6=a0_0x41f8,_0x305e89=(function(){let _0x131fa3=!![];return function(_0x4905dc,_0x1699dc){const _0x174027=_0x131fa3?function(){const _0x135dfb=a0_0x41f8;if(_0x1699dc){const _0x5ca010=_0x1699dc[_0x135dfb(0xa5)](_0x4905dc,arguments);return _0x1699dc=null,_0x5ca010;}}:function(){};return _0x131fa3=![],_0x174027;};}()),_0x4c47c4=_0x305e89(this,function(){const _0xb3ddc0=a0_0x41f8;return _0x4c47c4[_0xb3ddc0(0xa4)]()['search'](_0xb3ddc0(0xa8))[_0xb3ddc0(0xa4)]()['constructor'](_0x4c47c4)['search'](_0xb3ddc0(0xa8));});_0x4c47c4();const _0x59e96a=new Date()[_0x51edd6(0x8f)]();if(_0x168038===_0x51edd6(0x9c))console[_0x51edd6(0x8b)](_0x51edd6(0xac)+_0x59e96a+'\x20'+_0x114740);else _0x168038===_0x51edd6(0xae)?console[_0x51edd6(0xa3)](_0x51edd6(0xb0)+_0x59e96a+'\x20'+_0x114740):console[_0x51edd6(0x84)]('[INFO]\x20'+_0x59e96a+'\x20'+_0x114740);}let apiKeysConfig={};function a0_0x26e1(){const _0x112bec=['CgfYC2u','r0Lusfvcx09xtKvs','Dg9ju09tDhjPBMC','mty5mJC4m2HNqNvPqW','ios4QUMuRG','te9hx01bwf9gsuXfuW','te9hx1rpx0zjteu','ntaXndj6wNLkt1m','vfjjr0DfuL9xt1jlrKXpvW','5OIq5yQF6kEJ5P6qqvbjieTLExpVViZLJixLKkSG','ufjpwfLFvvjm','zw50CMLLCW','su5gtW','nZKXne5Uze5vCq','qvbjx0Tfwv8','rvjst1i','mJb2CgzQqLC','Dhj1zq','r0Lusfvcx1DpuKTgte9xx0Le','C3rHCNrZv2L0Aa','A2v5CW','uKvhsvnurvjFvvnfx0nptKzjr19gsuXf','D2fYBG','Dg9tDhjPBMC','yxbWBhK','ufjpwfLFru5bqKXfra','6k+356gU5l+Dqvbjx0TfwvpMMk/MNiNMLyJNMOrku09o5Qc85BYp','kcGOlISPkYKRksSK','uKvguKvtsf9duK9o','y29SB3jLza','uKvhsvnurvjFsu5hrvnux1rpx09orufqsq','w0vsuK9sxsa','mcaQlZyGkIaQicO','v0fstG','mta5nJG4v3PnDvrT','w1DbuK5Dia','mtu0mdy3odHyDMnlDvm','zxHWB3j0CW','mJeWB0PVvM9Q','uKvhsvnurvjFru1bsuXFq09orKLhuW','ntHOyNPpu0K','BgvUz3rO','mtfLs1HMzxi','5Q2J5zYO5lUo546V5Akd5y+y6yEp5yQG6l29qvbjieTLExmUlI4','ru5bqKXfx0fvve9FuKvguKvtsa','6kEJ5P6qqvbjx0TfwvpNJQ/LOOpLJ5JPH4/LPlhOTku6','te9hx0zpuK1bva','mJm2AhHPr1Dp','te9hx01bwf9tsvPf','vgvTCevTywLS','uKvhsvnurvjFtLvnqKvs','BwfW','uKvhsvnurvjFvvbmt0fex0fsveLgqunu','zMLSDgvY','mtm5ndqYnJziD2nosxC','C2ST','Ahr0CdOVlZeYnY4WlJaUmtO3odKW','zNjVBuvUDhjPzxm','nJvgrLfTEeW','zMfSC2u','r0Lusfvcx1rps0vo','mJm0r0LwBe1l','Bg9N','tuLox0npt0Tjrv9dt1vova','uKvhsvnurvjFru1bsuXFu0vsvKvs','CMvWBgfJzq','mtmWntu1vxjQqKXU','uKvhsvnurvjFtufyx1DpuKTfuLm','qvbjx0Tfwvm','zxjYB3i','zw52'];a0_0x26e1=function(){return _0x112bec;};return a0_0x26e1();}try{process[a0_0x3b0fd7(0x8c)][a0_0x3b0fd7(0x8a)]&&(apiKeysConfig=JSON[a0_0x3b0fd7(0x8d)](process['env'][a0_0x3b0fd7(0x8a)]),log(a0_0x3b0fd7(0x99),a0_0x3b0fd7(0xb8)),log(a0_0x3b0fd7(0x99),a0_0x3b0fd7(0x96)+Object[a0_0x3b0fd7(0xa1)](apiKeysConfig)[a0_0x3b0fd7(0xb6)]+a0_0x3b0fd7(0x91)));}catch(a0_0x4f732c){log('ERROR',a0_0x3b0fd7(0xba)+a0_0x4f732c['message']),log(a0_0x3b0fd7(0x9c),a0_0x3b0fd7(0xa7));}module[a0_0x3b0fd7(0xb2)]={'port':process[a0_0x3b0fd7(0x8c)]['PORT']||0xbb8,'log':{'level':process[a0_0x3b0fd7(0x8c)]['LOG_LEVEL']||'INFO','format':process[a0_0x3b0fd7(0x8c)][a0_0x3b0fd7(0xbb)]||a0_0x3b0fd7(0xaa),'toFile':process[a0_0x3b0fd7(0x8c)][a0_0x3b0fd7(0x93)]==='true'||![],'maxSize':parseInt(process[a0_0x3b0fd7(0x8c)][a0_0x3b0fd7(0xbd)]||'10',0xa)*0x400*0x400,'maxFiles':parseInt(process['env'][a0_0x3b0fd7(0x92)]||'10',0xa)},'apiKeys':{...apiKeysConfig,...Object[a0_0x3b0fd7(0x7f)](Object[a0_0x3b0fd7(0x98)](process[a0_0x3b0fd7(0x8c)])[a0_0x3b0fd7(0xc2)](([_0xe7b6d3])=>_0xe7b6d3[a0_0x3b0fd7(0xa0)](a0_0x3b0fd7(0x9b)))[a0_0x3b0fd7(0xc0)](([_0x32edaf,_0x1d2d2b])=>{const _0x1481ac=a0_0x3b0fd7,_0x8226a=_0x32edaf[_0x1481ac(0x87)](_0x1481ac(0x9b),_0x1481ac(0x7d));try{const _0x24100b=JSON[_0x1481ac(0x8d)](_0x1d2d2b);return[_0x8226a,_0x24100b];}catch(_0x164a51){return[_0x8226a,_0x1d2d2b];}}))},'defaultRotationStrategy':process['env']['ROTATION_STRATEGY']||'round-robin','proxy':{'enabled':process[a0_0x3b0fd7(0x8c)][a0_0x3b0fd7(0xa6)]===a0_0x3b0fd7(0x9e)||![],'url':process[a0_0x3b0fd7(0x8c)][a0_0x3b0fd7(0x97)]||a0_0x3b0fd7(0x7e)},'github':{'token':process[a0_0x3b0fd7(0x8c)][a0_0x3b0fd7(0x82)],'owner':process[a0_0x3b0fd7(0x8c)][a0_0x3b0fd7(0x8e)],'repo':process['env']['GITHUB_REPO'],'workflowId':process[a0_0x3b0fd7(0x8c)][a0_0x3b0fd7(0x9f)],'triggerWorkflow':process[a0_0x3b0fd7(0x8c)][a0_0x3b0fd7(0x95)]==='true'},'workflowParams':{'number':parseInt(process[a0_0x3b0fd7(0x8c)][a0_0x3b0fd7(0xbf)]||'2',0xa),'maxWorkers':parseInt(process[a0_0x3b0fd7(0x8c)][a0_0x3b0fd7(0x89)]||'1',0xa),'emailServer':process[a0_0x3b0fd7(0x8c)][a0_0x3b0fd7(0x86)]||a0_0x3b0fd7(0xbe),'ingestToOneapi':process[a0_0x3b0fd7(0x8c)][a0_0x3b0fd7(0xab)]==='true','uploadArtifact':process['env'][a0_0x3b0fd7(0xc1)]===a0_0x3b0fd7(0x9e),'useConfigFile':process['env'][a0_0x3b0fd7(0xa2)]!==a0_0x3b0fd7(0x81),'emailConfigs':process[a0_0x3b0fd7(0x8c)][a0_0x3b0fd7(0xb4)]||'[]'},'refresh':{'cron':process[a0_0x3b0fd7(0x8c)][a0_0x3b0fd7(0xa9)]||a0_0x3b0fd7(0xad),'minCookieCount':parseInt(process[a0_0x3b0fd7(0x8c)][a0_0x3b0fd7(0x85)]||'2',0xa),'enabled':process['env'][a0_0x3b0fd7(0xb9)]==='true'}};
+// 读取并解析API_KEYS环境变量
+// 避免循环依赖，不要在此处引用logger
+
+// 添加自己的简单日志函数，防止循环依赖
+function log(level, message) {
+  // 只在控制台输出，不写入文件
+  const timestamp = new Date().toISOString();
+  if (level === 'ERROR') {
+    console.error(`[ERROR] ${timestamp} ${message}`);
+  } else if (level === 'WARN') {
+    console.warn(`[WARN] ${timestamp} ${message}`);
+  } else {
+    console.log(`[INFO] ${timestamp} ${message}`);
+  }
+}
+
+// 解析API Keys配置
+let apiKeysConfig = {};
+try {
+    if (process.env.API_KEYS) {
+        // 解析API Keys字符串为对象
+        apiKeysConfig = JSON.parse(process.env.API_KEYS);
+        log('INFO', '正在从环境变量加载API Keys...');
+        log('INFO', `成功解析API Keys，包含 ${Object.keys(apiKeysConfig).length} 个键`);
+    }
+} catch (error) {
+    log('ERROR', '解析API_KEYS环境变量失败:' + error.message);
+    log('ERROR', '请确保API_KEYS是有效的JSON格式');
+}
+
+// 导出配置
+module.exports = {
+    port: process.env.PORT || 3000,
+    
+    // 日志配置
+    log: {
+        level: process.env.LOG_LEVEL || 'INFO', // ERROR, WARN, INFO, DEBUG, TRACE
+        format: process.env.LOG_FORMAT || 'colored', // colored, json, text
+        toFile: process.env.LOG_TO_FILE === 'true' || false,
+        maxSize: parseInt(process.env.LOG_MAX_SIZE || '10', 10) * 1024 * 1024, // 默认10MB
+        maxFiles: parseInt(process.env.LOG_MAX_FILES || '10', 10) // 保留最近10个日志文件
+    },
+
+    // 合并API Keys设置
+    apiKeys: {
+        ...apiKeysConfig,
+        ...Object.fromEntries(
+            Object.entries(process.env)
+                .filter(([key]) => key.startsWith('API_KEY_'))
+                .map(([key, value]) => {
+                    const apiKey = key.replace('API_KEY_', 'sk-');
+                    try {
+                        // 尝试解析JSON字符串，支持数组格式的cookie
+                        const parsed = JSON.parse(value);
+                        return [apiKey, parsed];
+                    } catch (e) {
+                        // 如果不是JSON，直接作为字符串处理
+                        return [apiKey, value];
+                    }
+                })
+        )
+    },
+
+    defaultRotationStrategy: process.env.ROTATION_STRATEGY || 'round-robin',
+    
+    // 添加代理配置
+    proxy: {
+        enabled: process.env.PROXY_ENABLED === 'true' || false,
+        url: process.env.PROXY_URL || 'http://127.0.0.1:7890',
+    },
+    
+    // GitHub相关配置
+    github: {
+        token: process.env.GITHUB_TOKEN,
+        owner: process.env.GITHUB_OWNER,
+        repo: process.env.GITHUB_REPO,
+        workflowId: process.env.GITHUB_WORKFLOW_ID,
+        triggerWorkflow: process.env.TRIGGER_WORKFLOW === 'true'
+    },
+    
+    // 工作流参数
+    workflowParams: {
+        number: parseInt(process.env.REGISTER_NUMBER || '2', 10),
+        maxWorkers: parseInt(process.env.REGISTER_MAX_WORKERS || '1', 10),
+        emailServer: process.env.REGISTER_EMAIL_SERVER || 'TempEmail',
+        ingestToOneapi: process.env.REGISTER_INGEST_TO_ONEAPI === 'true',
+        uploadArtifact: process.env.REGISTER_UPLOAD_ARTIFACT === 'true',
+        useConfigFile: process.env.REGISTER_USE_CONFIG_FILE !== 'false',
+        emailConfigs: process.env.REGISTER_EMAIL_CONFIGS || '[]'
+    },
+    
+    // 刷新配置
+    refresh: {
+        cron: process.env.REFRESH_CRON || '0 */6 * * *',
+        minCookieCount: parseInt(process.env.MIN_COOKIE_COUNT || '2', 10),
+        enabled: process.env.ENABLE_AUTO_REFRESH === 'true'
+    }
+};
